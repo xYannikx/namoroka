@@ -1,0 +1,27 @@
+#TabsToolbar {
+    .tabbrowser-tab {
+        .tab-background {
+            background-image: url("chrome://namoroka/content/firefox-3/tabbrowser/tab-bkgnd.png") !important;
+            background-repeat: repeat-x !important;
+
+            border: 1px solid;
+            border-block-end-width: 0 !important;
+            
+            border-top-left-radius: 2px !important;
+            border-top-right-radius: 2px !important;
+
+            border-inline-start-color: ThreeDShadow !important;
+            border-block-start-color: ThreeDShadow !important;
+
+            border-inline-end-color: rgba(0, 0, 0, 0.1) !important;
+
+            box-shadow: inset 1px 1px 0 rgba(255, 255, 255, .3) !important;
+            
+            .tab-background-start,
+            .tab-background-middle,
+            .tab-background-end {
+                visibility: collapse !important;
+            }
+        }
+    }
+}

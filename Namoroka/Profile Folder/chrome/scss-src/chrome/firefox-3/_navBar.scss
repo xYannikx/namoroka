@@ -1,0 +1,73 @@
+#nav-bar {
+    #back-button,
+    #forward-button {
+        appearance: none !important;
+
+        .toolbarbutton-menubutton-button {
+            appearance: none !important;
+            padding: 0 !important;
+            border: 0 !important;
+
+            .toolbarbutton-icon {
+                width: 100% !important;
+                height: 100% !important;
+                background-image: url("chrome://namoroka/content/firefox-3/Toolbar.png") !important;
+                background-position-y: 0 !important;
+            }
+        }
+    }
+
+    #back-button {
+        margin-inline-start: 2px !important;
+
+        .toolbarbutton-menubutton-button {
+            width: 36px !important;
+
+            .toolbarbutton-icon {
+                background-position-x: -360px !important;
+            }
+        }
+
+        .toolbarbutton-menu-dropmarker {
+            visibility: collapse !important;
+        }
+    }
+
+    #forward-button {
+        margin-inline-end: 2px !important;
+
+        .toolbarbutton-menubutton-button {
+            width: 26px !important;
+
+            .toolbarbutton-icon {
+                background-position-x: -396px !important;
+            }
+        }
+
+        .toolbarbutton-menu-dropmarker {
+            width: 16px !important;
+            background-image: url("chrome://namoroka/content/firefox-3/Toolbar.png") !important;
+            background-position-x: -422px !important;
+            background-position-y: 0 !important;
+            padding: 0 !important;
+        }
+    }
+    
+    #back-button:not([disabled="true"]) .toolbarbutton-menubutton-button:hover .toolbarbutton-icon,
+    #forward-button:not([disabled="true"]) .toolbarbutton-menubutton-button:hover .toolbarbutton-icon,
+    #forward-button:not([disabled="true"]) .toolbarbutton-menu-dropmarker:hover {
+        background-position-y: -34px !important;
+    }
+
+    #back-button:not([disabled="true"]) .toolbarbutton-menubutton-button:hover:active .toolbarbutton-icon,
+    #forward-button:not([disabled="true"]) .toolbarbutton-menubutton-button:hover:active .toolbarbutton-icon,
+    #forward-button:not([disabled="true"]) .toolbarbutton-menu-dropmarker:hover:active {
+        background-position-y: -102px !important;
+    }
+
+    #back-button[disabled="true"] .toolbarbutton-menubutton-button .toolbarbutton-icon,
+    #forward-button[disabled="true"] .toolbarbutton-menubutton-button .toolbarbutton-icon,
+    #forward-button[disabled="true"] .toolbarbutton-menu-dropmarker {
+        background-position-y: -68px !important;
+    }
+}

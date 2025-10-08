@@ -48,14 +48,11 @@
                 urlbarInputContainer.insertBefore(identityBox, urlbarInputContainer.lastChild);
             }
         }
-
-        const namorokaStyle = {
-            observe: function (subject, topic, data) {
-                if (topic == "nsPref:changed")
-                    moveIdentityBox();
-            },
-        };
-        Services.prefs.addObserver("Namoroka.Appearance.Style", namorokaStyle, false);
+        
+        window.document.documentElement.addEventListener(
+            "namoroka-appearance-change",
+            moveIdentityBox
+        )
         moveIdentityBox();
 
         // favicon

@@ -1,0 +1,7 @@
+& {
+    --toolbar-spritesheet: url("chrome://namoroka/content/firefox-3/Toolbar.png");
+
+    &[namoroka-appearance-small-icons="true"] {
+        --toolbar-spritesheet: url("chrome://namoroka/content/firefox-3/Toolbar-small.png");
+    }
+}
