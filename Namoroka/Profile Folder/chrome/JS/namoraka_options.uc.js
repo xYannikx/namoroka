@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name			Namorako :: Options
+// @name			Namoroka :: Options
 // @description 	Adds the menu item to launch Namoroka's Options window
 // @author			aubymori
 // @include			main
