@@ -1,6 +1,6 @@
 @media not (-moz-windows-non-native-menus) {
     :root:not([namoroka-style-1]) {
-        menupopup,
+        menupopup:not(#ContentSelectDropdownPopup),
         toolbarbutton menupopup[placespopup] {
             border-top-color: -moz-Dialog !important;
             border-left-color: -moz-Dialog !important;
@@ -12,7 +12,7 @@
     }
 
     :root[namoroka-style-1] {
-        menupopup,
+        menupopup:not(#ContentSelectDropdownPopup),
         toolbarbutton menupopup[placespopup] {
             padding: 2px !important;
             border: 1px solid ThreeDShadow !important;
