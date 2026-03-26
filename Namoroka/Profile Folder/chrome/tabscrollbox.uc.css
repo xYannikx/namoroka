@@ -1,51 +1,7 @@
-/* This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
-/* Modified version for Namoroka, fuck Mozilla. */
-:host([scrolledtostart])::part(overflow-start-indicator),
-:host([scrolledtoend])::part(overflow-end-indicator),
-:host(:not([overflowing])) > toolbarbutton {
-  visibility: collapse;
-}
-
-scrollbox {
-  min-width: 0;
-  min-height: 0;
-}
-
-slot {
-  display: flex;
-  flex: 1 0 0;
-  flex-direction: inherit;
-}
-
-/* Scroll arrows */
-toolbarbutton {
-  color: inherit;
-  list-style-image: url("chrome://global/skin/icons/arrow-down-12.svg");
-  -moz-context-properties: fill, fill-opacity;
-  fill: currentColor;
-  fill-opacity: 1;
-  padding: 2px;
-  /* Make sure we draw on top of our scrollbox, since otherwise the up button
-  * won't be hittable */
-  position: relative;
-}
-toolbarbutton[disabled] {
-  fill-opacity: var(--toolbarbutton-disabled-opacity);
-}
-:host([orient=horizontal]) > toolbarbutton {
-  list-style-image: url("chrome://global/skin/icons/arrow-left.svg");
-}
-@media not (-moz-platform: macos) {
-  :host(:not([clicktoscroll])) > toolbarbutton {
-    appearance: none;
-  }
-}
-toolbarbutton > .toolbarbutton-text {
-  display: none;
-}
-
+/**
+  * This file is not directly applied to the browser document.
+  * See Namoroka/Profile Folder/chrome/JS/namoroka_tabscrollbox.uc.js for more info.
+  */
 #scrollbutton-up > .toolbarbutton-icon {
   transform: scaleY(1);
 }
@@ -99,4 +55,4 @@ toolbarbutton > .toolbarbutton-text {
   background-position-x: -22px !important;
 }
 
-/*# sourceMappingURL=arrowscrollbox.css.map */
+/*# sourceMappingURL=tabscrollbox.uc.css.map */

@@ -85,7 +85,7 @@ toolbarbutton menupopup[placespopup] menuseparator::before {
 }
 
 @media not (-moz-windows-non-native-menus) {
-  :root:not([namoroka-style-1]) menupopup,
+  :root:not([namoroka-style-1]) menupopup:not(#ContentSelectDropdownPopup),
   :root:not([namoroka-style-1]) toolbarbutton menupopup[placespopup] {
     border-top-color: -moz-Dialog !important;
     border-left-color: -moz-Dialog !important;
@@ -94,7 +94,7 @@ toolbarbutton menupopup[placespopup] menuseparator::before {
     box-shadow: inset -1px -1px 0 ThreeDShadow, inset 1px 1px 0 ThreeDHighlight !important;
     padding: 1px !important;
   }
-  :root[namoroka-style-1] menupopup,
+  :root[namoroka-style-1] menupopup:not(#ContentSelectDropdownPopup),
   :root[namoroka-style-1] toolbarbutton menupopup[placespopup] {
     padding: 2px !important;
     border: 1px solid ThreeDShadow !important;
