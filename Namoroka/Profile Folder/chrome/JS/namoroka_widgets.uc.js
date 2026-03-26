@@ -7,7 +7,7 @@
 
 {
 
-let { LocaleUtils } = ChromeUtils.import("chrome://userscripts/content/namoroka_utils.uc.js");
+let { LocaleUtils } = ChromeUtils.importESModule("chrome://userscripts/content/namoroka_utils.sys.mjs");
 let throbberBundle = "chrome://namoroka/locale/properties/custom-widgets.properties";
 let urlbarBundle = "chrome://namoroka/locale/properties/urlbar.properties";
 

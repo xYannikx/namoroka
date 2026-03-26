@@ -6,7 +6,7 @@
 // ==/UserScript==
 
 {
-	var { LocaleUtils, waitForElement } = ChromeUtils.import("chrome://userscripts/content/namoroka_utils.uc.js");
+	var { LocaleUtils, waitForElement } = ChromeUtils.importESModule("chrome://userscripts/content/namoroka_utils.sys.mjs");
     waitForElement = waitForElement.bind(window);
 
     let menusBundle = "chrome://namoroka/locale/properties/menus.properties";

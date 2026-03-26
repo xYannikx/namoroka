@@ -2,7 +2,7 @@ var g_namorokaAboutDialog;
 var gSelectedPage = 0;
 
 {
-    var { waitForElement, BrandUtils, LocaleUtils } = ChromeUtils.import("chrome://userscripts/content/namoroka_utils.uc.js");
+    var { waitForElement, BrandUtils, LocaleUtils } = ChromeUtils.importESModule("chrome://userscripts/content/namoroka_utils.sys.mjs");
     waitForElement = waitForElement.bind(window);
 
     let aboutDialogBundle = "chrome://namoroka/locale/properties/aboutDialog.properties";

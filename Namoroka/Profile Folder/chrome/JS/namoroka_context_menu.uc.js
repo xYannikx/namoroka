@@ -6,7 +6,7 @@
 // ==/UserScript===
 
 {
-    var { PrefUtils, waitForElement } = ChromeUtils.import("chrome://userscripts/content/namoroka_utils.uc.js");
+    var { PrefUtils, waitForElement } = ChromeUtils.importESModule("chrome://userscripts/content/namoroka_utils.sys.mjs");
     waitForElement = waitForElement.bind(window);
 
     /* Add labels to navigation items so they can look exactly like normal items again */

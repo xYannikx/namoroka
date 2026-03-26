@@ -1,4 +1,4 @@
-let { PrefUtils } = ChromeUtils.import("chrome://userscripts/content/namoroka_utils.uc.js");
+let { PrefUtils } = ChromeUtils.importESModule("chrome://userscripts/content/namoroka_utils.sys.mjs");
 
 export class NamorokaThemeManager
 {

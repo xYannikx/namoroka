@@ -1,6 +1,6 @@
 const { LocaleUtils, 
         PrefUtils, 
-        BrandUtils } = ChromeUtils.import("chrome://userscripts/content/namoroka_utils.uc.js");
+        BrandUtils } = ChromeUtils.importESModule("chrome://userscripts/content/namoroka_utils.sys.mjs");
         
 ChromeUtils.defineESModuleGetters(window, {
     NamorokaThemeManager: "chrome://modules/content/NamorokaThemeManager.sys.mjs",

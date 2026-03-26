@@ -8,7 +8,7 @@
 var g_namorokaMenubar;
 
 {
-    var { waitForElement, LocaleUtils } = ChromeUtils.import("chrome://userscripts/content/namoroka_utils.uc.js");
+    var { waitForElement, LocaleUtils } = ChromeUtils.importESModule("chrome://userscripts/content/namoroka_utils.sys.mjs");
     waitForElement = waitForElement.bind(window);
 
     let menubarBundle = "chrome://namoroka/locale/properties/menus.properties";
