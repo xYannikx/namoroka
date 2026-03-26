@@ -56,6 +56,13 @@
 		_moveStatusPanel() {
 			if (document.querySelector(".browserStack #statuspanel")) {
 				document.querySelector("#status-bar").appendChild(StatusPanel.panel);
+
+				if (StatusPanel.panel.getAttribute("type") == "defaultStatus") {
+					console.log("done!");
+				}
+				else {
+					console.log("FUCK YOU BRUH");
+				}
 			}
 		},
 

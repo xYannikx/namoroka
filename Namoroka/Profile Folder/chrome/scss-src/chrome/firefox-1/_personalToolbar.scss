@@ -9,6 +9,12 @@
 
     #PlacesToolbarItems {
         margin-inline-start: 3px !important;
+        
+        toolbarseparator {
+            &::before {
+                content: none !important;
+            }
+        }
     }
     
     toolbarbutton.bookmark-item:not(.subviewbutton) {

@@ -4,6 +4,7 @@
     --page-icon: url("chrome://namoroka/content/firefox-1/icons/page.png") !important;
     --page-invalid-icon: url("chrome://namoroka/content/firefox-1/icons/page-invalid.png") !important;
     --new-tab-icon: url("chrome://namoroka/content/firefox-1/tabbrowser/newtab.png") !important;
+    --tab-max-width: 225px !important;
 }
 
 #TabsToolbar {
@@ -52,14 +53,22 @@
         }
 
         &:not([pinned]) {
-            transition: min-width 0ms ease-out,
-                        max-width 0ms ease-out !important;
-        }
+            max-width: var(--tab-max-width) !important;
+            min-width: var(--tab-min-width) !important;
+            transition: min-width 0.001ms ease-out,
+                        max-width 0.001ms ease-out !important;
 
-        &:not([pinned], [fadein]) {
-            border: 0 !important;
-            appearance: none !important;
-            padding: 0 !important;
+            &:not([fadein]) {
+                appearance: none !important;
+                max-width: 0.1px !important;
+                min-width: 0.1px !important;
+                border: 0 !important;
+                padding: 0 !important;
+                opacity: 0 !important;
+                transition: min-width 0.001ms ease-out, 
+                            max-width 0.001ms ease-out, 
+                            opacity 0.001ms ease-out !important;
+            }
         }
         
         .tab-background {
