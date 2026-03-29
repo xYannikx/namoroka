@@ -1,6 +1,6 @@
 <p align="center">
     <img src="images/logo.png" alt="Namoroka logo">
-    <h6 align="center"><i>Mozilla Firefox 1-3 theme for Mozilla Firefox 115 & Marble 128</i></h6>
+    <h6 align="center"><i>Mozilla Firefox 1-3 theme for [Nocturne](https://github.com/raytek-cafe/Nocturne/)</i></h6>
 </p>
 
 ___
