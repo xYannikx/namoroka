@@ -1,5 +1,5 @@
 const { LocaleUtils, 
-        PrefUtils, 
+        PrefCalls, 
         BrandUtils } = ChromeUtils.importESModule("chrome://userscripts/content/namoroka_utils.sys.mjs");
         
 ChromeUtils.defineESModuleGetters(window, {
@@ -114,27 +114,27 @@ for (const option of document.querySelectorAll(".option"))
     switch (option.dataset.type)
     {
         case "bool":
-            option.checked = PrefUtils.tryGetBoolPref(option.dataset.option);
+            option.checked = PrefCalls.getPref(option.dataset.option);
             break;
         case "int":
         case "enum":
             if (option.localName == "namoroka-listbox") 
             {
-                option.setValue(PrefUtils.tryGetIntPref(option.dataset.option));
+                option.setValue(PrefCalls.getPref(option.dataset.option));
             }
             else
             {
-                option.value = PrefUtils.tryGetIntPref(option.dataset.option);
+                option.value = PrefCalls.getPref(option.dataset.option);
             }
             break;
         case "string":
             if (option.localName == "namoroka-listbox") 
             {
-                option.setValue(PrefUtils.tryGetStringPref(option.dataset.option));
+                option.setValue(PrefCalls.getPref(option.dataset.option));
             }
             else
             {
-                option.value = PrefUtils.tryGetStringPref(option.dataset.option);
+                option.value = PrefCalls.getPref(option.dataset.option);
             }
             break;
     }
@@ -212,16 +212,16 @@ function okApplyHandler(e, closeWindow = false)
             switch (option.dataset.type)
             {
                 case "bool":
-                    PrefUtils.trySetBoolPref(option.dataset.option, option.checked);
+                    PrefCalls.setPref(option.dataset.option, option.checked);
                     break;
                 case "enum":
-                    PrefUtils.trySetIntPref(option.dataset.option, Number(option.value));
+                    PrefCalls.setPref(option.dataset.option, Number(option.value));
                     break;
                 case "int":
-                    PrefUtils.trySetIntPref(option.dataset.option, Math.floor(Number(option.value)));
+                    PrefCalls.setPref(option.dataset.option, Math.floor(Number(option.value)));
                     break;
                 case "string":
-                    PrefUtils.trySetStringPref(option.dataset.option, option.value);
+                    PrefCalls.setPref(option.dataset.option, option.value);
                     break;
             }
         }

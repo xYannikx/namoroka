@@ -3,8 +3,11 @@
 }
 
 #PersonalToolbar {
-    max-height: 26px !important;
-    min-height: 26px !important;
+    @media (-moz-win-classic) {
+        max-height: 26px !important;
+        min-height: 26px !important;
+    }
+    
     padding-inline: 0 !important;
 
     #PlacesToolbarItems {

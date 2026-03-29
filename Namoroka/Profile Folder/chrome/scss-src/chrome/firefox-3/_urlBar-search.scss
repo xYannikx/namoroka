@@ -1,0 +1,273 @@
+& {
+    --urlbar-root-height: 22px !important;
+    --urlbar-container-padding: 0 !important;
+    --urlbar-margin-inline: 7px !important;
+    
+    --secure-icon: url("chrome://namoroka/content/firefox-2/Secure.png") !important;
+
+    .searchbar-textbox::placeholder {
+        opacity: 1 !important;
+    }
+
+    &[namoroka-appearance-aero] {
+        .searchbar-textbox::placeholder {
+            font-style: italic !important;
+        }
+    }
+
+    #urlbar-container {
+        margin-inline-end: 0 !important;
+        margin-inline-start: 6px !important;
+
+        #urlbar {
+            --urlbar-height: var(--urlbar-root-height) !important;
+
+            #urlbar-background {
+                appearance: none !important;
+                border: 1px solid ThreeDShadow !important;
+                background-color: -moz-Field !important;
+                border-radius: 0 !important;
+            }
+
+            .autocomplete-history-dropmarker {
+                appearance: none !important;
+            }
+
+            .urlbar-input-container,
+            #urlbar-input-container {
+                border: 1px solid transparent !important;
+                overflow: visible !important;
+                background-color: transparent !important;
+            }
+
+            #identity-box {
+                margin: 0 !important;
+                margin-inline-start: -4px !important;
+                visibility: visible !important;
+                overflow: -moz-hidden-unscrollable !important;
+                border-inline-end: 1px solid ThreeDShadow !important;
+
+                &.verifiedDomain,
+                &.verifiedIdentity {
+                    border-inline-end-color: ThreeDDarkShadow !important;
+                }
+
+                #identity-icon-box {
+                    background: -moz-Dialog url("chrome://namoroka/content/firefox-3/vista/urlbar/navbar-textbox-buttons.png") repeat-x !important;
+                    color: -moz-dialogText !important;
+                    border-inline: 1px solid ThreeDShadow !important;
+                    box-shadow: inset -1px 0 rgba(255, 255, 255, 0.2), inset 1px 0 rgba(255, 255, 255, 0.4) !important;
+                    border-radius: 0 !important;
+                    outline: 0 !important;
+                    margin: -11px -10px -11px 0 !important;
+                    padding: 10px 12px 10px 3px !important;
+                    border-top: 1px solid ThreeDDarkShadow !important;
+                    border-bottom: 1px solid ThreeDDarkShadow !important;
+                    border-right-style: none !important;
+                    border-top-left-radius: 21px !important;
+                    border-bottom-left-radius: 21px !important;
+                    border-inline-start: 1px solid ThreeDDarkShadow !important;
+                    background-position: 0 10px !important;
+                }
+
+                &:hover {
+                    #identity-icon-box {
+                        background-position: 0 -60px !important;
+                        box-shadow: inset -1px 0 rgba(255, 255, 255, 0.4), inset 1px 0 rgba(255, 255, 255, 0.4) !important;
+                    }
+                }
+
+                &.verifiedDomain {
+                    #identity-icon-box {
+                        background-position: 0 -110px !important;
+                        color: white !important;
+                    }
+
+                    &:hover {
+                        #identity-icon-box {
+                            background-position: 0 -170px !important;
+                        }
+                    }
+                }
+
+                #identity-icon {
+                    width: 16px !important;
+                    height: 16px !important;
+                    background-image: none !important;
+                    visibility: collapse !important;
+                }
+
+                #page-proxy-stack {
+                    width: 24px !important;
+                    height: 20px !important;
+                    padding: 2px 4px !important;
+                    background: url("chrome://namoroka/content/firefox-3/vista/urlbar/urlbar-favicon-glow.png") center center no-repeat !important;
+                }
+
+                #page-proxy-favicon,
+                #urlbar-throbber {
+                    width: 16px !important;
+                    height: 16px !important;
+                }
+
+                #page-proxy-favicon {
+                    &:not([src]) {
+                        list-style-image: var(--page-icon) !important;
+                    }
+                }
+
+                &[pageproxystate="invalid"] {
+                    #page-proxy-favicon {
+                        list-style-image: var(--page-invalid-icon) !important;
+                    }
+                }
+            }
+
+            #urlbar-input {
+                margin-inline: 4px !important;
+            }
+
+            #page-proxy-deck {
+                visibility: collapse !important;
+            }
+
+            .autocomplete-history-dropmarker {
+                appearance: none !important;
+                background-color: transparent !important;
+                position: relative;
+                border-inline-start: 1px solid transparent !important;
+                align-items: center !important;
+                justify-content: center !important;
+                padding-inline-start: 1px !important;
+
+                &:hover,
+                &[open="true"] {
+                    background: -moz-Dialog url("chrome://namoroka/content/firefox-3/vista/urlbar/navbar-textbox-buttons.png") repeat-x 0 -60px !important;
+                    border-color: ButtonShadow !important;
+                }
+
+                &::before {
+                    content: '';
+                    display: flex;
+                    width: 5px !important;
+                    height: 3px !important;
+                    background-image: url("chrome://namoroka/content/firefox-1/arrow/arrow-dn.gif") !important;
+                }
+            }
+
+            #page-action-buttons {
+                height: 18px !important;
+                padding-block-start: 2px !important;
+                padding-inline-end: 2px !important;
+
+                .urlbar-page-action {
+                    padding: 0 2px !important;
+                    outline: 0 !important;
+                    height: 16px !important;
+                    border-radius: 0 !important;
+                    background-color: transparent !important;
+                }
+            }
+
+            #star-button {
+                list-style-image: none !important;
+                background-image: url("chrome://namoroka/content/firefox-3/vista/places/bookmark.png") !important;
+
+                &[starred="true"] {
+                    background-image: url("chrome://namoroka/content/firefox-3/vista/places/editBookmark.png") !important;
+                }
+
+                &:hover {
+                    background-position-x: -16px !important;
+
+                    &:active {
+                        background-position-x: -32px !important;
+                    }
+                }
+            }
+
+            #urlbar-go-button {
+                width: 16px !important;
+                height: 16px !important;
+                border-radius: 0 !important;
+                background-color: transparent !important;
+                visibility: visible !important;
+                background-image: url("chrome://namoroka/content/firefox-3/vista/Go-arrow.png") !important;
+                margin: 2px !important;
+                list-style-image: none !important;
+
+                &:hover {
+                    background-position-x: -16px !important;
+
+                    &:active {
+                        background-position-x: -32px !important;
+                    }
+                }
+            }
+        }
+    }
+
+    #urlbar-search-splitter {
+        min-width: 8px;
+        margin: 0 -4px !important;
+
+        + #search-container {
+            margin-inline-start: 4px !important;
+        }
+    }
+
+    #searchbar {
+        appearance: none !important;
+        border: 1px solid ThreeDShadow !important;
+        background-color: -moz-Field !important;
+        border-radius: 0 !important;
+
+        .searchbar-search-button {
+            border-inline-end: 1px solid ThreeDShadow !important;
+            background: -moz-Dialog url("chrome://namoroka/content/firefox-3/vista/urlbar/navbar-textbox-buttons.png") repeat-x !important;
+            margin-inline-end: 3px !important;
+            padding-inline-end: 3px !important;
+
+            .searchbar-search-icon {
+                margin-inline: 0 !important;
+                margin-inline-start: 3px !important;
+            }
+
+            .searchbar-search-icon-overlay {
+                align-self: center !important;
+                margin: 0 !important;
+                margin-inline-start: 3px !important;
+                width: 5px !important;
+                height: 3px !important;
+                list-style-image: url("chrome://namoroka/content/firefox-1/arrow/arrow-dn.gif") !important;
+            }
+        }
+
+        .search-go-container {
+            .search-go-button {
+                display: flex !important;
+                width: 16px !important;
+                height: 16px !important;
+                list-style-image: none !important;
+                padding: 0 !important;
+                outline: 0 !important;
+                border-radius: 0 !important;
+                margin: 2px !important;
+                background-color: transparent !important;
+                background-image: url("chrome://namoroka/content/firefox-3/vista/Search-glass.png") !important;
+            }
+
+            &:hover {
+                .search-go-button {
+                    background-position-x: -16px !important;
+                }
+
+                &:active {
+                    .search-go-button {
+                        background-position-x: -32px !important;
+                    }
+                }
+            }
+        }
+    }
+}

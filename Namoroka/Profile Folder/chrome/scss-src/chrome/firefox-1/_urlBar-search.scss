@@ -140,7 +140,7 @@ image.default-favicon {
             }
         }
 
-        :root[namoroka-style-1] & {
+        :root:not([namoroka-style-2])[namoroka-style-1] & {
             #identity-box {
                 &[pageproxystate="valid"] {
                     &.verifiedDomain {

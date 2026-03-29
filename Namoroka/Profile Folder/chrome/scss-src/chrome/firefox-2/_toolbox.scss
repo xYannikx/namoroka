@@ -2,10 +2,12 @@
     border-block-start: 1px solid ThreeDShadow !important;
 }
 
-toolbar[type="menubar"]:not([inactive="true"]) {
-    border-block-start-width: 1px !important;
-}
+@media (-moz-windows-classic) {
+    toolbar[type="menubar"]:not([inactive="true"]) {
+        border-block-start-width: 1px !important;
+    }
 
-toolbar[type="menubar"][inactive="true"] {
-    border-block-width: 0 !important;
+    toolbar[type="menubar"][inactive="true"] {
+        border-block-width: 0 !important;
+    }
 }

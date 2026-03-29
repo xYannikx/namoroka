@@ -1,4 +1,4 @@
-& {
+&:not([namoroka-style-2="true"]) {
     --urlbar-root-height: 22px !important;
     --urlbar-container-padding: 0 !important;
     --urlbar-margin-inline: 3px !important;

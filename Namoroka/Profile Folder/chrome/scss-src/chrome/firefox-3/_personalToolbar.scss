@@ -1,0 +1,7 @@
+& {
+    --folder-item: url("chrome://namoroka/content/firefox-3/icons/folder-item.png") !important;
+
+    &[namoroka-appearance-aero] {
+        --folder-item: url("chrome://namoroka/content/firefox-3/vista/icons/folder-item.png") !important;
+    }
+}

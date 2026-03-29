@@ -1,4 +1,4 @@
-let { PrefUtils } = ChromeUtils.importESModule("chrome://userscripts/content/namoroka_utils.sys.mjs");
+let { PrefCalls } = ChromeUtils.importESModule("chrome://userscripts/content/namoroka_utils.sys.mjs");
 
 export class NamorokaThemeManager
 {
@@ -38,7 +38,7 @@ export class NamorokaThemeManager
 	
 	refreshTheme()
 	{
-		let style = PrefUtils.tryGetIntPref("Namoroka.Appearance.Style");
+		let style = PrefCalls.getPref("Namoroka.Appearance.Style");
 		
 		for (let attr of this.root.getAttributeNames())
 		{
@@ -56,7 +56,7 @@ export class NamorokaThemeManager
 	
 	refreshPrefBoolAttribute(prefName, attrName)
 	{
-		let value = PrefUtils.tryGetBoolPref(prefName);
+		let value = PrefCalls.getPref(prefName);
 		
 		if (value)
 		{

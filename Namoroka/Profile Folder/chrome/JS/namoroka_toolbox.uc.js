@@ -5,26 +5,45 @@
 // @include			 main
 // ==/UserScript==
 
+var g_NamorokaToolbox;
+
 {
     var { waitForElement } = ChromeUtils.importESModule("chrome://userscripts/content/namoroka_utils.sys.mjs");
     waitForElement = waitForElement.bind(window);
+    
+    class NamorokaToolboxManager {
+        async init() {
+            await new Promise(resolve => {
+                let delayedStartupObserver = (aSubject, aTopic, aData) => {
+                    Services.obs.removeObserver(delayedStartupObserver, "browser-delayed-startup-finished");
+                    resolve();
+                };
+                Services.obs.addObserver(delayedStartupObserver, "browser-delayed-startup-finished");
+            });
 
-    waitForElement("#titlebar").then(e => {
-        gNavToolbox.insertBefore(e.querySelector("#toolbar-menubar"), gNavToolbox.querySelector("#nav-bar"));
+            let tabsToolbar = document.getElementById("TabsToolbar");
 
-        e.remove();
-    });
+            let closeButton = window.MozXULElement.parseXULToFragment(`
+                <hbox class="tabs-closebutton-box" align="center" pack="end">
+                    <toolbarbutton class="tabs-closebutton close-icon" onclick="gBrowser.removeCurrentTab();">
+                    </toolbarbutton>
+                </hbox>
+            `);
 
-    waitForElement("#TabsToolbar").then(e => {
-        gNavToolbox.appendChild(e);
+            tabsToolbar.querySelector("#TabsToolbar-customization-target").appendChild(closeButton);
 
-        let closeButton = window.MozXULElement.parseXULToFragment(`
-            <hbox class="tabs-closebutton-box" align="center" pack="end">
-                <toolbarbutton class="tabs-closebutton close-icon" onclick="gBrowser.removeCurrentTab();">
-                </toolbarbutton>
-            </hbox>
-        `);
+            tabsToolbar.removeAttribute("flex");
 
-        e.querySelector("#TabsToolbar-customization-target").appendChild(closeButton);
-    });
+            document.body.insertBefore(tabsToolbar, document.getElementById("browser"));
+
+            waitForElement("#titlebar").then(e => {
+                gNavToolbox.insertBefore(e.querySelector("#toolbar-menubar"), gNavToolbox.querySelector("#nav-bar"));
+
+                e.remove();
+            });
+        }
+    }
+
+    g_NamorokaToolbox = new NamorokaToolboxManager;
+    g_NamorokaToolbox.init();
 }

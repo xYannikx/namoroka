@@ -34,9 +34,16 @@ menupopup {
     }
 }
 
+#main-window #main-menubar {
+    background-color: transparent !important;
+    border-radius: 0 !important;
+    text-shadow: none !important;
+}
+
 menu {
     color: MenuText !important;
     font: menu !important;
+    border-radius: 0 !important;
 
     &[disabled="true"],
     &[_moz-menuactive="true"][disabled="true"] {
@@ -60,8 +67,8 @@ menuitem {
     }
 }
 
-menubar {
-    menu {
+#main-menubar {
+    & > menu {
         border: 1px solid transparent !important;
         background-color: transparent !important;
         padding: 2px 5px 2px 7px !important;
@@ -86,4 +93,8 @@ menubar {
             color: inherit !important;
         }
     }
+}
+
+#menubar-items {
+    margin: 0 !important;
 }

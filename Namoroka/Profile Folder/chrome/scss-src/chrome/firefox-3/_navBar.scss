@@ -11,7 +11,7 @@
             .toolbarbutton-icon {
                 width: 100% !important;
                 height: 100% !important;
-                background-image: url("chrome://namoroka/content/firefox-3/Toolbar.png") !important;
+                background-image: var(--toolbar-spritesheet) !important;
                 background-position-y: 0 !important;
             }
         }
@@ -46,7 +46,8 @@
 
         .toolbarbutton-menu-dropmarker {
             width: 16px !important;
-            background-image: url("chrome://namoroka/content/firefox-3/Toolbar.png") !important;
+            content: none !important;
+            background-image: var(--toolbar-spritesheet) !important;
             background-position-x: -422px !important;
             background-position-y: 0 !important;
             padding: 0 !important;

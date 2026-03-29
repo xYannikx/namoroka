@@ -1,4 +1,16 @@
+& {
+    --page-icon: url("chrome://namoroka/content/firefox-3/icons/page.png") !important;
+    --page-invalid-icon: url("chrome://namoroka/content/firefox-3/icons/page-invalid.png") !important;
+    
+    &[namoroka-appearance-aero] {
+        --page-icon: url("chrome://namoroka/content/firefox-3/vista/icons/page.png") !important;
+        --page-invalid-icon: url("chrome://namoroka/content/firefox-3/vista/icons/page-invalid.png") !important;
+    }
+}
+
 #TabsToolbar {
+    appearance: -moz-win-browsertabbar-toolbox !important;
+
     .tabbrowser-tab {
         .tab-background {
             background-image: url("chrome://namoroka/content/firefox-3/tabbrowser/tab-bkgnd.png") !important;

@@ -6,11 +6,21 @@
 
 .browser-toolbar {
     box-shadow: none !important;
-    appearance: auto !important;
+    appearance: none !important;
     background-color: -moz-Dialog !important;
     color: -moz-DialogText !important;
     border-block-start: 1px solid ThreeDHighlight !important;
     border-block-end: 1px solid ThreeDShadow !important;
+
+    @media not (-moz-windows-classic) {
+        & {
+            background-color: transparent !important;
+        }
+    }
+}
+
+#notifications-toolbar {
+    border: 0 !important;
 }
 
 toolbar[type="menubar"],

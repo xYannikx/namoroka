@@ -23,7 +23,7 @@
 
             let toolbarButtonLabel = null;
             let toolbarButtonFragment = `
-                <toolbarbutton class="box-inherit toolbarbutton-1 toolbarbutton-menubutton-button" label="${toolbarButtonLabel}"></toolbarbutton>
+                <toolbarbutton class="box-inherit toolbarbutton-1 toolbarbutton-menubutton-button"></toolbarbutton>
             `;
 
             if (backButton) {
@@ -31,6 +31,7 @@
 
                 backButton.appendChild(MozXULElement.parseXULToFragment(toolbarButtonFragment));
                 backButton.appendChild(customElements.get("toolbarbutton").dropmarkerFragment.cloneNode(true));
+                backButton.querySelector("toolbarbutton").setAttribute("command", "Browser:BackOrBackDuplicate");
 
                 function disableButton() {
                     if (backButton.hasAttribute("disabled")) {
@@ -58,6 +59,7 @@
 
                 forwardButton.appendChild(MozXULElement.parseXULToFragment(toolbarButtonFragment));
                 forwardButton.appendChild(customElements.get("toolbarbutton").dropmarkerFragment.cloneNode(true));
+                forwardButton.querySelector("toolbarbutton").setAttribute("command", "Browser:ForwardOrForwardDuplicate");
 
                 function disableButton() {
                     if (forwardButton.hasAttribute("disabled")) {

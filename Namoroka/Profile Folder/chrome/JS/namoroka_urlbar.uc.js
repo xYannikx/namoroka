@@ -35,11 +35,29 @@
             gURLBar.select();
         }
 
+        // favicon
+
+        let pageProxyDeck = window.MozXULElement.parseXULToFragment(`
+            <deck id="page-proxy-deck">
+                <html:img decoding="sync" id="page-proxy-favicon" />
+            </deck>
+        `);
+
+        urlbarInputContainer.insertBefore(pageProxyDeck, urlbarInputContainer.firstChild);
+
+        let pageProxyStack = window.MozXULElement.parseXULToFragment(`
+            <stack id="page-proxy-stack">
+                <image id="page-proxy-favicon" />
+            </stack>    
+        `)
+
+        gIdentityHandler._identityIconBox.insertBefore(pageProxyStack, gIdentityHandler._identityIconLabel);
+
         // im chopped
 
         function moveIdentityBox() {
             let identityBox = gIdentityHandler._identityBox;
-            let style = PrefUtils.tryGetIntPref("Namoroka.Appearance.Style");
+            let style = PrefCalls.getPref("Namoroka.Appearance.Style");
 
             if (style >= "2") { 
                 urlbarInputContainer.insertBefore(identityBox, urlbarInputContainer.firstChild);
@@ -54,16 +72,6 @@
             moveIdentityBox
         )
         moveIdentityBox();
-
-        // favicon
-
-        let pageProxyDeck = window.MozXULElement.parseXULToFragment(`
-            <deck id="page-proxy-deck">
-                <html:img decoding="sync" id="page-proxy-favicon" />
-            </deck>
-        `);
-
-        urlbarInputContainer.insertBefore(pageProxyDeck, urlbarInputContainer.firstChild);
     });
 
     function updateIcon()
@@ -72,15 +80,17 @@
         {
             setTimeout(function()
             {
-                let pageProxyIcon = document.querySelector("#page-proxy-favicon");
+                let pageProxyIcon = document.querySelectorAll("#page-proxy-favicon");
                 let favicon = gBrowser.selectedTab.iconImage.src;
                     
-                pageProxyIcon.setAttribute("src", favicon);
+                pageProxyIcon.forEach(el => {
+                    el.setAttribute("src", favicon);
 
-                if (!favicon || favicon == null)
-                {
-                    pageProxyIcon.removeAttribute("src");
-                }
+                    if (!favicon || favicon == null)
+                    {
+                        el.removeAttribute("src");
+                    }
+                })
             }, 1);
         }
         catch (e) {}

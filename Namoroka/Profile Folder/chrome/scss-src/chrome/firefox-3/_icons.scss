@@ -4,4 +4,24 @@
     &[namoroka-appearance-small-icons="true"] {
         --toolbar-spritesheet: url("chrome://namoroka/content/firefox-3/Toolbar-small.png");
     }
+
+    &[namoroka-appearance-aero] {
+        --toolbar-spritesheet: url("chrome://namoroka/content/firefox-3/vista/Toolbar.png");
+
+        &[namoroka-appearance-small-icons="true"] {
+            --toolbar-spritesheet: url("chrome://namoroka/content/firefox-3/vista/Toolbar-small.png");
+        }    
+    }
+}
+
+.close-icon {
+    @include set-size(14px, 14px);
+    @include set-background("firefox-3/icons/close.png");
+    @include set-horizontal-states(0, 14px, 28px);
+}
+
+&[namoroka-appearance-aero] {
+    .close-icon {
+        @include set-background("firefox-3/vista/icons/close.png");
+    }
 }

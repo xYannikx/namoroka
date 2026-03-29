@@ -9,11 +9,6 @@
 
 #TabsToolbar {
     border: 0 !important;
-
-    @media not (-moz-windows-classic) {
-        border-block-start: 1px solid ThreeDShadow !important;
-    }
-
     box-shadow: none !important;
     background: -moz-Dialog url("chrome://namoroka/content/firefox-2/icons/tabbrowser-tabs-bkgnd.png") !important;
     position: relative !important;

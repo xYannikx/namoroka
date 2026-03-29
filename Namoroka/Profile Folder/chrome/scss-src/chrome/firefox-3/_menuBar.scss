@@ -1,0 +1,8 @@
+#navigator-throbber {
+    list-style-image: url("chrome://namoroka/content/firefox-3/icons/notloading_16.png") !important;
+
+    &[busy="true"] {
+        list-style-image: url("chrome://namoroka/content/firefox-3/icons/loading_16.png") !important;
+        opacity: 1 !important;
+    }
+}

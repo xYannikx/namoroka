@@ -8,7 +8,7 @@
 var g_namorokaMenubar;
 
 {
-    var { waitForElement, LocaleUtils } = ChromeUtils.importESModule("chrome://userscripts/content/namoroka_utils.sys.mjs");
+    var { waitForElement, LocaleUtils, PrefCalls } = ChromeUtils.importESModule("chrome://userscripts/content/namoroka_utils.sys.mjs");
     waitForElement = waitForElement.bind(window);
 
     let menubarBundle = "chrome://namoroka/locale/properties/menus.properties";
@@ -30,7 +30,7 @@ var g_namorokaMenubar;
             var label;
             var accessKey;
 
-            let style = PrefUtils.tryGetIntPref("Namoroka.Appearance.Style");
+            let style = PrefCalls.getPref("Namoroka.Appearance.Style");
 
             if (!style || style == "0") {
                 label = LocaleUtils.str(menubarBundle, "history_old_label");

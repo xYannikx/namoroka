@@ -13,7 +13,7 @@
         function hideTabs()
         {
             let numTabs = gBrowser.tabs.length;
-            let hideTabsPref = PrefUtils.tryGetBoolPref("Namoroka.Tabbrowser.HideOnOneTab");
+            let hideTabsPref = PrefCalls.getPref("Namoroka.Tabbrowser.HideOnOneTab");
             let ifHide = hideTabsPref ? numTabs <= 1 : false;
 
             document.querySelector("#TabsToolbar").setAttribute("hidden", ifHide ? "true" : "false");
@@ -41,7 +41,7 @@
         }
 
         function refreshTheme() {
-            let style = PrefUtils.tryGetIntPref("Namoroka.Appearance.Style");
+            let style = PrefCalls.getPref("Namoroka.Appearance.Style");
 
             for (let attr of e.getAttributeNames())
             {
