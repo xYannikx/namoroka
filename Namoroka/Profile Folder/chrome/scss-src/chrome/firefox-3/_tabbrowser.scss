@@ -1,15 +1,20 @@
 & {
+    --tab-min-height: 21px !important;
     --page-icon: url("chrome://namoroka/content/firefox-3/icons/page.png") !important;
     --page-invalid-icon: url("chrome://namoroka/content/firefox-3/icons/page-invalid.png") !important;
     
     &[namoroka-appearance-aero] {
         --page-icon: url("chrome://namoroka/content/firefox-3/vista/icons/page.png") !important;
         --page-invalid-icon: url("chrome://namoroka/content/firefox-3/vista/icons/page-invalid.png") !important;
+
+        #TabsToolbar {
+            appearance: -moz-win-browsertabbar-toolbox !important;
+        }
     }
 }
 
 #TabsToolbar {
-    appearance: -moz-win-browsertabbar-toolbox !important;
+    isolation: unset !important; // ????
 
     .tabbrowser-tab {
         .tab-background {
@@ -28,11 +33,144 @@
             border-inline-end-color: rgba(0, 0, 0, 0.1) !important;
 
             box-shadow: inset 1px 1px 0 rgba(255, 255, 255, .3) !important;
+
+            min-height: unset !important;
             
             .tab-background-start,
             .tab-background-middle,
             .tab-background-end {
                 visibility: collapse !important;
+            }
+        }
+
+        &:hover,
+        &[selected="true"] {
+            .tab-background {
+                box-shadow: none !important;
+                border-top-left-radius: 4px !important;
+                border-top-right-radius: 4px !important;
+                border-color: ThreeDShadow !important;
+            }
+        }
+
+        &:not([selected="true"]):hover {
+            .tab-background {
+                background-image: url("chrome://namoroka/content/firefox-3/tabbrowser/tab-hover-bkgnd.png") !important;
+            }
+        }
+
+        &:not([selected="true"]) {
+            .tab-background {
+                margin-top: 1px !important;
+            }
+        }
+
+        &[selected="true"] {
+            .tab-background {
+                background-image: url("chrome://namoroka/content/firefox-3/tabbrowser/tab-active-bkgnd.png") !important;
+                background-color: -moz-Dialog !important;
+            }
+        }
+
+        &:not([selected]) {
+            .tab-close-button:not(:hover, :hover:active) {
+                background-position-x: -42px !important;
+            }
+        }
+    }
+
+    #tabs-newtab-button {        
+        appearance: none !important;
+        width: 31px !important;
+        background-image: url("chrome://namoroka/content/firefox-3/tabbrowser/tab-bkgnd.png") !important;
+        background-repeat: repeat-x !important;
+        border: 1px solid ThreeDShadow !important;
+        border-block-end-width: 0 !important;
+        border-top-left-radius: 2px !important;
+        border-top-right-radius: 2px !important;
+        box-shadow: inset 1px 1px 0 rgba(255, 255, 255, .3) !important;
+        margin-top: 2px !important;
+        margin-bottom: 1px !important;
+        background-color: transparent !important;
+        list-style-image: url("chrome://namoroka/content/firefox-3/tabbrowser/newtab.png") !important;
+        
+        &:hover {
+            background-image: url("chrome://namoroka/content/firefox-3/tabbrowser/tab-hover-bkgnd.png") !important;
+        }
+
+        .toolbarbutton-icon {
+            width: 18px !important;
+            height: 18px !important;
+        }
+    }
+
+    #alltabs-button {
+        appearance: none !important;
+        width: 17px !important;
+        height: 22px !important;
+        padding-inline: 4px !important;
+        appearance: none !important;
+        background-image: url("chrome://namoroka/content/firefox-3/tabbrowser/tab-bkgnd.png") !important;
+        background-repeat: repeat-x !important;
+        border: 1px solid ThreeDShadow !important;
+        border-inline-end-width: 0 !important;
+        border-block-end-width: 0 !important;
+        border-top-left-radius: 2px !important;
+        border-top-right-radius: 0 !important;
+        box-shadow: inset 1px 1px 0 rgba(255, 255, 255, .3), inset -1px 0 0 rgba(255, 255, 255, .3) !important;
+        margin-top: 2px !important;
+        margin-bottom: 1px !important;
+        background-color: transparent !important;
+
+        &:hover {
+            background-image: url("chrome://namoroka/content/firefox-3/tabbrowser/tab-hover-bkgnd.png") !important;
+        }
+
+        .toolbarbutton-icon {
+            width: 5px !important;
+            height: 3px !important;
+            margin-block-start: 3px !important;
+        }
+    }
+
+    #tabbrowser-tabs[overflow] {
+        & ~ .toolbarbutton-1:not(#alltabs-button) {
+            appearance: none !important;
+            width: 18px !important;
+            height: 23px !important;
+            margin-block-start: 2px !important;
+            margin-block-end: 1px !important;
+            padding-inline-start: 1px !important;
+            background-color: transparent !important;
+            background-image: url("chrome://namoroka/content/firefox-3/tabbrowser/tab-bkgnd.png") !important;
+            background-repeat: repeat-x !important;
+            border: 1px solid ThreeDShadow !important;
+            border-block-end-width: 0 !important;
+            box-shadow: inset 1px 1px 0 rgba(255, 255, 255, .3) !important;
+
+            &:hover,
+            &[open="true"] {
+                background-image: url("chrome://namoroka/content/firefox-3/tabbrowser/tab-hover-bkgnd.png") !important;
+            }
+        }
+
+        & ~ #new-tab-button {
+            list-style-image: url("chrome://namoroka/content/firefox-3/tabbrowser/newtab.png") !important;
+
+            .toolbarbutton-icon {
+                width: 18px !important;
+                height: 18px !important;
+            }
+        }
+
+        & ~ #alltabs-button {
+            background-image: url("chrome://namoroka/content/firefox-3/tabbrowser/tab-bkgnd.png") !important;
+            background-color: transparent !important;
+            margin-block-end: 0 !important;
+
+            &:hover,
+            &[open="true"] {
+                background-image: url("chrome://namoroka/content/firefox-3/tabbrowser/tab-hover-bkgnd.png") !important;
             }
         }
     }

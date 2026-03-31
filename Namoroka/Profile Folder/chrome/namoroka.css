@@ -315,6 +315,10 @@ menubar {
   border-block-start-width: 0 !important;
 }
 
+#PersonalToolbar {
+  border-block-end: 0 !important;
+}
+
 :root {
   --tab-min-height: 0 !important;
   --inline-tab-padding: 0 !important;
@@ -328,15 +332,11 @@ menubar {
   appearance: none !important;
   border-block-start-width: 0 !important;
   padding-block: 1px !important;
+  background-color: -moz-Dialog !important;
   background-image: url("chrome://namoroka/content/firefox-1/icons/tabstrip-bottom.png") !important;
   background-repeat: repeat-x !important;
   background-position: bottom 1px center !important;
   box-shadow: inset 0 -1px 0 ThreeDLightShadow !important;
-}
-@media not (-moz-windows-classic) {
-  #TabsToolbar {
-    border-block-start: 1px solid ThreeDShadow !important;
-  }
 }
 #TabsToolbar #tabbrowser-tabs {
   min-height: unset !important;
@@ -1477,7 +1477,7 @@ toolbarpaletteitem > #search-container > #searchbar > .searchbar-textbox {
   height: 3px !important;
   margin-block-start: 3px !important;
 }
-:root[namoroka-style-1] #TabsToolbar #tabbrowser-tabs[overflow=true] ~ .toolbarbutton-1 {
+:root[namoroka-style-1] #TabsToolbar #tabbrowser-tabs[overflow] ~ .toolbarbutton-1 {
   appearance: none !important;
   width: 18px !important;
   height: 23px !important;
@@ -1487,21 +1487,21 @@ toolbarpaletteitem > #search-container > #searchbar > .searchbar-textbox {
   background-color: -moz-Dialog !important;
   background-image: url("chrome://namoroka/content/firefox-2/icons/alltabs-box-overflow-end-bkgnd.png") !important;
 }
-:root[namoroka-style-1] #TabsToolbar #tabbrowser-tabs[overflow=true] ~ .toolbarbutton-1:hover, :root[namoroka-style-1] #TabsToolbar #tabbrowser-tabs[overflow=true] ~ .toolbarbutton-1[open=true] {
+:root[namoroka-style-1] #TabsToolbar #tabbrowser-tabs[overflow] ~ .toolbarbutton-1:hover, :root[namoroka-style-1] #TabsToolbar #tabbrowser-tabs[overflow] ~ .toolbarbutton-1[open=true] {
   background-image: url("chrome://namoroka/content/firefox-2/icons/alltabs-box-overflow-end-bkgnd-hover.png") !important;
 }
-:root[namoroka-style-1] #TabsToolbar #tabbrowser-tabs[overflow=true] ~ #new-tab-button {
+:root[namoroka-style-1] #TabsToolbar #tabbrowser-tabs[overflow] ~ #new-tab-button {
   list-style-image: url("chrome://namoroka/content/firefox-3/tabbrowser/newtab.png") !important;
 }
-:root[namoroka-style-1] #TabsToolbar #tabbrowser-tabs[overflow=true] ~ #new-tab-button .toolbarbutton-icon {
+:root[namoroka-style-1] #TabsToolbar #tabbrowser-tabs[overflow] ~ #new-tab-button .toolbarbutton-icon {
   width: 18px !important;
   height: 18px !important;
 }
-:root[namoroka-style-1] #TabsToolbar #tabbrowser-tabs[overflow=true] ~ #alltabs-button {
+:root[namoroka-style-1] #TabsToolbar #tabbrowser-tabs[overflow] ~ #alltabs-button {
   border-top-left-radius: 0 !important;
   background-image: url("chrome://namoroka/content/firefox-2/icons/alltabs-box-overflow-end-bkgnd.png") !important;
 }
-:root[namoroka-style-1] #TabsToolbar #tabbrowser-tabs[overflow=true] ~ #alltabs-button:hover, :root[namoroka-style-1] #TabsToolbar #tabbrowser-tabs[overflow=true] ~ #alltabs-button[open=true] {
+:root[namoroka-style-1] #TabsToolbar #tabbrowser-tabs[overflow] ~ #alltabs-button:hover, :root[namoroka-style-1] #TabsToolbar #tabbrowser-tabs[overflow] ~ #alltabs-button[open=true] {
   background-image: url("chrome://namoroka/content/firefox-2/icons/alltabs-box-overflow-end-bkgnd-hover.png") !important;
 }
 :root[namoroka-style-1]:not([namoroka-style-2=true]) {
@@ -1555,6 +1555,9 @@ toolbarpaletteitem > #search-container > #searchbar > .searchbar-textbox {
 }
 :root[namoroka-style-1]:not([namoroka-style-2=true]) #urlbar-container #urlbar .autocomplete-history-dropmarker:hover:active::before {
   background-position-x: -48px !important;
+}
+:root[namoroka-style-1]:not([namoroka-style-2=true]) #urlbar-container #urlbar #page-proxy-stack {
+  display: none !important;
 }
 :root[namoroka-style-1]:not([namoroka-style-2=true]) #nav-bar #go-button {
   appearance: none !important;
@@ -1731,6 +1734,9 @@ toolbarpaletteitem > #search-container > #searchbar > .searchbar-textbox {
   background-image: url("chrome://namoroka/content/firefox-3/vista/icons/close.png") !important;
   list-style-image: none !important;
 }
+:root[namoroka-style-2] #nav-bar {
+  padding-block: 1px !important;
+}
 :root[namoroka-style-2] #nav-bar #back-button,
 :root[namoroka-style-2] #nav-bar #forward-button {
   appearance: none !important;
@@ -1793,6 +1799,7 @@ toolbarpaletteitem > #search-container > #searchbar > .searchbar-textbox {
   background-position-y: -68px !important;
 }
 :root[namoroka-style-2] {
+  --tab-min-height: 21px !important;
   --page-icon: url("chrome://namoroka/content/firefox-3/icons/page.png") !important;
   --page-invalid-icon: url("chrome://namoroka/content/firefox-3/icons/page-invalid.png") !important;
 }
@@ -1800,8 +1807,11 @@ toolbarpaletteitem > #search-container > #searchbar > .searchbar-textbox {
   --page-icon: url("chrome://namoroka/content/firefox-3/vista/icons/page.png") !important;
   --page-invalid-icon: url("chrome://namoroka/content/firefox-3/vista/icons/page-invalid.png") !important;
 }
-:root[namoroka-style-2] #TabsToolbar {
+:root[namoroka-style-2][namoroka-appearance-aero] #TabsToolbar {
   appearance: -moz-win-browsertabbar-toolbox !important;
+}
+:root[namoroka-style-2] #TabsToolbar {
+  isolation: unset !important;
 }
 :root[namoroka-style-2] #TabsToolbar .tabbrowser-tab .tab-background {
   background-image: url("chrome://namoroka/content/firefox-3/tabbrowser/tab-bkgnd.png") !important;
@@ -1814,11 +1824,111 @@ toolbarpaletteitem > #search-container > #searchbar > .searchbar-textbox {
   border-block-start-color: ThreeDShadow !important;
   border-inline-end-color: rgba(0, 0, 0, 0.1) !important;
   box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.3) !important;
+  min-height: unset !important;
 }
 :root[namoroka-style-2] #TabsToolbar .tabbrowser-tab .tab-background .tab-background-start,
 :root[namoroka-style-2] #TabsToolbar .tabbrowser-tab .tab-background .tab-background-middle,
 :root[namoroka-style-2] #TabsToolbar .tabbrowser-tab .tab-background .tab-background-end {
   visibility: collapse !important;
+}
+:root[namoroka-style-2] #TabsToolbar .tabbrowser-tab:hover .tab-background, :root[namoroka-style-2] #TabsToolbar .tabbrowser-tab[selected=true] .tab-background {
+  box-shadow: none !important;
+  border-top-left-radius: 4px !important;
+  border-top-right-radius: 4px !important;
+  border-color: ThreeDShadow !important;
+}
+:root[namoroka-style-2] #TabsToolbar .tabbrowser-tab:not([selected=true]):hover .tab-background {
+  background-image: url("chrome://namoroka/content/firefox-3/tabbrowser/tab-hover-bkgnd.png") !important;
+}
+:root[namoroka-style-2] #TabsToolbar .tabbrowser-tab:not([selected=true]) .tab-background {
+  margin-top: 1px !important;
+}
+:root[namoroka-style-2] #TabsToolbar .tabbrowser-tab[selected=true] .tab-background {
+  background-image: url("chrome://namoroka/content/firefox-3/tabbrowser/tab-active-bkgnd.png") !important;
+  background-color: -moz-Dialog !important;
+}
+:root[namoroka-style-2] #TabsToolbar .tabbrowser-tab:not([selected]) .tab-close-button:not(:hover, :hover:active) {
+  background-position-x: -42px !important;
+}
+:root[namoroka-style-2] #TabsToolbar #tabs-newtab-button {
+  appearance: none !important;
+  width: 31px !important;
+  background-image: url("chrome://namoroka/content/firefox-3/tabbrowser/tab-bkgnd.png") !important;
+  background-repeat: repeat-x !important;
+  border: 1px solid ThreeDShadow !important;
+  border-block-end-width: 0 !important;
+  border-top-left-radius: 2px !important;
+  border-top-right-radius: 2px !important;
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.3) !important;
+  margin-top: 2px !important;
+  margin-bottom: 1px !important;
+  background-color: transparent !important;
+  list-style-image: url("chrome://namoroka/content/firefox-3/tabbrowser/newtab.png") !important;
+}
+:root[namoroka-style-2] #TabsToolbar #tabs-newtab-button:hover {
+  background-image: url("chrome://namoroka/content/firefox-3/tabbrowser/tab-hover-bkgnd.png") !important;
+}
+:root[namoroka-style-2] #TabsToolbar #tabs-newtab-button .toolbarbutton-icon {
+  width: 18px !important;
+  height: 18px !important;
+}
+:root[namoroka-style-2] #TabsToolbar #alltabs-button {
+  appearance: none !important;
+  width: 17px !important;
+  height: 22px !important;
+  padding-inline: 4px !important;
+  appearance: none !important;
+  background-image: url("chrome://namoroka/content/firefox-3/tabbrowser/tab-bkgnd.png") !important;
+  background-repeat: repeat-x !important;
+  border: 1px solid ThreeDShadow !important;
+  border-inline-end-width: 0 !important;
+  border-block-end-width: 0 !important;
+  border-top-left-radius: 2px !important;
+  border-top-right-radius: 0 !important;
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.3), inset -1px 0 0 rgba(255, 255, 255, 0.3) !important;
+  margin-top: 2px !important;
+  margin-bottom: 1px !important;
+  background-color: transparent !important;
+}
+:root[namoroka-style-2] #TabsToolbar #alltabs-button:hover {
+  background-image: url("chrome://namoroka/content/firefox-3/tabbrowser/tab-hover-bkgnd.png") !important;
+}
+:root[namoroka-style-2] #TabsToolbar #alltabs-button .toolbarbutton-icon {
+  width: 5px !important;
+  height: 3px !important;
+  margin-block-start: 3px !important;
+}
+:root[namoroka-style-2] #TabsToolbar #tabbrowser-tabs[overflow] ~ .toolbarbutton-1:not(#alltabs-button) {
+  appearance: none !important;
+  width: 18px !important;
+  height: 23px !important;
+  margin-block-start: 2px !important;
+  margin-block-end: 1px !important;
+  padding-inline-start: 1px !important;
+  background-color: transparent !important;
+  background-image: url("chrome://namoroka/content/firefox-3/tabbrowser/tab-bkgnd.png") !important;
+  background-repeat: repeat-x !important;
+  border: 1px solid ThreeDShadow !important;
+  border-block-end-width: 0 !important;
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.3) !important;
+}
+:root[namoroka-style-2] #TabsToolbar #tabbrowser-tabs[overflow] ~ .toolbarbutton-1:not(#alltabs-button):hover, :root[namoroka-style-2] #TabsToolbar #tabbrowser-tabs[overflow] ~ .toolbarbutton-1:not(#alltabs-button)[open=true] {
+  background-image: url("chrome://namoroka/content/firefox-3/tabbrowser/tab-hover-bkgnd.png") !important;
+}
+:root[namoroka-style-2] #TabsToolbar #tabbrowser-tabs[overflow] ~ #new-tab-button {
+  list-style-image: url("chrome://namoroka/content/firefox-3/tabbrowser/newtab.png") !important;
+}
+:root[namoroka-style-2] #TabsToolbar #tabbrowser-tabs[overflow] ~ #new-tab-button .toolbarbutton-icon {
+  width: 18px !important;
+  height: 18px !important;
+}
+:root[namoroka-style-2] #TabsToolbar #tabbrowser-tabs[overflow] ~ #alltabs-button {
+  background-image: url("chrome://namoroka/content/firefox-3/tabbrowser/tab-bkgnd.png") !important;
+  background-color: transparent !important;
+  margin-block-end: 0 !important;
+}
+:root[namoroka-style-2] #TabsToolbar #tabbrowser-tabs[overflow] ~ #alltabs-button:hover, :root[namoroka-style-2] #TabsToolbar #tabbrowser-tabs[overflow] ~ #alltabs-button[open=true] {
+  background-image: url("chrome://namoroka/content/firefox-3/tabbrowser/tab-hover-bkgnd.png") !important;
 }
 :root[namoroka-style-2] {
   --folder-item: url("chrome://namoroka/content/firefox-3/icons/folder-item.png") !important;
@@ -1826,14 +1936,15 @@ toolbarpaletteitem > #search-container > #searchbar > .searchbar-textbox {
 :root[namoroka-style-2][namoroka-appearance-aero] {
   --folder-item: url("chrome://namoroka/content/firefox-3/vista/icons/folder-item.png") !important;
 }
-:root[namoroka-style-2] #navigator-throbber {
-  list-style-image: url("chrome://namoroka/content/firefox-3/icons/notloading_16.png") !important;
-}
-:root[namoroka-style-2] #navigator-throbber[busy=true] {
-  list-style-image: url("chrome://namoroka/content/firefox-3/icons/loading_16.png") !important;
-  opacity: 1 !important;
+:root[namoroka-style-2] #PersonalToolbar #PlacesToolbarItems {
+  margin-inline-start: 0 !important;
+  padding-block-end: 1px !important;
 }
 :root[namoroka-style-2] .browser-toolbar {
+  appearance: auto !important;
+}
+:root[namoroka-style-2][namoroka-appearance-aero] .browser-toolbar {
+  appearance: none !important;
   border: 0 !important;
 }
 :root[namoroka-style-2] {
@@ -1841,9 +1952,15 @@ toolbarpaletteitem > #search-container > #searchbar > .searchbar-textbox {
   --urlbar-container-padding: 0 !important;
   --urlbar-margin-inline: 7px !important;
   --secure-icon: url("chrome://namoroka/content/firefox-2/Secure.png") !important;
+  --navbar-textbox-buttons: url("chrome://namoroka/content/firefox-3/urlbar/navbar-textbox-buttons.png") !important;
+  --search-glass: url("chrome://namoroka/content/firefox-3/Search-glass.png") !important;
 }
 :root[namoroka-style-2] .searchbar-textbox::placeholder {
   opacity: 1 !important;
+}
+:root[namoroka-style-2][namoroka-appearance-aero] {
+  --navbar-textbox-buttons: url("chrome://namoroka/content/firefox-3/vista/urlbar/navbar-textbox-buttons.png") !important;
+  --search-glass: url("chrome://namoroka/content/firefox-3/vista/Search-glass.png") !important;
 }
 :root[namoroka-style-2][namoroka-appearance-aero] .searchbar-textbox::placeholder {
   font-style: italic !important;
@@ -1881,7 +1998,7 @@ toolbarpaletteitem > #search-container > #searchbar > .searchbar-textbox {
   border-inline-end-color: ThreeDDarkShadow !important;
 }
 :root[namoroka-style-2] #urlbar-container #urlbar #identity-box #identity-icon-box {
-  background: -moz-Dialog url("chrome://namoroka/content/firefox-3/vista/urlbar/navbar-textbox-buttons.png") repeat-x !important;
+  background: -moz-Dialog var(--navbar-textbox-buttons) repeat-x !important;
   color: -moz-dialogText !important;
   border-inline: 1px solid ThreeDShadow !important;
   box-shadow: inset -1px 0 rgba(255, 255, 255, 0.2), inset 1px 0 rgba(255, 255, 255, 0.4) !important;
@@ -1915,6 +2032,7 @@ toolbarpaletteitem > #search-container > #searchbar > .searchbar-textbox {
   visibility: collapse !important;
 }
 :root[namoroka-style-2] #urlbar-container #urlbar #identity-box #page-proxy-stack {
+  display: flex !important;
   width: 24px !important;
   height: 20px !important;
   padding: 2px 4px !important;
@@ -1947,7 +2065,7 @@ toolbarpaletteitem > #search-container > #searchbar > .searchbar-textbox {
   padding-inline-start: 1px !important;
 }
 :root[namoroka-style-2] #urlbar-container #urlbar .autocomplete-history-dropmarker:hover, :root[namoroka-style-2] #urlbar-container #urlbar .autocomplete-history-dropmarker[open=true] {
-  background: -moz-Dialog url("chrome://namoroka/content/firefox-3/vista/urlbar/navbar-textbox-buttons.png") repeat-x 0 -60px !important;
+  background: -moz-Dialog var(--navbar-textbox-buttons) repeat-x 0 -60px !important;
   border-color: ButtonShadow !important;
 }
 :root[namoroka-style-2] #urlbar-container #urlbar .autocomplete-history-dropmarker::before {
@@ -1955,7 +2073,7 @@ toolbarpaletteitem > #search-container > #searchbar > .searchbar-textbox {
   display: flex;
   width: 5px !important;
   height: 3px !important;
-  background-image: url("chrome://namoroka/content/firefox-1/arrow/arrow-dn.gif") !important;
+  background-image: url("chrome://namoroka/content/firefox-3/arrow/arrow-dn.gif") !important;
 }
 :root[namoroka-style-2] #urlbar-container #urlbar #page-action-buttons {
   height: 18px !important;
@@ -2013,7 +2131,7 @@ toolbarpaletteitem > #search-container > #searchbar > .searchbar-textbox {
 }
 :root[namoroka-style-2] #searchbar .searchbar-search-button {
   border-inline-end: 1px solid ThreeDShadow !important;
-  background: -moz-Dialog url("chrome://namoroka/content/firefox-3/vista/urlbar/navbar-textbox-buttons.png") repeat-x !important;
+  background: -moz-Dialog var(--navbar-textbox-buttons) repeat-x !important;
   margin-inline-end: 3px !important;
   padding-inline-end: 3px !important;
 }
@@ -2027,7 +2145,7 @@ toolbarpaletteitem > #search-container > #searchbar > .searchbar-textbox {
   margin-inline-start: 3px !important;
   width: 5px !important;
   height: 3px !important;
-  list-style-image: url("chrome://namoroka/content/firefox-1/arrow/arrow-dn.gif") !important;
+  list-style-image: url("chrome://namoroka/content/firefox-3/arrow/arrow-dn.gif") !important;
 }
 :root[namoroka-style-2] #searchbar .search-go-container .search-go-button {
   display: flex !important;
@@ -2039,7 +2157,7 @@ toolbarpaletteitem > #search-container > #searchbar > .searchbar-textbox {
   border-radius: 0 !important;
   margin: 2px !important;
   background-color: transparent !important;
-  background-image: url("chrome://namoroka/content/firefox-3/vista/Search-glass.png") !important;
+  background-image: var(--search-glass) !important;
 }
 :root[namoroka-style-2] #searchbar .search-go-container:hover .search-go-button {
   background-position-x: -16px !important;

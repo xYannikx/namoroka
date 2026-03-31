@@ -1,3 +1,10 @@
 .browser-toolbar {
-    border: 0 !important;
+    appearance: auto !important;
+}
+
+&[namoroka-appearance-aero] {
+    .browser-toolbar {
+        appearance: none !important;
+        border: 0 !important;
+    }
 }

@@ -226,7 +226,7 @@
         }
     }
 
-    #tabbrowser-tabs[overflow="true"] {
+    #tabbrowser-tabs[overflow] {
         & ~ .toolbarbutton-1 {
             appearance: none !important;
             width: 18px !important;

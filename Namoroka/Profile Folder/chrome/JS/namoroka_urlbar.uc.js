@@ -86,7 +86,7 @@
                 pageProxyIcon.forEach(el => {
                     el.setAttribute("src", favicon);
 
-                    if (!favicon || favicon == null)
+                    if (!favicon || favicon == null || favicon == "chrome://branding/content/icon32.png")
                     {
                         el.removeAttribute("src");
                     }
