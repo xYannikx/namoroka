@@ -5,107 +5,47 @@
 // @include			main
 // ==/UserScript==
 
+var g_NamorokaSearchManager;
+
 {
 	var { LocaleUtils, waitForElement } = ChromeUtils.importESModule("chrome://userscripts/content/namoroka_utils.sys.mjs");
     waitForElement = waitForElement.bind(window);
 
     let menusBundle = "chrome://namoroka/locale/properties/menus.properties";
 
-	const { SearchService } = ChromeUtils.importESModule("resource://gre/modules/SearchService.sys.mjs");
-	const { SearchUtils } = ChromeUtils.importESModule("resource://gre/modules/SearchUtils.sys.mjs");
-
 	class NamorokaSearchManager
 	{
-		static updateDisplay_orig = null;
-		static searchbar = null;
-
-		static defaultIcons = {};
-		static obtainedIcons = false;
-		
-		/* A list of engines to obtain default icons for. */
-		static ENGINES = [
-			"google",
-			"ebay",
-
-			/* For older versions of Firefox */
-			"google@search.mozilla.orgdefault",
-			"ebay@search.mozilla.orgdefault",
-		];
-
-		/* Replacement icons for FF14 with old logo and earlier */
-		static REPLACEMENTS = {
+		REPLACEMENTS = {
 			"google": "chrome://namoroka/content/searchplugins/google.ico",
 			"ebay": "chrome://namoroka/content/searchplugins/ebay.ico",
-
-			/* For older versions of Firefox */
-			"google@search.mozilla.orgdefault": "chrome://namoroka/content/searchplugins/google.ico",
-			"ebay@search.mozilla.orgdefault": "chrome://namoroka/content/searchplugins/ebay.ico",
+			"wikipedia": "chrome://namoroka/content/searchplugins/wikipedia.ico",
 		};
 
-		static async obtainIcons()
-		{
-			if (!this.obtainedIcons)
-			{
-				await Services.search.init();
-
-				for (const id of this.ENGINES)
-				{
-					let iconURL;
-
-					try
-					{
-						iconURL = (await Services.search.getEngineById(id))?.iconURI.spec;
-					}
-					catch (e)
-					{
-						iconURL = (await Services.search.getEngineById(id))?.getIconURL();
-					}
-
-					this.defaultIcons[id] = iconURL;
-				}
-				this.obtainedIcons = true;
-			}
-		}
-
-		static async updateSearchBox()
+        async updateSearchBox()
 		{
 			let engine = await Services.search.getDefault();
-
-			let iconURL;
-
-			try
-			{
-				iconURL = engine.iconURI.spec;
-			}
-			catch (e)
-			{
-				iconURL = engine.getIconURL();
-			}
+            let id = engine.id;
 
 			let icon = await waitForElement(".searchbar-search-icon");
-			icon.setAttribute("src", await this.getReplacementIcon(iconURL));
+			icon.setAttribute("src", await this.getReplacementIcon(id));
 
 			let textbox = await waitForElement(".searchbar-textbox");
 			textbox.placeholder = engine._name;
 		}
 
-		static async getReplacementIcon(url)
-		{
-			await this.obtainIcons();
-
+        async getReplacementIcon(engineId) {
 			let replacements = this.REPLACEMENTS;
-			for (const orig in replacements)
-			{
-				if (orig in this.defaultIcons && this.defaultIcons[orig] == url)
-				{
-					return replacements[orig];
-				}
-			}
-			
-			return url;
-		}
 
-		static updateDisplay_hook()
+            if (engineId in replacements) {
+                return replacements[engineId];
+            }
+
+            let iconURL = (await Services.search.getEngineById(engineId))?.getIconURL();
+
+            return iconURL;
+        }
+        
+		updateDisplay_hook()
 		{
 			if (this.updateDisplay_orig && this.searchbar)
 			{
@@ -114,7 +54,7 @@
 			this.updateSearchBox();
 		}
 
-		static onFocusSearchbar(event)
+		onFocusSearchbar(event)
 		{
 			if (event.target.classList.contains("searchbar-textbox"))
 			{
@@ -122,7 +62,7 @@
 			}	
 		}
 
-		static onUnfocusSearchbar(event)
+		onUnfocusSearchbar(event)
 		{
 			if (event.target.classList.contains("searchbar-textbox"))
 			{
@@ -130,7 +70,7 @@
 			}	
 		}
 
-		static async searchBarSearchButton()
+        async searchBarSearchButton()
 		{
 			let searchButton = await waitForElement(".searchbar-search-button");
 
@@ -138,67 +78,74 @@
 				let menupopup = MozXULElement.parseXULToFragment(`
 					<menupopup id="searchbar-popup" class="searchbar-popup" position="after_start">
 						<menuseparator/>
-						<menuitem id="open-engine-manager" class="open-engine-manager" label="${LocaleUtils.str(menusBundle, "namoroka_enginemanager_label")}" accesskey="${LocaleUtils.str(menusBundle, "namoroka_enginemanager_accesskey")}" oncommand="openPreferences('paneSearch')" />
+						<menuitem id="open-engine-manager" class="open-engine-manager" label="${LocaleUtils.str(menusBundle, "namoroka_enginemanager_label")}" accesskey="${LocaleUtils.str(menusBundle, "namoroka_enginemanager_accesskey")}" />
 					</menupopup>
 				`);
 
+                let engineManagerElem = menupopup.querySelector("#open-engine-manager");
+                engineManagerElem.addEventListener("command", (e) => {
+                    openPreferences("paneSearch");
+                })
+
 				searchButton.appendChild(menupopup);
 				
-				searchButton.addEventListener("mousedown", event => {
-					event.stopPropagation();
-					event.preventDefault();
-					NamorokaSearchManager.buildSearchEngineMenu();
-					searchButton.querySelector("menupopup").openPopup(searchButton, "after_start");
-				});
+                searchButton.addEventListener("mousedown", this.handleSearchButtonClick.bind(this));
 			}
-
-			return;
 		}
 
-		static async buildSearchEngineMenu() 
+        handleSearchButtonClick(event) {
+            event.stopPropagation();
+            event.preventDefault();
+
+            this.buildSearchEngineMenu();
+
+            let searchButton = event.currentTarget;
+            searchButton.querySelector("menupopup").openPopup(searchButton, "after_start");   
+        }
+
+		async buildSearchEngineMenu() 
 		{
 			let menupopup = await waitForElement("#searchbar-popup");
 
-			let items = menupopup.childNodes;
-			for (var i = items.length - 1; i >= 0; i--) {
-				if (items[i].getAttribute("class").indexOf("addengine") != -1) {
-              		menupopup.removeChild(items[i]);
-				}
-			}	
+            let items = menupopup.querySelectorAll(".addengine-item");
+            for (let addengineItem of items) {
+                addengineItem.remove();
+            }
 
 			await Services.search.init();
 
 			let visibleEngines = await Services.search.getVisibleEngines();
 			if (visibleEngines.length > 0) {
-				for (let engine of visibleEngines) {
-					let iconURL;
+				for (let engine of visibleEngines) {					
+                    let defaultEngine = await Services.search.getDefault();
 
-					try
-					{
-						iconURL = engine.iconURI.spec;
-					}
-					catch (e)
-					{
-						iconURL = engine.getIconURL();
-					}
-					
-					let menuitemFragment = `
+                    let menuitemFragment = MozXULElement.parseXULToFragment(`
 						<menuitem class="menuitem-iconic addengine-item"
 								  label="${engine._name}" 
-								  image="${await this.getReplacementIcon(iconURL)}"
-								  oncommand="Services.search.setDefault(Services.search.getEngineById('${engine.id}'), Ci.nsISearchService.CHANGE_REASON_USER_SEARCHBAR)"
+								  image="${await this.getReplacementIcon(engine.id)}"
 						/>
-					`;
+					`);
 
-					menupopup.insertBefore(MozXULElement.parseXULToFragment(menuitemFragment), menupopup.querySelector("menuseparator"));
+                    let menuitem = menuitemFragment.querySelector("menuitem");
+                    
+                    if (defaultEngine.id == engine.id) {
+                        menuitem.setAttribute("default", "true");
+                    }
+
+                    menuitem.addEventListener("command", (e) => {
+                        Services.search.setDefault(Services.search.getEngineById(engine.id), Ci.nsISearchService.CHANGE_REASON_USER_SEARCHBAR);
+                    })
+
+					menupopup.insertBefore(menuitemFragment, menupopup.querySelector("menuseparator"));
 				}
 			}
 		}
 
-		static async installSearchBoxHook()
+        async installSearchBoxHook()
 		{
 			let searchbar = await waitForElement("#searchbar");
 			let toolboxRoot = await waitForElement("#navigator-toolbox");
+
 			this.searchbar = searchbar;
 			this.updateDisplay_orig = searchbar.updateDisplay;
 			searchbar.updateDisplay = this.updateDisplay_hook.bind(this);
@@ -213,5 +160,6 @@
 		}
 	}
 
-	NamorokaSearchManager.installSearchBoxHook();
+    g_NamorokaSearchManager = new NamorokaSearchManager;
+    g_NamorokaSearchManager.installSearchBoxHook();
 }

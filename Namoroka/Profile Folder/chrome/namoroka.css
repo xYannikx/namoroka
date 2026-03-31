@@ -2132,7 +2132,7 @@ toolbarpaletteitem > #search-container > #searchbar > .searchbar-textbox {
 :root[namoroka-style-2] #searchbar .searchbar-search-button {
   border-inline-end: 1px solid ThreeDShadow !important;
   background: -moz-Dialog var(--navbar-textbox-buttons) repeat-x !important;
-  margin-inline-end: 3px !important;
+  margin-inline-end: 4px !important;
   padding-inline-end: 3px !important;
 }
 :root[namoroka-style-2] #searchbar .searchbar-search-button .searchbar-search-icon {

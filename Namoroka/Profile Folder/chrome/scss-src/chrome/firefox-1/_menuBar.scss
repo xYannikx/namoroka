@@ -23,13 +23,14 @@
         opacity: 0.5 !important;
     }
 }
-
-menupopup {
-    menu,
-    menuitem {
-        &[_moz-menuactive="true"] {
-            background-color: Highlight !important;
-            color: HighlightText !important;
+:root:not([namoroka-style-2]) {
+    menupopup {
+        menu,
+        menuitem {
+            &[_moz-menuactive="true"] {
+                background-color: Highlight !important;
+                color: HighlightText !important;
+            }
         }
     }
 }
@@ -97,4 +98,8 @@ menuitem {
 
 #menubar-items {
     margin: 0 !important;
+}
+
+menuitem:is([default="true"], .spell-suggestion), menucaption {
+    font-weight: bold !important;
 }
