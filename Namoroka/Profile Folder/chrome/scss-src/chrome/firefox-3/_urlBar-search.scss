@@ -96,10 +96,11 @@
                 }
 
                 #identity-icon {
-                    width: 16px !important;
-                    height: 16px !important;
+                    width: 1px !important;
+                    height: 1px !important;
                     background-image: none !important;
-                    visibility: collapse !important;
+                    visibility: visible !important;
+                    margin-inline-start: -1px !important;
                 }
 
                 #page-proxy-stack {
@@ -125,6 +126,21 @@
                 &[pageproxystate="invalid"] {
                     #page-proxy-favicon {
                         list-style-image: var(--page-invalid-icon) !important;
+                    }
+                }
+
+                #identity-icon-label {
+                    padding: 0 2px !important;
+                    visibility: visible !important;
+                }
+
+                #identity-icon-label[value=""] {
+                    visibility: collapse !important;
+                }
+
+                &.chromeUI {
+                    #identity-icon-label {
+                        visibility: collapse !important;
                     }
                 }
             }

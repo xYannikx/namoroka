@@ -1,8 +1,9 @@
 // ==UserScript==
-// @name			 Namoroka :: Tab Scrollbox
-// @description 	 Applies custom styles to the arrowscrollbox element.
-// @author			 Travis
-// @include			 main
+// @name			Namoroka :: Tab Scrollbox
+// @description 	Applies custom styles to the arrowscrollbox element.
+// @author			travy-patty
+// @github          https://github.com/travy-patty
+// @include			main
 // ==/UserScript==
 
 {

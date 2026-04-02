@@ -1,7 +1,8 @@
 // ==UserScript==
 // @name			Namoroka :: Downloads Window
-// @description 	DOWNLODS WINDOW NMOROKA HELP HELP LHEPPPPP
-// @author			Travis
+// @description 	Adds styling and elements for the Downloads window.
+// @author			travy-patty
+// @github          https://github.com/travy-patty
 // @include			main
 // @include			chrome://browser/content/places/places.xhtml
 // ==/UserScript===

@@ -1,8 +1,10 @@
 & {
     --folder-item: url("chrome://namoroka/content/firefox-3/icons/folder-item.png") !important;
+    --query: url("chrome://namoroka/content/firefox-3/icons/query.png") !important;
 
     &[namoroka-appearance-aero] {
         --folder-item: url("chrome://namoroka/content/firefox-3/vista/icons/folder-item.png") !important;
+        --query: url("chrome://namoroka/content/firefox-3/vista/icons/query.png") !important;
     }
 }
 
@@ -10,5 +12,14 @@
     #PlacesToolbarItems {
         margin-inline-start: 0 !important;
         padding-block-end: 1px !important;
+    }
+}
+
+.bookmark-item[container][query] {
+    list-style-image: none !important;
+
+    .toolbarbutton-icon {
+        background-image: var(--query) !important;
+        background-position: 0 !important;
     }
 }

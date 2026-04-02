@@ -1,7 +1,8 @@
 // ==UserScript==
 // @name			 Namoroka :: Travelband
 // @description 	 Adds dropdown markers to Back/Forward buttons
-// @author			 Travis
+// @author			 travy-patty
+// @github           https://github.com/travy-patty
 // @include			 main
 // ==/UserScript==
 

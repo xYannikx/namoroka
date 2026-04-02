@@ -1,7 +1,8 @@
 // ==UserScript==
 // @name			Namoroka :: Menu Bar
 // @description 	Renames items in the Menu bar
-// @author			Travis
+// @author			travy-patty
+// @github          https://github.com/travy-patty
 // @include			main
 // ==/UserScript==
 

@@ -47,7 +47,7 @@ class NamorokaWidgetManager
             
             onCreated: function(button) {
                 button.classList.remove("toolbarbutton-1"); 
-                NavigatorThrober.init();
+                NavigatorThrobber.init();
                 return button;
             },
         });

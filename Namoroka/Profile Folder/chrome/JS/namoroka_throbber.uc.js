@@ -1,11 +1,12 @@
 // ==UserScript==
 // @name			Namoroka :: Throbber
 // @description 	Throbber Behavior
-// @author			Travis
+// @author			travy-patty
+// @github          https://github.com/travy-patty
 // @include         main
 // ==/UserScript==
 
-var NavigatorThrober = {
+var NavigatorThrobber = {
     get busy() {
         return gBrowser.selectedTab.hasAttribute("busy");
     },

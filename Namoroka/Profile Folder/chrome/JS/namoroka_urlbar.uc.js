@@ -1,7 +1,8 @@
 // ==UserScript==
 // @name			Namoroka :: URLbar
 // @description 	Several modifications to the URlBar
-// @author			Travis
+// @author			travy-patty
+// @github          https://github.com/travy-patty
 // @include         main
 // ==/UserScript==
 

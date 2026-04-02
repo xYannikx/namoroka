@@ -48,13 +48,10 @@
         menu.append(namorokaPrefsItem.cloneNode());
         menu.addEventListener("popupshowing", onPopupShowing);
     });
+    
     waitForElement("#toolbar-context-menu").then((menu) => {
         namorokaPrefsItem.id = "toolbar-context-namorokaOptions";
         menu.insertBefore(namorokaPrefsItem.cloneNode(), document.querySelector(".viewCustomizeToolbar"));
-        menu.addEventListener("popupshowing", onPopupShowing);
-    });
-    // Compact Menu Reloaded Support
-    waitForElement("#compact-menu-popup").then((menu) => {
         menu.addEventListener("popupshowing", onPopupShowing);
     });
 }

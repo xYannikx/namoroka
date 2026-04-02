@@ -1,7 +1,8 @@
 // ==UserScript==
 // @name			Namoroka :: Tabs
 // @description 	Tabs
-// @author			Travis
+// @author			travy-patty
+// @github          https://github.com/travy-patty
 // @include			main
 // ==/UserScript==
 

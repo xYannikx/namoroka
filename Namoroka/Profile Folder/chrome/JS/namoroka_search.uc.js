@@ -119,14 +119,13 @@ var g_NamorokaSearchManager;
 				for (let engine of visibleEngines) {					
                     let defaultEngine = await Services.search.getDefault();
 
-                    let menuitemFragment = MozXULElement.parseXULToFragment(`
+                    let menuitem = MozXULElement.parseXULToFragment(`
 						<menuitem class="menuitem-iconic addengine-item"
 								  label="${engine._name}" 
 								  image="${await this.getReplacementIcon(engine.id)}"
+								  tooltiptext="${LocaleUtils.str(menusBundle, "namoroka_addengineItem_tooltip", engine._name)}"
 						/>
-					`);
-
-                    let menuitem = menuitemFragment.querySelector("menuitem");
+					`).firstChild;
                     
                     if (defaultEngine.id == engine.id) {
                         menuitem.setAttribute("default", "true");
@@ -136,7 +135,7 @@ var g_NamorokaSearchManager;
                         Services.search.setDefault(Services.search.getEngineById(engine.id), Ci.nsISearchService.CHANGE_REASON_USER_SEARCHBAR);
                     })
 
-					menupopup.insertBefore(menuitemFragment, menupopup.querySelector("menuseparator"));
+					menupopup.insertBefore(menuitem, menupopup.querySelector("menuseparator"));
 				}
 			}
 		}
@@ -155,8 +154,8 @@ var g_NamorokaSearchManager;
 
 			this.searchBarSearchButton();
 
-			toolboxRoot.addEventListener("customizationchange", this.searchBarSearchButton);
-			toolboxRoot.addEventListener("aftercustomization", this.searchBarSearchButton);
+			toolboxRoot.addEventListener("customizationchange", this.searchBarSearchButton.bind(this));
+			toolboxRoot.addEventListener("aftercustomization", this.searchBarSearchButton.bind(this));
 		}
 	}
 

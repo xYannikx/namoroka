@@ -31,7 +31,7 @@ groupbox {
 }
 
 menulist {
-    width: 256px;
+    width: 215px;
     height: 23px;
 
     &::part(dropmarker) {
@@ -425,4 +425,8 @@ namoroka-listitem {
     align-self: flex-start;
     margin: 2px 4px 2px 4px !important;
     background-color: #EEEEEE;
+}
+
+.header {
+    font-weight: bold !important;
 }

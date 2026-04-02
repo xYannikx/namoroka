@@ -1932,13 +1932,22 @@ toolbarpaletteitem > #search-container > #searchbar > .searchbar-textbox {
 }
 :root[namoroka-style-2] {
   --folder-item: url("chrome://namoroka/content/firefox-3/icons/folder-item.png") !important;
+  --query: url("chrome://namoroka/content/firefox-3/icons/query.png") !important;
 }
 :root[namoroka-style-2][namoroka-appearance-aero] {
   --folder-item: url("chrome://namoroka/content/firefox-3/vista/icons/folder-item.png") !important;
+  --query: url("chrome://namoroka/content/firefox-3/vista/icons/query.png") !important;
 }
 :root[namoroka-style-2] #PersonalToolbar #PlacesToolbarItems {
   margin-inline-start: 0 !important;
   padding-block-end: 1px !important;
+}
+:root[namoroka-style-2] .bookmark-item[container][query] {
+  list-style-image: none !important;
+}
+:root[namoroka-style-2] .bookmark-item[container][query] .toolbarbutton-icon {
+  background-image: var(--query) !important;
+  background-position: 0 !important;
 }
 :root[namoroka-style-2] .browser-toolbar {
   appearance: auto !important;
@@ -2026,10 +2035,11 @@ toolbarpaletteitem > #search-container > #searchbar > .searchbar-textbox {
   background-position: 0 -170px !important;
 }
 :root[namoroka-style-2] #urlbar-container #urlbar #identity-box #identity-icon {
-  width: 16px !important;
-  height: 16px !important;
+  width: 1px !important;
+  height: 1px !important;
   background-image: none !important;
-  visibility: collapse !important;
+  visibility: visible !important;
+  margin-inline-start: -1px !important;
 }
 :root[namoroka-style-2] #urlbar-container #urlbar #identity-box #page-proxy-stack {
   display: flex !important;
@@ -2048,6 +2058,16 @@ toolbarpaletteitem > #search-container > #searchbar > .searchbar-textbox {
 }
 :root[namoroka-style-2] #urlbar-container #urlbar #identity-box[pageproxystate=invalid] #page-proxy-favicon {
   list-style-image: var(--page-invalid-icon) !important;
+}
+:root[namoroka-style-2] #urlbar-container #urlbar #identity-box #identity-icon-label {
+  padding: 0 2px !important;
+  visibility: visible !important;
+}
+:root[namoroka-style-2] #urlbar-container #urlbar #identity-box #identity-icon-label[value=""] {
+  visibility: collapse !important;
+}
+:root[namoroka-style-2] #urlbar-container #urlbar #identity-box.chromeUI #identity-icon-label {
+  visibility: collapse !important;
 }
 :root[namoroka-style-2] #urlbar-container #urlbar #urlbar-input {
   margin-inline: 4px !important;
