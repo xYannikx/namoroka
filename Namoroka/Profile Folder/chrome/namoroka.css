@@ -725,6 +725,9 @@ image.default-favicon {
   width: 100% !important;
   left: 0 !important;
 }
+:root:not([namoroka-style-2]) #urlbar-container #urlbar #page-proxy-stack {
+  visibility: collapse !important;
+}
 #urlbar-container #urlbar #page-proxy-deck {
   width: 16px !important;
   height: 16px !important;

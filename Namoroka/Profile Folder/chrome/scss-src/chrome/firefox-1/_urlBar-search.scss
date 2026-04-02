@@ -52,6 +52,10 @@ image.default-favicon {
             width: 100% !important;
             left: 0 !important;
         }
+        
+        :root:not([namoroka-style-2]) & #page-proxy-stack {
+            visibility: collapse !important;
+        }
 
         #page-proxy-deck {
             width: 16px !important;
