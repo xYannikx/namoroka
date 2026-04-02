@@ -940,27 +940,9 @@ image.default-favicon {
 :root[inFullscreen=true] #status-bar {
   visibility: collapse !important;
 }
-#status-bar #statuspanel {
-  display: flex !important;
-  position: static !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  padding: 0 !important;
-  max-width: 100% !important;
-  min-width: 100% !important;
-  align-items: center !important;
-  padding-top: 1px !important;
-}
-#status-bar #statuspanel #statuspanel-label {
-  margin-block-start: 1px !important;
-  margin-block-end: 2px !important;
-  margin-inline-start: 6px !important;
-  margin-inline-end: 5px !important;
-  border: 0 !important;
-  padding: 0 !important;
-}
-#status-bar #statuspanel[inactive] #statuspanel-label {
-  opacity: 0 !important;
+
+#statuspanel {
+  display: none !important;
 }
 
 @namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
