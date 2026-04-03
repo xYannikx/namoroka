@@ -3,9 +3,6 @@
   min-width: 299px;
   max-width: 299px;
 }
-#aboutDialog #modes {
-  min-height: 380px;
-}
 #aboutDialog #modes #clientBox {
   background-image: url("chrome://branding/content/about.png");
   background-repeat: no-repeat;
@@ -19,7 +16,7 @@
   margin: 1em 0px 10px 17px;
 }
 #aboutDialog #modes #clientBox #userAgent {
-  margin: 11px 20px 0px 13px;
+  margin: 11px 20px 12px 13px;
   background-color: #FFFFFF;
   color: #000000;
   padding: 1px 0px 0px 3px;
@@ -51,6 +48,12 @@
 #aboutDialog::part(credits):focus, #aboutDialog::part(credits):focus-visible, #aboutDialog::part(accept):focus, #aboutDialog::part(accept):focus-visible {
   outline: 1px dotted ThreeDDarkShadow !important;
   outline-offset: -3px;
+}
+#aboutDialog[namoroka-style-1=true] #modes {
+  min-height: 380px;
+}
+#aboutDialog[namoroka-style-1=true] #modes #clientBox #userAgent {
+  margin: 11px 20px 0px 13px;
 }
 
 /*# sourceMappingURL=aboutDialog.css.map */
