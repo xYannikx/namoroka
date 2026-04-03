@@ -12,7 +12,6 @@
 
     waitForElement("#tabbrowser-arrowscrollbox").then(e =>
     {
-        console.log("got it");
         let link  = document.createElement("link");
         link.rel  = "stylesheet";
         link.href = "chrome://userchrome/content/tabscrollbox.uc.css";

@@ -162,8 +162,6 @@ export class PrefCalls
 		{
 			throw e;
 		}
-
-		return;
 	}
 
 	static clearPref(prefName) {
