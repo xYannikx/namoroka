@@ -71,14 +71,10 @@ var gSelectedPage = 0;
         }
     }
 
-    g_namorokaAboutDialog = new NamorokaAboutDialog;
-
-    // IM GONNA CRY
-    setTimeout(function()
-    {
+    window.addEventListener("load", () => {
+        g_namorokaAboutDialog = new NamorokaAboutDialog();
         g_namorokaAboutDialog.init();
-    }
-    );
+    });
 }
 
 function visitLink(aEvent) {
