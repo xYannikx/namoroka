@@ -42,7 +42,7 @@
 
         get menuFragment() {
 			return `
-				<menuitem oncommand="NamorokaStatusPanel.setStatusBarState(Boolean(this.getAttribute('checked')))" type="checkbox" />
+				<menuitem type="checkbox" />
 			`;
 		},
 
@@ -177,7 +177,10 @@
     waitForElement("#menu_viewPopup").then((menu) => {
 		let statusBarItem = window.MozXULElement.parseXULToFragment(NamorokaStatusPanel.menuFragment).firstChild;
 		statusBarItem.id = "menu_NamorokaStatusBar";
-		menu.insertBefore(statusBarItem.cloneNode(), document.querySelector("#viewSidebarMenuMenu"));
+		statusBarItem.addEventListener("command", (e) => {
+			NamorokaStatusPanel.setStatusBarState(Boolean(statusBarItem.getAttribute('checked')));
+		});
+		menu.insertBefore(statusBarItem, document.querySelector("#viewSidebarMenuMenu"));
 		menu.addEventListener("popupshowing", NamorokaStatusPanel._onPopupShowing);
 	});
 }

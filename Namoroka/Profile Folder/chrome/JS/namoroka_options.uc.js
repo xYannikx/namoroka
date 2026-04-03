@@ -39,19 +39,27 @@
         ); 
     }
 
-    namorokaPrefsItem = window.MozXULElement.parseXULToFragment(`
-        <menuitem oncommand="launchNamorokaOptions();" />
-    `).firstChild;
+    function onNamorokaPrefsCommand(aEvent) {
+        launchNamorokaOptions();
+    }
+
+    function createNamorokaPrefsItem(aID) {
+        let menuitem = document.createXULElement("menuitem");
+
+        menuitem.id = aID;
+        menuitem.addEventListener("command", onNamorokaPrefsCommand);
+
+        return menuitem;
+    }
+
 
     waitForElement("#menu_ToolsPopup").then((menu) => {
-        namorokaPrefsItem.id = "menu_namorokaOptions";
-        menu.append(namorokaPrefsItem.cloneNode());
+        menu.append(createNamorokaPrefsItem("menu_namorokaOptions"));
         menu.addEventListener("popupshowing", onPopupShowing);
     });
     
     waitForElement("#toolbar-context-menu").then((menu) => {
-        namorokaPrefsItem.id = "toolbar-context-namorokaOptions";
-        menu.insertBefore(namorokaPrefsItem.cloneNode(), document.querySelector(".viewCustomizeToolbar"));
+        menu.insertBefore(createNamorokaPrefsItem("toolbar-context-namorokaOptions"), document.querySelector(".viewCustomizeToolbar"));
         menu.addEventListener("popupshowing", onPopupShowing);
     });
 }

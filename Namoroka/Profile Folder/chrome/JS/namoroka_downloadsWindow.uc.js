@@ -71,7 +71,7 @@ let NAMOROKA_DOWNLOADS_CSS_URI = Services.io.newURI(
 
         _inject() {
             let windowURL = window.location.href;
-            let fragment = `
+            let fragment = window.MozXULElement.parseXULToFragment(`
                 <hbox id="commandBar">
                     <hbox id="autoDownloadInfo" align="center" flex="1">
                         <label>${LocaleUtils.str(downloadsBundle, "auto_download_info_label")}</label>
@@ -90,7 +90,7 @@ let NAMOROKA_DOWNLOADS_CSS_URI = Services.io.newURI(
                             tooltiptext="${LocaleUtils.str(downloadsBundle, "clean_up_button_tooltiptext")}" />
                     
                 </hbox>
-            `;
+            `).firstChild;
             
             if (windowURL == "chrome://browser/content/places/places.xhtml") {
                 let currentView = ContentArea.currentView._richlistbox.getAttribute("id");
@@ -116,7 +116,7 @@ let NAMOROKA_DOWNLOADS_CSS_URI = Services.io.newURI(
                     
                     // Append Fragment
                     waitForElement("#contentView").then(e => {
-                        e.appendChild(window.MozXULElement.parseXULToFragment(fragment));
+                        e.appendChild(fragment);
 
                         Downloads.getPreferredDownloadsDirectory().then(a => {
                             e.querySelector("#saveToFolder").setAttribute("image", `moz-icon:file:///${a.replaceAll("\\", "/")}/?size=16`);
