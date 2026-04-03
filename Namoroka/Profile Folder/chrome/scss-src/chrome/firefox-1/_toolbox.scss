@@ -21,11 +21,13 @@
 
 #notifications-toolbar {
     border: 0 !important;
+    appearance: none !important;
 }
 
 toolbar[type="menubar"],
 menubar {
     border-block-start-width: 0 !important;
+    appearance: none !important;
 }
 
 #PersonalToolbar {

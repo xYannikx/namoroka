@@ -50,6 +50,7 @@
             document.body.appendChild(this.fragment);
 
             this.initStatusPanelVisibility();
+            this.update();
         },
 
         initStatusPanelVisibility() {

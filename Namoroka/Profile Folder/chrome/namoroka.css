@@ -308,11 +308,13 @@
 
 #notifications-toolbar {
   border: 0 !important;
+  appearance: none !important;
 }
 
 toolbar[type=menubar],
 menubar {
   border-block-start-width: 0 !important;
+  appearance: none !important;
 }
 
 #PersonalToolbar {
@@ -1940,6 +1942,15 @@ toolbarpaletteitem > #search-container > #searchbar > .searchbar-textbox {
 :root[namoroka-style-2][namoroka-appearance-aero] .browser-toolbar {
   appearance: none !important;
   border: 0 !important;
+}
+:root[namoroka-style-2] toolbar[type=menubar],
+:root[namoroka-style-2] menubar {
+  border: 0 !important;
+  appearance: none !important;
+}
+:root[namoroka-style-2] #notifications-toolbar {
+  border: 0 !important;
+  appearance: none !important;
 }
 :root[namoroka-style-2] {
   --urlbar-root-height: 22px !important;

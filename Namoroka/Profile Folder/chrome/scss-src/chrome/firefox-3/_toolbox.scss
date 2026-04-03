@@ -8,3 +8,14 @@
         border: 0 !important;
     }
 }
+
+toolbar[type="menubar"],
+menubar {
+    border: 0 !important;
+    appearance: none !important;
+}
+
+#notifications-toolbar {
+    border: 0 !important;
+    appearance: none !important;
+}
