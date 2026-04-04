@@ -74,4 +74,14 @@
             }
         }
     }
+
+    &[namoroka-style-2="true"] {
+        #modes {
+            #clientBox {
+                #copyright {
+                    margin-inline-end: 16px !important;
+                }
+            }
+        }   
+    }
 }
