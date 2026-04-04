@@ -112,13 +112,8 @@ var gSelectedPage = 0;
             let copyright = info?.copyright;
 
             let copyrightText = document.querySelector("#copyright");
+            copyrightText.innerHTML = LocaleUtils.str(aboutDialogBundle, (style >= 2) ? "copyright_label_short" : "copyright_label", copyright);
 
-            if (style >= 2) {
-                copyrightText.innerHTML = LocaleUtils.str(aboutDialogBundle, "copyright_label_short", copyright);
-            } else {
-                copyrightText.innerHTML = LocaleUtils.str(aboutDialogBundle, "copyright_label", copyright);
-            }
-            
             let versionText = document.querySelector("#version");
             versionText.value = LocaleUtils.str(aboutDialogBundle, "version_label", version);
         }
