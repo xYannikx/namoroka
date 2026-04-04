@@ -1,0 +1,145 @@
+@media not (-moz-windows-non-native-menus) {
+    &:not([namoroka-style-2]) {
+        menupopup:not(#ContentSelectDropdownPopup),
+        toolbarbutton menupopup[placespopup] {
+            appearance: none !important;
+            padding: 2px !important;
+            border: 1px solid ThreeDShadow !important;
+            background-color: menu !important;
+
+            menu,
+            menuitem {
+                appearance: none !important;
+                color: MenuText !important;
+                font: menu !important;
+                align-items: center !important;
+                border: 1px solid transparent !important;
+                border-radius: 0 !important;
+
+                &[default="true"] {
+                    font-weight: bold !important;
+                }
+
+                &[_moz-menuactive="true"] {
+                    background-color: Highlight !important;
+                    color: HighlightText !important;
+                }
+
+                &[disabled="true"],
+                &[_moz-menuactive="true"][disabled="true"] {
+                    color: GrayText !important;
+                }
+            }
+
+            .menu-accel,
+            .menu-iconic-accel,
+            .menu-text,
+            .menu-iconic-text {
+                appearance: none !important;
+                margin-block: 2px !important;
+                margin-inline-start: 1px !important;
+                margin-inline-end: 2px !important;
+                padding: 0 !important;
+                color: inherit !important;
+            }
+
+            .menu-text {
+                margin-inline-start: 17px !important;
+                font-weight: inherit !important;
+            }
+
+            .menu-accel,
+            .menu-iconic-accel {
+                padding-inline-end: 17px !important;
+                margin-inline-start: 5px !important;
+                color: inherit !important;
+            }
+
+            .menu-iconic-left {
+                appearance: none !important;
+                width: unset !important;
+                min-width: 12px !important;
+                margin-top: 2px !important;
+                margin-bottom: 2px !important;
+                margin-inline-start: 2px !important;
+                margin-inline-end: 2px !important;
+                padding: 0 !important;
+
+                .menu-iconic-icon:not([src]) {
+                    width: unset !important;
+                    height: unset !important;
+                }
+            }
+
+            menuseparator {
+                appearance: none !important;
+                padding: 0 !important;
+                margin: 3px 1px 4px 1px !important;
+                border-top: 1px solid ThreeDShadow !important;
+                border-bottom: 1px solid ThreeDHighlight !important;
+            }
+
+            menuitem[checked="true"] {
+                list-style-image: url("chrome://namoroka/content/firefox-1/menu/menu-check.gif") !important;
+                
+                .menu-iconic-icon {
+                    display: flex !important;
+                }
+
+                &[disabled="true"] {
+                    list-style-image: url("chrome://namoroka/content/firefox-1/menu/menu-check-disabled.gif") !important;
+                }
+                
+                &[_moz-menuactive="true"] {
+                    list-style-image: url("chrome://namoroka/content/firefox-1/menu/menu-check-hover.gif") !important;
+                }
+
+                &[type="radio"] {
+                    list-style-image: url("chrome://namoroka/content/firefox-1/menu/menu-radio.gif") !important;
+
+                    &[disabled="true"] {
+                        list-style-image: url("chrome://namoroka/content/firefox-1/menu/menu-radio-disabled.gif") !important;
+                    }
+                    
+                    &[_moz-menuactive="true"] {
+                        list-style-image: url("chrome://namoroka/content/firefox-1/menu/menu-radio-hover.gif") !important;
+                    }
+                }
+            }
+
+            .menu-right {
+                width: unset !important;
+                padding: 0 !important;
+                appearance: none !important;
+                margin-block-start: 0px !important;
+                margin-block-end: 1px !important;
+                margin-inline-start: 0px !important;
+                margin-inline-end: 6px !important;
+                list-style-image: url("chrome://namoroka/content/firefox-1/menu/Menu-arrow.png") !important;
+
+                &[_moz-menuactive="true"] {
+                    list-style-image: url("chrome://namoroka/content/firefox-1/menu/Menu-arrow-hover.png") !important;
+                }
+
+                &[disabled="true"] {
+                    list-style-image: url("chrome://namoroka/content/firefox-1/menu/Menu-arrow-disabled.png") !important;
+                }
+            }
+        }
+    }
+}
+
+menuitem {
+    :root:not([namoroka-style-1]) 
+    &:not([disabled="true"], [_moz-menuactive="true"]) {
+        color: MenuText !important;
+    }
+    
+    font: menu !important;
+
+    &[disabled="true"],
+    &[_moz-menuactive="true"][disabled="true"] {
+        color: GrayText !important;
+        text-shadow: none !important;
+    }
+}

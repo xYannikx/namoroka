@@ -10,14 +10,6 @@
             padding: 1px !important;
         }
     }
-
-    :root[namoroka-style-1] {
-        menupopup:not(#ContentSelectDropdownPopup),
-        toolbarbutton menupopup[placespopup] {
-            padding: 2px !important;
-            border: 1px solid ThreeDShadow !important;
-        }
-    }
 }
 
 #context-sep-navigation {
