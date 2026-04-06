@@ -1,3 +1,7 @@
-:root {
+& {
     --folder-item: url("chrome://namoroka/content/firefox-2/folder-item.png") !important;
+
+    #PersonalToolbar {
+        border-block-end: 1px solid ThreeDShadow !important;
+    }
 }

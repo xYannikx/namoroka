@@ -317,10 +317,6 @@ menubar {
   appearance: none !important;
 }
 
-#PersonalToolbar {
-  border-block-end: 0 !important;
-}
-
 :root {
   --tab-min-height: 0 !important;
   --inline-tab-padding: 0 !important;
@@ -614,6 +610,7 @@ toolbarbutton.bookmark-item:not(.subviewbutton) .toolbarbutton-animatable-box {
 }
 
 #PersonalToolbar {
+  border-block-end: 0 !important;
   padding-inline: 0 !important;
 }
 @media (-moz-win-classic) {
@@ -804,9 +801,10 @@ image.default-favicon {
 }
 #urlbar-container #urlbar .urlbarView {
   display: flex !important;
+  -moz-user-select: none !important;
   width: 100% !important;
   margin-inline: 0 !important;
-  background-color: Field !important;
+  background-color: #FFF !important;
   border: 1px solid #000 !important;
   overflow: visible !important;
   padding: 0 2px !important;
@@ -920,6 +918,57 @@ image.default-favicon {
 #PopupSearchAutoComplete .search-one-offs,
 #PopupSearchAutoComplete .searchbar-separator {
   visibility: collapse !important;
+}
+
+panel[type=autocomplete-richlistbox],
+.autocomplete-history-popup {
+  appearance: none !important;
+  --panel-shadow-margin: 0 !important;
+  --panel-shadow: none !important;
+  --panel-background: #fff !important;
+  --panel-border-color: ThreeDDarkShadow !important;
+  background-color: #fff !important;
+}
+
+#PopupAutoCompleteRichResult richlistitem {
+  flex-direction: column !important;
+  align-items: stretch !important;
+  padding: 1px 2px !important;
+  border-bottom: 1px solid ThreeDLightShadow !important;
+}
+#PopupAutoCompleteRichResult richlistitem .ac-type-icon,
+#PopupAutoCompleteRichResult richlistitem .ac-site-icon,
+#PopupAutoCompleteRichResult richlistitem .ac-url {
+  display: flex !important;
+}
+#PopupAutoCompleteRichResult #title-box {
+  margin: 0 !important;
+  margin-top: 2px !important;
+  font-size: 1.15em !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+#PopupAutoCompleteRichResult .ac-site-icon {
+  margin: 0 5px -3px 3px !important;
+}
+#PopupAutoCompleteRichResult .ac-url {
+  margin-bottom: 0 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+#PopupAutoCompleteRichResult .ac-url-text {
+  color: #0055bb !important;
+}
+#PopupAutoCompleteRichResult richlistitem[selected=true] .ac-url-text {
+  color: inherit !important;
+}
+#PopupAutoCompleteRichResult .ac-type-icon {
+  margin: 0 !important;
+}
+#PopupAutoCompleteRichResult .ac-result-type-bookmark {
+  background-image: url("chrome://namoroka/content/firefox-3/vista/places/editBookmark.png") !important;
 }
 
 #status-bar {
@@ -1669,8 +1718,11 @@ toolbarpaletteitem > #search-container > #searchbar > .searchbar-textbox {
     border-block-width: 0 !important;
   }
 }
-:root[namoroka-style-1] :root {
+:root[namoroka-style-1] {
   --folder-item: url("chrome://namoroka/content/firefox-2/folder-item.png") !important;
+}
+:root[namoroka-style-1] #PersonalToolbar {
+  border-block-end: 1px solid ThreeDShadow !important;
 }
 :root[namoroka-style-1] .message-icon {
   list-style-image: url("chrome://namoroka/content/firefox-2/icons/Question.png") !important;

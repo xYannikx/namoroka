@@ -424,6 +424,12 @@ menuitem:is([default=true], .spell-suggestion), menucaption {
   :root[namoroka-style-1]:not([namoroka-style-2]) toolbarbutton menupopup[placespopup] .menu-right[disabled=true] {
     list-style-image: url("chrome://namoroka/content/firefox-1/menu/Menu-arrow-disabled.png") !important;
   }
+  :root[namoroka-style-1]:not([namoroka-style-2]) menupopup:not(#ContentSelectDropdownPopup)::part(content),
+  :root[namoroka-style-1]:not([namoroka-style-2]) toolbarbutton menupopup[placespopup]::part(content) {
+    border: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
 }
 :root[namoroka-style-1] menuitem {
   font: menu !important;
