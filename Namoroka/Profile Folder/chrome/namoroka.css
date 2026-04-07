@@ -286,6 +286,10 @@
   background-position-x: -32px !important;
 }
 
+:root {
+  --browser-area-z-index-toolbox: 2 !important;
+}
+
 #navigator-toolbox {
   appearance: auto !important;
   -moz-default-appearance: toolbox !important;
@@ -810,18 +814,6 @@ image.default-favicon {
   padding: 0 2px !important;
   color: -moz-DialogText !important;
 }
-#urlbar-container #urlbar .urlbarView::after {
-  content: "" !important;
-  display: inline-block !important;
-  width: calc(100% - 3px) !important;
-  height: calc(100% - 2px) !important;
-  position: absolute !important;
-  left: 6px !important;
-  top: 5px !important;
-  z-index: -1 !important;
-  background-color: rgba(0, 0, 0, 0.5) !important;
-  filter: blur(1px) !important;
-}
 #urlbar-container #urlbar .urlbarView strong {
   font-weight: normal !important;
 }
@@ -851,6 +843,7 @@ image.default-favicon {
   font-size: unset !important;
   color: -moz-DialogText !important;
   order: -1 !important;
+  margin: 0 !important;
   margin-right: 15px !important;
 }
 #urlbar-container #urlbar .urlbarView .urlbarView-body-outer .urlbarView-body-inner .urlbarView-results .urlbarView-row .urlbarView-row-inner .urlbarView-no-wrap {
