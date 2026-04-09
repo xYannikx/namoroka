@@ -194,7 +194,7 @@ var g_namorokaAutocomplete;
 
 				let url = result.payload?.url || "";
 				let title = result.title || result.payload?.title || "";
-				let icon = result.payload?.icon || "";
+				let icon = result.payload?.icon;
 				let tags = result.payload?.tags || [];
 
 				// Unescape the URL for display, like Firefox 3 did
@@ -249,7 +249,7 @@ var g_namorokaAutocomplete;
 			}
 
 			this._currentIndex = 0;
-			this.selectedIndex = 0;
+			this.selectedIndex = -1;
 			this._appendCurrentResult();
 		}
 
