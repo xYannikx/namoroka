@@ -173,136 +173,15 @@ image.default-favicon {
             }
         }
 
-        /*
-            TODO: REMAKE -TRAVIS
-        */
+        // Modern UrlbarView is fully suppressed by JS (view.open = no-op).
+        // Hide via CSS as well as a safety net.
         .urlbarView {
-            display: flex !important;
-            -moz-user-select: none !important;
-            width: 100% !important;
-            margin-inline: 0 !important;
-            background-color: #FFF !important;
-            border: 1px solid #000 !important;
-            overflow: visible !important;
-            padding: 0 2px !important;
-            color: -moz-DialogText !important;
-            
-            // &::after {
-            //     content: '' !important;
-            //     display: inline-block !important;
-            //     width: calc(100% - 3px) !important;
-            //     height: calc(100% - 2px) !important;
-            //     position: absolute !important;
-            //     left: 6px !important;
-            //     top: 5px !important;
-            //     z-index: -1 !important;
-            //     background-color: rgb(0 0 0 / 50%) !important;
-            //     filter: blur(1px) !important;
-            // }
-
-            strong {
-                font-weight: normal !important;
-            }
-
-            .urlbarView-body-outer {
-                .urlbarView-body-inner {
-                    border: 0 !important;
-
-                    .urlbarView-results {
-                        padding-block: 0 !important;
-
-                        .urlbarView-row {
-                            min-height: 18px !important;
-                            max-height: 18px !important;
-                            border: 0 !important;
-                            border-radius: 0 !important;
-                            margin-block-start: 0 !important;
-
-                            .urlbarView-row-inner {
-                                min-height: 18px !important;
-                                max-height: 18px !important;
-                                padding-inline: 12px !important;
-                                padding-block: 0 !important;
-                                padding-bottom: 1px !important;
-
-                                .urlbarView-url {
-                                    flex-basis: 100% !important;
-                                    flex-grow: 0 !important;
-                                    font-size: unset !important;
-                                    color: -moz-DialogText !important;
-                                    order: -1 !important;
-                                    margin: 0 !important;
-                                    margin-right: 15px !important;
-                                }
-
-                                .urlbarView-no-wrap {
-                                    max-width: 35% !important;
-                                    flex-basis: 35% !important;
-                                    flex-grow: 1 !important;
-                                    box-sizing: border-box !important;
-                                }
-                            }
-
-                            &[row-selectable]:not([selected]):hover,
-                            &[selected] {
-                                color: HighlightText !important;
-                                background-color: Highlight !important;
-
-                                .urlbarView-url {
-                                    color: HighlightText !important;
-                                }
-                            }
-
-                            &[type="search"],
-                            &[has-action="true"] {
-                                .urlbarView-row-inner {
-                                    .urlbarView-no-wrap {
-                                        width: 100% !important;
-                                        flex-basis: unset !important;
-                                        max-width: 100% !important;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-
-                @media screen and (min-height: 600px) {
-                    .urlbarView-results[wrap]>.urlbarView-row[has-url]>.urlbarView-row-inner>.urlbarView-url:-moz-locale-dir(ltr) {
-                        padding-inline-start: 0 !important;
-                    }
-
-                    .urlbarView-results[wrap]>.urlbarView-row[has-url]>.urlbarView-row-inner>.urlbarView-url,
-                    .urlbarView-results[wrap]>.urlbarView-row[type="bestmatch"]>.urlbarView-row-inner>.urlbarView-row-body>.urlbarView-row-body-top>.urlbarView-url {
-                        margin-top: 0 !important;
-                    }
-
-                    .urlbarView-results[wrap]>.urlbarView-row:where(:not([rich-suggestion="with-icon"]))>.urlbarView-row-inner {
-                        flex-wrap: nowrap !important;
-                    }
-                }
-            }
-
-            .search-one-offs:not([hidden]),
-            .urlbarView-favicon,
-            .urlbarView-type-icon, 
-            .urlbarView-title-separator,
-            .urlbarView-tags,
-            .urlbarView-action,
-            .urlbarView-button,
-            .urlbarView-row[label]::before {
-                visibility: collapse !important;
-            }
+            display: none !important;
         }
-    }  
+    }
 
     #urlbar:not([open]) > .urlbarView, #urlbar:not([breakout]) > .urlbarView {
         display: none !important;
-    }
-
-    .urlbarView-overflowable[overflow], .urlbarView-url[overflow] {
-        mask-image: none !important;
-        text-overflow: ellipsis !important;
     }
 }
 
@@ -356,19 +235,6 @@ panel[type="autocomplete-richlistbox"],
         
     }
 
-    #title-box {
-        margin: 0 !important;
-        margin-top: 2px !important;
-        font-size: 1.15em !important;
-        white-space: nowrap !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-    }
-
-    .ac-site-icon {
-        margin: 0 5px -3px 3px !important;
-    }
-
     .ac-url {
         margin-bottom: 0 !important;
         white-space: nowrap !important;
@@ -386,11 +252,47 @@ panel[type="autocomplete-richlistbox"],
         }
     }
 
-    .ac-type-icon {
-        margin: 0 !important;
+    .ac-site-icon {
+        width: 16px !important;
+        height: 16px !important;
+        margin: 0 5px -3px 3px !important;
+        list-style-image: var(--page-icon) !important;
+        
+        &:-moz-broken {
+            list-style-image: var(--page-icon) !important;
+        }
     }
 
     .ac-result-type-bookmark {
         background-image: url("chrome://namoroka/content/firefox-3/vista/places/editBookmark.png") !important;
+    }
+
+    span.ac-emphasize-text {
+        font-weight: bold !important;
+        text-decoration: underline !important;
+    }
+
+    span.ac-emphasize-alt {
+        text-decoration: underline !important;
+    }
+
+    .ac-comment {
+        font-size: 1.15em !important;
+        margin: 2px 0 0 0 !important;
+        padding: 0 !important;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .ac-extra > .ac-comment {
+        font-size: inherit !important;
+        padding-right: 4px !important;
+    }
+
+    .ac-type-icon {
+        width: 16px !important;
+        height: 16px !important;
+        margin: 0 !important;
     }
 }
