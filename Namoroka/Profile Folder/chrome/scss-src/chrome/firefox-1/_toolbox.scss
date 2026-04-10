@@ -33,3 +33,11 @@ menubar {
     border-block-start-width: 0 !important;
     appearance: none !important;
 }
+
+toolbarseparator {
+    margin: 2px 0.2em !important;
+    border-right: 1px solid ThreeDHighlight !important;
+    border-left: 1px solid ThreeDShadow !important;
+    width: 2px !important;
+    padding: 0 !important;
+}

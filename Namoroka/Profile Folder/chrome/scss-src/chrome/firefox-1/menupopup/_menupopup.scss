@@ -2,13 +2,135 @@
     :root:not([namoroka-style-1]) {
         menupopup:not(#ContentSelectDropdownPopup),
         toolbarbutton menupopup[placespopup] {
-            border-top-color: -moz-Dialog !important;
-            border-left-color: -moz-Dialog !important;
-            border-bottom-color: ThreeDDarkShadow !important;
-            border-right-color: ThreeDDarkShadow !important;
-            box-shadow: inset -1px -1px 0 ThreeDShadow, inset 1px 1px 0 ThreeDHighlight !important;
-            padding: 1px !important;
-        }
+			appearance: none !important;
+			border: 1px solid !important;
+			border-top-color: ThreeDLightShadow !important;
+			border-left-color: ThreeDLightShadow !important;
+			border-bottom-color: ThreeDDarkShadow !important;
+			border-right-color: ThreeDDarkShadow !important;
+			box-shadow: inset -1px -1px 0 ThreeDShadow, inset 1px 1px 0 ThreeDHighlight !important;
+			padding: 2px !important;
+			background-color: Menu !important;
+
+			menu,
+			menuitem {
+				appearance: none !important;
+				align-items: center !important;
+				color: MenuText !important;
+				font: menu !important;
+				border: 0 !important;
+				border-radius: 0 !important;
+				padding: 2px !important;
+
+				&[default="true"] {
+					font-weight: bold !important;
+				}
+
+                &[_moz-menuactive="true"] {
+                    background-color: Highlight !important;
+                    color: HighlightText !important;
+                }
+
+				&[disabled="true"],
+				&[_moz-menuactive="true"][disabled="true"] {
+					color: GrayText !important;
+				}
+			}
+
+			.menu-text,
+			.menu-iconic-left,
+			.menu-iconic-text {
+				appearance: none !important;
+				margin: 0px 2px 0px 0px !important;
+				color: inherit !important;
+				padding: 0 !important;
+			}
+
+			.menu-text {
+				margin-inline-start: 18px !important;
+				font-weight: inherit !important;
+			}
+
+			.menu-accel,
+			.menu-iconic-accel {
+				margin: 0px 2px 0px 7px !important;
+				padding: 0 !important;
+				padding-right: 14px !important;
+				color: inherit !important;
+			}
+
+			.menu-iconic-left {
+				appearance: none !important;
+				width: 16px !important;
+				margin: 0 !important;
+				padding: 0 !important;
+
+
+
+				.menu-iconic-icon:not([src]) {
+                    width: unset !important;
+                    height: unset !important;
+                }
+			}
+
+            menuseparator {
+                appearance: none !important;
+                padding: 0 !important;
+                margin: 2px 3px !important;
+                border-top: 1px solid ThreeDShadow !important;
+                border-bottom: 1px solid ThreeDHighlight !important;
+            }
+
+			menuitem[checked="true"] {
+                list-style-image: url("chrome://namoroka/content/firefox-1/menu/menu-check.gif") !important;
+                
+                .menu-iconic-icon {
+                    display: flex !important;
+                }
+
+                &[disabled="true"] {
+                    list-style-image: url("chrome://namoroka/content/firefox-1/menu/menu-check-disabled.gif") !important;
+                }
+                
+                &[_moz-menuactive="true"] {
+                    list-style-image: url("chrome://namoroka/content/firefox-1/menu/menu-check-hover.gif") !important;
+                }
+
+                &[type="radio"] {
+                    list-style-image: url("chrome://namoroka/content/firefox-1/menu/menu-radio.gif") !important;
+
+                    &[disabled="true"] {
+                        list-style-image: url("chrome://namoroka/content/firefox-1/menu/menu-radio-disabled.gif") !important;
+                    }
+                    
+                    &[_moz-menuactive="true"] {
+                        list-style-image: url("chrome://namoroka/content/firefox-1/menu/menu-radio-hover.gif") !important;
+                    }
+                }
+            }
+
+            .menu-right {
+                width: 8px !important;
+                padding: 0 !important;
+                appearance: none !important;
+				margin: 0px 0px 0px 6px !important;
+                list-style-image: url("chrome://namoroka/content/firefox-1/menu/Menu-arrow.png") !important;
+
+                &[_moz-menuactive="true"] {
+                    list-style-image: url("chrome://namoroka/content/firefox-1/menu/Menu-arrow-hover.png") !important;
+                }
+
+                &[disabled="true"] {
+                    list-style-image: url("chrome://namoroka/content/firefox-1/menu/Menu-arrow-disabled.png") !important;
+                }
+            }
+
+            &::part(content) {
+                border: 0 !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+		}
     }
 }
 
@@ -33,6 +155,42 @@
 		
 		.menu-iconic-text {
 			display: block !important;
+		}
+	}
+}
+
+.autoscroller {
+	width: 28px !important;
+	height: 28px !important;
+	background: url("chrome://namoroka/content/firefox-1/autoscroll_all.png") !important;
+
+	&[scrolldir="NS"] {
+		background: url("chrome://namoroka/content/firefox-1/autoscroll_v.png") !important;
+	}
+
+	&[scrolldir="EW"] {
+		background: url("chrome://namoroka/content/firefox-1/autoscroll_h.png") !important;
+	}
+
+	&::part(content) {
+		display: none !important;
+	}
+
+	// Firefox 3 style
+	:root[namoroka-style-2] & {
+		background: url("chrome://namoroka/content/firefox-3/autoscroll.png") !important;
+		background-position-x: -56px !important;
+		
+		&[namoroka-appearance-aero] {
+			background: url("chrome://namoroka/content/firefox-3/vista/autoscroll.png") !important;
+		}
+
+		&[scrolldir="NS"] {
+			background-position-y: -28px !important;
+		}
+
+		&[scrolldir="EW"] {
+			background-position-y: -56px !important;
 		}
 	}
 }

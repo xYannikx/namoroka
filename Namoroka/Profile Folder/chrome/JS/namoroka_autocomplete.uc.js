@@ -257,8 +257,10 @@ var g_namorokaAutocomplete;
 		{
 			// Process maxRows items per batch for responsiveness
 			for (let i = 0; i < this.maxRows; i++) {
-				if (this._currentIndex >= this._matchCount)
+				if (this._currentIndex >= this._matchCount) {
+					this._measureUrlColumnWidth();
 					return;
+				}
 
 				let result = this._results[this._currentIndex];
 				let existingCount = this.richlistbox.childNodes.length;
@@ -604,6 +606,24 @@ var g_namorokaAutocomplete;
 				this.richlistbox.style.height = height + "px";
 				this.richlistbox.style.maxHeight = height + "px";
 				this._lastHeight = height;
+			}
+		}
+
+		// =================== URL Column Measurement ===================
+
+		_measureUrlColumnWidth()
+		{
+			let maxWidth = 0;
+			let rows = this.richlistbox.childNodes;
+			for (let i = 0; i < this._matchCount && i < rows.length; i++) {
+				if (rows[i].collapsed) continue;
+				let urlDesc = rows[i].querySelector('[anonid="url"]');
+				if (urlDesc) {
+					maxWidth = Math.max(maxWidth, urlDesc.scrollWidth);
+				}
+			}
+			if (maxWidth > 0) {
+				this.panel.style.setProperty("--url-col-width", (maxWidth + 10) + "px");
 			}
 		}
 

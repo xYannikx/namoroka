@@ -321,6 +321,14 @@ menubar {
   appearance: none !important;
 }
 
+toolbarseparator {
+  margin: 2px 0.2em !important;
+  border-right: 1px solid ThreeDHighlight !important;
+  border-left: 1px solid ThreeDShadow !important;
+  width: 2px !important;
+  padding: 0 !important;
+}
+
 :root {
   --tab-min-height: 0 !important;
   --inline-tab-padding: 0 !important;
@@ -836,64 +844,42 @@ panel[type=autocomplete-richlistbox],
   background-color: #fff !important;
 }
 
-#PopupAutoCompleteRichResult richlistitem {
-  flex-direction: column !important;
-  align-items: stretch !important;
-  padding: 1px 2px !important;
-  border-bottom: 1px solid ThreeDLightShadow !important;
+:root:not([namoroka-style-2]) #PopupAutoCompleteRichResult .autocomplete-richlistitem {
+  flex-direction: row-reverse !important;
+  padding-inline: 10px !important;
+  padding-block: 2px !important;
 }
-#PopupAutoCompleteRichResult richlistitem .ac-type-icon,
-#PopupAutoCompleteRichResult richlistitem .ac-site-icon,
-#PopupAutoCompleteRichResult richlistitem .ac-url {
+:root:not([namoroka-style-2]) #PopupAutoCompleteRichResult .autocomplete-richlistitem .ac-site-icon,
+:root:not([namoroka-style-2]) #PopupAutoCompleteRichResult .autocomplete-richlistitem .ac-extra,
+:root:not([namoroka-style-2]) #PopupAutoCompleteRichResult .autocomplete-richlistitem .ac-type-icon {
+  visibility: collapse !important;
+}
+:root:not([namoroka-style-2]) #PopupAutoCompleteRichResult .autocomplete-richlistitem .ac-url {
   display: flex !important;
+  margin: 0 !important;
+  width: 100% !important;
 }
-#PopupAutoCompleteRichResult .ac-url {
-  margin-bottom: 0 !important;
-  white-space: nowrap !important;
+:root:not([namoroka-style-2]) #PopupAutoCompleteRichResult .autocomplete-richlistitem .ac-title {
+  margin: 0 !important;
+}
+:root:not([namoroka-style-2]) #PopupAutoCompleteRichResult .autocomplete-richlistitem .ac-comment {
   overflow: hidden !important;
+  text-wrap: nowrap !important;
   text-overflow: ellipsis !important;
+  margin: 0 !important;
+  color: #555566 !important;
 }
-#PopupAutoCompleteRichResult .ac-url-text {
-  color: #0055bb !important;
-}
-#PopupAutoCompleteRichResult richlistitem[selected=true] .ac-url-text {
+:root:not([namoroka-style-2]) #PopupAutoCompleteRichResult .autocomplete-richlistitem[selected] .ac-comment {
   color: inherit !important;
 }
-#PopupAutoCompleteRichResult .ac-site-icon {
-  width: 16px !important;
-  height: 16px !important;
-  margin: 0 5px -3px 3px !important;
-  list-style-image: var(--page-icon) !important;
+:root:not([namoroka-style-2]) #PopupAutoCompleteRichResult .autocomplete-richlistitem > hbox:first-of-type {
+  flex: 1 !important;
+  overflow: hidden !important;
 }
-#PopupAutoCompleteRichResult .ac-site-icon:-moz-broken {
-  list-style-image: var(--page-icon) !important;
-}
-#PopupAutoCompleteRichResult .ac-result-type-bookmark {
-  background-image: url("chrome://namoroka/content/firefox-3/vista/places/editBookmark.png") !important;
-}
-#PopupAutoCompleteRichResult span.ac-emphasize-text {
-  font-weight: bold !important;
-  text-decoration: underline !important;
-}
-#PopupAutoCompleteRichResult span.ac-emphasize-alt {
-  text-decoration: underline !important;
-}
-#PopupAutoCompleteRichResult .ac-comment {
-  font-size: 1.15em !important;
-  margin: 2px 0 0 0 !important;
-  padding: 0 !important;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-#PopupAutoCompleteRichResult .ac-extra > .ac-comment {
-  font-size: inherit !important;
-  padding-right: 4px !important;
-}
-#PopupAutoCompleteRichResult .ac-type-icon {
-  width: 16px !important;
-  height: 16px !important;
-  margin: 0 !important;
+:root:not([namoroka-style-2]) #PopupAutoCompleteRichResult .autocomplete-richlistitem > hbox:last-of-type {
+  flex: 2 !important;
+  width: var(--url-col-width, 60%) !important;
+  overflow: hidden !important;
 }
 
 #status-bar {
@@ -2157,6 +2143,65 @@ toolbarpaletteitem > #search-container > #searchbar > .searchbar-textbox {
 }
 :root[namoroka-style-2] #searchbar .search-go-container:hover:active .search-go-button {
   background-position-x: -32px !important;
+}
+:root[namoroka-style-2] #PopupAutoCompleteRichResult richlistitem {
+  flex-direction: column !important;
+  align-items: stretch !important;
+  padding: 1px 2px !important;
+  border-bottom: 1px solid ThreeDLightShadow !important;
+}
+:root[namoroka-style-2] #PopupAutoCompleteRichResult richlistitem .ac-type-icon,
+:root[namoroka-style-2] #PopupAutoCompleteRichResult richlistitem .ac-site-icon,
+:root[namoroka-style-2] #PopupAutoCompleteRichResult richlistitem .ac-url {
+  display: flex !important;
+}
+:root[namoroka-style-2] #PopupAutoCompleteRichResult .ac-url {
+  margin-bottom: 0 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+:root[namoroka-style-2] #PopupAutoCompleteRichResult .ac-url-text {
+  color: #0055bb !important;
+}
+:root[namoroka-style-2] #PopupAutoCompleteRichResult richlistitem[selected=true] .ac-url-text {
+  color: inherit !important;
+}
+:root[namoroka-style-2] #PopupAutoCompleteRichResult .ac-site-icon {
+  width: 16px !important;
+  height: 16px !important;
+  margin: 0 5px -3px 3px !important;
+  list-style-image: var(--page-icon) !important;
+}
+:root[namoroka-style-2] #PopupAutoCompleteRichResult .ac-site-icon:-moz-broken {
+  list-style-image: var(--page-icon) !important;
+}
+:root[namoroka-style-2] #PopupAutoCompleteRichResult .ac-result-type-bookmark {
+  background-image: url("chrome://namoroka/content/firefox-3/vista/places/editBookmark.png") !important;
+}
+:root[namoroka-style-2] #PopupAutoCompleteRichResult span.ac-emphasize-text {
+  font-weight: bold !important;
+  text-decoration: underline !important;
+}
+:root[namoroka-style-2] #PopupAutoCompleteRichResult span.ac-emphasize-alt {
+  text-decoration: underline !important;
+}
+:root[namoroka-style-2] #PopupAutoCompleteRichResult .ac-comment {
+  font-size: 1.15em !important;
+  margin: 2px 0 0 0 !important;
+  padding: 0 !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+:root[namoroka-style-2] #PopupAutoCompleteRichResult .ac-extra > .ac-comment {
+  font-size: inherit !important;
+  padding-right: 4px !important;
+}
+:root[namoroka-style-2] #PopupAutoCompleteRichResult .ac-type-icon {
+  width: 16px !important;
+  height: 16px !important;
+  margin: 0 !important;
 }
 
 /*# sourceMappingURL=namoroka.css.map */

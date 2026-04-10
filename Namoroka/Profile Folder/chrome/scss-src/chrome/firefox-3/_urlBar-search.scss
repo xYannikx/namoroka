@@ -292,4 +292,81 @@
             }
         }
     }
+
+    #PopupAutoCompleteRichResult {
+        richlistitem {
+            flex-direction: column !important;
+            align-items: stretch !important;
+            padding: 1px 2px !important;
+            border-bottom: 1px solid ThreeDLightShadow !important;
+
+            .ac-type-icon,
+            .ac-site-icon,
+            .ac-url {
+                display: flex !important;
+            }
+            
+        }
+
+        .ac-url {
+            margin-bottom: 0 !important;
+            white-space: nowrap !important;
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;
+        }
+
+        .ac-url-text {
+            color: #0055bb !important;
+        }
+
+        richlistitem[selected="true"] {
+            .ac-url-text {
+                color: inherit !important;
+            }
+        }
+
+        .ac-site-icon {
+            width: 16px !important;
+            height: 16px !important;
+            margin: 0 5px -3px 3px !important;
+            list-style-image: var(--page-icon) !important;
+            
+            &:-moz-broken {
+                list-style-image: var(--page-icon) !important;
+            }
+        }
+
+        .ac-result-type-bookmark {
+            background-image: url("chrome://namoroka/content/firefox-3/vista/places/editBookmark.png") !important;
+        }
+
+        span.ac-emphasize-text {
+            font-weight: bold !important;
+            text-decoration: underline !important;
+        }
+
+        span.ac-emphasize-alt {
+            text-decoration: underline !important;
+        }
+
+        .ac-comment {
+            font-size: 1.15em !important;
+            margin: 2px 0 0 0 !important;
+            padding: 0 !important;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .ac-extra > .ac-comment {
+            font-size: inherit !important;
+            padding-right: 4px !important;
+        }
+
+        .ac-type-icon {
+            width: 16px !important;
+            height: 16px !important;
+            margin: 0 !important;
+        }
+    }
 }
