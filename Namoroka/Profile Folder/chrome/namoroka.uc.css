@@ -160,7 +160,6 @@ toolbarbutton menupopup[placespopup] menuseparator::before {
   :root:not([namoroka-style-1]) toolbarbutton menupopup[placespopup] .menu-iconic-left {
     appearance: none !important;
     width: 16px !important;
-    margin: 0 !important;
     padding: 0 !important;
   }
   :root:not([namoroka-style-1]) menupopup:not(#ContentSelectDropdownPopup) .menu-iconic-left .menu-iconic-icon:not([src]),
