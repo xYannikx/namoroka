@@ -25,3 +25,7 @@
         @include set-background("firefox-3/vista/icons/close.png");
     }
 }
+
+.toolbarbutton-1#unified-extensions-button .toolbarbutton-icon {
+    background-position-x: -516px !important;
+}

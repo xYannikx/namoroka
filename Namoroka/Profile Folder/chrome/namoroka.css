@@ -1684,6 +1684,9 @@ toolbarpaletteitem > #search-container > #searchbar > .searchbar-textbox {
   background-image: url("chrome://namoroka/content/firefox-3/vista/icons/close.png") !important;
   list-style-image: none !important;
 }
+:root[namoroka-style-2] .toolbarbutton-1#unified-extensions-button .toolbarbutton-icon {
+  background-position-x: -516px !important;
+}
 :root[namoroka-style-2] #nav-bar {
   padding-block: 1px !important;
 }
