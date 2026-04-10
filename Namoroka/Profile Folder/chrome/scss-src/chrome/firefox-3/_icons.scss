@@ -29,3 +29,9 @@
 .toolbarbutton-1#unified-extensions-button .toolbarbutton-icon {
     background-position-x: -516px !important;
 }
+
+&[namoroka-appearance-small-icons="true"] {
+    .toolbarbutton-1#unified-extensions-button .toolbarbutton-icon {
+        background-position-x: -362px !important;
+    }
+}

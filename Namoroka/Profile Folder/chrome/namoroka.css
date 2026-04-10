@@ -685,6 +685,7 @@ toolbarbutton.bookmark-item:not(.subviewbutton) .toolbarbutton-animatable-box {
   --urlbar-root-height: 22px !important;
   --urlbar-min-height: var(--urlbar-root-height) !important;
   --urlbar-container-padding: 0 !important;
+  --urlbar-padding-block: 2px !important;
   --secure-icon: url("chrome://namoroka/content/firefox-1/Secure.png") !important;
 }
 @media (-moz-windows-classic) {
@@ -723,6 +724,7 @@ image.default-favicon {
 }
 
 #urlbar-container {
+  --urlbar-container-height: unset !important;
   padding-block: 0 !important;
 }
 #urlbar-container #urlbar {
@@ -1455,6 +1457,7 @@ toolbarpaletteitem > #search-container > #searchbar > .searchbar-textbox {
   --urlbar-root-height: 22px !important;
   --urlbar-container-padding: 0 !important;
   --urlbar-margin-inline: 3px !important;
+  --urlbar-padding-block: 0 !important;
   --secure-icon: url("chrome://namoroka/content/firefox-2/Secure.png") !important;
 }
 :root[namoroka-style-1]:not([namoroka-style-2=true]) .searchbar-textbox::placeholder {
@@ -1648,6 +1651,15 @@ toolbarpaletteitem > #search-container > #searchbar > .searchbar-textbox {
 :root[namoroka-style-1] .question-icon {
   list-style-image: url("chrome://namoroka/content/firefox-2/icons/Question.png") !important;
 }
+:root[namoroka-style-1][namoroka-appearance-small-icons=true] .toolbarbutton-1 {
+  padding: 5px !important;
+}
+:root[namoroka-style-1][namoroka-appearance-small-icons=true] .toolbarbutton-1:not(.toolbarbutton-menubutton-button) {
+  margin: 0 !important;
+}
+:root[namoroka-style-1][namoroka-appearance-small-icons=true] .toolbarbutton-1:hover:active:not([disabled=true]), :root[namoroka-style-1][namoroka-appearance-small-icons=true] .toolbarbutton-1[open=true]:not([disabled=true]) {
+  padding: 5px !important;
+}
 
 /* ::::: Firefox 3 ::::: */
 :root[namoroka-style-2] {
@@ -1686,6 +1698,9 @@ toolbarpaletteitem > #search-container > #searchbar > .searchbar-textbox {
 }
 :root[namoroka-style-2] .toolbarbutton-1#unified-extensions-button .toolbarbutton-icon {
   background-position-x: -516px !important;
+}
+:root[namoroka-style-2][namoroka-appearance-small-icons=true] .toolbarbutton-1#unified-extensions-button .toolbarbutton-icon {
+  background-position-x: -362px !important;
 }
 :root[namoroka-style-2] #nav-bar {
   padding-block: 1px !important;
@@ -1750,6 +1765,53 @@ toolbarpaletteitem > #search-container > #searchbar > .searchbar-textbox {
 :root[namoroka-style-2] #nav-bar #forward-button[disabled=true] .toolbarbutton-menubutton-button .toolbarbutton-icon,
 :root[namoroka-style-2] #nav-bar #forward-button[disabled=true] .toolbarbutton-menu-dropmarker {
   background-position-y: -68px !important;
+}
+:root[namoroka-style-2][namoroka-appearance-small-icons=true] #nav-bar #back-button {
+  margin: 0 !important;
+  padding-inline-start: 2px !important;
+  padding-block: 1px !important;
+}
+:root[namoroka-style-2][namoroka-appearance-small-icons=true] #nav-bar #back-button .toolbarbutton-menubutton-button {
+  width: 24px !important;
+  height: 24px !important;
+}
+:root[namoroka-style-2][namoroka-appearance-small-icons=true] #nav-bar #back-button .toolbarbutton-menubutton-button .toolbarbutton-icon {
+  background-position-x: -240px !important;
+}
+:root[namoroka-style-2][namoroka-appearance-small-icons=true] #nav-bar #forward-button {
+  margin-inline-end: 0 !important;
+  padding-inline-end: 2px !important;
+  padding-block: 1px !important;
+}
+:root[namoroka-style-2][namoroka-appearance-small-icons=true] #nav-bar #forward-button .toolbarbutton-menubutton-button {
+  width: 24px !important;
+  height: 24px !important;
+}
+:root[namoroka-style-2][namoroka-appearance-small-icons=true] #nav-bar #forward-button .toolbarbutton-menubutton-button .toolbarbutton-icon {
+  background-position-x: -264px !important;
+}
+:root[namoroka-style-2][namoroka-appearance-small-icons=true] #nav-bar #forward-button .toolbarbutton-menu-dropmarker {
+  width: 13px !important;
+  content: none !important;
+  background-image: var(--toolbar-spritesheet) !important;
+  background-position-x: -288px !important;
+  background-position-y: 0 !important;
+  padding: 0 !important;
+}
+:root[namoroka-style-2][namoroka-appearance-small-icons=true] #nav-bar #back-button:not([disabled=true]) .toolbarbutton-menubutton-button:hover .toolbarbutton-icon,
+:root[namoroka-style-2][namoroka-appearance-small-icons=true] #nav-bar #forward-button:not([disabled=true]) .toolbarbutton-menubutton-button:hover .toolbarbutton-icon,
+:root[namoroka-style-2][namoroka-appearance-small-icons=true] #nav-bar #forward-button:not([disabled=true]) .toolbarbutton-menu-dropmarker:hover {
+  background-position-y: -24px !important;
+}
+:root[namoroka-style-2][namoroka-appearance-small-icons=true] #nav-bar #back-button:not([disabled=true]) .toolbarbutton-menubutton-button:hover:active .toolbarbutton-icon,
+:root[namoroka-style-2][namoroka-appearance-small-icons=true] #nav-bar #forward-button:not([disabled=true]) .toolbarbutton-menubutton-button:hover:active .toolbarbutton-icon,
+:root[namoroka-style-2][namoroka-appearance-small-icons=true] #nav-bar #forward-button:not([disabled=true]) .toolbarbutton-menu-dropmarker:hover:active {
+  background-position-y: -72px !important;
+}
+:root[namoroka-style-2][namoroka-appearance-small-icons=true] #nav-bar #back-button[disabled=true] .toolbarbutton-menubutton-button .toolbarbutton-icon,
+:root[namoroka-style-2][namoroka-appearance-small-icons=true] #nav-bar #forward-button[disabled=true] .toolbarbutton-menubutton-button .toolbarbutton-icon,
+:root[namoroka-style-2][namoroka-appearance-small-icons=true] #nav-bar #forward-button[disabled=true] .toolbarbutton-menu-dropmarker {
+  background-position-y: -48px !important;
 }
 :root[namoroka-style-2] {
   --tab-min-height: 21px !important;

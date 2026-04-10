@@ -2,6 +2,7 @@
     --urlbar-root-height: 22px !important;
     --urlbar-min-height: var(--urlbar-root-height) !important;
     --urlbar-container-padding: 0 !important;
+    --urlbar-padding-block: 2px !important;
 
     --secure-icon: url("chrome://namoroka/content/firefox-1/Secure.png") !important;
 
@@ -42,6 +43,7 @@ image.default-favicon {
 }
 
 #urlbar-container {
+    --urlbar-container-height: unset !important;
     padding-block: 0 !important;
 
     #urlbar {
