@@ -19,13 +19,66 @@
     }
     
     min-height: 22px !important;
-    align-items: center;
+    align-items: stretch !important;
 
     :root[inFullscreen="true"] & {
         visibility: collapse !important;
     }
 }
 
+#statusbar-display {
+    align-items: center !important;
+}
+
+#statusbar-progresspanel {
+    appearance: statusbarpanel !important;
+    -moz-default-appearance: statusbarpanel !important;
+    border-left: 1px solid ThreeDHighlight !important;
+    border-top: 1px solid ThreeDHighlight !important;
+    border-right: 1px solid ThreeDShadow !important;
+    border-bottom: 1px solid ThreeDShadow !important;
+    align-items: center !important;
+    padding: 0 4px !important;
+    border: none !important;
+}
+
+#statusbar-icon {
+    appearance: auto !important;
+    -moz-default-appearance: progressbar !important;
+    min-width: 96px;
+    height: 12px;
+    margin: 0;
+    border: none;
+
+    &[collapsed="true"] {
+        visibility: collapse !important;
+    }
+
+    &::-moz-progress-bar {
+        appearance: auto !important;
+        -moz-default-appearance: progresschunk !important;
+    }
+}
+
+.statusbar-resizerpanel {
+    appearance: resizerpanel !important;
+    -moz-default-appearance: resizerpanel !important;
+    align-items: flex-end !important;
+    justify-content: flex-end !important;
+    padding: 0 !important;
+    border: none !important;
+
+    .statusbar-resizer {
+        cursor: se-resize;
+        appearance: resizer !important;
+        -moz-default-appearance: resizer !important;
+    }
+}
+
 #statuspanel {
     display: none !important;
+}
+
+.statusbarpanel-iconic,  .statusbarpanel-iconic-text, .statusbarpanel-menu-iconic {
+    padding: 0px 1px 0px 1px !important;
 }

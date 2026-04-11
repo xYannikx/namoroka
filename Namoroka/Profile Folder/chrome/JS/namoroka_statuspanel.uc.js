@@ -24,6 +24,12 @@
                             <statusbarpanel id="statusbar-display" flex="1">
                                 <label class="statusbarpanel-text" crop="right" flex="1" />
                             </statusbarpanel>
+                            <statusbarpanel class="statusbarpanel-progress" id="statusbar-progresspanel">
+                                <html:progress class="progressmeter-statusbar" id="statusbar-icon" max="100" value="0" collapsed="true" />
+                            </statusbarpanel>
+                            <statusbarpanel class="statusbar-resizerpanel">
+                                <html:div class="statusbar-resizer" />
+                            </statusbarpanel>
                         </statusbar>
                     </vbox>
                 `).firstChild;
@@ -40,6 +46,24 @@
             return this._displayPanel.querySelector("label");
         },
 
+        get _progressPanel() {
+            return document.querySelector("#statusbar-progresspanel");
+        },
+
+        get _progressMeter() {
+            return document.querySelector("#statusbar-icon");
+        },
+
+        get _resizerPanel() {
+            return document.querySelector(".statusbar-resizerpanel");
+        },
+
+        get _resizerGrip() {
+            return document.querySelector(".statusbar-resizer");
+        },
+
+        _progressCollapseTimer: null,
+
         get menuFragment() {
 			return `
 				<menuitem type="checkbox" />
@@ -49,8 +73,99 @@
         init() {
             document.body.appendChild(this.fragment);
 
-            this.initStatusPanelVisibility();
+			this.initStatusPanelVisibility();
+            this.initResizer();
             this.update();
+
+            let delayedStartupObserver = (aSubject, aTopic, aData) => {
+                if (aSubject == window) {
+                    Services.obs.removeObserver(delayedStartupObserver, "browser-delayed-startup-finished");
+                    this.initProgressListener();
+                }
+            };
+            Services.obs.addObserver(delayedStartupObserver, "browser-delayed-startup-finished");
+        },
+
+        initProgressListener() {
+            let self = this;
+
+            this._progressListener = {
+                QueryInterface: ChromeUtils.generateQI([
+                    "nsIWebProgressListener",
+                    "nsISupportsWeakReference",
+                ]),
+
+                onProgressChange(aWebProgress, aRequest,
+                                 aCurSelfProgress, aMaxSelfProgress,
+                                 aCurTotalProgress, aMaxTotalProgress) {
+                    if (aMaxTotalProgress > 0) {
+                        let percentage = (aCurTotalProgress * 100) / aMaxTotalProgress;
+                        self._progressMeter.value = percentage;
+                    }
+                },
+
+                onStateChange(aWebProgress, aRequest, aStateFlags, aStatus) {
+                    const nsIWPL = Ci.nsIWebProgressListener;
+
+                    if (aStateFlags & nsIWPL.STATE_START && aStateFlags & nsIWPL.STATE_IS_NETWORK) {
+                        self._progressMeter.value = 0;
+
+                        if (self._progressCollapseTimer) {
+                            window.clearTimeout(self._progressCollapseTimer);
+                            self._progressCollapseTimer = null;
+                        } else {
+							self._progressMeter.removeAttribute	("collapsed");
+                        }
+                    } else if (aStateFlags & nsIWPL.STATE_STOP && aStateFlags & nsIWPL.STATE_IS_NETWORK) {
+                        self._progressCollapseTimer = window.setTimeout(() => {
+							self._progressMeter.setAttribute("collapsed", "true");
+                            self._progressCollapseTimer = null;
+                        }, 100);
+                    }
+                },
+
+                onLocationChange() {},
+                onSecurityChange() {},
+                onStatusChange() {},
+                onContentBlockingEvent() {},
+            };
+
+            gBrowser.addProgressListener(this._progressListener);
+        },
+
+        initResizer() {
+            let grip = this._resizerGrip;
+            
+			if (!grip) 
+				return;
+
+            let startX, startY, startWidth, startHeight;
+
+            grip.addEventListener("mousedown", (e) => {
+                if (e.button !== 0) return;
+                if (window.windowState === window.STATE_MAXIMIZED || window.fullScreen) return;
+
+                startX = e.screenX;
+                startY = e.screenY;
+                startWidth = window.outerWidth;
+                startHeight = window.outerHeight;
+
+                let onMouseMove = (e) => {
+                    let newWidth = startWidth + (e.screenX - startX);
+                    let newHeight = startHeight + (e.screenY - startY);
+                    window.resizeTo(newWidth, newHeight);
+                };
+
+                let onMouseUp = () => {
+                    window.removeEventListener("mousemove", onMouseMove, true);
+                    window.removeEventListener("mouseup", onMouseUp, true);
+                };
+
+                window.addEventListener("mousemove", onMouseMove, true);
+                window.addEventListener("mouseup", onMouseUp, true);
+
+                e.preventDefault();
+            });
         },
 
         initStatusPanelVisibility() {
