@@ -1,21 +1,20 @@
 <?xml version="1.0"?>
 
-<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<?xml-stylesheet href="chrome://global/skin/"?>
 <?xml-stylesheet href="chrome://userchrome/content/windows/livemarkProperties/styles.css" type="text/css"?>
 
 <dialog id="livemarkPropertiesDialog"
-        buttons="accept,cancel"
+        buttons="accept, cancel"
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
         xmlns:html="http://www.w3.org/1999/xhtml"
         xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-        width="400"
-        title="">
-
-    <linkset>
-        <html:link rel="stylesheet" href="chrome://global/skin/global.css" />
-    </linkset>
+        style="min-width: 30em;">
 
     <script type="application/javascript" src="chrome://userchrome/content/windows/livemarkProperties/script.js" />
+
+    <stringbundleset id="stringbundleset">
+        <stringbundle id="livemarkPropertiesBundle" src="chrome://namoroka/locale/properties/livemarks.properties" />    
+    </stringbundleset>
 
     <grid id="livemarkPropertiesGrid">
         <columns>
@@ -41,16 +40,10 @@
                 <html:input id="siteLocationField" type="text" />
             </row>
 
-            <!-- Description -->
-            <row id="descriptionRow" align="center">
-                <label id="descriptionLabel" control="descriptionField" />
-                <html:input id="descriptionField" type="text" />
-            </row>
-
             <!-- Folder Picker (add mode only) -->
             <row id="folderRow" align="center">
                 <label id="folderLabel" control="folderPicker" />
-                <menulist id="folderPicker" flex="1">
+                <menulist id="folderPicker" flex="1" native="true">
                     <menupopup id="folderPickerPopup" />
                 </menulist>
             </row>

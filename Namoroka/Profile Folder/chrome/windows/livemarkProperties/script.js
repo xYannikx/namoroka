@@ -21,7 +21,6 @@ var gLivemarkProperties = {
     _feedURI: "",
     _siteURI: "",
     _title:   "",
-    _description: "",
     _parentGuid: null,
     _folderMap: [],     // [{guid, title}] for folder picker
 
@@ -31,7 +30,6 @@ var gLivemarkProperties = {
         this._feedURI     = args.feedURI     || "";
         this._siteURI     = args.siteURI     || "";
         this._title       = args.title       || "";
-        this._description = args.description || "";
         this._guid        = args.guid        || null;
 
         // Set dialog title
@@ -49,8 +47,6 @@ var gLivemarkProperties = {
             LocaleUtils.str(gLivemarkBundle, "livemark_feedurl_label");
         document.getElementById("siteLocationLabel").value =
             LocaleUtils.str(gLivemarkBundle, "livemark_siteurl_label");
-        document.getElementById("descriptionLabel").value =
-            LocaleUtils.str(gLivemarkBundle, "livemark_description_label");
         document.getElementById("folderLabel").value =
             LocaleUtils.str(gLivemarkBundle, "livemark_folder_label");
 
@@ -64,10 +60,9 @@ var gLivemarkProperties = {
         document.getElementById("nameField").value = this._title;
         document.getElementById("feedLocationField").value = this._feedURI;
         document.getElementById("siteLocationField").value = this._siteURI;
-        document.getElementById("descriptionField").value = this._description;
 
         if (this._action === "add") {
-            // Add mode: only show Name, Description, and Create In
+            // Add mode: only show Name and Create In
             document.getElementById("feedLocationRow").hidden = true;
             document.getElementById("siteLocationRow").hidden = true;
             await this._populateFolderPicker();
@@ -180,7 +175,6 @@ var gLivemarkProperties = {
 
     async onDialogAccept() {
         let name        = document.getElementById("nameField").value.trim();
-        let description = document.getElementById("descriptionField").value.trim();
 
         if (this._action === "edit" && this._guid) {
             // Update existing livemark
@@ -190,14 +184,6 @@ var gLivemarkProperties = {
             await NamorokaLivemarkService.setTitle(this._guid, name);
             await NamorokaLivemarkService.setSiteURI(this._guid, siteURI);
             await NamorokaLivemarkService.setFeedURI(this._guid, feedURI);
-
-            // Update description annotation in the bookmark
-            try {
-                let bm = await PlacesUtils.bookmarks.fetch(this._guid);
-                if (bm) {
-                    // Store description (no standard field — we silently skip)
-                }
-            } catch (e) {}
         } else {
             // Create new livemark — feedURI and siteURI from args
             let picker = document.getElementById("folderPicker");
