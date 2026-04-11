@@ -406,39 +406,39 @@ menuitem:is([default=true], .spell-suggestion), menucaption {
 :root[namoroka-style-1] #tabbrowser-arrowscrollbox:not([overflowing=true])::part(scrollbox) {
   padding-inline-start: 2px !important;
 }
-:root[namoroka-style-1]:not([namoroka-style-2]) menupopu menu,
-:root[namoroka-style-1]:not([namoroka-style-2]) menupopup menuitem {
+:root[namoroka-style-1]:not([namoroka-style-2][namoroka-appearance-aero]) menupopup menu,
+:root[namoroka-style-1]:not([namoroka-style-2][namoroka-appearance-aero]) menupopup menuitem {
   color: MenuText !important;
   font: menu !important;
 }
-:root[namoroka-style-1]:not([namoroka-style-2]) menupopu menu[disabled=true], :root[namoroka-style-1]:not([namoroka-style-2]) menupopu menu[_moz-menuactive=true][disabled=true],
-:root[namoroka-style-1]:not([namoroka-style-2]) menupopup menuitem[disabled=true],
-:root[namoroka-style-1]:not([namoroka-style-2]) menupopup menuitem[_moz-menuactive=true][disabled=true] {
+:root[namoroka-style-1]:not([namoroka-style-2][namoroka-appearance-aero]) menupopup menu[disabled=true], :root[namoroka-style-1]:not([namoroka-style-2][namoroka-appearance-aero]) menupopup menu[_moz-menuactive=true][disabled=true],
+:root[namoroka-style-1]:not([namoroka-style-2][namoroka-appearance-aero]) menupopup menuitem[disabled=true],
+:root[namoroka-style-1]:not([namoroka-style-2][namoroka-appearance-aero]) menupopup menuitem[_moz-menuactive=true][disabled=true] {
   color: GrayText !important;
   text-shadow: none !important;
 }
-:root[namoroka-style-1]:not([namoroka-style-2]) menupopup menuitem[_moz-menuactive=true] {
+:root[namoroka-style-1]:not([namoroka-style-2][namoroka-appearance-aero]) menupopup menuitem[_moz-menuactive=true] {
   background-color: Highlight !important;
   color: HighlightText !important;
 }
-:root[namoroka-style-1]:not([namoroka-style-2]) #main-menubar > menu {
+:root[namoroka-style-1]:not([namoroka-style-2][namoroka-appearance-aero]) #main-menubar > menu {
   border: 1px solid transparent !important;
   background-color: transparent !important;
   padding: 1px 3px 1px 2px !important;
   margin: 0px 0px 1px 0px !important;
 }
-:root[namoroka-style-1]:not([namoroka-style-2]) #main-menubar > menu[_moz-menuactive=true]:not(#compact-menu-menu) {
+:root[namoroka-style-1]:not([namoroka-style-2][namoroka-appearance-aero]) #main-menubar > menu[_moz-menuactive=true] {
   background-color: Highlight !important;
   color: HighlightText !important;
 }
-:root[namoroka-style-1]:not([namoroka-style-2]) #main-menubar > menu[_moz-menuactive=true] {
+:root[namoroka-style-1]:not([namoroka-style-2][namoroka-appearance-aero]) #main-menubar > menu[_moz-menuactive=true] {
   padding: 1px 3px 1px 2px !important;
   border-color: transparent !important;
 }
-:root[namoroka-style-1]:not([namoroka-style-2]) #main-menubar > menu[_moz-menuactive=true][open=true] {
+:root[namoroka-style-1]:not([namoroka-style-2][namoroka-appearance-aero]) #main-menubar > menu[_moz-menuactive=true][open=true] {
   border-color: transparent !important;
 }
-:root[namoroka-style-1]:not([namoroka-style-2]) #main-menubar > menu .menubar-text {
+:root[namoroka-style-1]:not([namoroka-style-2][namoroka-appearance-aero]) #main-menubar > menu .menubar-text {
   padding-top: 2px !important;
   margin: 1px 4px 2px 5px !important;
   color: inherit !important;

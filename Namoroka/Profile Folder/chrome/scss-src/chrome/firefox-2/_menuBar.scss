@@ -1,5 +1,5 @@
-&:not([namoroka-style-2]) {
-    menupopu menu,
+&:not([namoroka-style-2][namoroka-appearance-aero]) {
+    menupopup menu,
     menupopup menuitem {
         color: MenuText !important;
         font: menu !important;
@@ -25,7 +25,7 @@
             padding: 1px 3px 1px 2px !important;
             margin: 0px 0px 1px 0px !important;
 
-            &[_moz-menuactive="true"]:not(#compact-menu-menu) {
+            &[_moz-menuactive="true"] {
                 background-color : Highlight !important;
                 color: HighlightText !important;
             }
