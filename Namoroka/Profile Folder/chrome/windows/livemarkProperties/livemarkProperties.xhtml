@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<?xml-stylesheet href="chrome://userchrome/content/windows/livemarkProperties/styles.css" type="text/css"?>
+
+<dialog id="livemarkPropertiesDialog"
+        buttons="accept,cancel"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        width="400"
+        title="">
+
+    <linkset>
+        <html:link rel="stylesheet" href="chrome://global/skin/global.css" />
+    </linkset>
+
+    <script type="application/javascript" src="chrome://userchrome/content/windows/livemarkProperties/script.js" />
+
+    <grid id="livemarkPropertiesGrid">
+        <columns>
+            <column />
+            <column flex="1" />
+        </columns>
+        <rows>
+            <!-- Name -->
+            <row id="nameRow" align="center">
+                <label id="nameLabel" control="nameField" />
+                <html:input id="nameField" type="text" />
+            </row>
+
+            <!-- Feed Location (edit mode only) -->
+            <row id="feedLocationRow" align="center">
+                <label id="feedLocationLabel" control="feedLocationField" />
+                <html:input id="feedLocationField" type="text" />
+            </row>
+
+            <!-- Site Location (edit mode only) -->
+            <row id="siteLocationRow" align="center">
+                <label id="siteLocationLabel" control="siteLocationField" />
+                <html:input id="siteLocationField" type="text" />
+            </row>
+
+            <!-- Description -->
+            <row id="descriptionRow" align="center">
+                <label id="descriptionLabel" control="descriptionField" />
+                <html:input id="descriptionField" type="text" />
+            </row>
+
+            <!-- Folder Picker (add mode only) -->
+            <row id="folderRow" align="center">
+                <label id="folderLabel" control="folderPicker" />
+                <menulist id="folderPicker" flex="1">
+                    <menupopup id="folderPickerPopup" />
+                </menulist>
+            </row>
+        </rows>
+    </grid>
+</dialog>

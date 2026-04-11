@@ -11,7 +11,8 @@
         "home": "chrome://userchrome/content/pages/home/home.xhtml",
         "namoroka": "chrome://userchrome/content/windows/options/options.xhtml",
         "nrabout": "chrome://userchrome/content/windows/aboutDialog/aboutDialog.xhtml",
-        "config": "chrome://userchrome/content/pages/config/config.xhtml"
+        "config": "chrome://userchrome/content/pages/config/config.xhtml",
+        "feeds": "chrome://userchrome/content/pages/feeds/feeds.xhtml"
     };
     const { AboutPageManager } = ChromeUtils.importESModule("chrome://modules/content/AboutPageManager.sys.mjs");
 

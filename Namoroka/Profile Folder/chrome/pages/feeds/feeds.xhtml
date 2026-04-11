@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?xml-stylesheet href="chrome://userchrome/content/pages/feeds/feeds.css" type="text/css"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Feed Preview</title>
+    <link rel="stylesheet" href="chrome://userchrome/content/pages/feeds/feeds.css" />
+</head>
+<body>
+    <div id="feedHeaderContainer">
+        <div id="feedHeader">
+            <div id="feedIntroText"></div>
+            <div id="feedSubscriptionInfo">
+                <span id="subscribeUsingLabel"></span>
+                <select id="handlersMenuList">
+                    <option id="liveBookmarksOption" value="bookmarks" selected="selected"></option>
+                </select>
+                <button id="subscribeButton"></button>
+            </div>
+        </div>
+    </div>
+
+    <div id="feedTitleContainer">
+        <h1 id="feedTitleText"></h1>
+        <h2 id="feedSubtitleText"></h2>
+    </div>
+
+    <div id="feedContent">
+        <!-- Feed entries will be populated here by script -->
+    </div>
+
+    <script src="chrome://userchrome/content/pages/feeds/feeds.js"></script>
+</body>
+</html>

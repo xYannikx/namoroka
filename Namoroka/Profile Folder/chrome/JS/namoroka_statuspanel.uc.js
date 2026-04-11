@@ -114,7 +114,7 @@
                             window.clearTimeout(self._progressCollapseTimer);
                             self._progressCollapseTimer = null;
                         } else {
-							self._progressMeter.removeAttribute	("collapsed");
+							self._progressMeter.removeAttribute("collapsed");
                         }
                     } else if (aStateFlags & nsIWPL.STATE_STOP && aStateFlags & nsIWPL.STATE_IS_NETWORK) {
                         self._progressCollapseTimer = window.setTimeout(() => {

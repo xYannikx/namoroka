@@ -1,7 +1,3 @@
-:root {
-    --folder-item: url("chrome://namoroka/content/firefox-1/folder-item.png") !important;
-}
-
 #PersonalToolbar {
     @media (-moz-win-classic) {
         max-height: 26px !important;
@@ -69,6 +65,32 @@
 
     &:hover:active,
     &[open="true"] {
+        .toolbarbutton-icon {
+            background-position-y: -16px !important;
+        }
+    }
+}
+
+toolbarbutton.bookmark-item[livemark="true"] {
+    list-style-image: none !important;
+}
+
+toolbarbutton.bookmark-item[livemark="true"] {
+    .toolbarbutton-icon {
+        background-image: url("chrome://namoroka/content/firefox-1/livemark-folder.png") !important;
+        background-position-x: -16px !important;
+
+        :root[namoroka-style-2] & {
+            background-image: url("chrome://namoroka/content/firefox-3/livemark-folder.png") !important;
+            background-position-x: 0 !important;
+        }
+
+        :root[namoroka-appearance-aero] & {
+            background-image: url("chrome://namoroka/content/firefox-3/vista/livemark-folder.png") !important;
+        }
+    }
+
+    :root:not([namoroka-style-2]) &[open="true"] {
         .toolbarbutton-icon {
             background-position-y: -16px !important;
         }

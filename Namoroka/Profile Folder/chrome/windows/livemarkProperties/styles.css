@@ -1,0 +1,25 @@
+#livemarkPropertiesGrid {
+    padding: 10px;
+}
+
+#livemarkPropertiesGrid row {
+    margin-bottom: 6px;
+}
+
+#livemarkPropertiesGrid label {
+    min-width: 100px;
+    text-align: right;
+    margin-inline-end: 8px;
+}
+
+#nameField,
+#feedLocationField,
+#siteLocationField {
+    flex: 1;
+    min-width: 220px;
+    box-sizing: border-box;
+}
+
+#folderPicker {
+    min-width: 220px;
+}

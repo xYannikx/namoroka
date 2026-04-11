@@ -617,10 +617,6 @@ toolbarbutton.bookmark-item:not(.subviewbutton) .toolbarbutton-animatable-box {
   padding: 0 !important;
 }
 
-:root {
-  --folder-item: url("chrome://namoroka/content/firefox-1/folder-item.png") !important;
-}
-
 #PersonalToolbar {
   border-block-end: 0 !important;
   padding-inline: 0 !important;
@@ -678,6 +674,26 @@ toolbarbutton.bookmark-item:not(.subviewbutton) .toolbarbutton-animatable-box {
   background-position-x: -16px !important;
 }
 .bookmark-item[container]:hover:active .toolbarbutton-icon, .bookmark-item[container][open=true] .toolbarbutton-icon {
+  background-position-y: -16px !important;
+}
+
+toolbarbutton.bookmark-item[livemark=true] {
+  list-style-image: none !important;
+}
+
+toolbarbutton.bookmark-item[livemark=true] .toolbarbutton-icon {
+  background-image: url("chrome://namoroka/content/firefox-1/livemark-folder.png") !important;
+  background-position-x: -16px !important;
+}
+:root[namoroka-style-2] toolbarbutton.bookmark-item[livemark=true] .toolbarbutton-icon {
+  background-image: url("chrome://namoroka/content/firefox-3/livemark-folder.png") !important;
+  background-position-x: 0 !important;
+}
+:root[namoroka-appearance-aero] toolbarbutton.bookmark-item[livemark=true] .toolbarbutton-icon {
+  background-image: url("chrome://namoroka/content/firefox-3/vista/livemark-folder.png") !important;
+  background-position-x: 0 !important;
+}
+:root:not([namoroka-style-2]) toolbarbutton.bookmark-item[livemark=true][open=true] .toolbarbutton-icon {
   background-position-y: -16px !important;
 }
 
@@ -933,7 +949,7 @@ panel[type=autocomplete-richlistbox],
   border: none;
 }
 #statusbar-icon[collapsed=true] {
-  visibility: collapse;
+  visibility: collapse !important;
 }
 #statusbar-icon::-moz-progress-bar {
   appearance: auto !important;
