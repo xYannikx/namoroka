@@ -1,3 +1,7 @@
+:root {
+    --folder-item: url("chrome://namoroka/content/firefox-1/folder-item.png") !important;
+}
+
 #PersonalToolbar {
     @media (-moz-win-classic) {
         max-height: 26px !important;

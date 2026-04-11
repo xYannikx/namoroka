@@ -617,6 +617,10 @@ toolbarbutton.bookmark-item:not(.subviewbutton) .toolbarbutton-animatable-box {
   padding: 0 !important;
 }
 
+:root {
+  --folder-item: url("chrome://namoroka/content/firefox-1/folder-item.png") !important;
+}
+
 #PersonalToolbar {
   border-block-end: 0 !important;
   padding-inline: 0 !important;
@@ -691,7 +695,6 @@ toolbarbutton.bookmark-item[livemark=true] .toolbarbutton-icon {
 }
 :root[namoroka-appearance-aero] toolbarbutton.bookmark-item[livemark=true] .toolbarbutton-icon {
   background-image: url("chrome://namoroka/content/firefox-3/vista/livemark-folder.png") !important;
-  background-position-x: 0 !important;
 }
 :root:not([namoroka-style-2]) toolbarbutton.bookmark-item[livemark=true][open=true] .toolbarbutton-icon {
   background-position-y: -16px !important;
