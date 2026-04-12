@@ -394,6 +394,9 @@ toolbarseparator {
 #TabsToolbar .tabbrowser-tab .tab-background {
   visibility: collapse !important;
 }
+#TabsToolbar .tabbrowser-tab .tab-content {
+  padding: 0 !important;
+}
 #TabsToolbar .tabbrowser-tab .tab-content .tab-throbber:not([pinned]),
 #TabsToolbar .tabbrowser-tab .tab-content .tab-icon-pending:not([pinned]),
 #TabsToolbar .tabbrowser-tab .tab-content .tab-icon-image:not([pinned]),
