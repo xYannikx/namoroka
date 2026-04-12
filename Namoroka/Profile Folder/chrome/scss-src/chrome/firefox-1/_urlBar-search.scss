@@ -110,6 +110,10 @@ image.default-favicon {
         #identity-box {
             margin: 0 !important;
 
+            :root[inFullscreen="true"] & {
+                display: none !important;
+            }
+
             &:not(.verifiedDomain) {
                 visibility: collapse !important;
             }

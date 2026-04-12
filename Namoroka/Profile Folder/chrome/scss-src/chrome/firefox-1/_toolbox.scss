@@ -6,6 +6,13 @@
     appearance: auto !important;
     -moz-default-appearance: toolbox !important;
     border-bottom-width: 0 !important;
+
+    // Since TabsToolbar is moved outside of #navigator-toolbox, Firefox's
+    // internal tab drag code may fail to clear `movingtab`. Override the
+    // built-in pointer-events:none so the nav-bar stays interactable.
+    &[movingtab] > #nav-bar {
+        pointer-events: auto !important;
+    }
 }
 
 .browser-toolbar {

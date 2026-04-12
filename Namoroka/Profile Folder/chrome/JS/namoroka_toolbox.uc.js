@@ -36,6 +36,20 @@ var g_NamorokaToolbox;
 
             document.body.insertBefore(tabsToolbar, document.getElementById("browser"));
 
+            // TabsToolbar is now outside gNavToolbox, so Firefox's internal
+            // drag-and-drop code may fail to clear `movingtab` on drop/cancel.
+            // Watch for stale attributes and remove them after a short delay.
+            let movingtabObserver = new MutationObserver(() => {
+                if (gNavToolbox.hasAttribute("movingtab")) {
+                    setTimeout(() => {
+                        if (gNavToolbox.hasAttribute("movingtab")) {
+                            gNavToolbox.removeAttribute("movingtab");
+                        }
+                    }, 500);
+                }
+            });
+            movingtabObserver.observe(gNavToolbox, { attributes: true, attributeFilter: ["movingtab"] });
+
             waitForElement("#titlebar").then(e => {
                 gNavToolbox.insertBefore(e.querySelector("#toolbar-menubar"), gNavToolbox.querySelector("#nav-bar"));
 

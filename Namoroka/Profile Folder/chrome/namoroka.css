@@ -295,6 +295,9 @@
   -moz-default-appearance: toolbox !important;
   border-bottom-width: 0 !important;
 }
+#navigator-toolbox[movingtab] > #nav-bar {
+  pointer-events: auto !important;
+}
 
 .browser-toolbar {
   box-shadow: none !important;
@@ -474,6 +477,10 @@ toolbarseparator {
 }
 :root:not([namoroka-style-1=true]) #TabsToolbar #tabbrowser-tabs:not([overflow], [hashiddentabs]) ~ #alltabs-button {
   display: none !important;
+}
+
+.tab-audio-button {
+  visibility: collapse !important;
 }
 
 :root {
@@ -798,6 +805,9 @@ image.default-favicon {
 }
 #urlbar-container #urlbar #identity-box {
   margin: 0 !important;
+}
+:root[inFullscreen=true] #urlbar-container #urlbar #identity-box {
+  display: none !important;
 }
 #urlbar-container #urlbar #identity-box:not(.verifiedDomain) {
   visibility: collapse !important;
