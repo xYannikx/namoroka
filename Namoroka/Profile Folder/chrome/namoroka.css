@@ -1372,6 +1372,9 @@ toolbarpaletteitem > #search-container > #searchbar > .searchbar-textbox {
   overflow: visible !important;
   max-height: var(--tab-min-height) !important;
 }
+:root[namoroka-style-1] #TabsToolbar .tabbrowser-tab .tab-content {
+  padding: 0 var(--inline-tab-padding) !important;
+}
 :root[namoroka-style-1] #TabsToolbar .tabbrowser-tab .tab-stack {
   height: 23px;
 }

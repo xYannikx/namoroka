@@ -46,6 +46,10 @@
         overflow: visible !important;
         max-height: var(--tab-min-height) !important;
 
+        .tab-content {
+            padding: 0 var(--inline-tab-padding) !important;
+        }
+
         .tab-stack {
             height: 23px;
         }
