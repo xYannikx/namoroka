@@ -71,6 +71,11 @@
                 }
             }
 
+            menuitem[style*="list-style-image"] .menu-iconic-left .menu-iconic-icon:not([src]) {
+                width: 16px !important;
+                height: 16px !important;
+            }
+
             menuseparator {
                 appearance: none !important;
                 padding: 0 !important;

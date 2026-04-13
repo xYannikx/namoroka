@@ -528,6 +528,11 @@ menuitem:is([default=true], .spell-suggestion), menucaption {
     width: unset !important;
     height: unset !important;
   }
+  :root[namoroka-style-1]:not([namoroka-style-2]) menupopup:not(#ContentSelectDropdownPopup) menuitem[style*=list-style-image] .menu-iconic-left .menu-iconic-icon:not([src]),
+  :root[namoroka-style-1]:not([namoroka-style-2]) toolbarbutton menupopup[placespopup] menuitem[style*=list-style-image] .menu-iconic-left .menu-iconic-icon:not([src]) {
+    width: 16px !important;
+    height: 16px !important;
+  }
   :root[namoroka-style-1]:not([namoroka-style-2]) menupopup:not(#ContentSelectDropdownPopup) menuseparator,
   :root[namoroka-style-1]:not([namoroka-style-2]) toolbarbutton menupopup[placespopup] menuseparator {
     appearance: none !important;
