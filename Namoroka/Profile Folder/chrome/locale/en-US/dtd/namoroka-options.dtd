@@ -60,3 +60,5 @@
 <!ENTITY about.namorokaBrowserName "Browser Name">
 <!ENTITY about.namorokaBrowserVer "Engine Version">
 <!ENTITY about.namorokaBrowserChannel "Update Channel">
+
+<!ENTITY debug.wizard.firstRun "First run has been completed">
