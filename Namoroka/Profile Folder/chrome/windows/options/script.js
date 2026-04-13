@@ -60,11 +60,6 @@ document.querySelectorAll("namoroka-listbox").forEach(listbox => {
             item.appendChild(itemLabel);
         }
 
-        // preload hack
-        if (item.hasAttribute("src")) {
-            preloadImage(item.getAttribute("src"));
-        }
-
         item.addEventListener("click", () => {
             items.forEach(item => {
                 item.removeAttribute("selected");
@@ -284,14 +279,6 @@ document.documentElement.addEventListener('keypress', function(e) {
 		window.close();
 	}
 });
-
-/*
-* This is a hack to preload images in the 
-* Appearance and Branding preview boxes
-*/
-function preloadImage(aURL) {
-    new Image().src = aURL;
-}
 
 /* About Page */
 

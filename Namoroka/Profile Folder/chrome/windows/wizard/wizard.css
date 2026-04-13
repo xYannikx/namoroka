@@ -1,0 +1,102 @@
+.groove {
+  margin: 0 !important;
+}
+
+#footer {
+  padding: 10px;
+}
+
+.page {
+  background-color: #FFF;
+}
+
+.page-header {
+  height: 54px;
+  justify-content: space-between;
+  align-items: center;
+  background-image: url("chrome://userchrome/content/windows/wizard/images/page-header-bg.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  padding-inline: 12px;
+  padding-block-end: 5px;
+}
+.page-header .page-header-label {
+  font-weight: bold;
+  color: #777;
+  margin: 0;
+}
+.page-header .page-header-icon {
+  width: 32px;
+  height: 32px;
+  list-style-image: url("chrome://userchrome/content/windows/wizard/images/page-header-logo.png");
+}
+
+.page-banner {
+  width: 180px;
+  background-color: #F0F1F1;
+  background-image: url("chrome://userchrome/content/windows/wizard/images/page-banner-gradient.png");
+  background-position: center right;
+  background-repeat: no-repeat;
+  background-size: 5px 100%;
+  justify-content: flex-end;
+  list-style-image: url("chrome://userchrome/content/windows/wizard/images/page-banner-logo.png");
+}
+
+.page-content {
+  padding: 20px 15px;
+}
+.page-content .page-header-text {
+  font-size: 1.75em;
+  margin-block-end: 14px;
+}
+.page-content .page-description {
+  margin: 0;
+  margin-block: 14px;
+}
+
+#footer {
+  justify-content: space-between;
+}
+
+#styleList {
+  appearance: auto !important;
+  -moz-default-appearance: listbox !important;
+  margin: 0 !important;
+}
+#styleList richlistitem {
+  padding-inline: 8px;
+  padding-block: 6px;
+  border-block-end: 1px dotted ThreeDShadow;
+}
+#styleList richlistitem .styleName {
+  font-weight: bold;
+}
+#styleList richlistitem[selected=true]:-moz-window-inactive {
+  background-color: -moz-Dialog;
+  color: -moz-DialogText;
+}
+#styleList richlistitem[selected=true] {
+  background-image: url("chrome://userchrome/content/windows/wizard/images/itemEnabledFader.png");
+  background-color: Highlight;
+  color: HighlightText;
+}
+
+#themePreviewArea {
+  appearance: auto !important;
+  -moz-default-appearance: listbox !important;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 25px;
+  margin-inline-start: 15px;
+}
+
+checkbox {
+  margin: 0;
+  padding: 0;
+  padding-block: 4px;
+}
+checkbox .checkbox-check {
+  margin-inline-end: 2px;
+}
+
+/*# sourceMappingURL=wizard.css.map */

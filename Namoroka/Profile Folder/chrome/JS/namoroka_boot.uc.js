@@ -17,11 +17,14 @@ let NAMOROKA_BOOT_CONFIG = {
 				"Namoroka.Appearance.Aero"
 			],
 		},
+		wizard: true,
 		nativeControls: true,
 	},
 };
 
 {
+	ChromeUtils.importESModule("chrome://modules/content/NamorokaDefaults.sys.mjs").applyDefaults();
+
 	function bootNamoroka(context, config)
 	{
 		if (config?.themes)
@@ -29,6 +32,11 @@ let NAMOROKA_BOOT_CONFIG = {
 			let { NamorokaThemeManager } = ChromeUtils.importESModule("chrome://modules/content/NamorokaThemeManager.sys.mjs");
 			context.g_themeManager = new NamorokaThemeManager;
 			context.g_themeManager.init(context.document.documentElement, config.themes);
+		}
+		if (config?.wizard) {
+			let { openNamorokaWizardDialog } = ChromeUtils.importESModule("chrome://userscripts/content/namoroka_wizard.uc.js");
+			openNamorokaWizardDialog = openNamorokaWizardDialog.bind(context);
+			openNamorokaWizardDialog();
 		}
 		if (config?.nativeControls)
 		{
