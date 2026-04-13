@@ -29,7 +29,7 @@
         "browser/aboutDialog.ftl"
     ];
 
-    let brand = Services.prefs.getStringPref("Namoroka.Option.Branding", "");
+    let brand = Services.prefs.getStringPref("Namoroka.Option.Branding", "firefox");
     if (brand != "")
     {
         let branding = Services.dirsvc.get("UChrm", Ci.nsIFile);
