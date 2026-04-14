@@ -69,15 +69,17 @@ var g_namorokaAutocomplete;
 			return this.richlistbox.selectedIndex;
 		}
 
-		set selectedIndex(val)
-		{
-			this.richlistbox.selectedIndex = val;
-			let item = this.richlistbox.selectedItem || this.richlistbox.firstChild;
-			if (item) {
-				this.richlistbox.ensureElementIsVisible(item);
-			}
-			return val;
-		}
+		   set selectedIndex(val)
+		   {
+			   this.richlistbox.selectedIndex = val;
+			   let item = this.richlistbox.selectedItem || this.richlistbox.firstChild;
+			   if (item) {
+				   this.richlistbox.ensureElementIsVisible(item);
+			   }
+			   // If set by keyboard, clear mouse selection flag
+			   this._mouseSelected = false;
+			   return val;
+		   }
 
 		// =================== Init ===================
 
@@ -388,9 +390,10 @@ var g_namorokaAutocomplete;
 			item.appendChild(urlRow);
 
 			// Event listeners
-			item.addEventListener("mouseover", () => {
-				this.richlistbox.selectedItem = item;
-			});
+			   item.addEventListener("mouseover", () => {
+				   this.richlistbox.selectedItem = item;
+				   this._mouseSelected = true;
+			   });
 
 			item.addEventListener("mousedown", (e) => {
 				e.preventDefault(); // prevent focus loss / blur
@@ -633,7 +636,8 @@ var g_namorokaAutocomplete;
 		{
 			try {
 				let uri = Services.io.newURI(str);
-				return uri.scheme && (uri.scheme.startsWith("http") || uri.scheme === "about" || uri.scheme === "file");
+				   // Accept any scheme, not just http/about/file
+				   return !!uri.scheme;
 			}
 			catch (e) {
 				return false;
@@ -642,10 +646,15 @@ var g_namorokaAutocomplete;
 
 		fixURL(str)
 		{
-			if (str.includes(".") && !str.includes("://")) {
-				return "http://" + str;
-			}
-			return str;
+			   // Only prepend http:// if it looks like a bare hostname (no scheme)
+			   if (/^[a-zA-Z][a-zA-Z0-9+.-]*:/.test(str)) {
+				   // Already has a scheme
+				   return str;
+			   }
+			   if (str.includes(".")) {
+				   return "http://" + str;
+			   }
+			   return str;
 		}
 
 		async navigateToUrl(url)
@@ -713,60 +722,65 @@ var g_namorokaAutocomplete;
 			}
 		}
 
-		_onKeydown(e)
-		{
-			if (!this.mPopupOpen)
-				return;
+		   _onKeydown(e)
+		   {
+			   if (!this.mPopupOpen)
+				   return;
 
-			switch (e.key) {
-				case "Enter":
-					if (this.richlistbox.selectedItem) {
-						e.preventDefault();
-						e.stopPropagation();
-						let url = this.richlistbox.selectedItem.getAttribute("url");
-						if (url) {
-							this.navigateToUrl(url);
-							this.hidePopup();
-						}
-					} else {
-						// No selection — close popup and let the urlbar handle Enter
-						this.hidePopup();
-						this._origHandleKeyNav(e, true);
-					}
-					break;
+			   switch (e.key) {
+				   case "Enter":
+					   // Only navigate if not just mouse-hovered
+					   if (this.richlistbox.selectedItem && !this._mouseSelected) {
+						   e.preventDefault();
+						   e.stopPropagation();
+						   let url = this.richlistbox.selectedItem.getAttribute("url");
+						   if (url) {
+							   this.navigateToUrl(url);
+							   this.hidePopup();
+						   }
+					   } else {
+						   // No selection or only mouse-hovered — close popup and let the urlbar handle Enter
+						   this.hidePopup();
+						   this._origHandleKeyNav(e, true);
+					   }
+					   break;
 
-				case "ArrowDown":
-					e.preventDefault();
-					e.stopPropagation();
-					this.selectBy(false, false);
-					break;
+				   case "ArrowDown":
+					   e.preventDefault();
+					   e.stopPropagation();
+					   this._mouseSelected = false;
+					   this.selectBy(false, false);
+					   break;
 
-				case "ArrowUp":
-					e.preventDefault();
-					e.stopPropagation();
-					this.selectBy(true, false);
-					break;
+				   case "ArrowUp":
+					   e.preventDefault();
+					   e.stopPropagation();
+					   this._mouseSelected = false;
+					   this.selectBy(true, false);
+					   break;
 
-				case "PageDown":
-					e.preventDefault();
-					e.stopPropagation();
-					this.selectBy(false, true);
-					break;
+				   case "PageDown":
+					   e.preventDefault();
+					   e.stopPropagation();
+					   this._mouseSelected = false;
+					   this.selectBy(false, true);
+					   break;
 
-				case "PageUp":
-					e.preventDefault();
-					e.stopPropagation();
-					this.selectBy(true, true);
-					break;
+				   case "PageUp":
+					   e.preventDefault();
+					   e.stopPropagation();
+					   this._mouseSelected = false;
+					   this.selectBy(true, true);
+					   break;
 
-				case "Escape":
-					e.preventDefault();
-					e.stopPropagation();
-					this.hidePopup();
-					this.selectedIndex = -1;
-					break;
-			}
-		}
+				   case "Escape":
+					   e.preventDefault();
+					   e.stopPropagation();
+					   this.hidePopup();
+					   this.selectedIndex = -1;
+					   break;
+			   }
+		   }
 	}
 
 	g_namorokaAutocomplete = new PopupAutoCompleteRichResult;
