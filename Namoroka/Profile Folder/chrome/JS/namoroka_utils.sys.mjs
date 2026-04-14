@@ -219,3 +219,144 @@ export class setAttributes
 		});	
 	}
 }
+
+export class NamorokaInfo
+{
+	static versionTextInfo() {
+		return [
+			{
+				"style": 0,
+				"version": "1.0",
+				"copyright": "2004",
+				"renderingVersion": "1.7.5",
+				"engineBuild": "20041107",
+			},
+			{
+				"style": 1,
+				"version": "2.0",
+				"copyright": "2006",
+				"renderingVersion": "1.8.1",
+				"engineBuild": "20061010",
+			},
+			{
+				"style": 2,
+				"version": "3.0",
+				"copyright": "2008",
+				"renderingVersion": "1.9",
+				"engineBuild": "2008052906",
+			},
+		]
+	}
+
+	static userAgentSpoof() {
+		return [
+			{
+				"name": "win95",
+				"platform": "win",
+				"version": "4.00"
+			},
+			{
+				"name": "win98",
+				"platform": "win",
+				"version": "4.10"
+			},
+			{
+				"name": "win2000",
+				"platform": "winnt",
+				"version": "5.0"
+			},
+			{
+				"name": "winxp",
+				"platform": "winnt",
+				"version": "5.1"
+			},
+			{
+				"name": "winsrv2003",
+				"platform": "winnt",
+				"version": "5.2"
+			},
+			{
+				"name": "winvista",
+				"platform": "winnt",
+				"version": "6.0"
+			},
+			{
+				"name": "win7",
+				"platform": "winnt",
+				"version": "6.1"
+			},
+		]
+	}
+
+	static populateUserAgentString()
+	{
+		let aboutDialogBundle =  Services.strings.createBundle("chrome://namoroka/locale/properties/aboutDialog.properties");
+
+		// Mozilla/5.0 (Windows; U; Windows NT 6.2; en-US; rv:1.8.1) Gecko/20061010 Firefox/2.0
+		var style = Services.prefs.getIntPref("Namoroka.Appearance.Style");
+		var spoof = Services.prefs.getCharPref("Namoroka.About.UserAgentSpoof");
+		let info = this.versionTextInfo()[style];
+
+		var userAgentString;
+
+		var platformVersion;
+		var spoofId;
+
+		switch (spoof) {
+			case "win95":
+				spoofId = 0;
+				break;
+			case "win98":
+				spoofId = 1;
+				break;
+			case "win2000":
+				spoofId = 2;
+				break;
+			case "winxp":
+				spoofId = 3;
+				break;
+			case "winsrv2003":
+				spoofId = 4;
+				break;
+			case "winvista":
+				spoofId = 5;
+				break;
+			case "win7":
+				spoofId = 6;
+				break;
+			default: 
+				userAgentString = Cc["@mozilla.org/network/protocol;1?name=http"]
+									.getService(Ci.nsIHttpProtocolHandler)
+									.userAgent;
+				return userAgentString;
+		}
+
+		var platform = this.userAgentSpoof()[spoofId].platform;
+
+		if (platform == "winnt") {
+			platformVersion = aboutDialogBundle.formatStringFromName("useragent_platform_windows_nt", [this.userAgentSpoof()[spoofId].version]);
+		}
+		else if (platform == "win") {
+			let platformName = this.userAgentSpoof()[spoofId].name;
+
+			if (platformName == "win95") {
+				platformVersion = aboutDialogBundle.GetStringFromName("useragent_platform_windows_95");
+			}
+			else if (platformName == "win98") {
+				platformVersion = aboutDialogBundle.GetStringFromName("useragent_platform_windows_98");
+			}
+		}
+
+		let userAgentTable = {
+			"locale": Services.locale.appLocaleAsBCP47,
+			"renderingVersion": info?.renderingVersion,
+			"engineBuild": info?.engineBuild,
+			"version": info?.version,
+			"browserName": BrandUtils.getBrandingKey("brandShortName")
+		}
+
+		userAgentString = `Mozilla/5.0 (${aboutDialogBundle.GetStringFromName("useragent_platform_windows")}; U; ${platformVersion}; ${userAgentTable.locale}; rv:${userAgentTable.renderingVersion}) Gecko/${userAgentTable.engineBuild} ${userAgentTable.browserName}/${userAgentTable.version}`;
+
+		return userAgentString;
+	}
+}

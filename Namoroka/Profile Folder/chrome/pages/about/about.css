@@ -1,0 +1,84 @@
+:root:not([namoroka-style-1]) {
+    img {
+        border: 0;
+    }
+
+    p {
+        font-size: smaller;
+    }
+
+    h1 {
+        margin: 0;
+    }
+
+    :link {
+        color: #00e;
+    }
+
+    :visited {
+        color: #551a8b;
+    }
+
+    :link:active,
+    :visited:active {
+        color: #f00;
+    }
+
+    #mozinfo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+:root[namoroka-style-1] {
+    & {
+        background: -moz-Dialog;
+    }
+
+    body {
+        margin: 0;
+        padding: 0 1em;
+        color: -moz-FieldText;
+        font: message-box;
+    }
+
+    #aboutPageContainer {
+        position: relative;
+        min-width: 330px;
+        max-width: 50em;
+        margin: 4em auto;
+        border: 1px solid ThreeDShadow;
+        border-radius: 10px;
+        padding: 3em;
+        padding-inline-start: 30px;
+        background: -moz-Field;
+    }
+
+    #aboutLogoContainer {
+        border: 1px solid ThreeDLightShadow;
+        width: 300px;
+        margin-bottom: 2em;
+    }
+
+    img {
+        border: 0;
+    }
+
+    #version {
+        font-weight: bold;
+        color: #909090;
+        margin: -24px 0 9px 17px;
+    }
+
+    ul {
+        margin: 0;
+        margin-inline-start: 1.5em;
+        padding: 0;
+        list-style: square;
+    }
+
+    ul>li {
+        margin-top: .5em;
+    }
+}
