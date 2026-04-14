@@ -15,7 +15,8 @@ g_themeManager.init(
     {
         style: true,
         bools: [
-            "Namoroka.Option.Debug"
+            "Namoroka.Appearance.Aero",
+            "Namoroka.Option.Debug",
         ]
     }
 );

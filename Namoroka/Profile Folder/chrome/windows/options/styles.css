@@ -111,6 +111,12 @@ checkbox[disabled=true] {
 :root[namoroka-style-1=true] .tab .tab-icon {
   background-image: url("chrome://userchrome/content/windows/options/images/Options-ff2.png");
 }
+:root[namoroka-style-2=true] .tab .tab-icon {
+  background-image: url("chrome://userchrome/content/windows/options/images/Options-ff3.png");
+}
+:root[namoroka-style-2=true][namoroka-appearance-aero=true] .tab .tab-icon {
+  background-image: url("chrome://userchrome/content/windows/options/images/Options-ff3-aero.png");
+}
 .tab .tab-label {
   margin-block-start: 1px;
   line-height: 1;

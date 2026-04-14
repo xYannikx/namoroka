@@ -128,6 +128,14 @@ checkbox {
         :root[namoroka-style-1="true"] & {
             background-image: url("chrome://userchrome/content/windows/options/images/Options-ff2.png");
         }
+
+        :root[namoroka-style-2="true"] & {
+            background-image: url("chrome://userchrome/content/windows/options/images/Options-ff3.png");
+        }
+        
+        :root[namoroka-style-2="true"][namoroka-appearance-aero="true"] & {
+            background-image: url("chrome://userchrome/content/windows/options/images/Options-ff3-aero.png");
+        }
     }
 
     .tab-label {
