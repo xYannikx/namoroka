@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name			Namoroka :: URLBARVIEW
+// @name			Namoroka :: Search Autocomplete
 // @description 	Firefox 3 PopupAutoCompleteRichResult for modern Firefox
 // @author			travy-patty
 // @github          https://github.com/travy-patty
