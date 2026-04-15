@@ -955,6 +955,11 @@ statusbarpanel {
   border: none !important;
 }
 
+#statusbar-display {
+  align-items: center !important;
+  appearance: none !important;
+}
+
 #statusbar-icon {
   appearance: auto !important;
   -moz-default-appearance: progressbar !important;
@@ -1355,7 +1360,7 @@ toolbarpaletteitem > #search-container > #searchbar > .searchbar-textbox {
   list-style-image: none !important;
 }
 :root[namoroka-style-1] {
-  --tab-min-height: 22px !important;
+  --tab-min-height: 24px !important;
   --inline-tab-padding: 8px !important;
   --page-icon: url("chrome://namoroka/content/firefox-2/icons/page.png") !important;
   --page-invalid-icon: var(--page-icon) !important;
@@ -1916,7 +1921,7 @@ toolbarpaletteitem > #search-container > #searchbar > .searchbar-textbox {
   background-position-y: -48px !important;
 }
 :root[namoroka-style-2] {
-  --tab-min-height: 21px !important;
+  --tab-min-height: 24px !important;
   --page-icon: url("chrome://namoroka/content/firefox-3/icons/page.png") !important;
   --page-invalid-icon: url("chrome://namoroka/content/firefox-3/icons/page-invalid.png") !important;
 }
