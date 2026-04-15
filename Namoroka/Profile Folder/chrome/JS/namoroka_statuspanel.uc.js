@@ -33,7 +33,7 @@
         } catch (e) {
             // If something goes wrong (e.g. host is an IP address) just fail back
             // to the full domain.
-            return this._uri.host;
+            return this._uri.host || "";
         }
     }
 

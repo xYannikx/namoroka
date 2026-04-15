@@ -4,6 +4,7 @@
 // @author			 travy-patty
 // @github           https://github.com/travy-patty
 // @include			 main
+// @backgroundmodule
 // ==/UserScript==
 
 var { PrefCalls } = ChromeUtils.importESModule("chrome://userscripts/content/namoroka_utils.sys.mjs");
