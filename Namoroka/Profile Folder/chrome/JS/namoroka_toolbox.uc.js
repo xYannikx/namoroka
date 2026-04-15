@@ -59,7 +59,31 @@ var g_NamorokaToolbox;
 
                 e.remove();
             });
+
+            initURLBarWidth();
         }
+
+        initURLBarWidth()
+		{
+			let toolbar = gURLBar.textbox.closest("toolbar");
+
+			if (toolbar) {
+				let urlbar = gURLBar.textbox;
+
+				// Check if URLBar isn't a XUL element
+				if (urlbar.nodeName != "hbox") {
+					let _resizeObserver = new ResizeObserver(([entry]) => {
+						gURLBar.textbox.style.setProperty(
+							"--urlbar-width",
+							(entry.borderBoxSize[0].inlineSize) + "px"
+						);
+					});
+
+					// Observer the sizing of the custom element.
+					_resizeObserver.observe(urlbar);
+				}
+			}
+		}
     }
 
     g_NamorokaToolbox = new NamorokaToolboxManager;

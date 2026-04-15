@@ -50,10 +50,7 @@ image.default-favicon {
         top: calc((var(--urlbar-container-height) - var(--urlbar-height)) / 2) !important;
         --urlbar-height: var(--urlbar-root-height) !important;
 
-        &[breakout] {
-            width: 100% !important;
-            left: 0 !important;
-        }
+
         
         :root:not([namoroka-style-2]) & #page-proxy-stack {
             visibility: collapse !important;

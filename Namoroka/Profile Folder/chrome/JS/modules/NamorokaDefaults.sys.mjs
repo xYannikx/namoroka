@@ -30,7 +30,6 @@ const COMMON_DEFAULTS = {
 // Fork-specific overrides — keys match Services.appinfo.name
 const FORK_DEFAULTS = {
     "Nocturne": {
-        "nocturne.ui.oldurlbar": true,
         "nocturne.backgrounds.enabled": false,
         "security.csp.enable": false, // @TODO: REMOVE WHEN WE REMOVE ONEVENT ATTRIBUTES
         "security.sandbox.content.level": 7,
@@ -54,7 +53,7 @@ export function applyDefaults() {
     let forkDefaults = FORK_DEFAULTS[appName];
     if (forkDefaults) {
         for (let [pref, value] of Object.entries(forkDefaults)) {
-            PrefCalls.setPref(pref, value);
+            PrefCalls.defaultPref(pref, value);
         }
     }
 
