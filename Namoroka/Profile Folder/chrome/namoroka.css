@@ -943,11 +943,7 @@ panel[type=autocomplete-richlistbox],
   visibility: collapse !important;
 }
 
-#statusbar-display {
-  align-items: center !important;
-}
-
-#statusbar-progresspanel {
+statusbarpanel {
   appearance: statusbarpanel !important;
   -moz-default-appearance: statusbarpanel !important;
   border-left: 1px solid ThreeDHighlight !important;
@@ -995,6 +991,24 @@ panel[type=autocomplete-richlistbox],
 
 .statusbarpanel-iconic, .statusbarpanel-iconic-text, .statusbarpanel-menu-iconic {
   padding: 0px 1px 0px 1px !important;
+}
+
+#security-button {
+  min-width: 20px !important;
+  display: none !important;
+  flex-direction: row-reverse !important;
+  align-items: center !important;
+}
+#security-button[level=high] {
+  display: flex !important;
+}
+#security-button[level=high] .statusbarpanel-icon {
+  width: 16px !important;
+  height: 16px !important;
+  background-image: var(--secure-icon) !important;
+}
+#security-button > label:not([value]) {
+  display: none !important;
 }
 
 @namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");

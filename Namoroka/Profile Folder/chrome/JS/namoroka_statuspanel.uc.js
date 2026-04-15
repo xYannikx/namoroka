@@ -13,6 +13,67 @@
     let menusBundle = "chrome://namoroka/locale/properties/menus.properties";
     let statusPanelBundle = "chrome://namoroka/locale/properties/status.properties";
 
+    gIdentityHandler.getEffectiveHost = function _getEffectiveHost() {
+        if (!this._eTLDService) {
+            this._eTLDService = Cc["@mozilla.org/network/effective-tld-service;1"].getService(
+                Ci.nsIEffectiveTLDService
+            );
+        }
+
+        if (!this._IDNService) {
+            this._IDNService = Cc["@mozilla.org/network/idn-service;1"].getService(
+                Ci.nsIIDNService
+            );
+        }
+
+        try {
+            let baseDomain =
+                this._eTLDService.getBaseDomainFromHost(this._uri.host);
+            return this._IDNService.convertToDisplayIDN(baseDomain, {});
+        } catch (e) {
+            // If something goes wrong (e.g. host is an IP address) just fail back
+            // to the full domain.
+            return this._uri.host;
+        }
+    }
+
+	gIdentityHandler.refreshIdentityBlock = function refreshIdentityBlock() {
+		if (!this._identityBox) {
+			return;
+		}
+
+		
+		this._refreshIdentityIcons();
+
+		// If this condition is true, the URL bar will have an "invalid"
+		// pageproxystate, so we should hide the permission icons.
+		if (this._hasInvalidPageProxyState()) {
+			gPermissionPanel.hidePermissionIcons();
+		} else {
+			gPermissionPanel.refreshPermissionIcons();
+		}
+
+		if (this._isSecureContext && !this._isSecureInternalUI) {
+			document.querySelector("#status-bar #security-button").setAttribute("level", "high");
+		}
+		else {
+			document.querySelector("#status-bar #security-button").removeAttribute("level");
+		}
+
+        if (this._isSecureContext && !this._isSecureInternalUI && this.getEffectiveHost()) {
+            document.querySelector("#status-bar #security-button .statusbarpanel-text").setAttribute("value", this.getEffectiveHost());
+		}
+		else {
+            document.querySelector("#status-bar #security-button .statusbarpanel-text").removeAttribute("value");
+		}
+
+		// Hide the shield icon if it is a chrome page.
+		gProtectionsHandler._trackingProtectionIconContainer.classList.toggle(
+			"chromeUI",
+			this._isSecureInternalUI
+		);
+	}
+
     var NamorokaStatusPanel = {
         _fragment: null,
 
@@ -24,8 +85,12 @@
                             <statusbarpanel id="statusbar-display" flex="1">
                                 <label class="statusbarpanel-text" crop="right" flex="1" />
                             </statusbarpanel>
-                            <statusbarpanel class="statusbarpanel-progress" id="statusbar-progresspanel">
-                                <html:progress class="progressmeter-statusbar" id="statusbar-icon" max="100" value="0" collapsed="true" />
+                            <statusbarpanel class="statusbarpanel-progress" id="statusbar-progresspanel" collapsed="true">
+                                <html:progress class="progressmeter-statusbar" id="statusbar-icon" max="100" value="0" />
+                            </statusbarpanel>   
+                            <statusbarpanel id="security-button" class="statusbarpanel-iconic-text">
+                                <image class="statusbarpanel-icon" />
+                                <label class="statusbarpanel-text" />
                             </statusbarpanel>
                             <statusbarpanel class="statusbar-resizerpanel">
                                 <html:div class="statusbar-resizer" />
@@ -114,11 +179,11 @@
                             window.clearTimeout(self._progressCollapseTimer);
                             self._progressCollapseTimer = null;
                         } else {
-							self._progressMeter.removeAttribute("collapsed");
+							self._progressPanel.collapsed = false;
                         }
                     } else if (aStateFlags & nsIWPL.STATE_STOP && aStateFlags & nsIWPL.STATE_IS_NETWORK) {
                         self._progressCollapseTimer = window.setTimeout(() => {
-							self._progressMeter.setAttribute("collapsed", "true");
+                            self._progressPanel.collapsed = true;
                             self._progressCollapseTimer = null;
                         }, 100);
                     }

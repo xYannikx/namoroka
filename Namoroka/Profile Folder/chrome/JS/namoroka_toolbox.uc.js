@@ -25,10 +25,14 @@ var g_NamorokaToolbox;
 
             let closeButton = window.MozXULElement.parseXULToFragment(`
                 <hbox class="tabs-closebutton-box" align="center" pack="end">
-                    <toolbarbutton class="tabs-closebutton close-icon" onclick="gBrowser.removeCurrentTab();">
+                    <toolbarbutton id="tabs-closebutton" class="tabs-closebutton close-icon">
                     </toolbarbutton>
                 </hbox>
-            `);
+            `).firstChild;
+
+            closeButton.querySelector("#tabs-closebutton").addEventListener("click", (e) => {
+                gBrowser.removeCurrentTab();
+            });
 
             tabsToolbar.querySelector("#TabsToolbar-customization-target").appendChild(closeButton);
 
