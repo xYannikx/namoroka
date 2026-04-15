@@ -60,7 +60,7 @@ export function applyDefaults() {
     let channelDefaults = CHANNEL_DEFAULTS[channel];
     if (channelDefaults) {
         for (let [pref, value] of Object.entries(channelDefaults)) {
-            PrefCalls.setPref(pref, value);
+            PrefCalls.defaultPref(pref, value);
         }
     }
 }
