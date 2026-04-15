@@ -1,0 +1,36 @@
+/* commonDialog icons */
+.message-icon {
+    list-style-image: url("chrome://namoroka/content/firefox-3/icons/information-32.png") !important;
+}
+
+.alert-dialog #infoIcon,
+.alert-icon {
+    list-style-image: url("chrome://namoroka/content/firefox-3/icons/Warning.png") !important;
+}
+
+.error-icon {
+    list-style-image: url("chrome://namoroka/content/firefox-3/icons/Error.png") !important;
+}
+
+.question-icon {
+    list-style-image: url("chrome://namoroka/content/firefox-3/icons/Question.png") !important;
+}
+
+&[namoroka-appearance-aero="true"] {
+    .message-icon {
+        list-style-image: url("chrome://namoroka/content/firefox-3/vista/icons/information-32.png") !important;
+    }
+
+    .alert-dialog #infoIcon,
+    .alert-icon {
+        list-style-image: url("chrome://namoroka/content/firefox-3/vista/icons/Warning.png") !important;
+    }
+
+    .error-icon {
+        list-style-image: url("chrome://namoroka/content/firefox-3/vista/icons/Error.png") !important;
+    }
+
+    .question-icon {
+        list-style-image: url("chrome://namoroka/content/firefox-3/vista/icons/Question.png") !important;
+    }
+}

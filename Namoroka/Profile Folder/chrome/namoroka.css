@@ -1770,6 +1770,9 @@ toolbarpaletteitem > #search-container > #searchbar > .searchbar-textbox {
 
 /* ::::: Firefox 3 ::::: */
 :root[namoroka-style-2] {
+  /* commonDialog icons */
+}
+:root[namoroka-style-2] {
   --toolbar-spritesheet: url("chrome://namoroka/content/firefox-3/Toolbar.png");
 }
 :root[namoroka-style-2][namoroka-appearance-small-icons=true] {
@@ -2374,6 +2377,32 @@ toolbarpaletteitem > #search-container > #searchbar > .searchbar-textbox {
   width: 16px !important;
   height: 16px !important;
   margin: 0 !important;
+}
+:root[namoroka-style-2] .message-icon {
+  list-style-image: url("chrome://namoroka/content/firefox-3/icons/information-32.png") !important;
+}
+:root[namoroka-style-2] .alert-dialog #infoIcon,
+:root[namoroka-style-2] .alert-icon {
+  list-style-image: url("chrome://namoroka/content/firefox-3/icons/Warning.png") !important;
+}
+:root[namoroka-style-2] .error-icon {
+  list-style-image: url("chrome://namoroka/content/firefox-3/icons/Error.png") !important;
+}
+:root[namoroka-style-2] .question-icon {
+  list-style-image: url("chrome://namoroka/content/firefox-3/icons/Question.png") !important;
+}
+:root[namoroka-style-2][namoroka-appearance-aero=true] .message-icon {
+  list-style-image: url("chrome://namoroka/content/firefox-3/vista/icons/information-32.png") !important;
+}
+:root[namoroka-style-2][namoroka-appearance-aero=true] .alert-dialog #infoIcon,
+:root[namoroka-style-2][namoroka-appearance-aero=true] .alert-icon {
+  list-style-image: url("chrome://namoroka/content/firefox-3/vista/icons/Warning.png") !important;
+}
+:root[namoroka-style-2][namoroka-appearance-aero=true] .error-icon {
+  list-style-image: url("chrome://namoroka/content/firefox-3/vista/icons/Error.png") !important;
+}
+:root[namoroka-style-2][namoroka-appearance-aero=true] .question-icon {
+  list-style-image: url("chrome://namoroka/content/firefox-3/vista/icons/Question.png") !important;
 }
 
 /*# sourceMappingURL=namoroka.css.map */
