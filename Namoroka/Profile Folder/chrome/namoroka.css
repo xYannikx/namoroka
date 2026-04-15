@@ -332,6 +332,29 @@ toolbarseparator {
   padding: 0 !important;
 }
 
+#mozGlassHandler {
+  width: 100% !important;
+  height: 100% !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  pointer-events: none !important;
+  z-index: -1 !important;
+}
+
+@media (-moz-windows-compositor) {
+  :root {
+    -moz-default-appearance: -moz-win-glass !important;
+  }
+  #mozGlassHandler {
+    -moz-default-appearance: -moz-win-exclude-glass !important;
+    appearance: -moz-win-exclude-glass !important;
+    background-color: -moz-Dialog !important;
+  }
+  #tabbrowser-tabbox {
+    appearance: none !important;
+  }
+}
 :root {
   --tab-min-height: 0 !important;
   --inline-tab-padding: 0 !important;

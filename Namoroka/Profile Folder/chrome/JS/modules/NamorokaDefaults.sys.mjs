@@ -32,7 +32,6 @@ const FORK_DEFAULTS = {
     "Nocturne": {
         "nocturne.backgrounds.enabled": false,
         "security.sandbox.content.level": 7,
-        "widget.native-controls.force-dwm-report-off": true
     },
 };
 

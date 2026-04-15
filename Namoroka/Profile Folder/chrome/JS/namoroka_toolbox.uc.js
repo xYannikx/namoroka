@@ -60,7 +60,17 @@ var g_NamorokaToolbox;
                 e.remove();
             });
 
-            initURLBarWidth();
+            this.initURLBarWidth();
+
+            this.renderMozWinGlassElem();
+        }
+
+        renderMozWinGlassElem()
+        {
+            let glassElem = document.createXULElement("box");
+            glassElem.id = "mozGlassHandler";
+
+            document.documentElement.append(glassElem);
         }
 
         initURLBarWidth()
