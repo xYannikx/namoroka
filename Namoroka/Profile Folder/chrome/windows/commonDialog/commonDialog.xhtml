@@ -3,22 +3,25 @@
 <!-- THIS IS A MODIFIED DIALOG! It is literally impossible to inject
      scripts into this fucker, so we need to override it. See
      /utils/chrome.manifest. -->
-
+     
 <!-- This Source Code Form is subject to the terms of the Mozilla Public
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 
-<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
-<?xml-stylesheet href="chrome://global/content/commonDialog.css" type="text/css"?>
-<?xml-stylesheet href="chrome://global/skin/commonDialog.css" type="text/css"?>
+<?csp default-src chrome:; img-src moz-icon: chrome:; style-src chrome:
+'unsafe-inline'; ?>
 
 <!DOCTYPE window>
 
 <window id="commonDialogWindow" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
     xmlns:html="http://www.w3.org/1999/xhtml" xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-    aria-describedby="infoBody" headerparent="dialogGrid" onunload="commonDialogOnUnload();">
+    aria-describedby="infoBody" headerparent="dialogGrid">
     <dialog id="commonDialog" buttonpack="center">
         <linkset>
+            <html:link rel="stylesheet" href="chrome://global/skin/global.css" />
+            <html:link rel="stylesheet" href="chrome://global/content/commonDialog.css" />
+            <html:link rel="stylesheet" href="chrome://global/skin/commonDialog.css" />
+
             <html:link rel="localization" href="branding/brand.ftl" />
             <html:link rel="localization" href="toolkit/global/commonDialog.ftl" />
         </linkset>
@@ -27,12 +30,6 @@
         <script src="chrome://global/content/globalOverlay.js" />
         <script src="chrome://global/content/editMenuOverlay.js" />
         <script src="chrome://global/content/customElements.js" />
-        <script>
-            /* eslint-disable no-undef */
-            document.addEventListener("DOMContentLoaded", function () {
-                commonDialogOnLoad();
-            });
-        </script>
 
         <script>
             const { NamorokaThemeManager } = ChromeUtils.importESModule("chrome://modules/content/NamorokaThemeManager.sys.mjs");
@@ -44,12 +41,12 @@
         </script>
 
         <commandset id="selectEditMenuItems">
-            <command id="cmd_copy" oncommand="goDoCommand('cmd_copy')" disabled="true" />
-            <command id="cmd_selectAll" oncommand="goDoCommand('cmd_selectAll')" />
+            <command id="cmd_copy" disabled="true" />
+            <command id="cmd_selectAll" />
         </commandset>
 
         <popupset id="contentAreaContextSet">
-            <menupopup id="contentAreaContextMenu" onpopupshowing="goUpdateCommand('cmd_copy')">
+            <menupopup id="contentAreaContextMenu">
                 <menuitem id="context-copy" data-l10n-id="common-dialog-copy-cmd" command="cmd_copy" disabled="true" />
                 <menuitem id="context-selectall" data-l10n-id="common-dialog-select-all-cmd" command="cmd_selectAll" />
             </menupopup>
@@ -76,7 +73,7 @@
             <div id="checkboxContainer" class="dialogRow" hidden="hidden">
                 <div />
                 <!-- spacer -->
-                <xul:checkbox id="checkbox" native="" oncommand="Dialog.onCheckbox()" />
+                <xul:checkbox id="checkbox" />
             </div>
         </div>
     </dialog>
