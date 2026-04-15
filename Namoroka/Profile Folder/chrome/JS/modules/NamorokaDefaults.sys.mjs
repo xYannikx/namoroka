@@ -31,7 +31,6 @@ const COMMON_DEFAULTS = {
 const FORK_DEFAULTS = {
     "Nocturne": {
         "nocturne.backgrounds.enabled": false,
-        "security.csp.enable": false, // @TODO: REMOVE WHEN WE REMOVE ONEVENT ATTRIBUTES
         "security.sandbox.content.level": 7,
         "widget.native-controls.force-dwm-report-off": true
     },
