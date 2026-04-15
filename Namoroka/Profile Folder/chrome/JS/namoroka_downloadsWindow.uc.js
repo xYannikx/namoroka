@@ -76,7 +76,6 @@ let NAMOROKA_DOWNLOADS_CSS_URI = Services.io.newURI(
                     <hbox id="autoDownloadInfo" align="center" flex="1">
                         <label>${LocaleUtils.str(downloadsBundle, "auto_download_info_label")}</label>
                         <toolbarbutton id="saveToFolder"
-                                       oncommand="g_namorokaDownloadsWindow._onDownloadShowFolder();" 
                                        tooltiptext="${LocaleUtils.str(downloadsBundle, "save_to_folder_tooltiptext")}"
                                        crop="left" 
                                        flex="1" />
@@ -91,6 +90,10 @@ let NAMOROKA_DOWNLOADS_CSS_URI = Services.io.newURI(
                     
                 </hbox>
             `).firstChild;
+
+            fragment.querySelector("#saveToFolder").addEventListener("command", (e) => {
+                g_namorokaDownloadsWindow._onDownloadShowFolder();
+            });
             
             if (windowURL == "chrome://browser/content/places/places.xhtml") {
                 let currentView = ContentArea.currentView._richlistbox.getAttribute("id");
