@@ -9,42 +9,63 @@
 // @backgroundmodule
 // ==/UserScript==
 
-export function renderElement(nodeName, attrMap = {}, childrenArr = [])
-{
-	let namespace = "html";
-	let nodeNameParts = nodeName.split(":");
-	let name = nodeName;
-	
-	if (nodeNameParts.length > 1)
+export function renderElement(nodeName, attrMap = {}, childrenArr = []) {
+    let prefix = null;
+    let localName = nodeName;
+
+    if (nodeName.includes(":")) 
 	{
-		namespace = nodeNameParts[0];
-		name = nodeNameParts[1];
-	}
-	
-	let element = null;
-	switch (namespace)
+        [prefix, localName] = nodeName.split(":");
+    }
+
+    let namespaceURI;
+
+    if (prefix) 
 	{
-		case "html":
-			element = this.document.createElement(name);
-			break;
-		case "xul":
-			element = this.document.createXULElement(name);
-			break;
-		default:
-			throw new Error(`Invalid element namespace for ${namespace}:${name}`);
-	}
-	
-	for (var key in attrMap)
+        namespaceURI = this.document.documentElement.lookupNamespaceURI(prefix);
+
+        if (!namespaceURI) 
+		{
+            throw new Error(`Unknown namespace prefix: ${prefix}`);
+        }
+    } else {
+        namespaceURI = this.document.documentElement.lookupNamespaceURI(null) || "http://www.w3.org/1999/xhtml";
+    }
+
+    const element = this.document.createElementNS(namespaceURI, nodeName);
+
+    for (let key in attrMap) 
 	{
-		element.setAttribute(key, attrMap[key]);
-	}
-	
-	for (var i = 0, j = childrenArr.length; i < j; i++)
-	{
-		element.appendChild(childrenArr[i]);
-	}
-	
-	return element;
+        if (key.includes(":")) 
+		{
+            const [attrPrefix, attrName] = key.split(":");
+            const attrNS = this.document.documentElement.lookupNamespaceURI(attrPrefix);
+
+            if (!attrNS) {
+                throw new Error(`Unknown attribute namespace: ${attrPrefix}`);
+            }
+
+            element.setAttributeNS(attrNS, key, attrMap[key]);
+        } 
+		else {
+            element.setAttribute(key, attrMap[key]);
+        }
+    }
+
+    for (let i = 0; i < childrenArr.length; i++) {
+        const child = childrenArr[i];
+
+        if (typeof child == "string") 
+		{
+            element.appendChild(this.document.createTextNode(child));
+        } 
+		else 
+		{
+            element.appendChild(child);
+        }
+    }
+
+    return element;
 }
 
 export async function waitForElement(query, parent = this.document, timeout = -1)
@@ -53,7 +74,7 @@ export async function waitForElement(query, parent = this.document, timeout = -1
 	
 	while (parent.querySelector(query) == null)
 	{
-		if (timeout > -1 && Date.now > startTime + timeout)
+		if (timeout > -1 && Date.now() > startTime + timeout)
 		{
 			return null;
 		}
@@ -185,6 +206,7 @@ export class BrandUtils
 
 export class LocaleUtils
 {
+	
 	static str(bundle, l10nId, ...extra)
     {
         try
@@ -200,7 +222,22 @@ export class LocaleUtils
         }
         catch (e)
         {
-            return "<" + l10nId + ">";
+			try {
+				let stringBundle = Services.strings.createBundle(`chrome://userchrome/content/locale/en-US/properties/${bundle.split("/").pop()}`);
+
+				if (arguments.length > 2)
+				{
+					return Services.strings.createBundle(stringBundle).formatStringFromName(l10nId, extra);
+				}
+				else
+				{
+					return Services.strings.createBundle(stringBundle).GetStringFromName(l10nId);
+				}
+			}
+			catch (e)
+			{
+				return "<" + l10nId + ">";
+			}
         }
     }
 }
@@ -294,10 +331,10 @@ export class NamorokaInfo
 
 		// Mozilla/5.0 (Windows; U; Windows NT 6.2; en-US; rv:1.8.1) Gecko/20061010 Firefox/2.0
 		var style = Services.prefs.getIntPref("Namoroka.Appearance.Style");
-		var spoof = Services.prefs.getCharPref("Namoroka.About.UserAgentSpoof");
-		let info = this.versionTextInfo()[style];
 
-		var userAgentString;
+		var spoof = Services.prefs.getCharPref("Namoroka.About.UserAgentSpoof", Cc["@mozilla.org/network/protocol;1?name=http"].getService(Ci.nsIHttpProtocolHandler).userAgent);
+
+		let info = this.versionTextInfo()[style];
 
 		var platformVersion;
 		var spoofId;
@@ -324,11 +361,8 @@ export class NamorokaInfo
 			case "win7":
 				spoofId = 6;
 				break;
-			default: 
-				userAgentString = Cc["@mozilla.org/network/protocol;1?name=http"]
-									.getService(Ci.nsIHttpProtocolHandler)
-									.userAgent;
-				return userAgentString;
+			default:
+				return spoof;
 		}
 
 		var platform = this.userAgentSpoof()[spoofId].platform;
@@ -355,7 +389,7 @@ export class NamorokaInfo
 			"browserName": BrandUtils.getBrandingKey("brandShortName")
 		}
 
-		userAgentString = `Mozilla/5.0 (${aboutDialogBundle.GetStringFromName("useragent_platform_windows")}; U; ${platformVersion}; ${userAgentTable.locale}; rv:${userAgentTable.renderingVersion}) Gecko/${userAgentTable.engineBuild} ${userAgentTable.browserName}/${userAgentTable.version}`;
+		var userAgentString = `Mozilla/5.0 (${aboutDialogBundle.GetStringFromName("useragent_platform_windows")}; U; ${platformVersion}; ${userAgentTable.locale}; rv:${userAgentTable.renderingVersion}) Gecko/${userAgentTable.engineBuild} ${userAgentTable.browserName}/${userAgentTable.version}`;
 
 		return userAgentString;
 	}
