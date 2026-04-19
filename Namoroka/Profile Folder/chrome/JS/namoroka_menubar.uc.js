@@ -114,8 +114,7 @@ var g_namorokaMenubar;
         //     this.rendered = true;
         // }
 
-        async _update()
-        {
+        async init() {
             await new Promise(resolve => {
                 let delayedStartupObserver = (aSubject, aTopic, aData) => {
                     if (aSubject == window) {
@@ -126,6 +125,11 @@ var g_namorokaMenubar;
                 Services.obs.addObserver(delayedStartupObserver, "browser-delayed-startup-finished");
             });
 
+            this._update();
+        }
+
+        async _update()
+        {
             var label;
             var accessKey;
 
@@ -149,19 +153,10 @@ var g_namorokaMenubar;
     }
 
     g_namorokaMenubar = new NamorokaMenubar;
-    g_namorokaMenubar._update();
-    // g_namorokaMenubar.renderMenuItems();
+    g_namorokaMenubar.init();
 }
 
 document.addEventListener(
     "namoroka-appearance-change",
-    g_namorokaMenubar._update
+    g_namorokaMenubar._update.bind(this)
 );
-
-document.addEventListener(
-    "namoroka-appearance-change",
-    g_namorokaMenubar._update
-)
-
-// window.buildHelpMenu = function () {};
-// gFileMenu = {};
