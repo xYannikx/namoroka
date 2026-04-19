@@ -34,7 +34,7 @@ let NAMOROKA_BOOT_CONFIG = {
 			context.g_themeManager.init(context.document.documentElement, config.themes);
 		}
 		if (config?.wizard) {
-			let { openNamorokaWizardDialog } = ChromeUtils.importESModule("chrome://userscripts/content/namoroka_wizard.uc.js");
+			let { openNamorokaWizardDialog } = ChromeUtils.importESModule("chrome://userscripts/content/namoroka_wizard.sys.mjs");
 			openNamorokaWizardDialog = openNamorokaWizardDialog.bind(context);
 			openNamorokaWizardDialog();
 		}
