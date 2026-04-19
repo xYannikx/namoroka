@@ -16,11 +16,7 @@ export class NamorokaThemeManager
 			throw new Error("Root not specified");
 		}
 
-		this.prefs = config?.prefs;
-		if (!config?.prefs || !Array.isArray(config?.prefs) || config?.prefs.length <= 0)
-		{
-			throw new Error("Prefs not specified or is not array");
-		}
+		this.prefs = Array.isArray(config?.prefs) ? config.prefs : [];
 
 		for (const pref of this.prefs)
 		{
