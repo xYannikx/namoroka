@@ -33,8 +33,7 @@
 
         <script>
             const { NamorokaThemeManager } = ChromeUtils.importESModule("chrome://modules/content/NamorokaThemeManager.sys.mjs");
-            let g_themeManager = new NamorokaThemeManager;
-            g_themeManager.init(
+            let g_themeManager = new NamorokaThemeManager(
                 document.documentElement,
                 { style: true, prefs: [ "Namoroka.Appearance.Aero"] }
             );

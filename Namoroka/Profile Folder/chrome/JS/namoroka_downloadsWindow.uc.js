@@ -99,8 +99,7 @@ let NAMOROKA_DOWNLOADS_CSS_URI = Services.io.newURI(
                 let currentView = ContentArea.currentView._richlistbox.getAttribute("id");
 
 			    let { NamorokaThemeManager } = ChromeUtils.importESModule("chrome://modules/content/NamorokaThemeManager.sys.mjs");
-                let g_themeManager = new NamorokaThemeManager;
-                g_themeManager.init(
+                let g_themeManager = new NamorokaThemeManager(
                     document.documentElement,
                     {
                         style: true,

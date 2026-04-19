@@ -9,8 +9,7 @@ ChromeUtils.defineESModuleGetters(window, {
 
 const gOptionsBundle = "chrome://namoroka/locale/properties/namoroka-options.properties";
 
-let g_themeManager = new NamorokaThemeManager;
-g_themeManager.init(
+let g_themeManager = new NamorokaThemeManager(
     document.documentElement,
     {
         style: true,
