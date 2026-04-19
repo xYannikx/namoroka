@@ -89,7 +89,7 @@ toolbarbutton.bookmark-item[livemark="true"] {
             background-position-x: 0 !important;
         }
 
-        :root[namoroka-appearance-aero] & {
+        :root[namoroka-style-2][namoroka-appearance-aero] & {
             background-image: url("chrome://namoroka/content/firefox-3/vista/livemark-folder.png") !important;
         }
     }
