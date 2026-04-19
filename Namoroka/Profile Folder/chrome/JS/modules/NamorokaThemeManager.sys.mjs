@@ -28,7 +28,7 @@ export class NamorokaThemeManager
 			this._refreshTheme();
 
 			Services.prefs.addObserver("Namoroka.Appearance.Style", (function() {
-				this.refreshTheme();
+				this._refreshTheme();
 				this.root.ownerDocument.dispatchEvent(new CustomEvent("namoroka-appearance-change"));
 			}).bind(this));
 		}
