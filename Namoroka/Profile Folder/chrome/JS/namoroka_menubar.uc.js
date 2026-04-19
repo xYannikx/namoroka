@@ -9,7 +9,7 @@
 var g_namorokaMenubar;
 
 {
-    var { renderElement, waitForElement, LocaleUtils, PrefCalls } = ChromeUtils.importESModule("chrome://userscripts/content/namoroka_utils.sys.mjs");
+    var { renderElement, waitForElement, LocaleUtils, PrefCalls } = ChromeUtils.importESModule("chrome://modules/content/NamorokaUtils.sys.mjs");
     waitForElement = waitForElement.bind(window);
     renderElement = renderElement.bind(window);
 

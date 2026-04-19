@@ -9,14 +9,14 @@
 var g_namorokaFindbar;
 
 {
-    var { waitForElement } = ChromeUtils.importESModule("chrome://userscripts/content/namoroka_utils.sys.mjs");
+    var { waitForElement } = ChromeUtils.importESModule("chrome://modules/content/NamorokaUtils.sys.mjs");
     waitForElement = waitForElement.bind(window);
 
     class NamorokaFindbar {
         _init(findbarNode) {
             console.log(findbarNode);
 
-            _addToolbarButtonLabels();
+            _addToolbarButtonLabels(findbarNode);
         }
         
         onMutation(list, observer) {
@@ -37,8 +37,8 @@ var g_namorokaFindbar;
             }
         }
 
-        _addToolbarButtonLabels() {
-            
+        _addToolbarButtonLabels(aNode) {
+            console.log(aNode);
         }
     }
 

@@ -1,7 +1,7 @@
 var g_NamorokaAboutPage;
 
 {
-    var { BrandUtils, LocaleUtils, PrefCalls, NamorokaInfo } = ChromeUtils.importESModule("chrome://userscripts/content/namoroka_utils.sys.mjs");
+    var { BrandUtils, LocaleUtils, PrefCalls, NamorokaInfo } = ChromeUtils.importESModule("chrome://modules/content/NamorokaUtils.sys.mjs");
     const NAMOROKA_APPEARANCE_STYLE_PREF = "Namoroka.Appearance.Style";
 
     ChromeUtils.defineESModuleGetters(window, {

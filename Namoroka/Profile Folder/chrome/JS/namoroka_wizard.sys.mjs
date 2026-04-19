@@ -7,7 +7,7 @@
 // @backgroundmodule
 // ==/UserScript==
 
-var { PrefCalls } = ChromeUtils.importESModule("chrome://userscripts/content/namoroka_utils.sys.mjs");
+var { PrefCalls } = ChromeUtils.importESModule("chrome://modules/content/NamorokaUtils.sys.mjs");
 const NAMOROKA_FIRST_RUN_PREF = "Namoroka.Parameter.FirstRun";
 
 export function openNamorokaWizardDialog(verifyFirstRun = true) {

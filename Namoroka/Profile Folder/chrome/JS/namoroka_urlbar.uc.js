@@ -7,7 +7,7 @@
 // ==/UserScript==
 
 {
-    var { waitForElement, LocaleUtils } = ChromeUtils.importESModule("chrome://userscripts/content/namoroka_utils.sys.mjs");
+    var { waitForElement, LocaleUtils } = ChromeUtils.importESModule("chrome://modules/content/NamorokaUtils.sys.mjs");
     waitForElement = waitForElement.bind(window);
 
     waitForElement("#urlbar").then(e => {

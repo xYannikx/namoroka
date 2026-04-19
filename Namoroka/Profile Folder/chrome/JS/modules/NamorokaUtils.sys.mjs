@@ -1,14 +1,3 @@
-// ==UserScript==
-// @name			 Namoroka :: Utils
-// @description 	 Common utilities for Namoroka scripts.
-// @author			 ephemeralViolette
-// @include			 main
-// @include          chrome://browser/content/browser.xhtml
-// @include			 chrome://browser/content/aboutDialog.xhtml
-// @loadOrder        1
-// @backgroundmodule
-// ==/UserScript==
-
 export function renderElement(nodeName, attrMap = {}, childrenArr = []) {
     let prefix = null;
     let localName = nodeName;
@@ -68,20 +57,13 @@ export function renderElement(nodeName, attrMap = {}, childrenArr = []) {
     return element;
 }
 
-export async function waitForElement(query, parent = this.document, timeout = -1)
+export async function waitForElement(selector, root = this.document)
 {
-	let startTime = Date.now();
-	
-	while (parent.querySelector(query) == null)
-	{
-		if (timeout > -1 && Date.now() > startTime + timeout)
-		{
-			return null;
-		}
-		await new Promise(r => this.requestAnimationFrame(r));
-	}
-	
-	return parent.querySelector(query);
+    while (root.querySelector(selector) == null)
+    {
+        await new Promise(r => this.requestAnimationFrame(r));
+    }
+    return root.querySelector(selector);
 }
 
 export class PrefCalls

@@ -13,7 +13,7 @@ let NAMOROKA_DOWNLOADS_CSS_URI = Services.io.newURI(
 );
 
 {
-    var { waitForElement, LocaleUtils } = ChromeUtils.importESModule("chrome://userscripts/content/namoroka_utils.sys.mjs");
+    var { waitForElement, LocaleUtils } = ChromeUtils.importESModule("chrome://modules/content/NamorokaUtils.sys.mjs");
     waitForElement = waitForElement.bind(window);
     
     let downloadsBundle = "chrome://namoroka/locale/properties/downloads-window.properties";

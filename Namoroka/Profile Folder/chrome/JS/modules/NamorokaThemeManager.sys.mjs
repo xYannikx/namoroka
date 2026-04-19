@@ -1,44 +1,57 @@
-let { PrefCalls } = ChromeUtils.importESModule("chrome://userscripts/content/namoroka_utils.sys.mjs");
-
 export class NamorokaThemeManager
 {
 	root = null;
+	prefs = [];
 
-	static #prefToAttr(pref)
+	_prefToAttr(pref)
 	{
 		return pref.replace(/\./g, "-").toLowerCase();
 	}
-	
-	init(root, config = { style: true })
+
+	constructor(root, config = { style: true })
 	{
 		this.root = root;
 		if (!root)
 		{
 			throw new Error("Root not specified");
 		}
-		
+
+		this.prefs = config?.prefs;
+		if (!config?.prefs || !Array.isArray(config?.prefs) || config?.prefs.length <= 0)
+		{
+			throw new Error("Prefs not specified or is not array");
+		}
+
+		for (const pref of this.prefs)
+		{
+			this._updatePref(pref);
+		}
+
 		if (config?.style)
 		{
-			this.refreshTheme();
+			this._refreshTheme();
+
 			Services.prefs.addObserver("Namoroka.Appearance.Style", (function() {
 				this.refreshTheme();
 				this.root.ownerDocument.dispatchEvent(new CustomEvent("namoroka-appearance-change"));
-				console.log("theme change");
 			}).bind(this));
 		}
 
-		if (config?.bools && Array.isArray(config.bools))
+		/* observe must be manually bound when passing or else its this is incorrect */
+		Services.prefs.addObserver(null, this.observe.bind(this));
+	}
+
+	observe(subject, topic, data)
+	{
+		if (topic == "nsPref:changed" && this.prefs && this.prefs.includes(data))
 		{
-			for (const bool of config.bools)
-			{
-				this.registerBoolAttributeUpdateObserver(bool, NamorokaThemeManager.#prefToAttr(bool));
-			}
+			this._updatePref(data);
 		}
 	}
-	
-	refreshTheme()
+
+	_refreshTheme()
 	{
-		let style = PrefCalls.getPref("Namoroka.Appearance.Style");
+		let style = Services.prefs.getIntPref("Namoroka.Appearance.Style");
 		
 		for (let attr of this.root.getAttributeNames())
 		{
@@ -54,25 +67,27 @@ export class NamorokaThemeManager
 		}
 	}
 	
-	refreshPrefBoolAttribute(prefName, attrName)
+	_updatePref(pref)
 	{
-		let value = PrefCalls.getPref(prefName);
-		
-		if (value)
+		switch (Services.prefs.getPrefType(pref))
 		{
-			this.root.setAttribute(attrName, "true");
+			case Services.prefs.PREF_BOOL:
+				Services.prefs.getBoolPref(pref, false)
+				? this.root.setAttribute(this._prefToAttr(pref), "true")
+				: this.root.removeAttribute(this._prefToAttr(pref));
+				break;
+			case Services.prefs.PREF_INT:
+				this.root.setAttribute(
+					this._prefToAttr(pref),
+					String(Services.prefs.getIntPref(pref, 0))
+				);
+				break;
+			case Services.prefs.PREF_STRING:
+				this.root.setAttribute(
+					this._prefToAttr(pref),
+					Services.prefs.getStringPref(pref, "")
+				);
+				break;
 		}
-		else
-		{
-			this.root.removeAttribute(attrName);
-		}
-	}
-	
-	registerBoolAttributeUpdateObserver(prefName, attrName)
-	{
-		this.refreshPrefBoolAttribute(prefName, attrName);
-		Services.prefs.addObserver(prefName, (function() {
-			this.refreshPrefBoolAttribute(prefName, attrName);
-		}).bind(this));
 	}
 }

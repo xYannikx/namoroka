@@ -1,4 +1,4 @@
-var { PrefCalls } = ChromeUtils.importESModule("chrome://userscripts/content/namoroka_utils.sys.mjs");
+var { PrefCalls } = ChromeUtils.importESModule("chrome://modules/content/NamorokaUtils.sys.mjs");
 
 // Common defaults for all browsers
 const COMMON_DEFAULTS = {

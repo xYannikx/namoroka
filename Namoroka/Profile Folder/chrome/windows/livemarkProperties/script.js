@@ -1,5 +1,5 @@
 const { LocaleUtils,
-        PrefCalls } = ChromeUtils.importESModule("chrome://userscripts/content/namoroka_utils.sys.mjs");
+        PrefCalls } = ChromeUtils.importESModule("chrome://modules/content/NamorokaUtils.sys.mjs");
 const { NamorokaLivemarkService } = ChromeUtils.importESModule("chrome://modules/content/NamorokaLivemarkService.sys.mjs");
 const { PlacesUtils } = ChromeUtils.importESModule("resource://gre/modules/PlacesUtils.sys.mjs");
 

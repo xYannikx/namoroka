@@ -4,7 +4,7 @@ const NAMOROKA_FIRST_RUN_PREF = "Namoroka.Parameter.FirstRun";
 const NAMOROKA_APPEARANCE_STYLE_PREF = "Namoroka.Appearance.Style";
 
 {
-    var { LocaleUtils, PrefCalls } = ChromeUtils.importESModule("chrome://userscripts/content/namoroka_utils.sys.mjs");
+    var { LocaleUtils, PrefCalls } = ChromeUtils.importESModule("chrome://modules/content/NamorokaUtils.sys.mjs");
 
     ChromeUtils.defineESModuleGetters(window, {
         CustomizableUI: "resource:///modules/CustomizableUI.sys.mjs",

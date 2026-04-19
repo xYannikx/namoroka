@@ -1,6 +1,6 @@
 const { LocaleUtils, 
         PrefCalls, 
-        BrandUtils } = ChromeUtils.importESModule("chrome://userscripts/content/namoroka_utils.sys.mjs");
+        BrandUtils } = ChromeUtils.importESModule("chrome://modules/content/NamorokaUtils.sys.mjs");
         
 ChromeUtils.defineESModuleGetters(window, {
     NamorokaThemeManager: "chrome://modules/content/NamorokaThemeManager.sys.mjs",
@@ -14,7 +14,7 @@ g_themeManager.init(
     document.documentElement,
     {
         style: true,
-        bools: [
+        prefs: [
             "Namoroka.Appearance.Aero",
             "Namoroka.Option.Debug",
         ]

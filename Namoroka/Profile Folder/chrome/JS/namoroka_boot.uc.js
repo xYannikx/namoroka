@@ -11,7 +11,7 @@ let NAMOROKA_BOOT_CONFIG = {
 	"chrome://browser/content/browser.xhtml": {
 		themes: {
 			style: true,
-			bools: [
+			prefs: [
 				"Namoroka.Appearance.Small-Icons",
 				"Namoroka.Unified-Extensions.Disabled",
 				"Namoroka.Appearance.Aero"
@@ -30,8 +30,10 @@ let NAMOROKA_BOOT_CONFIG = {
 		if (config?.themes)
 		{
 			let { NamorokaThemeManager } = ChromeUtils.importESModule("chrome://modules/content/NamorokaThemeManager.sys.mjs");
-			context.g_themeManager = new NamorokaThemeManager;
-			context.g_themeManager.init(context.document.documentElement, config.themes);
+			context.g_themeManager = new NamorokaThemeManager(
+				context.document.documentElement, 
+				config.themes
+			);
 		}
 		if (config?.wizard) {
 			let { openNamorokaWizardDialog } = ChromeUtils.importESModule("chrome://userscripts/content/namoroka_wizard.sys.mjs");
