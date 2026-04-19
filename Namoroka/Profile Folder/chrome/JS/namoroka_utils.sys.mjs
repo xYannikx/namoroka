@@ -172,7 +172,7 @@ export class PrefCalls
 				case prefBranch.PREF_STRING:
 					return prefBranch.getStringPref(prefName);
 				case prefBranch.PREF_INT:
-					return prefBranch.getIntPref(prefName);
+					return Number(prefBranch.getIntPref(prefName));
 				case prefBranch.PREF_BOOL:
 					return prefBranch.getBoolPref(prefName);
 				default:

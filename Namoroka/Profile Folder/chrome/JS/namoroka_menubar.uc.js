@@ -153,7 +153,12 @@ var g_namorokaMenubar;
     // g_namorokaMenubar.renderMenuItems();
 }
 
-window.document.documentElement.addEventListener(
+document.addEventListener(
+    "namoroka-appearance-change",
+    g_namorokaMenubar._update
+);
+
+document.addEventListener(
     "namoroka-appearance-change",
     g_namorokaMenubar._update
 )
