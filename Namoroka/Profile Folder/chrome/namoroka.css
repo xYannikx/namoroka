@@ -938,83 +938,54 @@ panel[type=autocomplete-richlistbox],
   overflow: hidden !important;
 }
 
-#status-bar {
-  background-color: -moz-Dialog !important;
-  border-top: 1px solid ThreeDShadow !important;
+statusbar {
+  -moz-default-appearance: statusbar !important;
+  appearance: auto !important;
+  border-top: 1px solid ThreeDLightShadow !important;
   border-left: 1px solid ThreeDShadow !important;
   border-right: 1px solid ThreeDHighlight !important;
   border-bottom: 1px solid ThreeDHighlight !important;
+  background-color: -moz-Dialog !important;
   min-height: 22px !important;
-  align-items: stretch !important;
 }
-@media (-moz-windows-classic) {
-  #status-bar {
-    margin-block-start: 2px !important;
-  }
-}
-@media not (-moz-windows-classic) {
-  #status-bar {
-    appearance: auto !important;
-    -moz-default-appearance: statusbar !important;
-  }
-}
-:root[inFullscreen=true] #status-bar {
-  visibility: collapse !important;
+statusbar#status-bar {
+  border-top: none !important;
 }
 
 statusbarpanel {
-  appearance: statusbarpanel !important;
   -moz-default-appearance: statusbarpanel !important;
+  appearance: auto !important;
+  align-items: center !important;
+  justify-content: center !important;
   border-left: 1px solid ThreeDHighlight !important;
   border-top: 1px solid ThreeDHighlight !important;
   border-right: 1px solid ThreeDShadow !important;
   border-bottom: 1px solid ThreeDShadow !important;
-  align-items: center !important;
   padding: 0 4px !important;
-  border: none !important;
 }
-
-#statusbar-display {
-  align-items: center !important;
-  appearance: none !important;
-}
-
-#statusbar-icon {
-  appearance: auto !important;
-  -moz-default-appearance: progressbar !important;
-  min-width: 96px;
-  height: 12px;
-  margin: 0;
-  border: none;
-}
-#statusbar-icon[collapsed=true] {
-  visibility: collapse !important;
-}
-#statusbar-icon::-moz-progress-bar {
-  appearance: auto !important;
-  -moz-default-appearance: progresschunk !important;
+statusbarpanel#statusbar-display {
+  padding-inline-start: 0 !important;
 }
 
 .statusbar-resizerpanel {
-  appearance: resizerpanel !important;
   -moz-default-appearance: resizerpanel !important;
-  align-items: flex-end !important;
+  appearance: auto !important;
   justify-content: flex-end !important;
-  padding: 0 !important;
+  align-items: flex-end !important;
+  padding: 0px !important;
   border: none !important;
 }
-.statusbar-resizerpanel .statusbar-resizer {
-  cursor: se-resize;
-  appearance: resizer !important;
-  -moz-default-appearance: resizer !important;
-}
 
-#statuspanel {
-  display: none !important;
-}
-
-.statusbarpanel-iconic, .statusbarpanel-iconic-text, .statusbarpanel-menu-iconic {
+.statusbarpanel-iconic,
+.statusbarpanel-iconic-text,
+.statusbarpanel-menu-iconic {
   padding: 0px 1px 0px 1px !important;
+}
+
+.statusbar-resizer {
+  -moz-default-appearance: resizer !important;
+  appearance: auto !important;
+  cursor: se-resize !important;
 }
 
 #security-button {
@@ -1031,7 +1002,8 @@ statusbarpanel {
   height: 16px !important;
   background-image: var(--secure-icon) !important;
 }
-#security-button > label:not([value]) {
+#security-button > label:not([value]),
+#security-button :root:not([namoroka-style-1]) {
   display: none !important;
 }
 
