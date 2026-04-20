@@ -14,7 +14,7 @@
     }
 }
 
-.close-icon {
+.close-icon:not(.findbar-closebutton) {
     @include set-size(14px, 14px);
     @include set-background("firefox-3/icons/close.png");
     @include set-horizontal-states(0, 14px, 28px);

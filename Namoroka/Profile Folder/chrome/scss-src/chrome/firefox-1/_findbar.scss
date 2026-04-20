@@ -1,0 +1,190 @@
+findbar[namoroka-initialized="true"] {
+    appearance: none !important;
+    border-top: 1px solid ThreeDShadow !important;
+    box-shadow: inset 0 1px 0 ThreeDHighlight !important;
+    padding: 0 !important;
+    padding-block-start: 1px !important;
+    border-bottom: 1px solid -moz-Dialog !important;
+    transition: none !important;
+    background-color: -moz-Dialog !important;
+    color: -moz-DialogText !important;
+    transition: none !important;
+
+    .findbar-closebutton {
+        width: unset !important;
+        height: unset !important;
+        margin: 0 !important;
+        border: 1px solid transparent !important;
+        padding: 3px 2px 4px 2px !important;
+        background-color: transparent !important;
+        border-radius: 0 !important;
+        list-style-image: none !important;
+        
+        > .toolbarbutton-icon {
+            width: 16px !important;
+            height: 16px !important;
+            background-image: url("chrome://namoroka/content/firefox-1/icons/close.png") !important;
+            margin-inline: 2px !important;
+        }
+
+        &:hover {
+            > .toolbarbutton-icon {
+                background-position-x: -16px !important;
+            }
+
+            &:active {
+                > .toolbarbutton-icon {
+                    background-position-x: -32px !important;
+                }
+            }
+        }
+    }
+
+    .findbar-container {
+        transition: none !important;
+
+        > checkbox {
+            margin: 2px 4px !important;
+            padding-block: 1px !important;
+            padding-left: 4px !important;
+            padding-right: 2px !important;
+        }
+    }
+
+    .find-field-container {
+        -moz-default-appearance: textfield !important;
+        appearance: auto !important;
+
+        .findbar-textbox {
+            border: 0 !important;
+            border-radius: 0 !important;
+            outline: 0 !important;
+            box-shadow: none !important;
+            padding: 2px 2px 3px 4px !important;
+            background-color: -moz-Field !important;
+            color: -moz-FieldText !important;
+            margin: 0 !important;
+            width: unset !important;
+
+            &::placeholder {
+                opacity: 0 !important;
+            }
+
+            &[status="notfound"] {
+                background-color: #FF6666 !important;
+                color: #FFFFFF !important;
+            }
+
+            &[flash="true"] {
+                background-color: yellow !important;
+            }
+        }
+    }
+
+    .findbar-find-previous,
+    .findbar-find-next,
+    .findbar-highlight {
+        -moz-default-appearance: toolbarbutton !important;
+        appearance: auto !important;
+        margin: 0 !important;
+        box-align: center !important;
+        justify-content: center !important;
+        padding: 3px !important;
+        border: 1px solid transparent !important;
+        background-color: transparent !important;
+        color: -moz-DialogText !important;
+        list-style-image: none !important;
+        
+        .toolbarbutton-icon {
+            width: 16px !important;
+            height: 16px !important;
+            background-image: url("chrome://namoroka/content/firefox-1/findbar/find.png") !important;
+            opacity: 1 !important;
+            margin-inline-end: 5px !important;
+        }
+
+        &:not([disabled="true"]) {
+            &:hover {
+                border-color: ThreeDHighlight ThreeDShadow ThreeDShadow ThreeDHighlight !important;
+                
+                .toolbarbutton-icon {
+                    background-position-y: -16px !important;
+                }
+            }
+
+            &:hover:active,
+            &[checked="true"] {
+                border-color: ThreeDShadow ThreeDHighlight ThreeDHighlight ThreeDShadow !important;
+                padding-top: 4px !important;
+                padding-bottom: 2px !important;
+                padding-inline-start: 4px !important;
+                padding-inline-end: 2px !important;
+            }
+        }
+
+        &[disabled="true"] {
+            border-color: transparent !important;
+            padding: 3px !important;
+            color: GrayText !important;
+
+            .toolbarbutton-icon {
+                background-position-y: -32px !important;
+            }
+        }
+    }
+
+    .findbar-find-previous {
+        .toolbarbutton-icon {
+            background-position-x: -16px !important;
+        }
+    }
+    
+    .findbar-highlight {
+        .toolbarbutton-icon {
+            background-position-x: -32px !important;
+        }
+
+        &:not([disabled="true"]) {
+            &:active, &[checked="true"] {
+                .toolbarbutton-icon {
+                    background-position-y: -48px !important;
+                }
+            }
+        }
+
+        &[checked="true"]:hover {
+            .toolbarbutton-icon {
+                background-position-y: -64px !important;
+            }
+        }
+    }
+
+    .found-matches {
+        visibility: collapse !important;
+    }
+
+    .findbar-find-status {
+        &[status="notfound"] {
+            font-weight: normal !important;
+        }
+
+        margin: 0px 0px 0px 3px !important;
+        padding: 2px !important;
+    }
+
+    .find-status-icon {
+        display: flex !important;
+        list-style-image: none !important;
+        margin: 2px 0px 0px 12px !important;
+        width: 16px !important;
+        height: 16p !important;
+
+        &[status="notfound"] {
+            list-style-image: url("chrome://namoroka/content/firefox-1/findbar/notfound.png") !important;
+        }
+
+        &[status="wrapped"] {
+            list-style-image: url("chrome://namoroka/content/firefox-1/findbar/wrap.png") !important;
+        }
+    }
+}   

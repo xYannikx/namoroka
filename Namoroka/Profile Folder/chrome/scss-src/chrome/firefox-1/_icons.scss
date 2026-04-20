@@ -79,7 +79,7 @@ $iconRegionMap: (
     background-position-x: calc(var(--toolbarbutton-icon-size) * var(--icon-offset)) !important;
 }
 
-.close-icon {
+.close-icon:not(.findbar-closebutton) {
     @include set-size(16px, 16px);
     @include set-background("firefox-1/icons/close.png");
     @include set-horizontal-states(0, 16px, 32px);

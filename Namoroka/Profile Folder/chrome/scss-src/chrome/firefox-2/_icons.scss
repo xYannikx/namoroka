@@ -63,6 +63,6 @@ $iconRegionMap: (
     }
 }
 
-.close-icon {
+.close-icon:not(.findbar-closebutton) {
     @include set-background("firefox-2/icons/close.png");
 }
