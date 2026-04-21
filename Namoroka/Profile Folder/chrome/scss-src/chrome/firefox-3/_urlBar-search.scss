@@ -1,5 +1,10 @@
 & {
     --urlbar-root-height: 22px !important;
+
+    @media (-moz-windows-classic) {
+        --urlbar-root-height: 24px !important;
+    }
+
     --urlbar-container-padding: 0 !important;
     --urlbar-margin-inline: 7px !important;
     
@@ -28,10 +33,18 @@
             --urlbar-height: var(--urlbar-root-height) !important;
 
             #urlbar-background {
-                appearance: none !important;
-                border: 1px solid ThreeDShadow !important;
-                background-color: -moz-Field !important;
-                border-radius: 0 !important;
+                @media (-moz-windows-classic) {
+                    -moz-default-appearance: textfield !important;
+                    appearance: textfield !important;
+                    border-radius: 0 !important;
+                }
+
+                @media not (-moz-windows-classic) {
+                    appearance: none !important;
+                    border: 1px solid ThreeDShadow !important;
+                    background-color: -moz-Field !important;
+                    border-radius: 0 !important;
+                }
             }
 
             .autocomplete-history-dropmarker {
@@ -41,16 +54,24 @@
             .urlbar-input-container,
             #urlbar-input-container {
                 border: 1px solid transparent !important;
+
+                @media (-moz-windows-classic) {
+                    border: 2px solid transparent !important;
+                }
+
                 overflow: visible !important;
                 background-color: transparent !important;
             }
 
             #identity-box {
                 margin: 0 !important;
-                margin-inline-start: -4px !important;
                 visibility: visible !important;
                 overflow: -moz-hidden-unscrollable !important;
-                border-inline-end: 1px solid ThreeDShadow !important;
+
+                @media not (-moz-windows-classic) {
+                    margin-inline-start: -4px !important;
+                    border-inline-end: 1px solid ThreeDShadow !important;
+                }
 
                 &.verifiedDomain,
                 &.verifiedIdentity {
@@ -61,36 +82,59 @@
                     background: -moz-Dialog var(--navbar-textbox-buttons) repeat-x !important;
                     color: -moz-dialogText !important;
                     border-inline: 1px solid ThreeDShadow !important;
-                    box-shadow: inset -1px 0 rgba(255, 255, 255, 0.2), inset 1px 0 rgba(255, 255, 255, 0.4) !important;
+                    box-shadow: inset -1px 0 rgba(255, 255, 255, 0.2), inset 1px 0 rgba(255, 255, 255, 0.2) !important;
                     border-radius: 0 !important;
                     outline: 0 !important;
-                    margin: -11px -10px -11px 0 !important;
-                    padding: 10px 12px 10px 3px !important;
-                    border-top: 1px solid ThreeDDarkShadow !important;
-                    border-bottom: 1px solid ThreeDDarkShadow !important;
-                    border-right-style: none !important;
-                    border-top-left-radius: 21px !important;
-                    border-bottom-left-radius: 21px !important;
-                    border-inline-start: 1px solid ThreeDDarkShadow !important;
-                    background-position: 0 10px !important;
+                    padding: 0 1px !important;
+
+                    @media (-moz-windows-classic) {
+                        border-left: 1px solid rgba(255, 255, 255, 0.2) !important;
+                    }
+
+                    @media not (-moz-windows-classic) {
+                        margin: -11px -10px -11px 0 !important;
+                        padding: 10px 12px 10px 3px !important;
+                        border-top: 1px solid ThreeDDarkShadow !important;
+                        border-bottom: 1px solid ThreeDDarkShadow !important;
+                        border-inline-start: 1px solid ThreeDDarkShadow !important;
+                        border-right-style: none !important;
+                        border-top-left-radius: 21px !important;
+                        border-bottom-left-radius: 21px !important;
+                        background-position: 0 10px !important;
+                        box-shadow: inset -1px 0 rgba(255, 255, 255, 0.2), inset 1px 0 rgba(255, 255, 255, 0.4) !important;
+                    }
                 }
 
                 &:hover {
                     #identity-icon-box {
                         background-position: 0 -60px !important;
                         box-shadow: inset -1px 0 rgba(255, 255, 255, 0.4), inset 1px 0 rgba(255, 255, 255, 0.4) !important;
+
+                        @media not (-moz-windows-classic) {
+                            background-position: 0 -50px !important;
+                            border-inline-start: 1px solid ThreeDDarkShadow !important;
+                            box-shadow: inset -1px 0 rgba(255, 255, 255, 0.4), inset 1px 0 rgba(255, 255, 255, 0.6) !important;
+                        }
                     }
                 }
 
                 &.verifiedDomain {
                     #identity-icon-box {
-                        background-position: 0 -110px !important;
-                        color: white !important;
+                        background-position: 0 -120px !important;
+
+                        @media not (-moz-windows-classic) {
+                            background-position: 0 -110px !important;
+                            color: white !important;
+                        }
                     }
 
                     &:hover {
                         #identity-icon-box {
-                            background-position: 0 -170px !important;
+                            background-position: 0 -180px !important;
+
+                            @media not (-moz-windows-classic) {
+                                background-position: 0 -170px !important;
+                            }
                         }
                     }
                 }
@@ -243,6 +287,11 @@
         border: 1px solid ThreeDShadow !important;
         background-color: -moz-Field !important;
         border-radius: 0 !important;
+
+        @media (-moz-windows-classic) {
+            -moz-default-appearance: textfield !important;
+            appearance: textfield !important;
+        }
 
         .searchbar-search-button {
             border-inline-end: 1px solid ThreeDShadow !important;

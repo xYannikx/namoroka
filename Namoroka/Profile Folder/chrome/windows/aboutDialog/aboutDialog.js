@@ -9,12 +9,9 @@ var gSelectedPage = 0;
         NamorokaThemeManager: "chrome://modules/content/NamorokaThemeManager.sys.mjs"
     });
 
-    let g_themeManager = new NamorokaThemeManager;
-    g_themeManager.init(
+    let g_themeManager = new NamorokaThemeManager(
         document.documentElement,
-        {
-            style: true
-        }
+        { style: true }
     );
 
     let aboutDialogBundle = "chrome://namoroka/locale/properties/aboutDialog.properties";

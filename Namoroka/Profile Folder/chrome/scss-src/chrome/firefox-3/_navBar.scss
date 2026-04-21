@@ -12,7 +12,7 @@
 
             .toolbarbutton-icon {
                 width: 100% !important;
-                height: 100% !important;
+                height: 34px !important;
                 background-image: var(--toolbar-spritesheet) !important;
                 background-position-y: 0 !important;
             }
@@ -48,6 +48,7 @@
 
         .toolbarbutton-menu-dropmarker {
             width: 16px !important;
+            height: 34px !important;
             content: none !important;
             background-image: var(--toolbar-spritesheet) !important;
             background-position-x: -422px !important;
@@ -77,6 +78,15 @@
 
 &[namoroka-appearance-small-icons="true"] {
     #nav-bar {
+        #back-button,
+        #forward-button {
+            .toolbarbutton-menubutton-button {
+                .toolbarbutton-icon {
+                    height: 100% !important;
+                }
+            }
+        }
+
         #back-button {
             margin: 0 !important;
             padding-inline-start: 2px !important;
@@ -108,6 +118,7 @@
 
             .toolbarbutton-menu-dropmarker {
                 width: 13px !important;
+                height: 24px !important;
                 content: none !important;
                 background-image: var(--toolbar-spritesheet) !important;
                 background-position-x: -288px !important;

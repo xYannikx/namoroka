@@ -9,10 +9,12 @@
     }
 }
 
-toolbar[type="menubar"],
-menubar {
-    border: 0 !important;
-    appearance: none !important;
+@media not (-moz-windows-classic) {
+    toolbar[type="menubar"],
+    menubar {
+        border: 0 !important;
+        appearance: none !important;
+    }
 }
 
 #notifications-toolbar {

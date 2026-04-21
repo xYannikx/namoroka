@@ -49,6 +49,10 @@
   outline: 1px dotted ThreeDDarkShadow !important;
   outline-offset: -3px;
 }
+#aboutDialog .button-box {
+  border: 1px solid transparent !important;
+  padding: 0 !important;
+}
 #aboutDialog[namoroka-style-1=true] #modes {
   min-height: 380px;
 }

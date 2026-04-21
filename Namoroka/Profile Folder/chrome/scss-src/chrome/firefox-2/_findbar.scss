@@ -1,0 +1,25 @@
+findbar[namoroka-initialized="true"] {
+    .findbar-closebutton {
+        > .toolbarbutton-icon {
+            background-image: url("chrome://namoroka/content/firefox-2/icons/close.png") !important;
+        }
+    }
+
+    .findbar-find-previous,
+    .findbar-find-next,
+    .findbar-highlight {
+        .toolbarbutton-icon {
+            background-image: url("chrome://namoroka/content/firefox-2/findbar/find.png") !important;
+        }
+    }
+    
+    .find-status-icon {
+        &[status="notfound"] {
+            list-style-image: url("chrome://namoroka/content/firefox-2/findbar/notfound.png") !important;
+        }
+
+        &[status="wrapped"] {
+            list-style-image: url("chrome://namoroka/content/firefox-2/findbar/wrap.png") !important;
+        }
+    }
+}   
