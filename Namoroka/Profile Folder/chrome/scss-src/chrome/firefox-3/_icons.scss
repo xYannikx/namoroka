@@ -21,7 +21,7 @@
 }
 
 &[namoroka-appearance-aero] {
-    .close-icon {
+    .close-icon:not(.findbar-closebutton) {
         @include set-background("firefox-3/vista/icons/close.png");
     }
 }

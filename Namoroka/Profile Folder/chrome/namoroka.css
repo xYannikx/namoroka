@@ -1970,7 +1970,7 @@ findbar[namoroka-initialized=true] .find-status-icon[status=wrapped] {
 :root[namoroka-style-2] .close-icon:not(.findbar-closebutton):hover:active, :root[namoroka-style-2] .close-icon:not(.findbar-closebutton)[open] {
   background-position-x: -28px !important;
 }
-:root[namoroka-style-2][namoroka-appearance-aero] .close-icon {
+:root[namoroka-style-2][namoroka-appearance-aero] .close-icon:not(.findbar-closebutton) {
   background-image: url("chrome://namoroka/content/firefox-3/vista/icons/close.png") !important;
   list-style-image: none !important;
 }
@@ -2653,6 +2653,12 @@ findbar[namoroka-initialized=true] .find-status-icon[status=wrapped] {
   height: 14px !important;
   background-image: url("chrome://namoroka/content/firefox-3/icons/close.png") !important;
 }
+:root[namoroka-style-2] findbar[namoroka-initialized=true] .findbar-closebutton:hover > .toolbarbutton-icon {
+  background-position-x: -14px !important;
+}
+:root[namoroka-style-2] findbar[namoroka-initialized=true] .findbar-closebutton:hover:active > .toolbarbutton-icon {
+  background-position-x: -28px !important;
+}
 :root[namoroka-style-2] findbar[namoroka-initialized=true] .findbar-find-previous .toolbarbutton-icon,
 :root[namoroka-style-2] findbar[namoroka-initialized=true] .findbar-find-next .toolbarbutton-icon,
 :root[namoroka-style-2] findbar[namoroka-initialized=true] .findbar-highlight .toolbarbutton-icon {
@@ -2663,6 +2669,20 @@ findbar[namoroka-initialized=true] .find-status-icon[status=wrapped] {
 }
 :root[namoroka-style-2] findbar[namoroka-initialized=true] .find-status-icon[status=wrapped] {
   list-style-image: url("chrome://namoroka/content/firefox-3/findbar/wrap.png") !important;
+}
+:root[namoroka-style-2][namoroka-appearance-aero] findbar[namoroka-initialized=true] .findbar-closebutton > .toolbarbutton-icon {
+  background-image: url("chrome://namoroka/content/firefox-3/vista/icons/close.png") !important;
+}
+:root[namoroka-style-2][namoroka-appearance-aero] findbar[namoroka-initialized=true] .findbar-find-previous .toolbarbutton-icon,
+:root[namoroka-style-2][namoroka-appearance-aero] findbar[namoroka-initialized=true] .findbar-find-next .toolbarbutton-icon,
+:root[namoroka-style-2][namoroka-appearance-aero] findbar[namoroka-initialized=true] .findbar-highlight .toolbarbutton-icon {
+  background-image: url("chrome://namoroka/content/firefox-3/vista/findbar/find.png") !important;
+}
+:root[namoroka-style-2][namoroka-appearance-aero] findbar[namoroka-initialized=true] .find-status-icon[status=notfound] {
+  list-style-image: url("chrome://namoroka/content/firefox-3/vista/findbar/notfound.png") !important;
+}
+:root[namoroka-style-2][namoroka-appearance-aero] findbar[namoroka-initialized=true] .find-status-icon[status=wrapped] {
+  list-style-image: url("chrome://namoroka/content/firefox-3/vista/findbar/wrap.png") !important;
 }
 
 /*# sourceMappingURL=namoroka.css.map */
