@@ -8,6 +8,10 @@ statusbar {
     background-color: -moz-Dialog !important;
     min-height: 22px !important;
 
+    :root[inFullscreen] & {
+        display: none !important;
+    }
+
     &#status-bar {
         border-top: none !important;
     }

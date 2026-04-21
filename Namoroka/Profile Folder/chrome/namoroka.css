@@ -948,6 +948,9 @@ statusbar {
   background-color: -moz-Dialog !important;
   min-height: 22px !important;
 }
+:root[inFullscreen] statusbar {
+  display: none !important;
+}
 statusbar#status-bar {
   border-top: none !important;
 }
@@ -2236,7 +2239,11 @@ findbar[namoroka-initialized=true] .find-status-icon[status=wrapped] {
 }
 :root[namoroka-style-2] #PersonalToolbar #PlacesToolbarItems {
   margin-inline-start: 0 !important;
-  padding-block-end: 1px !important;
+}
+@media not (-moz-windows-classic) {
+  :root[namoroka-style-2] #PersonalToolbar #PlacesToolbarItems {
+    padding-block-end: 1px !important;
+  }
 }
 :root[namoroka-style-2] .bookmark-item[container][query] {
   list-style-image: none !important;

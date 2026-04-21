@@ -149,6 +149,8 @@
                 }
             };
             Services.obs.addObserver(delayedStartupObserver, "browser-delayed-startup-finished");
+
+            this._displayTextElement.value = LocaleUtils.str(statusPanelBundle, "status_panel_done");
         },
 
         initProgressListener() {
