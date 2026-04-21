@@ -2652,7 +2652,7 @@ findbar[namoroka-initialized=true] .find-status-icon[status=wrapped] {
 :root[namoroka-style-2] findbar[namoroka-initialized=true] .findbar-closebutton > .toolbarbutton-icon {
   width: 14px !important;
   height: 14px !important;
-  background-image: url("chrome://namoroka/content/firefox-3/icons/close.png") !important;
+  background-image: url("chrome://namoroka/content/firefox-3/icons/closeSidebar.png") !important;
 }
 :root[namoroka-style-2] findbar[namoroka-initialized=true] .findbar-closebutton:hover > .toolbarbutton-icon {
   background-position-x: -14px !important;

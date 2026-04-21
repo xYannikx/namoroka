@@ -3,7 +3,7 @@ findbar[namoroka-initialized="true"] {
         > .toolbarbutton-icon {
             width: 14px !important;
             height: 14px !important;
-            background-image: url("chrome://namoroka/content/firefox-3/icons/close.png") !important;
+            background-image: url("chrome://namoroka/content/firefox-3/icons/closeSidebar.png") !important;
         }
 
         &:hover {
@@ -42,7 +42,7 @@ findbar[namoroka-initialized="true"] {
     findbar[namoroka-initialized="true"] {
         .findbar-closebutton {
             > .toolbarbutton-icon {
-                background-image: url("chrome://namoroka/content/firefox-3/vista/icons/close.png") !important;
+                background-image: url("chrome://namoroka/content/firefox-3/vista/icons/closeSidebar.png") !important;
             }
         }
 
