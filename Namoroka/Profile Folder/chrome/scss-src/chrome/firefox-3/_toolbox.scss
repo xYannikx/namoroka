@@ -2,11 +2,13 @@
     appearance: auto !important;
 }
 
+@media not (-moz-windows-classic) {
 &[namoroka-appearance-aero] {
     .browser-toolbar {
         appearance: none !important;
         border: 0 !important;
     }
+}
 }
 
 @media not (-moz-windows-classic) {

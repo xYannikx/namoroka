@@ -17,8 +17,10 @@
     }
 
     &[namoroka-appearance-aero] {
-        .searchbar-textbox::placeholder {
-            font-style: italic !important;
+        @media not (-moz-windows-classic) {
+            .searchbar-textbox::placeholder {
+                font-style: italic !important;
+            }
         }
 
         --navbar-textbox-buttons: url("chrome://namoroka/content/firefox-3/vista/urlbar/navbar-textbox-buttons.png") !important;

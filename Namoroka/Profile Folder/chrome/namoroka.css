@@ -2106,8 +2106,10 @@ findbar[namoroka-initialized=true] .find-status-icon[status=wrapped] {
   --page-icon: url("chrome://namoroka/content/firefox-3/vista/icons/page.png") !important;
   --page-invalid-icon: url("chrome://namoroka/content/firefox-3/vista/icons/page-invalid.png") !important;
 }
-:root[namoroka-style-2][namoroka-appearance-aero] #TabsToolbar {
-  appearance: -moz-win-browsertabbar-toolbox !important;
+@media not (-moz-windows-classic) {
+  :root[namoroka-style-2][namoroka-appearance-aero] #TabsToolbar {
+    appearance: -moz-win-browsertabbar-toolbox !important;
+  }
 }
 :root[namoroka-style-2] #TabsToolbar {
   isolation: unset !important;
@@ -2255,9 +2257,11 @@ findbar[namoroka-initialized=true] .find-status-icon[status=wrapped] {
 :root[namoroka-style-2] .browser-toolbar {
   appearance: auto !important;
 }
-:root[namoroka-style-2][namoroka-appearance-aero] .browser-toolbar {
-  appearance: none !important;
-  border: 0 !important;
+@media not (-moz-windows-classic) {
+  :root[namoroka-style-2][namoroka-appearance-aero] .browser-toolbar {
+    appearance: none !important;
+    border: 0 !important;
+  }
 }
 @media not (-moz-windows-classic) {
   :root[namoroka-style-2] toolbar[type=menubar],
@@ -2290,8 +2294,10 @@ findbar[namoroka-initialized=true] .find-status-icon[status=wrapped] {
   --navbar-textbox-buttons: url("chrome://namoroka/content/firefox-3/vista/urlbar/navbar-textbox-buttons.png") !important;
   --search-glass: url("chrome://namoroka/content/firefox-3/vista/Search-glass.png") !important;
 }
-:root[namoroka-style-2][namoroka-appearance-aero] .searchbar-textbox::placeholder {
-  font-style: italic !important;
+@media not (-moz-windows-classic) {
+  :root[namoroka-style-2][namoroka-appearance-aero] .searchbar-textbox::placeholder {
+    font-style: italic !important;
+  }
 }
 :root[namoroka-style-2] #urlbar-container {
   margin-inline-end: 0 !important;

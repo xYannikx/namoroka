@@ -7,8 +7,10 @@
         --page-icon: url("chrome://namoroka/content/firefox-3/vista/icons/page.png") !important;
         --page-invalid-icon: url("chrome://namoroka/content/firefox-3/vista/icons/page-invalid.png") !important;
 
-        #TabsToolbar {
-            appearance: -moz-win-browsertabbar-toolbox !important;
+        @media not (-moz-windows-classic) {
+            #TabsToolbar {
+                appearance: -moz-win-browsertabbar-toolbox !important;
+            }
         }
     }
 }
