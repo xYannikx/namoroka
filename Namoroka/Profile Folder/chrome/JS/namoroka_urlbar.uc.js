@@ -68,7 +68,7 @@
             }
         }
         
-        window.document.documentElement.addEventListener(
+        document.addEventListener(
             "namoroka-appearance-change",
             moveIdentityBox
         )
