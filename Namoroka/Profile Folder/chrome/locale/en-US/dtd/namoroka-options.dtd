@@ -21,7 +21,6 @@
 <!ENTITY general.appearance.style.ff3  "Firefox 3">
 
 <!ENTITY general.appearance.aero "Use Aero Style">
-<!ENTITY general.appearance.hideAddons "Hide &quot;Extensions&quot; button (not recommended)">
 <!ENTITY general.appearance.hideTabBar "Hide the tab bar when only one web site is open">
 <!ENTITY general.appearance.smallIcons "Use Small Icons">
 

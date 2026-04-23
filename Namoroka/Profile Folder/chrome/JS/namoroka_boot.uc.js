@@ -13,7 +13,6 @@ let NAMOROKA_BOOT_CONFIG = {
 			style: true,
 			prefs: [
 				"Namoroka.Appearance.Small-Icons",
-				"Namoroka.Unified-Extensions.Disabled",
 				"Namoroka.Appearance.Aero"
 			],
 		},

@@ -6,7 +6,6 @@ const COMMON_DEFAULTS = {
     "Namoroka.Appearance.Small-Icons": false,
     "Namoroka.Appearance.Aero": false,
     "Namoroka.Tabbrowser.HideOnOneTab": true,
-    "Namoroka.Unified-Extensions.Disabled": true,
     "Namoroka.Status-Bar.Enabled": true,
     "Namoroka.Livemarks.Initialized": false,
     "Namoroka.Parameter.FirstRun": false,
