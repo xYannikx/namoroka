@@ -2672,7 +2672,7 @@ findbar[namoroka-initialized=true] .find-status-icon[status=wrapped] {
   list-style-image: url("chrome://namoroka/content/firefox-3/findbar/wrap.png") !important;
 }
 :root[namoroka-style-2][namoroka-appearance-aero] findbar[namoroka-initialized=true] .findbar-closebutton > .toolbarbutton-icon {
-  background-image: url("chrome://namoroka/content/firefox-3/vista/icons/close.png") !important;
+  background-image: url("chrome://namoroka/content/firefox-3/vista/icons/closeSidebar.png") !important;
 }
 :root[namoroka-style-2][namoroka-appearance-aero] findbar[namoroka-initialized=true] .findbar-find-previous .toolbarbutton-icon,
 :root[namoroka-style-2][namoroka-appearance-aero] findbar[namoroka-initialized=true] .findbar-find-next .toolbarbutton-icon,

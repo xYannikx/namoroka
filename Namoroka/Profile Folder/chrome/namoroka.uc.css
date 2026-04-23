@@ -638,5 +638,165 @@ menuitem:is([default=true], .spell-suggestion), menucaption {
     color: inherit !important;
   }
 }
+@media not (-moz-windows-non-native-menus) {
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup),
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] {
+    appearance: menupopup !important;
+    border: 1px solid !important;
+    border-top-color: ThreeDLightShadow !important;
+    border-left-color: ThreeDLightShadow !important;
+    border-bottom-color: ThreeDDarkShadow !important;
+    border-right-color: ThreeDDarkShadow !important;
+    box-shadow: inset -1px -1px 0 ThreeDShadow, inset 1px 1px 0 ThreeDHighlight !important;
+    padding: 2px !important;
+    background-color: Menu !important;
+  }
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) menu,
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) menuitem,
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] menu,
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] menuitem {
+    -moz-default-appearance: menuitem !important;
+    appearance: auto !important;
+    color: MenuText !important;
+    font: menu !important;
+    align-items: center !important;
+  }
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) menu[default=true],
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) menuitem[default=true],
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] menu[default=true],
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] menuitem[default=true] {
+    font-weight: bold !important;
+  }
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) menu[_moz-menuactive=true],
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) menuitem[_moz-menuactive=true],
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] menu[_moz-menuactive=true],
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] menuitem[_moz-menuactive=true] {
+    background-color: Highlight !important;
+    color: HighlightText !important;
+  }
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) menu[disabled=true], :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) menu[_moz-menuactive=true][disabled=true],
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) menuitem[disabled=true],
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) menuitem[_moz-menuactive=true][disabled=true],
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] menu[disabled=true],
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] menu[_moz-menuactive=true][disabled=true],
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] menuitem[disabled=true],
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] menuitem[_moz-menuactive=true][disabled=true] {
+    color: GrayText !important;
+  }
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) .menu-accel,
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) .menu-iconic-accel,
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) .menu-text,
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) .menu-iconic-text,
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] .menu-accel,
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] .menu-iconic-accel,
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] .menu-text,
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] .menu-iconic-text {
+    appearance: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: inherit !important;
+  }
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) .menu-text,
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] .menu-text {
+    appearance: menuitemtext !important;
+    padding-inline-start: 1.45em !important;
+    font-weight: inherit !important;
+  }
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) .menu-text,
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) .menu-iconic-text,
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] .menu-text,
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] .menu-iconic-text {
+    font-weight: inherit !important;
+    margin-inline-start: 2px !important;
+    padding-inline-end: 2px !important;
+  }
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) .menu-accel,
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) .menu-iconic-accel,
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] .menu-accel,
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] .menu-iconic-accel {
+    color: inherit !important;
+    margin-inline-start: 0.74em !important;
+    margin-inline-end: 1.35em !important;
+  }
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) .menu-iconic-left,
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] .menu-iconic-left {
+    min-width: 1.45em !important;
+    min-height: 1.21em !important;
+  }
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) .menu-iconic-icon,
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] .menu-iconic-icon {
+    width: 16px !important;
+    height: 16px !important;
+  }
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) menu.menu-iconic .menu-iconic-left,
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) menuitem.menuitem-iconic .menu-iconic-left,
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] menu.menu-iconic .menu-iconic-left,
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] menuitem.menuitem-iconic .menu-iconic-left {
+    appearance: menuimage !important;
+  }
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) menu.menu-iconic .menu-iconic-icon,
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) menuitem.menuitem-iconic .menu-iconic-icon,
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] menu.menu-iconic .menu-iconic-icon,
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] menuitem.menuitem-iconic .menu-iconic-icon {
+    margin-inline: -1px !important;
+  }
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) .menu-right,
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] .menu-right {
+    appearance: menuarrow !important;
+    margin-inline-end: -2px !important;
+    list-style-image: none !important;
+  }
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) menuitem[type=checkbox],
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) menuitem[checked=true],
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] menuitem[type=checkbox],
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] menuitem[checked=true] {
+    appearance: checkmenuitem !important;
+  }
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) menuitem[type=checkbox] .menu-iconic-left,
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) menuitem[checked=true] .menu-iconic-left,
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] menuitem[type=checkbox] .menu-iconic-left,
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] menuitem[checked=true] .menu-iconic-left {
+    appearance: menucheckbox !important;
+  }
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) menuitem[type=radio],
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] menuitem[type=radio] {
+    appearance: radiomenuitem !important;
+  }
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) menuitem[type=radio] .menu-iconic-left,
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] menuitem[type=radio] .menu-iconic-left {
+    appearance: menuradio !important;
+  }
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) menuitem[type=checkbox] .menu-iconic-left .menu-iconic-icon,
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) menuitem[checked=true] .menu-iconic-left .menu-iconic-icon,
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) menuitem[type=radio] .menu-iconic-left .menu-iconic-icon,
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) #context-back-old .menu-iconic-left .menu-iconic-icon,
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) #context-forward-old .menu-iconic-left .menu-iconic-icon,
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) #context-reload-old .menu-iconic-left .menu-iconic-icon,
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) #context-stop-old .menu-iconic-left .menu-iconic-icon,
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) #context-bookmarkpage-old .menu-iconic-left .menu-iconic-icon,
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] menuitem[type=checkbox] .menu-iconic-left .menu-iconic-icon,
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] menuitem[checked=true] .menu-iconic-left .menu-iconic-icon,
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] menuitem[type=radio] .menu-iconic-left .menu-iconic-icon,
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] #context-back-old .menu-iconic-left .menu-iconic-icon,
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] #context-forward-old .menu-iconic-left .menu-iconic-icon,
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] #context-reload-old .menu-iconic-left .menu-iconic-icon,
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] #context-stop-old .menu-iconic-left .menu-iconic-icon,
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] #context-bookmarkpage-old .menu-iconic-left .menu-iconic-icon {
+    display: none !important;
+  }
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) menuseparator,
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] menuseparator {
+    appearance: menuseparator !important;
+    padding: 3px 1px 4px 1px !important;
+    border-top: 1px solid ThreeDShadow !important;
+    border-bottom: 1px solid ThreeDHighlight !important;
+  }
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup)::part(content),
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup]::part(content) {
+    border: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
 
 /*# sourceMappingURL=namoroka.uc.css.map */

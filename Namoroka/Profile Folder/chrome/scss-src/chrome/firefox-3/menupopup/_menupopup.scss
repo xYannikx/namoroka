@@ -1,0 +1,139 @@
+@media not (-moz-windows-non-native-menus) {
+    menupopup:not(#ContentSelectDropdownPopup),
+    toolbarbutton menupopup[placespopup] {
+        appearance: menupopup !important;
+        border: 1px solid !important;
+        border-top-color: ThreeDLightShadow !important;
+        border-left-color: ThreeDLightShadow !important;
+        border-bottom-color: ThreeDDarkShadow !important;
+        border-right-color: ThreeDDarkShadow !important;
+        box-shadow: inset -1px -1px 0 ThreeDShadow, inset 1px 1px 0 ThreeDHighlight !important;
+        padding: 2px !important;
+        background-color: Menu !important;
+
+        menu,
+        menuitem {
+            -moz-default-appearance: menuitem !important;
+            appearance: auto !important;
+            color: MenuText !important;
+            font: menu !important;
+            align-items: center !important;
+
+            &[default="true"] {
+                font-weight: bold !important;
+            }
+
+            &[_moz-menuactive="true"] {
+                background-color: Highlight !important;
+                color: HighlightText !important;
+            }
+
+            &[disabled="true"],
+            &[_moz-menuactive="true"][disabled="true"] {
+                color: GrayText !important;
+            }
+        }
+
+        .menu-accel,
+        .menu-iconic-accel,
+        .menu-text,
+        .menu-iconic-text {
+            appearance: none !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            color: inherit !important;
+        }
+
+        .menu-text {
+            appearance: menuitemtext !important;
+            padding-inline-start: 1.45em !important;
+            font-weight: inherit !important;
+        }
+
+        .menu-text,
+        .menu-iconic-text {
+            font-weight: inherit !important;
+            margin-inline-start: 2px !important;
+            padding-inline-end: 2px !important
+        }
+
+        .menu-accel,
+        .menu-iconic-accel {
+            color: inherit !important;
+            margin-inline-start: 0.74em !important;
+            margin-inline-end: 1.35em !important;
+        }
+
+        .menu-iconic-left {
+            min-width: 1.45em !important;
+            min-height: 1.21em !important;
+        }
+
+        .menu-iconic-icon {
+            width: 16px !important;
+            height: 16px !important;
+        }
+        
+        menu.menu-iconic,
+        menuitem.menuitem-iconic{
+            .menu-iconic-left {
+                appearance: menuimage !important;
+            }
+
+            .menu-iconic-icon {
+                margin-inline: -1px !important;
+            }
+        }
+
+        .menu-right {
+            appearance: menuarrow !important;
+            margin-inline-end: -2px !important;
+            list-style-image: none !important;
+        }
+
+        menuitem[type="checkbox"],
+        menuitem[checked="true"] {
+            appearance: checkmenuitem !important;
+
+            .menu-iconic-left {
+                appearance: menucheckbox !important;
+            }
+        }
+
+        menuitem[type="radio"] {
+            appearance: radiomenuitem !important;
+
+            .menu-iconic-left {
+                appearance: menuradio !important;
+            }
+        }
+
+        menuitem[type="checkbox"],
+        menuitem[checked="true"],
+        menuitem[type="radio"],
+        #context-back-old,
+        #context-forward-old,
+        #context-reload-old,
+        #context-stop-old,
+        #context-bookmarkpage-old {
+            .menu-iconic-left {
+                .menu-iconic-icon {
+                    display: none !important;
+                }
+            }
+        }
+
+        menuseparator {
+            appearance: menuseparator !important;
+            padding: 3px 1px 4px 1px !important;
+            border-top: 1px solid ThreeDShadow !important;
+            border-bottom: 1px solid ThreeDHighlight !important;
+        }
+
+        &::part(content) {
+            border: 0 !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+    }
+}
