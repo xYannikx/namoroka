@@ -9,6 +9,17 @@ var g_NamorokaOptionsDialog;
         NamorokaUpdateChecker: "chrome://modules/content/NamorokaUpdateChecker.sys.mjs",
     });
 
+    let g_themeManager = new NamorokaThemeManager(
+        document.documentElement,
+        {
+            style: true,
+            prefs: [
+                "Namoroka.Appearance.Aero",
+                "Namoroka.Option.Debug",
+            ]
+        }
+    );
+
     class NamorokaOptionsDialog {
         stringbundle = "chrome://namoroka/locale/properties/namoroka-options.properties";
 
