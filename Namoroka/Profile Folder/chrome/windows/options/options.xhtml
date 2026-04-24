@@ -17,30 +17,26 @@
 
     <vbox flex="1">
 		<hbox id="contentArea" flex="1">
-			<html:div id="tabs">
-				<html:div id="main-tabs">
-					<html:div class="tab tab-selected" id="tab-general">
-						<html:div class="tab-icon"></html:div>
-						<html:span class="tab-label">&tabs.general;</html:span>
-					</html:div>
-					<html:div class="tab" id="tab-branding">
-						<html:div class="tab-icon"></html:div>
-						<html:span class="tab-label">&tabs.branding;</html:span>
-					</html:div>
-					<!-- <html:div class="tab" id="tab-native-controls">
-						<html:div class="tab-icon"></html:div>
-						<html:span class="tab-label">&tabs.nativeControls;</html:span>
-					</html:div> -->
-					<html:div class="tab" id="tab-about">
-						<html:div class="tab-icon"></html:div>
-						<html:span class="tab-label">&tabs.about;</html:span>
-					</html:div>
-				</html:div>
-				<html:div class="tab" id="tab-debug">
-					<html:div class="tab-icon"></html:div>
-					<html:span class="tab-label">&tabs.debug;</html:span>
-				</html:div>
-			</html:div>
+			<vbox id="tabs">
+				<vbox id="main-tabs">
+					<vbox class="tab tab-selected" id="tab-general">
+						<image class="tab-icon" />
+						<label class="tab-label">&tabs.general;</label>
+					</vbox>
+					<vbox class="tab" id="tab-branding">
+						<image class="tab-icon" />
+						<label class="tab-label">&tabs.branding;</label>
+					</vbox>
+					<vbox class="tab" id="tab-about">
+						<image class="tab-icon" />
+						<label class="tab-label">&tabs.about;</label>
+					</vbox>
+				</vbox>
+				<vbox class="tab" id="tab-debug">
+					<image class="tab-icon" />
+					<label class="tab-label">&tabs.debug;</label>
+				</vbox>
+			</vbox>
 			<html:div id="content">
 				<html:div id="main-section">    
 					<html:div id="section-general" class="section section-selected">
@@ -52,17 +48,29 @@
 							<vbox flex="1">
 								<description>&general.appearance.description;</description>
 								<description>&general.appearance.style;</description>
-								<namoroka-listbox id="skinsList" class="listBox option" data-type="enum" data-option="Namoroka.Appearance.Style">
-									<namoroka-listitem label="&general.appearance.style.ff1;" 
-													   src="chrome://userchrome/content/windows/options/preview/ff1.png"
-													   value="0" />
-									<namoroka-listitem label="&general.appearance.style.ff2;" 
-													   src="chrome://userchrome/content/windows/options/preview/ff2.png"
-													   value="1" />
-									<namoroka-listitem label="&general.appearance.style.ff3;" 
-													   src="chrome://userchrome/content/windows/options/preview/ff3.png"
-													   value="2" />
-								</namoroka-listbox>
+								<hbox class="brandingOptionsContainer">
+									<richlistbox id="skinsList" class="listBox option" data-type="enum" data-option="Namoroka.Appearance.Style" controls="listboxPreview" flex="1" render-richlistbox="true">
+										<richlistitem iconURL="chrome://userchrome/content/windows/wizard/images/theme-firefox1.png" 
+													previewImage="chrome://userchrome/content/windows/wizard/images/preview-firefox1.png" 
+													name="&general.appearance.style.ff1;" 
+													description="&general.appearance.description.ff1;"
+													value="0" />
+										<richlistitem iconURL="chrome://userchrome/content/windows/wizard/images/theme-firefox2.png" 
+													previewImage="chrome://userchrome/content/windows/wizard/images/preview-firefox2.png" 
+													name="&general.appearance.style.ff2;" 
+													description="&general.appearance.description.ff2;"
+													value="1" />
+										<richlistitem iconURL="chrome://userchrome/content/windows/wizard/images/theme-firefox3.png" 
+													previewImage="chrome://userchrome/content/windows/wizard/images/preview-firefox3.png" 
+													name="&general.appearance.style.ff3;" 
+													description="&general.appearance.description.ff3;"
+													value="2" />
+									</richlistbox>
+
+									<hbox id="listboxPreview" class="brandingListPreview" controls="skinsList" style="min-width: 210px; min-height: 190px; background-color: white;">
+										<image id="previewImage" />
+									</hbox>
+								</hbox>
 								<hbox id="previewImageContainer">
 									<image id="previewImage" />
 								</hbox>
@@ -82,21 +90,22 @@
 								<description>&branding.description;</description>
 								<description>&branding.style;</description>
 								<hbox class="brandingOptionsContainer" flex="1">
-									<namoroka-listbox id="brandingList" class="listBox option" data-type="string" data-option="Namoroka.Option.Branding" change-requires-restart="true">
-										<namoroka-listitem label="&branding.option.firefox;" 
-														src="chrome://userchrome/content/branding/firefox/content/about.png"
-														icon="chrome://userchrome/content/branding/firefox/content/icon32.png"
-														value="firefox" />
-										<namoroka-listitem label="&branding.option.minefield;" 
-														src="chrome://userchrome/content/branding/minefield/content/about.png"
-														icon="chrome://userchrome/content/branding/minefield/content/icon32.png"
-														value="minefield" />
-										<namoroka-listitem label="&branding.option.namoroka;" 
-														src="chrome://userchrome/content/branding/namoroka/content/about.png"
-														icon="chrome://userchrome/content/branding/namoroka/content/icon32.png"
-														value="namoroka" />
-									</namoroka-listbox>
-									<hbox id="previewImageContainer" class="brandingListPreview">
+									<richlistbox id="brandingList" class="listBox option vertical" data-type="string" data-option="Namoroka.Option.Branding" change-requires-restart="true" controls="listboxPreview" flex="1" render-richlistbox="true">
+										<richlistitem iconURL="chrome://userchrome/content/branding/firefox/content/icon32.png" 
+													previewImage="chrome://userchrome/content/branding/firefox/content/about.png" 
+													name="&branding.option.firefox;" 
+													value="firefox" />
+										<richlistitem iconURL="chrome://userchrome/content/branding/minefield/content/icon32.png" 
+													previewImage="chrome://userchrome/content/branding/minefield/content/about.png" 
+													name="&branding.option.minefield;" 
+													value="minefield" />
+										<richlistitem iconURL="chrome://userchrome/content/branding/namoroka/content/icon32.png" 
+													previewImage="chrome://userchrome/content/branding/namoroka/content/about.png" 
+													name="&branding.option.namoroka;" 
+													value="namoroka" />
+									</richlistbox>
+
+									<hbox id="listboxPreview" class="brandingListPreview" controls="brandingList">
 										<image id="previewImage" />
 									</hbox>
 								</hbox>

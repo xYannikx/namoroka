@@ -139,6 +139,7 @@ checkbox {
     }
 
     .tab-label {
+        margin: 0 !important;
         margin-block-start: 1px;
         line-height: 1;
         overflow: visible;
@@ -280,38 +281,6 @@ button[type="disclosure"]:active .button-icon,
 	padding: 5px;
 }
 
-#skinsList {
-    height: 84px;
-    flex-direction: column;
-    margin: 2px 4px 2px 4px;
-}
-
-namoroka-listitem {
-    border: 1px dotted transparent;
-
-    &[selected] {
-        border-color: rgb(245,219,149);
-        background-color: Highlight;
-        color: HighlightText;   
-    }
-    
-    label {
-        padding-inline-start: 4px;
-        padding-block: 1px;
-        margin: 0;
-    }
-}
-
-#previewImageContainer {
-    justify-content: center;
-    align-items: center;
-    border-top: 1px solid ThreeDShadow;
-    border-left: 1px solid ThreeDShadow;
-    border-bottom: 1px solid ThreeDHighlight;
-    border-right: 1px solid ThreeDHighlight;
-    margin: 0.5em 4px 0.5em 4px;
-}
-
 :root:not([namoroka-option-debug="true"]) #tab-debug {
     visibility: collapse;
 }
@@ -374,67 +343,87 @@ namoroka-listitem {
 
 .brandingOptionsContainer {
     justify-content: space-evenly;
-}
-
-#brandingList {
-    display: flex;
-    height: 238px;
-    flex-direction: column;
-    margin: 2px 4px 2px 4px;
-    padding: 1px;
-
-    namoroka-listitem {
-        width: 105px;
-        padding: 2px 0;
-        display: flex;
-        margin-block-end: 3px;
-        color: WindowText;
-        border: 1px solid transparent;
-        background-color: transparent;
-
-        &:not([selected="true"]):hover {
-            border-color: #98B4E2;
-            background-color: #e0e8f6;
-        }
-
-        &[selected="true"] {
-            border-color: #316AC5;
-            background-color: #c1d2ee !important;
-            color: black;
-        }
-
-        &:active,
-        &[selected="true"] {
-            padding: 3px 0 1px 1px;
-        }
-
-        label {
-            margin-block-start: 1px;
-            line-height: 1;
-            overflow: visible;
-            
-            text-align: center;
-            padding: 0;
-        }
-
-        &.with-icon {
-            flex-direction: column;
-            align-items: center;
-
-            .namoroka-listitem-icon {
-                width: 32px;
-                height: 32px;
-            }
-        }
-    }
+    margin-bottom: 6px;
 }
 
 .brandingListPreview {
     align-self: flex-start;
-    margin: 2px 4px 2px 4px !important;
+    margin: 2px 4px 2px 4px;
     background-color: #EEEEEE;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid ThreeDShadow;
+    border-left: 1px solid ThreeDShadow;
+    border-bottom: 1px solid ThreeDHighlight;
+    border-right: 1px solid ThreeDHighlight;
 }
 
 .header {
     font-weight: bold !important;
+}
+
+richlistbox {
+    richlistitem {
+        padding-inline: 8px;
+        padding-block: 6px;
+        border-block-end: 1px dotted ThreeDShadow;
+
+        .styleName {
+            font-weight: bold;
+        }
+
+        &[selected="true"]:-moz-window-inactive {
+            background-color: -moz-Dialog;
+            color: -moz-DialogText;
+        }
+
+        &[selected="true"] {
+            background-image: url("chrome://userchrome/content/windows/wizard/images/itemEnabledFader.png");
+            background-color: Highlight;
+            color: HighlightText;
+        }
+    }
+
+    &.vertical {
+        padding: 1px;
+
+        richlistitem {
+            padding: 2px 0;
+            margin-block-end: 3px;
+            color: WindowText;
+            border: 1px solid transparent;
+            background-color: transparent;
+
+            &:not([selected="true"]):hover {
+                border-color: #98B4E2;
+                background-color: #e0e8f6;
+            }
+
+            &[selected="true"] {
+                border-color: #316AC5;
+                background-color: #c1d2ee !important;
+                color: black;
+            }
+
+            > hbox {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .styleIcon {
+                width: 32px;
+                height: 32px;
+            }
+
+            .styleName {
+                margin: 0;
+                margin-block-start: 1px;
+                line-height: 1;
+                overflow: visible;
+                text-align: center;
+                padding: 0;
+                font-weight: normal;
+            }
+        }
+    }
 }

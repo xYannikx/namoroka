@@ -118,6 +118,7 @@ checkbox[disabled=true] {
   background-image: url("chrome://userchrome/content/windows/options/images/Options-ff3-aero.png");
 }
 .tab .tab-label {
+  margin: 0 !important;
   margin-block-start: 1px;
   line-height: 1;
   overflow: visible;
@@ -251,36 +252,6 @@ button[type=disclosure]:active .button-icon,
   padding: 5px;
 }
 
-#skinsList {
-  height: 84px;
-  flex-direction: column;
-  margin: 2px 4px 2px 4px;
-}
-
-namoroka-listitem {
-  border: 1px dotted transparent;
-}
-namoroka-listitem[selected] {
-  border-color: rgb(245, 219, 149);
-  background-color: Highlight;
-  color: HighlightText;
-}
-namoroka-listitem label {
-  padding-inline-start: 4px;
-  padding-block: 1px;
-  margin: 0;
-}
-
-#previewImageContainer {
-  justify-content: center;
-  align-items: center;
-  border-top: 1px solid ThreeDShadow;
-  border-left: 1px solid ThreeDShadow;
-  border-bottom: 1px solid ThreeDHighlight;
-  border-right: 1px solid ThreeDHighlight;
-  margin: 0.5em 4px 0.5em 4px;
-}
-
 :root:not([namoroka-option-debug=true]) #tab-debug {
   visibility: collapse;
 }
@@ -342,60 +313,77 @@ namoroka-listitem label {
 
 .brandingOptionsContainer {
   justify-content: space-evenly;
+  margin-bottom: 6px;
 }
 
-#brandingList {
-  display: flex;
-  height: 238px;
-  flex-direction: column;
+.brandingListPreview {
+  align-self: flex-start;
   margin: 2px 4px 2px 4px;
+  background-color: #EEEEEE;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid ThreeDShadow;
+  border-left: 1px solid ThreeDShadow;
+  border-bottom: 1px solid ThreeDHighlight;
+  border-right: 1px solid ThreeDHighlight;
+}
+
+.header {
+  font-weight: bold !important;
+}
+
+richlistbox richlistitem {
+  padding-inline: 8px;
+  padding-block: 6px;
+  border-block-end: 1px dotted ThreeDShadow;
+}
+richlistbox richlistitem .styleName {
+  font-weight: bold;
+}
+richlistbox richlistitem[selected=true]:-moz-window-inactive {
+  background-color: -moz-Dialog;
+  color: -moz-DialogText;
+}
+richlistbox richlistitem[selected=true] {
+  background-image: url("chrome://userchrome/content/windows/wizard/images/itemEnabledFader.png");
+  background-color: Highlight;
+  color: HighlightText;
+}
+richlistbox.vertical {
   padding: 1px;
 }
-#brandingList namoroka-listitem {
-  width: 105px;
+richlistbox.vertical richlistitem {
   padding: 2px 0;
-  display: flex;
   margin-block-end: 3px;
   color: WindowText;
   border: 1px solid transparent;
   background-color: transparent;
 }
-#brandingList namoroka-listitem:not([selected=true]):hover {
+richlistbox.vertical richlistitem:not([selected=true]):hover {
   border-color: #98B4E2;
   background-color: #e0e8f6;
 }
-#brandingList namoroka-listitem[selected=true] {
+richlistbox.vertical richlistitem[selected=true] {
   border-color: #316AC5;
   background-color: #c1d2ee !important;
   color: black;
 }
-#brandingList namoroka-listitem:active, #brandingList namoroka-listitem[selected=true] {
-  padding: 3px 0 1px 1px;
+richlistbox.vertical richlistitem > hbox {
+  flex-direction: column;
+  align-items: center;
 }
-#brandingList namoroka-listitem label {
+richlistbox.vertical richlistitem .styleIcon {
+  width: 32px;
+  height: 32px;
+}
+richlistbox.vertical richlistitem .styleName {
+  margin: 0;
   margin-block-start: 1px;
   line-height: 1;
   overflow: visible;
   text-align: center;
   padding: 0;
-}
-#brandingList namoroka-listitem.with-icon {
-  flex-direction: column;
-  align-items: center;
-}
-#brandingList namoroka-listitem.with-icon .namoroka-listitem-icon {
-  width: 32px;
-  height: 32px;
-}
-
-.brandingListPreview {
-  align-self: flex-start;
-  margin: 2px 4px 2px 4px !important;
-  background-color: #EEEEEE;
-}
-
-.header {
-  font-weight: bold !important;
+  font-weight: normal;
 }
 
 /*# sourceMappingURL=styles.css.map */

@@ -1,321 +1,312 @@
-const { LocaleUtils, 
+var g_NamorokaOptionsDialog;
+{
+    const { LocaleUtils, 
         PrefCalls, 
         BrandUtils } = ChromeUtils.importESModule("chrome://modules/content/NamorokaUtils.sys.mjs");
         
-ChromeUtils.defineESModuleGetters(window, {
-    NamorokaThemeManager: "chrome://modules/content/NamorokaThemeManager.sys.mjs",
-    NamorokaUpdateChecker: "chrome://modules/content/NamorokaUpdateChecker.sys.mjs",
-});
-
-const gOptionsBundle = "chrome://namoroka/locale/properties/namoroka-options.properties";
-
-let g_themeManager = new NamorokaThemeManager(
-    document.documentElement,
-    {
-        style: true,
-        prefs: [
-            "Namoroka.Appearance.Aero",
-            "Namoroka.Option.Debug",
-        ]
-    }
-);
-
-// snatched from fx-autoconfig
-function restartApplication(clearCache) {
-    clearCache && Services.appinfo.invalidateCachesOnRestart();
-    let cancelQuit = Cc["@mozilla.org/supports-PRBool;1"].createInstance(Ci.nsISupportsPRBool);
-    Services.obs.notifyObservers(
-        cancelQuit,
-        "quit-application-requested",
-        "restart"
-    );
-    if (!cancelQuit.data) {
-        Services.startup.quit(
-            Services.startup.eAttemptQuit | Services.startup.eRestart
-        );
-        return true
-    }
-    return false
-}
-
-document.querySelectorAll("namoroka-listbox").forEach(listbox => {
-    let items = listbox.querySelectorAll("namoroka-listitem");
-
-    items.forEach(item => {
-        let itemImage = document.createXULElement("image");
-        let itemLabel = document.createXULElement("label");
-        
-        if (item.hasAttribute("icon")) {
-            itemImage.setAttribute("src", item.getAttribute("icon"));
-            itemImage.classList.add("namoroka-listitem-icon");
-
-            item.classList.add("with-icon");
-            item.appendChild(itemImage);
-        }
-
-        if (item.hasAttribute("label")) {
-            itemLabel.value = item.getAttribute("label");
-            itemLabel.setAttribute("flex", "1");
-            
-            item.appendChild(itemLabel);
-        }
-
-        item.addEventListener("click", () => {
-            items.forEach(item => {
-                item.removeAttribute("selected");
-            });
-
-            listbox.setValue(item.getAttribute("value"));
-            item.setAttribute("selected", "true");
-
-            listbox.dispatchEvent(new CustomEvent("namoroka-listbox-change"));
-        });
-
-        item.addEventListener("dblclick", e => okApplyHandler(e, true));
+    ChromeUtils.defineESModuleGetters(window, {
+        NamorokaThemeManager: "chrome://modules/content/NamorokaThemeManager.sys.mjs",
+        NamorokaUpdateChecker: "chrome://modules/content/NamorokaUpdateChecker.sys.mjs",
     });
 
-    listbox.setValue = function(aValue) {
-        let selectedItem = listbox.querySelector(`namoroka-listitem[value="${aValue}"]`);
-        if (!selectedItem) return;
-        selectedItem.setAttribute("selected", "true");
-        
-        listbox.setAttribute("value", aValue);
-        listbox.value = aValue;
+    class NamorokaOptionsDialog {
+        stringbundle = "chrome://namoroka/locale/properties/namoroka-options.properties";
 
-        if (selectedItem.hasAttribute("src")) {   
-            let previewImageContainer = listbox.nextElementSibling;
-            var previewImage;
-
-            if (previewImageContainer.matches("#previewImageContainer")) {
-                previewImage = previewImageContainer.querySelector("image");
-                
-                previewImage.setAttribute("src", selectedItem.getAttribute("src"));
-            }
+        get _okButton() {
+            return document.getElementById("ok-button");
         }
-    }
-});
 
-function refreshViewProperties()
-{
-    // Handle local display changes when the user changes configuration.
-    let restartRequired = isRestartRequired();
-
-    document.querySelector(".restart-required-label").style.display = restartRequired ? "flex" : "none";
-}
-
-/* Fill current values */
-for (const option of document.querySelectorAll(".option"))
-{
-    switch (option.dataset.type)
-    {
-        case "bool":
-            option.checked = PrefCalls.getPref(option.dataset.option);
-            break;
-        case "int":
-        case "enum":
-            if (option.localName == "namoroka-listbox") 
-            {
-                option.setValue(PrefCalls.getPref(option.dataset.option));
-            }
-            else
-            {
-                option.value = PrefCalls.getPref(option.dataset.option);
-            }
-            break;
-        case "string":
-            if (option.localName == "namoroka-listbox") 
-            {
-                option.setValue(PrefCalls.getPref(option.dataset.option));
-            }
-            else
-            {
-                option.value = PrefCalls.getPref(option.dataset.option);
-            }
-            break;
-    }
-    option.originalValue = getOptionValue(option);
-
-    if (option.localName == "menulist")
-        option.addEventListener("command", refreshViewProperties);
-    else if (option.localName == "checkbox")
-        option.addEventListener("CheckboxStateChange", refreshViewProperties);
-    else if (option.localName == "namoroka-listbox")
-        option.addEventListener("namoroka-listbox-change", refreshViewProperties);
-    else if (option.localName == "input")
-        option.addEventListener("input", refreshViewProperties);
-}
-
-refreshViewProperties();
-
-function getOptionValue(optElm)
-{
-    switch (optElm.dataset.type)
-    {
-        case "bool":
-            return optElm.checked;
-        case "int":
-        case "enum":
-            return optElm.value;
-        case "string":
-            return optElm.value;
-    }
-
-    return null;
-}
-
-function isRestartRequired()
-{
-    for (const option of document.querySelectorAll(".option"))
-    {
-        if (option.closest("[section-change-requires-restart]") || option.getAttribute("change-requires-restart"))
-        {
-            if (option.originalValue != getOptionValue(option))
-            {
-                return true;
-            }
+        get _cancelButton() {
+            return document.getElementById("cancel-button");
         }
-    }
-    return false;
-}
 
-function okApplyHandler(e, closeWindow = false)
-{
-    let restartRequired = isRestartRequired();
+        get _applyButton() {
+            return document.getElementById("apply-button");
+        }
 
-    let restartStruct = {
-        accepted: false,
-        icon: "warning",
-        title: LocaleUtils.str(gOptionsBundle, "restart_prompt_title"),
-        message: LocaleUtils.str(gOptionsBundle, "restart_prompt_message"),
-        acceptButtonText: LocaleUtils.str(gOptionsBundle, "restart_prompt_restart")
-    };
+        get _isRestartRequired() {
+            for (const option of document.querySelectorAll(".option"))
+            {
+                if (option.closest("[section-change-requires-restart]") || option.getAttribute("change-requires-restart"))
+                {
+                    if (option.originalValue != this.getOptionValue(option))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
 
-    if (restartRequired)
-    {
-        windowRoot.ownerGlobal.openDialog(
-            "chrome://userchrome/content/windows/common/dialog.xhtml",
-            LocaleUtils.str(gOptionsBundle, "restart_prompt_title"),
-            "chrome,centerscreen,resizeable=no,dependent,modal",
-            restartStruct
-        );
-    }
-
-    if (!restartRequired || restartStruct.accepted)
-    {
-        for (const option of document.querySelectorAll(".option"))
-        {
-            switch (option.dataset.type)
+        getOptionValue(optElm) {
+            switch (optElm.dataset.type)
             {
                 case "bool":
-                    PrefCalls.setPref(option.dataset.option, option.checked);
-                    break;
-                case "enum":
-                    PrefCalls.setPref(option.dataset.option, Number(option.value));
-                    break;
+                    return optElm.checked;
                 case "int":
-                    PrefCalls.setPref(option.dataset.option, Math.floor(Number(option.value)));
-                    break;
+                case "enum":
+                    return optElm.value;
                 case "string":
-                    PrefCalls.setPref(option.dataset.option, option.value);
+                    return optElm.value;
+            }
+
+            return null;
+        }
+
+        constructor() {
+            this._okButton.addEventListener("command", e => this.handleOkApply(e, true));
+            this._applyButton.addEventListener("command", e => this.handleOkApply(e, false));
+            this._cancelButton.addEventListener("command", this.handleCancel.bind(this));
+
+            for (const option of document.querySelectorAll(".option")) {
+                switch (option.dataset.type) {
+                    case "bool":
+                        option.checked = PrefCalls.getPref(option.dataset.option);
+                        break;
+                    case "int":
+                    case "enum":
+                        option.value = PrefCalls.getPref(option.dataset.option);
+                        break;
+                    case "string":
+                        option.value = PrefCalls.getPref(option.dataset.option);
+                        break;
+                }
+                option.originalValue = this.getOptionValue(option);
+
+                switch (option.localName) {
+                    case "menulist":
+                        option.addEventListener("command", this.refreshViewProperties.bind(this));
+                        break;
+                    case "checkbox":
+                        option.addEventListener("CheckboxStateChange", this.refreshViewProperties.bind(this));
+                        break;
+                    case "richlistbox":
+                        option.addEventListener("select", this.refreshViewProperties.bind(this));
+                        break;
+                    case "input":
+                        option.addEventListener("input", this.refreshViewProperties.bind(this));
+                        break;
+                }
+            }
+
+            for (const expander of document.querySelectorAll(".expanderButton"))
+            {
+                expander.addEventListener("click", this.toggleExpansion.bind(this));
+            }
+
+            for (const listbox of document.querySelectorAll("richlistbox[render-richlistbox]")) {
+                this.renderRichlistbox(listbox);
+            }
+
+            for (const tab of document.querySelectorAll(".tab"))
+            {
+                tab.addEventListener("click", this.switchTab);
+            }
+
+            this.loadVersion();
+
+            document.addEventListener("keypress", this.handleKeyPress);
+        }
+
+        handleKeyPress(event) {
+            switch (event.key) {
+                case "Escape":
+                    window.close();
                     break;
             }
         }
 
-        if (restartRequired)
-            restartApplication(true);
+        refreshViewProperties(event) {
+            let restartRequired = this._isRestartRequired;
 
-        if (closeWindow)
+            document.querySelector(".restart-required-label").style.display = restartRequired ? "flex" : "none";
+        }
+        
+        handleOkApply(event, closeWindow = false) {
+            let restartRequired = this._isRestartRequired;
+
+            let restartStruct = {
+                accepted: false,
+                icon: "warning",
+                title: LocaleUtils.str(this.stringbundle, "restart_prompt_title"),
+                message: LocaleUtils.str(this.stringbundle, "restart_prompt_message"),
+                acceptButtonText: LocaleUtils.str(this.stringbundle, "restart_prompt_restart")
+            };
+
+            if (restartRequired)
+            {
+                windowRoot.ownerGlobal.openDialog(
+                    "chrome://userchrome/content/windows/common/dialog.xhtml",
+                    LocaleUtils.str(this.stringbundle, "restart_prompt_title"),
+                    "chrome,centerscreen,resizeable=no,dependent,modal",
+                    restartStruct
+                );
+            }
+
+            if (!restartRequired || restartStruct.accepted)
+            {
+                for (const option of document.querySelectorAll(".option"))
+                {
+                    switch (option.dataset.type)
+                    {
+                        case "bool":
+                            PrefCalls.setPref(option.dataset.option, option.checked);
+                            break;
+                        case "enum":
+                            PrefCalls.setPref(option.dataset.option, Number(option.value));
+                            break;
+                        case "int":
+                            PrefCalls.setPref(option.dataset.option, Math.floor(Number(option.value)));
+                            break;
+                        case "string":
+                            PrefCalls.setPref(option.dataset.option, option.value);
+                            break;
+                    }
+                }
+
+                if (restartRequired)
+                    this.restartApplication(true);
+
+                if (closeWindow)
+                    window.close();   
+            }
+        }
+
+        handleCancel(event) {
+            if (event.type !== "command")
+                return
+
             window.close();
-    }
-}
-
-/* Events */
-document.getElementById("ok-button").addEventListener("click", e => okApplyHandler(e, true));
-document.getElementById("apply-button").addEventListener("click", e => okApplyHandler(e, false));
-
-document.getElementById("cancel-button").addEventListener("click", function()
-{
-    window.close();
-});	
-
-
-/* Expanders */
-function toggleExpansion(e) 
-{
-	let carat = e.target;
-	carat.closest(".expander").classList.toggle("expanded");
-}
-
-for (const expander of document.querySelectorAll(".expanderButton"))
-{
-	expander.addEventListener("click", this.toggleExpansion);
-}
-
-/* Tabs */
-function switchTab(e)
-{
-    let id = this.id.replace("tab-", "");
-
-    /* Update tabs */
-    document.querySelector(".tab-selected").classList.remove("tab-selected");
-    this.classList.add("tab-selected");
-
-    /* Update sections */
-    document.querySelector(".section-selected").classList.remove("section-selected");
-    document.getElementById(`section-${id}`).classList.add("section-selected");
-
-    /* Update content element */
-    document.getElementById("content").dataset.tab = id;
-}
-
-for (const tab of document.querySelectorAll(".tab"))
-{
-    tab.addEventListener("click", switchTab);
-}
-
-/* Keyboard Events */
-document.documentElement.addEventListener('keypress', function(e) {
-	if (e.key == "Escape") {
-		window.close();
-	}
-});
-
-/* About Page */
-
-async function loadVersion() {
-    let localNamorokaJSON = await NamorokaUpdateChecker.getBuildData("local");
-
-    document.querySelectorAll("#version").forEach(async identifier => {
-        if (identifier.getAttribute("numberonly")) {
-            identifier.value = localNamorokaJSON.version;
         }
-        else {
-            identifier.value = LocaleUtils.str(gOptionsBundle, "version_format", localNamorokaJSON.version);
-        }
-	});
 
-    document.querySelectorAll("#build").forEach(async identifier => {
-        if (identifier.getAttribute("numberonly")) {
-            if (identifier.getAttribute("includehash")) {
-                identifier.value = `${localNamorokaJSON.build} (${localNamorokaJSON.hash})`
+        toggleExpansion(event) 
+        {
+            if (event.button !== 0)
+                return;
+
+            let carat = e.target;
+            carat.closest(".expander").classList.toggle("expanded");
+        }
+
+        renderRichlistbox(listbox) {
+            let items = listbox.querySelectorAll("richlistitem");
+
+            let fragment = window.MozXULElement.parseXULToFragment(`
+                <hbox flex="1">
+                    <vbox>
+                        <image class="styleIcon" />
+                    </vbox>
+                    <vbox flex="1">
+                        <label class="styleName"></label>
+                        <description class="styleDescription"></description>
+                    </vbox>
+                </hbox>
+            `).firstChild;
+
+            let styleIcon = fragment.querySelector(".styleIcon");
+            let styleName = fragment.querySelector(".styleName");
+            let styleDescription = fragment.querySelector(".styleDescription");
+
+            listbox.removeAttribute("render-richlistbox");
+
+            items.forEach(item => {
+                let iconURL = item.getAttribute("iconURL");
+                let name = item.getAttribute("name") || "";
+                let description = item.getAttribute("description");
+
+                styleIcon.src = iconURL;
+                styleName.value = name;
+                styleDescription.hidden = !description;
+                styleDescription.value = !description ? "" : description;
+
+                item.appendChild(fragment.cloneNode(true));
+            });
+
+            listbox.addEventListener("select", this.setPreviewImage.bind(this));
+            this.setPreviewImage({ target: listbox });
+        }
+
+        setPreviewImage(event) {
+            let listbox = event.target;
+            let selectedItem = listbox.selectedItem;
+
+            let previewImageContainer = listbox.nextElementSibling;
+            if (!previewImageContainer || !previewImageContainer.matches(`#listboxPreview[controls="${listbox.id}"]`))
+                return;
+
+            previewImageContainer.querySelector("image").src = selectedItem.getAttribute("previewImage");
+        }
+
+        switchTab(event) {
+            let id = this.id.replace("tab-", "");
+
+            /* Update tabs */
+            document.querySelector(".tab-selected").classList.remove("tab-selected");
+            this.classList.add("tab-selected");
+
+            /* Update sections */
+            document.querySelector(".section-selected").classList.remove("section-selected");
+            document.getElementById(`section-${id}`).classList.add("section-selected");
+
+            /* Update content element */
+            document.getElementById("content").dataset.tab = id;
+        }
+
+        restartApplication(clearCache) {
+            clearCache && Services.appinfo.invalidateCachesOnRestart();
+            let cancelQuit = Cc["@mozilla.org/supports-PRBool;1"].createInstance(Ci.nsISupportsPRBool);
+            Services.obs.notifyObservers(
+                cancelQuit,
+                "quit-application-requested",
+                "restart"
+            );
+            if (!cancelQuit.data) {
+                Services.startup.quit(
+                    Services.startup.eAttemptQuit | Services.startup.eRestart
+                );
+                return true
             }
-            else {
-                identifier.value = localNamorokaJSON.build;
+            return false
+        }
+
+        async loadVersion() {
+            let localNamorokaJSON = await NamorokaUpdateChecker.getBuildData("local");
+
+            document.querySelectorAll("#version").forEach(async identifier => {
+                if (identifier.getAttribute("numberonly")) {
+                    identifier.value = localNamorokaJSON.version;
+                }
+                else {
+                    identifier.value = LocaleUtils.str(gOptionsBundle, "version_format", localNamorokaJSON.version);
+                }
+            });
+
+            document.querySelectorAll("#build").forEach(async identifier => {
+                if (identifier.getAttribute("numberonly")) {
+                    if (identifier.getAttribute("includehash")) {
+                        identifier.value = `${localNamorokaJSON.build} (${localNamorokaJSON.hash})`
+                    }
+                    else {
+                        identifier.value = localNamorokaJSON.build;
+                    }
+                }
+                else {
+                    identifier.value = LocaleUtils.str(gOptionsBundle, "build_format", localNamorokaJSON.build);
+                }
+            });
+
+            document.querySelectorAll("#channel").forEach(async identifier => {
+                identifier.value = localNamorokaJSON.branch;
+            });
+
+            for (const aboutSection of document.querySelectorAll("label[data-content]"))
+            {
+                aboutSection.value = eval(aboutSection.dataset.content);
             }
         }
-        else {
-            identifier.value = LocaleUtils.str(gOptionsBundle, "build_format", localNamorokaJSON.build);
-        }
-	});
-
-    document.querySelectorAll("#channel").forEach(async identifier => {
-        identifier.value = localNamorokaJSON.branch;
-	});
-
-    for (const aboutSection of document.querySelectorAll("label[data-content]"))
-    {
-        aboutSection.value = eval(aboutSection.dataset.content);
     }
-}
 
-document.addEventListener("DOMContentLoaded", loadVersion);
+    window.addEventListener("DOMContentLoaded", () => {
+        g_NamorokaOptionsDialog = new NamorokaOptionsDialog();
+    });
+}

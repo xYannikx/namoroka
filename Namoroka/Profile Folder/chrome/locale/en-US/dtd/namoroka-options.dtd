@@ -20,6 +20,10 @@
 <!ENTITY general.appearance.style.ff2  "Firefox 2">
 <!ENTITY general.appearance.style.ff3  "Firefox 3">
 
+<!ENTITY general.appearance.description.ff1 "The default theme for Firefox 1">
+<!ENTITY general.appearance.description.ff2 "The default theme for Firefox 2">
+<!ENTITY general.appearance.description.ff3 "The default theme for Firefox 3">
+
 <!ENTITY general.appearance.aero "Use Aero Style">
 <!ENTITY general.appearance.hideTabBar "Hide the tab bar when only one web site is open">
 <!ENTITY general.appearance.smallIcons "Use Small Icons">
