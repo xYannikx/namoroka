@@ -114,6 +114,7 @@ var g_NamorokaOptionsDialog;
                 tab.addEventListener("click", this.switchTab);
             }
 
+            this.refreshViewProperties();
             this.loadVersion();
 
             document.addEventListener("keypress", this.handleKeyPress);
@@ -129,8 +130,25 @@ var g_NamorokaOptionsDialog;
 
         refreshViewProperties(event) {
             let restartRequired = this._isRestartRequired;
+            let namorokaStyleLessOrEqual = this.isNamorokaStyleLessOrEqual(1);
+
+            for (const control of document.querySelectorAll("[data-option='Namoroka.Appearance.Aero']")) {
+                control.setAttribute("disabled", namorokaStyleLessOrEqual);
+            }
 
             document.querySelector(".restart-required-label").style.display = restartRequired ? "flex" : "none";
+        }
+
+        isNamorokaStyleLessOrEqual(value) {
+            for (const option of document.querySelectorAll(".option"))
+            {
+                if (option.closest("[data-option='Namoroka.Appearance.Style']"))
+                {
+                    let currentValue = this.getOptionValue(option);
+
+                    return Number(currentValue) <= Number(value);
+                }
+            }
         }
         
         handleOkApply(event, closeWindow = false) {
