@@ -423,25 +423,37 @@ menuitem:is([default=true], .spell-suggestion), menucaption {
     color: HighlightText !important;
   }
   :root[namoroka-style-1]:not([namoroka-style-2][namoroka-appearance-aero]) #main-menubar > menu {
+    font: menu !important;
+    color: MenuText !important;
     border: 1px solid transparent !important;
     background-color: transparent !important;
-    padding: 1px 3px 1px 2px !important;
-    margin: 0px 0px 1px 0px !important;
+    margin: 0 !important;
+    padding-block-start: 1px !important;
+    padding-inline-start: 3px !important;
+    padding-block-end: 1px !important;
+    padding-inline-end: 2px !important;
+    margin-top: 0px !important;
+    margin-bottom: 1px !important;
   }
   :root[namoroka-style-1]:not([namoroka-style-2][namoroka-appearance-aero]) #main-menubar > menu[_moz-menuactive=true] {
     background-color: Highlight !important;
     color: HighlightText !important;
-  }
-  :root[namoroka-style-1]:not([namoroka-style-2][namoroka-appearance-aero]) #main-menubar > menu[_moz-menuactive=true] {
     padding: 1px 3px 1px 2px !important;
     border-color: transparent !important;
   }
   :root[namoroka-style-1]:not([namoroka-style-2][namoroka-appearance-aero]) #main-menubar > menu[_moz-menuactive=true][open=true] {
     border-color: transparent !important;
   }
+  :root[namoroka-style-1]:not([namoroka-style-2][namoroka-appearance-aero]) #main-menubar > menu[disabled=true], :root[namoroka-style-1]:not([namoroka-style-2][namoroka-appearance-aero]) #main-menubar > menu[_moz-menuactive=true][disabled=true] {
+    color: GrayText !important;
+  }
   :root[namoroka-style-1]:not([namoroka-style-2][namoroka-appearance-aero]) #main-menubar > menu .menubar-text {
-    padding-top: 2px !important;
-    margin: 1px 4px 2px 5px !important;
+    padding: 0 !important;
+    padding-top: 1px !important;
+    margin-block-start: 1px !important;
+    margin-inline-end: 4px !important;
+    margin-block-end: 1px !important;
+    margin-inline-start: 5px !important;
     color: inherit !important;
   }
 }
@@ -647,10 +659,17 @@ menuitem:is([default=true], .spell-suggestion), menucaption {
     border-left-color: ThreeDLightShadow !important;
     border-bottom-color: ThreeDDarkShadow !important;
     border-right-color: ThreeDDarkShadow !important;
-    box-shadow: inset -1px -1px 0 ThreeDShadow, inset 1px 1px 0 ThreeDHighlight !important;
     padding: 2px !important;
     background-color: Menu !important;
   }
+}
+@media (not (-moz-windows-non-native-menus)) and (-moz-windows-classic) {
+  :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup),
+  :root[namoroka-style-2] toolbarbutton menupopup[placespopup] {
+    box-shadow: inset -1px -1px 0 ThreeDShadow, inset 1px 1px 0 ThreeDHighlight !important;
+  }
+}
+@media not (-moz-windows-non-native-menus) {
   :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) menu,
   :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) menuitem,
   :root[namoroka-style-2] toolbarbutton menupopup[placespopup] menu,
@@ -667,6 +686,8 @@ menuitem:is([default=true], .spell-suggestion), menucaption {
   :root[namoroka-style-2] toolbarbutton menupopup[placespopup] menuitem[default=true] {
     font-weight: bold !important;
   }
+}
+@media (not (-moz-windows-non-native-menus)) and (-moz-windows-classic) {
   :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) menu[_moz-menuactive=true],
   :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) menuitem[_moz-menuactive=true],
   :root[namoroka-style-2] toolbarbutton menupopup[placespopup] menu[_moz-menuactive=true],
@@ -674,6 +695,8 @@ menuitem:is([default=true], .spell-suggestion), menucaption {
     background-color: Highlight !important;
     color: HighlightText !important;
   }
+}
+@media not (-moz-windows-non-native-menus) {
   :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) menu[disabled=true], :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) menu[_moz-menuactive=true][disabled=true],
   :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) menuitem[disabled=true],
   :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup) menuitem[_moz-menuactive=true][disabled=true],
