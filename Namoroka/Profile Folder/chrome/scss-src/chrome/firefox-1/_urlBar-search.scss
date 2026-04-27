@@ -169,9 +169,24 @@ image.default-favicon {
         }
 
         :root:not([namoroka-style-2]) & {
-            #page-action-buttons {
-                visibility: collapse !important;
+            #star-button-box {
+                display: none !important;
             }
+        }
+
+        #reader-mode-button,
+        #picture-in-picture-button,
+        #translations-button,
+        #urlbar-zoom-button {
+            display: none !important;
+        }
+
+        .urlbar-page-action {
+            padding: 0 2px !important;
+            outline: 0 !important;
+            height: 16px !important;
+            border-radius: 0 !important;
+            background-color: transparent !important;
         }
 
         // Modern UrlbarView is fully suppressed by JS (view.open = no-op).

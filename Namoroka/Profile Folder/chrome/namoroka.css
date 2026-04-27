@@ -854,8 +854,21 @@ image.default-favicon {
 :root:not([namoroka-style-2])[namoroka-style-1] #urlbar-container #urlbar #identity-box[pageproxystate=valid].verifiedDomain #identity-icon:hover:active {
   background-position-y: -72px !important;
 }
-:root:not([namoroka-style-2]) #urlbar-container #urlbar #page-action-buttons {
-  visibility: collapse !important;
+:root:not([namoroka-style-2]) #urlbar-container #urlbar #star-button-box {
+  display: none !important;
+}
+#urlbar-container #urlbar #reader-mode-button,
+#urlbar-container #urlbar #picture-in-picture-button,
+#urlbar-container #urlbar #translations-button,
+#urlbar-container #urlbar #urlbar-zoom-button {
+  display: none !important;
+}
+#urlbar-container #urlbar .urlbar-page-action {
+  padding: 0 2px !important;
+  outline: 0 !important;
+  height: 16px !important;
+  border-radius: 0 !important;
+  background-color: transparent !important;
 }
 #urlbar-container #urlbar .urlbarView {
   display: none !important;
@@ -2440,13 +2453,6 @@ findbar[namoroka-initialized=true] .find-status-icon[status=wrapped] {
   height: 18px !important;
   padding-block-start: 2px !important;
   padding-inline-end: 2px !important;
-}
-:root[namoroka-style-2] #urlbar-container #urlbar #page-action-buttons .urlbar-page-action {
-  padding: 0 2px !important;
-  outline: 0 !important;
-  height: 16px !important;
-  border-radius: 0 !important;
-  background-color: transparent !important;
 }
 :root[namoroka-style-2] #urlbar-container #urlbar #star-button {
   list-style-image: none !important;
