@@ -300,7 +300,7 @@ toolbarbutton menupopup[placespopup] menuseparator::before {
   -moz-user-focus: ignore !important;
   margin: 0 !important;
   border: 0 !important;
-  padding: 1px 3px 2px 4px !important;
+  padding: 1px 5px 2px 4px !important;
   min-width: 0 !important;
   background-color: transparent !important;
   list-style-image: url("chrome://namoroka/content/firefox-1/Throbber-small.png") !important;
@@ -335,7 +335,7 @@ menu[disabled=true], menu[_moz-menuactive=true][disabled=true] {
 #main-menubar > menu {
   border: 1px solid transparent !important;
   background-color: transparent !important;
-  padding: 2px 5px 2px 7px !important;
+  padding: 1px 5px 2px 7px !important;
   margin: 1px 0px 1px 0px !important;
 }
 #main-menubar > menu[_moz-menuactive=true] {
@@ -428,17 +428,20 @@ menuitem:is([default=true], .spell-suggestion), menucaption {
     border: 1px solid transparent !important;
     background-color: transparent !important;
     margin: 0 !important;
-    padding-block-start: 1px !important;
-    padding-inline-start: 3px !important;
-    padding-block-end: 1px !important;
-    padding-inline-end: 2px !important;
+    padding-block-start: 0px !important;
+    padding-inline-start: 2px !important;
+    padding-block-end: 2px !important;
+    padding-inline-end: 3px !important;
     margin-top: 0px !important;
     margin-bottom: 1px !important;
   }
   :root[namoroka-style-1]:not([namoroka-style-2][namoroka-appearance-aero]) #main-menubar > menu[_moz-menuactive=true] {
     background-color: Highlight !important;
     color: HighlightText !important;
-    padding: 1px 3px 1px 2px !important;
+    padding-block-start: 0px !important;
+    padding-inline-start: 2px !important;
+    padding-block-end: 2px !important;
+    padding-inline-end: 3px !important;
     border-color: transparent !important;
   }
   :root[namoroka-style-1]:not([namoroka-style-2][namoroka-appearance-aero]) #main-menubar > menu[_moz-menuactive=true][open=true] {
@@ -622,6 +625,7 @@ menuitem:is([default=true], .spell-suggestion), menucaption {
 
 /* ::::: Firefox 3 ::::: */
 :root[namoroka-style-2] #navigator-throbber {
+  padding: 1px 6px 2px 4px !important;
   list-style-image: url("chrome://namoroka/content/firefox-3/icons/notloading_16.png") !important;
 }
 :root[namoroka-style-2] #navigator-throbber[busy=true] {

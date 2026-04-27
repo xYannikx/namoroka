@@ -1,4 +1,5 @@
 #navigator-throbber {
+    padding: 1px 6px 2px 4px !important;
     list-style-image: url("chrome://namoroka/content/firefox-3/icons/notloading_16.png") !important;
 
     &[busy="true"] {

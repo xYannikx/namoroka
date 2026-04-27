@@ -677,9 +677,6 @@ toolbarbutton.bookmark-item:not(.subviewbutton) .toolbarbutton-animatable-box {
 #PersonalToolbar toolbarbutton.bookmark-item:not(.subviewbutton):hover:active, #PersonalToolbar toolbarbutton.bookmark-item:not(.subviewbutton)[open=true] {
   padding: 3px 2px 1px 4px !important;
 }
-#PersonalToolbar toolbarbutton.bookmark-item:not(.subviewbutton) .toolbarbutton-text {
-  margin-block-start: 1px !important;
-}
 #PersonalToolbar .toolbarbutton-1 {
   margin-block: 0 !important;
 }
@@ -737,6 +734,7 @@ toolbarbutton.bookmark-item[livemark=true] .toolbarbutton-icon {
   --urlbar-min-height: var(--urlbar-root-height) !important;
   --urlbar-container-padding: 0 !important;
   --urlbar-padding-block: 2px !important;
+  --urlbar-margin-inline: 3px !important;
   --secure-icon: url("chrome://namoroka/content/firefox-1/Secure.png") !important;
 }
 @media (-moz-windows-classic) {
@@ -779,7 +777,6 @@ image.default-favicon {
   padding-block: 0 !important;
 }
 #urlbar-container #urlbar {
-  top: calc((var(--urlbar-container-height) - var(--urlbar-height)) / 2) !important;
   --urlbar-height: var(--urlbar-root-height) !important;
 }
 :root:not([namoroka-style-2]) #urlbar-container #urlbar #page-proxy-stack {
@@ -1725,6 +1722,7 @@ findbar[namoroka-initialized=true] .find-status-icon[status=wrapped] {
   margin-inline-end: 0 !important;
 }
 :root[namoroka-style-1]:not([namoroka-style-2=true]) #urlbar-container #urlbar {
+  margin-block-start: -1px !important;
   --urlbar-height: var(--urlbar-root-height) !important;
 }
 :root[namoroka-style-1]:not([namoroka-style-2=true]) #urlbar-container #urlbar #urlbar-background {
@@ -1774,6 +1772,7 @@ findbar[namoroka-initialized=true] .find-status-icon[status=wrapped] {
   padding: 0 !important;
   border: 0 !important;
   margin-inline-end: 5px !important;
+  margin-block-start: -1px !important;
 }
 :root[namoroka-style-1]:not([namoroka-style-2=true]) #nav-bar #go-button .toolbarbutton-icon {
   width: 25px !important;
@@ -1802,6 +1801,7 @@ findbar[namoroka-initialized=true] .find-status-icon[status=wrapped] {
   border: 0 !important;
   border-radius: 0 !important;
   background-color: transparent !important;
+  margin-block-start: -1px !important;
 }
 :root[namoroka-style-1]:not([namoroka-style-2=true]) #searchbar .searchbar-search-button {
   border: 1px solid #A4A4AB !important;
@@ -1956,9 +1956,6 @@ findbar[namoroka-initialized=true] .find-status-icon[status=wrapped] {
 }
 :root[namoroka-style-2][namoroka-appearance-small-icons=true] .toolbarbutton-1#unified-extensions-button .toolbarbutton-icon {
   background-position-x: -362px !important;
-}
-:root[namoroka-style-2] #nav-bar {
-  padding-block: 1px !important;
 }
 :root[namoroka-style-2] #nav-bar #back-button,
 :root[namoroka-style-2] #nav-bar #forward-button {
@@ -2218,11 +2215,6 @@ findbar[namoroka-initialized=true] .find-status-icon[status=wrapped] {
 }
 :root[namoroka-style-2] #PersonalToolbar #PlacesToolbarItems {
   margin-inline-start: 0 !important;
-}
-@media not (-moz-windows-classic) {
-  :root[namoroka-style-2] #PersonalToolbar #PlacesToolbarItems {
-    padding-block-end: 1px !important;
-  }
 }
 :root[namoroka-style-2] .bookmark-item[container][query] {
   list-style-image: none !important;
@@ -2660,6 +2652,24 @@ findbar[namoroka-initialized=true] .find-status-icon[status=wrapped] {
 }
 :root[namoroka-style-2][namoroka-appearance-aero] findbar[namoroka-initialized=true] .find-status-icon[status=wrapped] {
   list-style-image: url("chrome://namoroka/content/firefox-3/vista/findbar/wrap.png") !important;
+}
+:root[namoroka-style-2] .toolbarbutton-1 {
+  padding: 5px !important;
+}
+:root[namoroka-style-2] .toolbarbutton-1:not(.toolbarbutton-menubutton-button) {
+  margin: 0 !important;
+}
+:root[namoroka-style-2] .toolbarbutton-1:hover:active:not([disabled=true]), :root[namoroka-style-2] .toolbarbutton-1[open=true]:not([disabled=true]) {
+  padding: 5px !important;
+}
+:root[namoroka-style-2]:not([namoroka-appearance-small-icons=true]) .toolbarbutton-1 {
+  padding: 6px !important;
+}
+:root[namoroka-style-2]:not([namoroka-appearance-small-icons=true]) .toolbarbutton-1:hover:active:not([disabled=true]), :root[namoroka-style-2]:not([namoroka-appearance-small-icons=true]) .toolbarbutton-1[open=true]:not([disabled=true]) {
+  padding: 6px !important;
+}
+:root[namoroka-style-2]:not([namoroka-appearance-small-icons=true]) .toolbarbutton-1 .toolbarbutton-icon {
+  margin: 0 !important;
 }
 
 /*# sourceMappingURL=namoroka.css.map */

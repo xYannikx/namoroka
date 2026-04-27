@@ -3,6 +3,7 @@
     --urlbar-min-height: var(--urlbar-root-height) !important;
     --urlbar-container-padding: 0 !important;
     --urlbar-padding-block: 2px !important;
+    --urlbar-margin-inline: 3px !important;
 
     --secure-icon: url("chrome://namoroka/content/firefox-1/Secure.png") !important;
 
@@ -47,10 +48,7 @@ image.default-favicon {
     padding-block: 0 !important;
 
     #urlbar {
-        top: calc((var(--urlbar-container-height) - var(--urlbar-height)) / 2) !important;
         --urlbar-height: var(--urlbar-root-height) !important;
-
-
         
         :root:not([namoroka-style-2]) & #page-proxy-stack {
             visibility: collapse !important;
