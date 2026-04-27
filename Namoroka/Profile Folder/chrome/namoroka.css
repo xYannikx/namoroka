@@ -873,9 +873,6 @@ image.default-favicon {
 #urlbar-container #urlbar .urlbarView {
   display: none !important;
 }
-#urlbar-container #urlbar:not([open]) > .urlbarView, #urlbar-container #urlbar:not([breakout]) > .urlbarView {
-  display: none !important;
-}
 
 .searchbar-search-button .searchbar-search-icon {
   margin-inline: 3px 8px !important;

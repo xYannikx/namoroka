@@ -189,15 +189,9 @@ image.default-favicon {
             background-color: transparent !important;
         }
 
-        // Modern UrlbarView is fully suppressed by JS (view.open = no-op).
-        // Hide via CSS as well as a safety net.
         .urlbarView {
             display: none !important;
         }
-    }
-
-    #urlbar:not([open]) > .urlbarView, #urlbar:not([breakout]) > .urlbarView {
-        display: none !important;
     }
 }
 

@@ -1,66 +1,64 @@
-@media not (-moz-windows-classic) {
-    &:not([namoroka-style-2][namoroka-appearance-aero]) {
-        menupopup menu,
-        menupopup menuitem {
-            color: MenuText !important;
+&:not([namoroka-style-2][namoroka-appearance-aero]) {
+    menupopup menu,
+    menupopup menuitem {
+        color: MenuText !important;
+        font: menu !important;
+
+        &[disabled="true"],
+        &[_moz-menuactive="true"][disabled="true"] {
+            color: GrayText !important;
+            text-shadow: none !important;
+        }
+    }
+
+    menupopup menuitem {
+        &[_moz-menuactive="true"] {
+            background-color : Highlight !important;
+            color: HighlightText !important;
+        }
+    }
+
+    #main-menubar {
+        > menu {
             font: menu !important;
+            color: MenuText !important;
+            border: 1px solid transparent !important;
+            background-color: transparent !important;
+            margin: 0 !important;
+            padding-block-start: 1px !important;
+            padding-inline-start: 2px !important;
+            padding-block-end: 2px !important;
+            padding-inline-end: 3px !important;
+            margin-top: 0px !important;
+            margin-bottom: 1px !important;
 
-            &[disabled="true"],
-            &[_moz-menuactive="true"][disabled="true"] {
-                color: GrayText !important;
-                text-shadow: none !important;
-            }
-        }
-
-        menupopup menuitem {
             &[_moz-menuactive="true"] {
-                background-color : Highlight !important;
+                background-color: Highlight !important;
                 color: HighlightText !important;
-            }
-        }
-
-        #main-menubar {
-            > menu {
-                font: menu !important;
-                color: MenuText !important;
-                border: 1px solid transparent !important;
-                background-color: transparent !important;
-                margin: 0 !important;
                 padding-block-start: 0px !important;
                 padding-inline-start: 2px !important;
                 padding-block-end: 2px !important;
                 padding-inline-end: 3px !important;
-                margin-top: 0px !important;
-                margin-bottom: 1px !important;
+                border-color: transparent !important;
 
-                &[_moz-menuactive="true"] {
-                    background-color: Highlight !important;
-                    color: HighlightText !important;
-                    padding-block-start: 0px !important;
-                    padding-inline-start: 2px !important;
-                    padding-block-end: 2px !important;
-                    padding-inline-end: 3px !important;
+                &[open="true"] {
                     border-color: transparent !important;
-
-                    &[open="true"] {
-                        border-color: transparent !important;
-                    }
                 }
+            }
 
-                &[disabled="true"],
-                &[_moz-menuactive="true"][disabled="true"] {
-                    color: GrayText !important;
-                }
+            &[disabled="true"],
+            &[_moz-menuactive="true"][disabled="true"] {
+                color: GrayText !important;
+            }
 
-                .menubar-text {
-                    padding: 0 !important;
-                    padding-top: 1px !important;
-                    margin-block-start: 1px !important;
-                    margin-inline-end: 4px !important;
-                    margin-block-end: 1px !important;
-                    margin-inline-start: 5px !important;
-                    color: inherit !important;
-                }
+            .menubar-text {
+                padding: 0 !important;
+                padding-top: 1px !important;
+                margin-block-start: 1px !important;
+                margin-inline-end: 4px !important;
+                margin-block-end: 1px !important;
+                margin-inline-start: 5px !important;
+                color: inherit !important;
             }
         }
     }
