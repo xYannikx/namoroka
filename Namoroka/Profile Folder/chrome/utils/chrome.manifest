@@ -11,3 +11,5 @@ content namoroka                                                    ../assets/im
 override chrome://global/skin/button.css                            ../assets/override/global/skin/button.css
 
 override chrome://global/content/commonDialog.xhtml                 ../windows/commonDialog/commonDialog.xhtml
+
+override chrome://browser/content/places/places.xhtml               ../windows/places/places.xhtml

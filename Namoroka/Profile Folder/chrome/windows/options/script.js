@@ -5,8 +5,10 @@ var g_NamorokaOptionsDialog;
         BrandUtils } = ChromeUtils.importESModule("chrome://modules/content/NamorokaUtils.sys.mjs");
         
     ChromeUtils.defineESModuleGetters(window, {
+        CustomizableUI: "resource:///modules/CustomizableUI.sys.mjs",
         NamorokaThemeManager: "chrome://modules/content/NamorokaThemeManager.sys.mjs",
         NamorokaUpdateChecker: "chrome://modules/content/NamorokaUpdateChecker.sys.mjs",
+        NamorokaLayoutTemplateManager: "chrome://modules/content/NamorokaLayoutTemplateManager.sys.mjs",
     });
 
     let g_themeManager = new NamorokaThemeManager(
@@ -22,6 +24,10 @@ var g_NamorokaOptionsDialog;
 
     class NamorokaOptionsDialog {
         stringbundle = "chrome://namoroka/locale/properties/namoroka-options.properties";
+
+        _previousCustomizableUILayout = this.dumpExistingLayout();
+        _previousCustomizableUIState = PrefCalls.getPref("browser.uiCustomization.state");
+        _previousTabsInTitlebarState = PrefCalls.getPref("browser.tabs.inTitlebar");
 
         get _okButton() {
             return document.getElementById("ok-button");
@@ -332,6 +338,26 @@ var g_NamorokaOptionsDialog;
             {
                 aboutSection.value = eval(aboutSection.dataset.content);
             }
+        }
+
+        dumpExistingLayout() {
+            let out = {};
+
+            for (let area in NamorokaLayoutTemplateManager.TOOLBAR_LAYOUT_TEMPLATE) {
+                let widgetIds = CustomizableUI.getWidgetIdsInArea(area);
+                out[area] = [];
+
+                for (let id of widgetIds) {
+                    if (NamorokaLayoutTemplateManager.SPECIAL_WIDGET_TYPES.some(type => id.startsWith("customizableui-special-" + type))) {
+                        let type = id.replace(/^customizableui-special-/, "").replace(/\d+$/, "");
+                        out[area].push({ type });
+                    } else {
+                        out[area].push({ id });
+                    }
+                }
+            }
+
+            return out;
         }
     }
 

@@ -943,6 +943,13 @@ panel[type=autocomplete-richlistbox],
   width: var(--url-col-width, 60%) !important;
   overflow: hidden !important;
 }
+:root:not([namoroka-style-2]) #search-container {
+  width: 20em !important;
+}
+
+:root[namoroka-style-1]:not([namoroka-style-2]) #search-container {
+  flex: 100 100 auto !important;
+}
 
 statusbar {
   -moz-default-appearance: statusbar !important;
@@ -1023,7 +1030,7 @@ xul|dialog[inbrowserwindow] {
   padding-inline: 8px 10px !important;
 }
 
-:is(xul|window, xul|dialog):not(.sidebar-panel) treecol {
+:is(xul|window, xul|dialog):not(.sidebar-panel) treecol:not([hideheader=true]) {
   appearance: auto !important;
 }
 
@@ -1216,6 +1223,129 @@ findbar[namoroka-initialized=true] .find-status-icon[status=notfound] {
 }
 findbar[namoroka-initialized=true] .find-status-icon[status=wrapped] {
   list-style-image: url("chrome://namoroka/content/firefox-1/findbar/wrap.png") !important;
+}
+
+#places toolbarbutton {
+  -moz-default-appearance: toolbarbutton !important;
+  appearance: auto !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin: 0 !important;
+  border: 1px solid transparent !important;
+  padding: 5px !important;
+  background-color: transparent !important;
+  min-width: 57px !important;
+  color: -moz-DialogText !important;
+  flex-direction: column !important;
+}
+#places toolbarbutton .toolbarbutton-icon {
+  width: 24px !important;
+  height: 24px !important;
+  background-image: url("chrome://namoroka/content/firefox-2/bookmarks/Bookmarks-toolbar.png") !important;
+  background-position-x: calc(-24px * var(--offset));
+  margin-inline-end: 0 !important;
+}
+#places toolbarbutton .toolbarbutton-text {
+  margin: 0 !important;
+  text-align: center !important;
+}
+#places toolbarbutton:not([disabled=true]):hover {
+  border-color: ThreeDHighlight ThreeDShadow ThreeDShadow ThreeDHighlight !important;
+}
+#places toolbarbutton:not([disabled=true]):hover .toolbarbutton-icon {
+  background-position-y: -24px !important;
+}
+#places toolbarbutton:not([disabled=true]):hover:active {
+  border-color: ThreeDShadow ThreeDHighlight ThreeDHighlight ThreeDShadow !important;
+}
+#places toolbarbutton:not([disabled=true]):hover:active .toolbarbutton-icon {
+  background-position-y: -48px !important;
+}
+#places toolbarbutton[disabled=true] {
+  border-color: transparent !important;
+  padding: 5px !important;
+  color: GrayText !important;
+}
+#places toolbarbutton[disabled=true] .toolbarbutton-icon {
+  background-position-y: -72px !important;
+}
+#places #newfolder {
+  --offset: 1 !important;
+}
+#places #newseparator {
+  --offset: 2 !important;
+}
+#places #moveBookmark {
+  --offset: 3 !important;
+}
+#places #properties {
+  --offset: 4 !important;
+}
+#places #rename {
+  --offset: 5 !important;
+}
+#places #delete {
+  --offset: 6 !important;
+}
+#places #placesMenu {
+  margin: 0 !important;
+}
+#places #placesMenu > menu {
+  border: 1px solid transparent !important;
+  background-color: transparent !important;
+  padding: 1px 5px 2px 7px !important;
+  margin: 1px 0px 1px 0px !important;
+}
+#places #placesMenu > menu[_moz-menuactive=true] {
+  border-top: 1px solid ThreeDHighlight !important;
+  border-right: 1px solid ThreeDShadow !important;
+  border-bottom: 1px solid ThreeDShadow !important;
+  border-left: 1px solid ThreeDHighlight !important;
+}
+#places #placesMenu > menu[_moz-menuactive=true][open=true] {
+  border-top: 1px solid ThreeDShadow !important;
+  border-right: 1px solid ThreeDHighlight !important;
+  border-bottom: 1px solid ThreeDHighlight !important;
+  border-left: 1px solid ThreeDShadow !important;
+}
+#places #placesMenu > menu .menubar-text {
+  margin: 0 2px 0 0 !important;
+  color: inherit !important;
+}
+#places #placesMenu > menu::after {
+  display: none !important;
+}
+#places toolbarseparator {
+  appearance: none !important;
+}
+#places #searchFilter {
+  -moz-default-appearance: textfield !important;
+  appearance: auto !important;
+  cursor: text !important;
+  margin: 2px 4px !important;
+  padding: 2px 2px 3px 4px !important;
+  background-color: -moz-Field !important;
+  color: -moz-FieldText !important;
+  min-height: unset !important;
+  max-width: unset !important;
+  border-radius: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+#places .textbox-search-sign,
+#places .textbox-search-icons {
+  display: none !important;
+}
+#places splitter:not(.tree-splitter) {
+  margin: 0 !important;
+  width: 6px !important;
+  border-inline-end: 0 !important;
+}
+#places tree {
+  background-color: -moz-Field !important;
+  color: -moz-FieldText !important;
+  -moz-default-appearance: listbox !important;
+  appearance: auto !important;
 }
 
 /* ::::: Firefox 2 ::::: */

@@ -287,4 +287,12 @@ panel[type="autocomplete-richlistbox"],
             }
         }
     }
+
+    #search-container {
+        width: 20em !important;
+    }
+}
+
+:root[namoroka-style-1]:not([namoroka-style-2]) #search-container {
+    flex: 100 100 auto !important;
 }

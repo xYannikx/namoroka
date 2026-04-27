@@ -6,7 +6,7 @@ xul|dialog[inbrowserwindow] {
 }
 
 :is(xul|window, xul|dialog):not(.sidebar-panel) {
-    treecol {
+    treecol:not([hideheader="true"]) {
 		appearance: auto !important;
 	}
 }
