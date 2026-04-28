@@ -13,6 +13,7 @@
         "namoroka": "chrome://userchrome/content/windows/options/options.xhtml",
         "nrabout": "chrome://userchrome/content/windows/aboutDialog/aboutDialog.xhtml",
         "nrwizard": "chrome://userchrome/content/windows/wizard/wizard.xhtml",
+        "downloads": "chrome://userchrome/content/windows/downloads/downloads.xhtml",
     };
     const { AboutPageManager } = ChromeUtils.importESModule("chrome://modules/content/AboutPageManager.sys.mjs");
 

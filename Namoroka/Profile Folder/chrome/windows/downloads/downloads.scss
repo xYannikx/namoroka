@@ -1,142 +1,159 @@
-#placesList,
-#placesToolbar,
-splitter {
-    visibility: collapse !important;
+#contentAreaDownloadsView {
+    background-color: ThreeDFace;
 }
 
-#placesViewsBox {
-    margin: 10px 10px 5px 10px !important;
-    -moz-default-appearance: listbox !important;
-    appearance: auto !important;
-
-    #downloadsListBox {
-        color: -moz-FieldText !important;
-        background-color: -moz-Field !important;
-        border: 0 !important;
-        background-image: url("chrome://userchrome/content/windows/downloads/viewFader.png") !important;
-
-        richlistitem {
-            border-radius: 0 !important;
-            background-clip: border-box !important;
-            padding-block: 13px !important;
-            padding-inline-start: 13px !important;
-            padding-inline-end: 10px !important;
-            min-height: 25px;
-            outline: 0 !important;
-            background-color: transparent !important;
-            border-bottom: 1px dotted #C0C0C0 !important;
-            color: inherit !important;
-
-            &[selected="true"] {
-                background-image: url("chrome://userchrome/content/windows/downloads/downloadSelected.png") !important;
-                border-bottom: 1px dotted #7F9DB9 !important;
-            }
-
-            .downloadMainArea {
-                align-items: flex-start !important;
-            }
-
-            .downloadProgress {
-                appearance: auto !important;
-                -moz-default-appearance: progress-bar !important;
-                border: 1px solid ThreeDShadow !important;
-                border-right-color: ThreeDHighlight !important;
-                border-bottom-color: ThreeDHighlight !important;
-                height: unset !important;
-                border-radius: unset !important;
-                background-color: ThreeDFace !important;
-
-                &::-moz-progress-bar {
-                    appearance: auto !important;
-                    -moz-default-appearance: progresschunk !important;
-                    border-radius: unset !important;
-                    background-color: Highlight !important
-                }
-            }
-
-            .downloadTypeIcon {
-                margin: 0 !important;
-                margin-inline-end: 10px !important;
-                align-self: flex-start !important;
-            }
-
-            .downloadDetails {
-                font-size: unset !important;
-                opacity: 1 !important;
-            }
-
-            .downloadButton {
-                padding: 0 !important;
-            }
-        }
-    }
+/* Download View */
+#downloadsListBox {
+    margin: 10px 10px 5px 10px;
+    -moz-default-appearance: listbox;
+    appearance: auto;
 }
 
+.downloadViewInner {
+    background-image: url("chrome://userchrome/content/windows/downloads/viewFader.png");
+    padding: 0px;
+}
+
+/* Download Manager Command Bar */
 #commandBar {
-    padding: 0px 10px 5px 10px !important;
-}
-
-#saveToFolder {
-    appearance: auto !important;
-    -moz-default-appearance: toolbarbutton !important;
-    padding: 1px 6px 3px 5px !important;
-    border: 1px solid transparent;
-    background-color: transparent !important;
-    color: -moz-DialogText !important;  
-
-    &:hover:not([disabled="true"]) {
-        border-color: ThreeDHighlight ThreeDShadow ThreeDShadow ThreeDHighlight !important;
-
-        &:active {
-            padding: 2px 5px 2px 6px !important;
-            border-color: ThreeDShadow ThreeDHighlight ThreeDHighlight ThreeDShadow !important;
-        }
-    }
-
-    .toolbarbutton-text {
-        text-align: left !important;
-        margin-block-start: 1px !important;
-        margin-inline-start: 5px !important;
-    }
+    padding: 0px 10px 5px 10px;
 }
 
 #cleanUpButton {
-    margin: 0px !important;
-    list-style-image: url("chrome://userchrome/content/windows/downloads/downloadCleanup.png") !important;
+    margin: 0px;
+    list-style-image: url("chrome://userchrome/content/windows/downloads/downloadCleanup.png");
+}
 
-    :root[namoroka-style-1] & {
-        list-style-image: url("chrome://userchrome/content/windows/downloads/firefox-2/downloadCleanup.png") !important;
-    }
+#cleanUpButton .button-icon {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-inline-start: 0px;
+    margin-inline-end: 5px;
+}
 
-    padding: 2px 6px 3px 5px !important;
-
-    /*
-    * Since we can't use the resizer element,
-    * we will have to add this for accuracy
-    * purposes.
-    */
-    margin-inline-end: 15px !important;
-
-    &:not([disabled="true"]):hover:active {
-        padding: 3px 5px 2px 6px !important;
-    }
-
-    &[disabled="true"] {
-        list-style-image: url("chrome://userchrome/content/windows/downloads/downloadCleanupDisabled.png") !important;
-
-        :root[namoroka-style-1] & {
-            list-style-image: url("chrome://userchrome/content/windows/downloads/firefox-2/downloadCleanupDisabled.png") !important;
-        }
-    }
-
-    .button-icon {
-        margin-top: 0px !important;
-        margin-bottom: 0px !important;
-        margin-inline-start: 0px !important;
-        margin-inline-end: 5px !important;
-    }
+#cleanUpButton[disabled="true"] {
+    list-style-image: url("chrome://userchrome/content/windows/downloads/downloadCleanupDisabled.png");
 }
 
 #commandBarSeparator {
+    margin-inline-start: 5px;
+}
+
+/* Download View Items, implementation */
+.downloadContentBox {
+    opacity: 0.0;
+}
+
+.downloadContentBox[animated="true"] {
+    opacity: 1.0;
+}
+
+.downloadTypeIcon {
+    margin-inline-end: 10px;
+}
+
+#folderIcon {
+    width: 16px;
+    height: 16px;
+}
+
+#folderName {
+    width: 0px;
+}
+
+#saveToFolder {
+    padding-top: 1px;
+    padding-bottom: 3px;
+    padding-inline-start: 5px;
+    padding-inline-end: 6px;
+}
+
+#saveToFolder .toolbarbutton-text {
+    text-align: left;
     margin-inline-start: 5px !important;
+}
+
+#downloadsListBox {
+    color: -moz-FieldText !important;
+    background-color: -moz-Field !important;
+    border: 0 !important;
+    background-image: url("chrome://userchrome/content/windows/downloads/viewFader.png") !important;
+
+    richlistitem {
+        border-radius: 0 !important;
+        background-clip: border-box !important;
+        padding-block: 13px !important;
+        padding-inline-start: 13px !important;
+        padding-inline-end: 10px !important;
+        min-height: 25px;
+        outline: 0 !important;
+        background-color: transparent !important;
+        border-bottom: 1px dotted #C0C0C0 !important;
+        color: inherit !important;
+
+        &[selected="true"] {
+            background-image: url("chrome://userchrome/content/windows/downloads/downloadSelected.png") !important;
+            border-bottom: 1px dotted #7F9DB9 !important;
+        }
+
+        .downloadMainArea {
+            align-items: flex-start !important;
+        }
+
+        .downloadProgress {
+            appearance: auto !important;
+            -moz-default-appearance: progress-bar !important;
+            border: 1px solid ThreeDShadow !important;
+            border-right-color: ThreeDHighlight !important;
+            border-bottom-color: ThreeDHighlight !important;
+            height: unset !important;
+            border-radius: unset !important;
+            background-color: ThreeDFace !important;
+
+            &::-moz-progress-bar {
+                appearance: auto !important;
+                -moz-default-appearance: progresschunk !important;
+                border-radius: unset !important;
+                background-color: Highlight !important
+            }
+        }
+
+        .downloadTypeIcon {
+            margin: 0 !important;
+            margin-inline-end: 10px !important;
+            align-self: flex-start !important;
+        }
+
+        .downloadDetails {
+            font-size: unset !important;
+            opacity: 1 !important;
+        }
+
+        .downloadButton {
+            padding: 0 !important;
+        }
+    }
+}
+
+.text-link {
+    color: blue;
+    text-decoration: underline;
+    border: 1px solid transparent;
+}
+
+.text-link:focus {
+    color: red;
+    border: 1px dotted -moz-DialogText;
+}
+
+.text-link:hover {
+    cursor: pointer;
+}
+
+.text-link:hover:active {
+    color: red;
+}
+
+.text-link[visited="true"] {
+    color: purple;
 }
