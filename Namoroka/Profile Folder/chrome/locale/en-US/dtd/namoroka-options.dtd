@@ -1,6 +1,9 @@
 <!ENTITY window.title "Namoroka Options">
 <!ENTITY window.restartRequired "Restart required">
 
+<!ENTITY window.width "559">
+<!ENTITY window.height "437">
+
 <!ENTITY window.buttons.ok "OK">
 <!ENTITY window.buttons.cancel "Cancel">
 <!ENTITY window.buttons.apply "Apply">

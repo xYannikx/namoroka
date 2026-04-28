@@ -14,3 +14,17 @@ BrowserCommands.downloadsUI = function downloadsUI() {
         "Downloads"
     );
 }
+
+DownloadsPanel.showPanel = function showPanel(openedManually = false, isKeyPress = false) {
+    DownloadsCommon.log("Opening the downloads panel.");
+
+    this._openedManually = openedManually;
+    this._preventFocusRing = !openedManually || !isKeyPress;
+
+    openDialog(
+        "about:downloads",
+        "",
+        "chrome, toolbar=no, dialog=no, resizable",
+        "Downloads"
+    );
+};
