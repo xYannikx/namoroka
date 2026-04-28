@@ -29,6 +29,8 @@ var g_NamorokaOptionsDialog;
         _previousCustomizableUIState = PrefCalls.getPref("browser.uiCustomization.state");
         _previousTabsInTitlebarState = PrefCalls.getPref("browser.tabs.inTitlebar");
 
+        _selectedAboutDeck = 0;
+
         get _okButton() {
             return document.getElementById("ok-button");
         }
@@ -39,6 +41,14 @@ var g_NamorokaOptionsDialog;
 
         get _applyButton() {
             return document.getElementById("apply-button");
+        }
+
+        get _viewCreditsButton() {
+            return document.getElementById("view-credits-button");
+        }
+
+        get _aboutModesDeck() {
+            return document.getElementById("aboutModes");
         }
 
         get _isRestartRequired() {
@@ -117,11 +127,17 @@ var g_NamorokaOptionsDialog;
 
             for (const tab of document.querySelectorAll(".tab"))
             {
-                tab.addEventListener("click", this.switchTab);
+                tab.addEventListener("command", this.switchTab.bind(this));
             }
 
             this.refreshViewProperties();
             this.loadVersion();
+
+            this._viewCreditsButton.hidden = true;
+            this._viewCreditsButton.disabled = true;
+            this._viewCreditsButton.label = LocaleUtils.str(this.stringbundle, "view_credits_button");
+
+            this._viewCreditsButton.addEventListener("command", this.handleCreditsButton.bind(this));
 
             document.addEventListener("keypress", this.handleKeyPress);
         }
@@ -273,11 +289,12 @@ var g_NamorokaOptionsDialog;
         }
 
         switchTab(event) {
-            let id = this.id.replace("tab-", "");
+            let tab = event.target;
+            let id = tab.id.replace("tab-", "");
 
             /* Update tabs */
             document.querySelector(".tab-selected").classList.remove("tab-selected");
-            this.classList.add("tab-selected");
+            tab.classList.add("tab-selected");
 
             /* Update sections */
             document.querySelector(".section-selected").classList.remove("section-selected");
@@ -285,6 +302,9 @@ var g_NamorokaOptionsDialog;
 
             /* Update content element */
             document.getElementById("content").dataset.tab = id;
+
+            this._viewCreditsButton.hidden = (id == "about") ? false : true;
+            this._viewCreditsButton.disabled = (id == "about") ? false : true;
         }
 
         restartApplication(clearCache) {
@@ -312,7 +332,7 @@ var g_NamorokaOptionsDialog;
                     identifier.value = localNamorokaJSON.version;
                 }
                 else {
-                    identifier.value = LocaleUtils.str(gOptionsBundle, "version_format", localNamorokaJSON.version);
+                    identifier.value = LocaleUtils.str(this.stringbundle, "version_format", localNamorokaJSON.version);
                 }
             });
 
@@ -326,7 +346,7 @@ var g_NamorokaOptionsDialog;
                     }
                 }
                 else {
-                    identifier.value = LocaleUtils.str(gOptionsBundle, "build_format", localNamorokaJSON.build);
+                    identifier.value = LocaleUtils.str(this.stringbundle, "build_format", localNamorokaJSON.build);
                 }
             });
 
@@ -334,9 +354,18 @@ var g_NamorokaOptionsDialog;
                 identifier.value = localNamorokaJSON.branch;
             });
 
-            for (const aboutSection of document.querySelectorAll("label[data-content]"))
-            {
-                aboutSection.value = eval(aboutSection.dataset.content);
+            for (const aboutSection of document.querySelectorAll(".service-info")) {
+                switch (aboutSection.id) {
+                    case "browserName":
+                        aboutSection.value = Services.appinfo.name;
+                        break;
+                    case "browserVersion":
+                        aboutSection.value = Services.appinfo.version;
+                        break;
+                    case "browserChannel":
+                        aboutSection.value = Services.appinfo.defaultUpdateChannel;
+                        break;
+                }
             }
         }
 
@@ -358,6 +387,19 @@ var g_NamorokaOptionsDialog;
             }
 
             return out;
+        }
+
+        handleCreditsButton(event) {
+            let viewCreditsButton = event.target;
+            let currentPage = document.querySelector(".section-selected");
+
+            if (event.type !== "command" || currentPage.id != "section-about")
+                return;
+
+            this._selectedAboutDeck = this._aboutModesDeck.selectedIndex == 0 ? 1 : 0;
+            viewCreditsButton.label = this._selectedAboutDeck == 0 ? LocaleUtils.str(this.stringbundle, "view_credits_button") : LocaleUtils.str(this.stringbundle, "view_about_button");
+            
+            this._aboutModesDeck.selectedIndex = this._selectedAboutDeck;
         }
     }
 

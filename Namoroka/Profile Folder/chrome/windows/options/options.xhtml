@@ -15,104 +15,88 @@
     <stringbundle id="optionsBundle" src="chrome://namoroka/locale/properties/namoroka-options.properties"/>
     <link xmlns="http://www.w3.org/1999/xhtml" rel="icon" type="image/x-icon" href="chrome://userchrome/content/images/preferences.ico" />
 
-    <vbox flex="1">
+    <vbox id="container" flex="1">
 		<hbox id="contentArea" flex="1">
 			<vbox id="tabs">
 				<vbox id="main-tabs">
-					<vbox class="tab tab-selected" id="tab-general">
-						<image class="tab-icon" />
-						<label class="tab-label">&tabs.general;</label>
-					</vbox>
-					<vbox class="tab" id="tab-branding">
-						<image class="tab-icon" />
-						<label class="tab-label">&tabs.branding;</label>
-					</vbox>
-					<vbox class="tab" id="tab-about">
-						<image class="tab-icon" />
-						<label class="tab-label">&tabs.about;</label>
-					</vbox>
+					<button class="tab tab-selected" id="tab-general" label="&tabs.general;" />
+					<button class="tab" id="tab-branding" label="&tabs.branding;" />
+					<button class="tab" id="tab-about" label="&tabs.about;" />
 				</vbox>
-				<vbox class="tab" id="tab-debug">
-					<image class="tab-icon" />
-					<label class="tab-label">&tabs.debug;</label>
-				</vbox>
+				<button class="tab" id="tab-debug" label="&tabs.debug;" />
 			</vbox>
-			<html:div id="content">
-				<html:div id="main-section">    
-					<html:div id="section-general" class="section section-selected">
+			<vbox id="content">
+				<vbox id="main-section">    
+					<vbox id="section-general" class="section section-selected">
+						<hbox class="dialogheader">
+							<html:span class="dialogheader-title">&tabs.general;</html:span>
+							<html:span class="dialogheader-description"></html:span>
+						</hbox>
 						<vbox flex="1">
-							<hbox class="dialogheader">
-								<html:span class="dialogheader-title">&tabs.general;</html:span>
-								<html:span class="dialogheader-description"></html:span>
-							</hbox>
-							<vbox flex="1">
-								<description>&general.appearance.description;</description>
-								<description>&general.appearance.style;</description>
-								<hbox class="brandingOptionsContainer">
-									<richlistbox id="skinsList" class="listBox option" data-type="enum" data-option="Namoroka.Appearance.Style" controls="listboxPreview" flex="1" render-richlistbox="true">
-										<richlistitem iconURL="chrome://userchrome/content/windows/wizard/images/theme-firefox1.png" 
-													previewImage="chrome://userchrome/content/windows/wizard/images/preview-firefox1.png" 
-													name="&general.appearance.style.ff1;" 
-													description="&general.appearance.description.ff1;"
-													value="0" />
-										<richlistitem iconURL="chrome://userchrome/content/windows/wizard/images/theme-firefox2.png" 
-													previewImage="chrome://userchrome/content/windows/wizard/images/preview-firefox2.png" 
-													name="&general.appearance.style.ff2;" 
-													description="&general.appearance.description.ff2;"
-													value="1" />
-										<richlistitem iconURL="chrome://userchrome/content/windows/wizard/images/theme-firefox3.png" 
-													previewImage="chrome://userchrome/content/windows/wizard/images/preview-firefox3.png" 
-													name="&general.appearance.style.ff3;" 
-													description="&general.appearance.description.ff3;"
-													value="2" />
-									</richlistbox>
+							<description>&general.appearance.description;</description>
+							<description>&general.appearance.style;</description>
+							<hbox class="brandingOptionsContainer">
+								<richlistbox id="skinsList" class="listBox option" data-type="enum" data-option="Namoroka.Appearance.Style" controls="listboxPreview" flex="1" render-richlistbox="true">
+									<richlistitem iconURL="chrome://userchrome/content/windows/wizard/images/theme-firefox1.png" 
+												previewImage="chrome://userchrome/content/windows/wizard/images/preview-firefox1.png" 
+												name="&general.appearance.style.ff1;" 
+												description="&general.appearance.description.ff1;"
+												value="0" />
+									<richlistitem iconURL="chrome://userchrome/content/windows/wizard/images/theme-firefox2.png" 
+												previewImage="chrome://userchrome/content/windows/wizard/images/preview-firefox2.png" 
+												name="&general.appearance.style.ff2;" 
+												description="&general.appearance.description.ff2;"
+												value="1" />
+									<richlistitem iconURL="chrome://userchrome/content/windows/wizard/images/theme-firefox3.png" 
+												previewImage="chrome://userchrome/content/windows/wizard/images/preview-firefox3.png" 
+												name="&general.appearance.style.ff3;" 
+												description="&general.appearance.description.ff3;"
+												value="2" />
+								</richlistbox>
 
-									<hbox id="listboxPreview" class="brandingListPreview" controls="skinsList" style="min-width: 210px; min-height: 190px; background-color: white;">
-										<image id="previewImage" />
-									</hbox>
-								</hbox>
-								<hbox id="previewImageContainer">
+								<hbox id="listboxPreview" class="brandingListPreview" controls="skinsList" style="min-width: 210px; min-height: 190px; background-color: white;">
 									<image id="previewImage" />
 								</hbox>
-								<checkbox native="" label="&general.appearance.aero;" class="option" data-type="bool" data-option="Namoroka.Appearance.Aero"/>
-								<checkbox native="" label="&general.appearance.smallIcons;" class="option" data-type="bool" data-option="Namoroka.Appearance.Small-Icons"/>
-								<checkbox native="" label="&general.appearance.hideTabBar;" class="option" data-type="bool" data-option="Namoroka.Tabbrowser.HideOnOneTab"/>
-							</vbox>
-						</vbox>
-					</html:div>
-					<html:div id="section-branding" class="section" section-change-requires-restart="true">
-						<vbox flex="1">
-							<hbox class="dialogheader">
-								<html:span class="dialogheader-title">&tabs.branding;</html:span>
-								<html:span class="dialogheader-description"></html:span>
 							</hbox>
-							<vbox>
-								<description>&branding.description;</description>
-								<description>&branding.style;</description>
-								<hbox class="brandingOptionsContainer" flex="1">
-									<richlistbox id="brandingList" class="listBox option vertical" data-type="string" data-option="Namoroka.Option.Branding" change-requires-restart="true" controls="listboxPreview" flex="1" render-richlistbox="true">
-										<richlistitem iconURL="chrome://userchrome/content/branding/firefox/content/icon32.png" 
-													previewImage="chrome://userchrome/content/branding/firefox/content/about.png" 
-													name="&branding.option.firefox;" 
-													value="firefox" />
-										<richlistitem iconURL="chrome://userchrome/content/branding/minefield/content/icon32.png" 
-													previewImage="chrome://userchrome/content/branding/minefield/content/about.png" 
-													name="&branding.option.minefield;" 
-													value="minefield" />
-										<richlistitem iconURL="chrome://userchrome/content/branding/namoroka/content/icon32.png" 
-													previewImage="chrome://userchrome/content/branding/namoroka/content/about.png" 
-													name="&branding.option.namoroka;" 
-													value="namoroka" />
-									</richlistbox>
-
-									<hbox id="listboxPreview" class="brandingListPreview" controls="brandingList">
-										<image id="previewImage" />
-									</hbox>
-								</hbox>
-							</vbox>
+							<hbox id="previewImageContainer">
+								<image id="previewImage" />
+							</hbox>
+							<checkbox native="" label="&general.appearance.aero;" class="option" data-type="bool" data-option="Namoroka.Appearance.Aero"/>
+							<checkbox native="" label="&general.appearance.smallIcons;" class="option" data-type="bool" data-option="Namoroka.Appearance.Small-Icons"/>
+							<checkbox native="" label="&general.appearance.hideTabBar;" class="option" data-type="bool" data-option="Namoroka.Tabbrowser.HideOnOneTab"/>
 						</vbox>
-					</html:div>
-					<!-- <html:div id="section-native-controls" class="section" section-change-requires-restart="true">
+					</vbox>
+					<vbox id="section-branding" class="section" section-change-requires-restart="true">
+						<hbox class="dialogheader">
+							<html:span class="dialogheader-title">&tabs.branding;</html:span>
+							<html:span class="dialogheader-description"></html:span>
+						</hbox>
+						<vbox>
+							<description>&branding.description;</description>
+							<description>&branding.style;</description>
+							<hbox class="brandingOptionsContainer" flex="1">
+								<richlistbox id="brandingList" class="listBox option vertical" data-type="string" data-option="Namoroka.Option.Branding" change-requires-restart="true" controls="listboxPreview" flex="1" render-richlistbox="true">
+									<richlistitem iconURL="chrome://userchrome/content/branding/firefox/content/icon32.png" 
+												previewImage="chrome://userchrome/content/branding/firefox/content/about.png" 
+												name="&branding.option.firefox;" 
+												value="firefox" />
+									<richlistitem iconURL="chrome://userchrome/content/branding/minefield/content/icon32.png" 
+												previewImage="chrome://userchrome/content/branding/minefield/content/about.png" 
+												name="&branding.option.minefield;" 
+												value="minefield" />
+									<richlistitem iconURL="chrome://userchrome/content/branding/namoroka/content/icon32.png" 
+												previewImage="chrome://userchrome/content/branding/namoroka/content/about.png" 
+												name="&branding.option.namoroka;" 
+												value="namoroka" />
+								</richlistbox>
+
+								<hbox id="listboxPreview" class="brandingListPreview" controls="brandingList">
+									<image id="previewImage" />
+								</hbox>
+							</hbox>
+						</vbox>
+					</vbox>
+					<!-- <vbox id="section-native-controls" class="section" section-change-requires-restart="true">
 						<vbox flex="1">
 							<hbox class="dialogheader">
 								<html:span class="dialogheader-title">&tabs.nativeControls;</html:span>
@@ -167,22 +151,20 @@
 								</vbox>
 							</vbox>
 						</vbox>
-					</html:div> -->
-					<html:div id="section-debug" class="section">
-						<vbox flex="1">
-							<hbox class="dialogheader">
-								<html:span class="dialogheader-title">&tabs.debug;</html:span>
-								<html:span class="dialogheader-description"></html:span>
-							</hbox>
-							<checkbox native="" label="&debug.wizard.firstRun;" class="option" data-type="bool" data-option="Namoroka.Parameter.FirstRun" change-requires-restart="true"/>
-						</vbox>
-					</html:div>
-					<html:div id="section-about" class="section">
-						<vbox flex="1">
-							<hbox class="dialogheader">
-								<html:span class="dialogheader-title">&tabs.about;</html:span>
-								<html:span class="dialogheader-description"></html:span>
-							</hbox>
+					</vbox> -->
+					<vbox id="section-debug" class="section">
+						<hbox class="dialogheader">
+							<html:span class="dialogheader-title">&tabs.debug;</html:span>
+							<html:span class="dialogheader-description"></html:span>
+						</hbox>
+						<checkbox native="" label="&debug.wizard.firstRun;" class="option" ata-type="bool" data-option="Namoroka.Parameter.FirstRun" change-requires-restart="true"/>
+					</vbox>
+					<vbox id="section-about" class="section">
+						<hbox class="dialogheader">
+							<html:span class="dialogheader-title">&tabs.about;</html:span>
+							<html:span class="dialogheader-description"></html:span>
+						</hbox>
+						<deck id="aboutModes" flex="1">
 							<vbox class="listBox settingsBox aboutBox" flex="1">
 								<vbox class="aboutBoxHeaderContainer">
 									<image class="aboutBoxHeader" />
@@ -195,18 +177,18 @@
 											<label class="header" flex="1" value="&about.namorokaInfo;" />
 										</hbox>
 										<vbox class="settingsContainer">
-											<html:div class="option-container">
+											<vbox class="option-container">
 												<label id="versionLabel" class="infoHeader" value="&about.namorokaInfoVersion;" />
 												<label id="version" numberonly="true" />
-											</html:div>
-											<html:div class="option-container">
+											</vbox>
+											<vbox class="option-container">
 												<label id="buildLabel" class="infoHeader" value="&about.namorokaInfoBuild;" />
 												<label id="build" includehash="true" numberonly="true" />
-											</html:div>
-											<html:div class="option-container">
+											</vbox>
+											<vbox class="option-container">
 												<label id="channelLabel" class="infoHeader" value="&about.namorokaInfoChannel;" />
 												<label id="channel" />
-											</html:div>
+											</vbox>
 										</vbox>
 									</vbox>
 									<vbox class="expander expanded" id="expander-nativeControlsGeneral">
@@ -214,33 +196,74 @@
 											<label class="header" flex="1" value="&about.namorokaBrowser;" />
 										</hbox>
 										<vbox class="settingsContainer">
-											<html:div class="option-container">
+											<vbox class="option-container">
 												<label id="versionLabel" class="infoHeader" value="&about.namorokaBrowserName;" />
-												<label data-content="Services.appinfo.name" />
-											</html:div>
-											<html:div class="option-container">
+												<label id="browserName" class="service-info" />
+											</vbox>
+											<vbox class="option-container">
 												<label id="buildLabel" class="infoHeader" value="&about.namorokaBrowserVer;" />
-												<label data-content="Services.appinfo.version" />
-											</html:div>
-											<html:div class="option-container">
+												<label id="browserVersion" class="service-info" />
+											</vbox>
+											<vbox class="option-container">
 												<label id="channelLabel" class="infoHeader" value="&about.namorokaBrowserChannel;" />
-												<label data-content="Services.appinfo.defaultUpdateChannel" />
-											</html:div>
+												<label id="browserChannel" class="service-info" />
+											</vbox>
 										</vbox>
 									</vbox>
 								</hbox>
 							</vbox>
-						</vbox>
-					</html:div>
-				</html:div>
-			</html:div>
+							<vbox class="listBox settingsBox creditsBox" flex="1">
+								<vbox class="aboutBoxHeaderContainer">
+									<image class="aboutBoxHeader" />
+									<image class="aboutHeaderLogo" />
+								</vbox>
+
+								<label class="thanksContributors">Thanks to our friends and contributors!</label>
+
+								<vbox class="creditsContainer" flex="1">
+									<vbox class="credit">
+										<label class="credit-header" value="Travis (travy-patty)" />
+										<description class="credit-description" value="Creator of Namoroka" />
+										<hbox>
+											<label is="text-link" href="https://github.com/travy-patty">GitHub</label>
+										</hbox>
+									</vbox>
+									<vbox class="credit">
+										<label class="credit-header" value="aubrey (aubymori)" />
+										<description class="credit-description" value="Developer, Original code from Echelon, adapted for Namoroka" />
+										<hbox>
+											<label is="text-link" href="https://github.com/aubymori">GitHub</label>
+										</hbox>
+									</vbox>
+									<vbox class="credit">
+										<label class="credit-header" value="Isabella Lulamoon (kawapure)" />
+										<description class="credit-description" value="Original code from Echelon, adapted for Namoroka" />
+										<hbox>
+											<label is="text-link" href="https://github.com/kawapure">GitHub</label>
+										</hbox>
+									</vbox>
+									<vbox class="credit">
+										<label class="credit-header" value="MrOtherGuy" />
+										<description class="credit-description" value="Creator of fx-autoconfig, loading custom JavaScript in a browser context" />
+										<hbox>
+											<label is="text-link" href="https://github.com/MrOtherGuy">GitHub</label>
+										</hbox>
+									</vbox>
+								</vbox>
+							</vbox>
+						</deck>
+					</vbox>
+				</vbox>
+			</vbox>
 		</hbox>
-		<html:div id="button-section">
-			<html:span class="restart-required-label" style="display:none">&window.restartRequired;</html:span>
+		<hbox id="button-section">
+			<button id="view-credits-button" default="true" />
+			<label class="restart-required-label" style="display:none">&window.restartRequired;</label>
+			<spacer flex="1" />
 			<button id="ok-button" label="&window.buttons.ok;"/>
 			<button id="cancel-button" label="&window.buttons.cancel;"/>
 			<button id="apply-button" label="&window.buttons.apply;" accesskey="&window.buttons.apply.accesskey;"/>
-		</html:div>
+		</hbox>
     </vbox>
     <script src="chrome://userchrome/content/windows/options/script.js" type="text/javascript"></script>
 </window>

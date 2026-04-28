@@ -30,8 +30,7 @@ var g_namorokaAutocomplete;
 
 		// =================== Panel Setup ===================
 
-		get panelFragment()
-		{
+		get panelFragment() {
 			if (!this._fragment) {
 				this._fragment = window.MozXULElement.parseXULToFragment(`
 					<panel id="PopupAutoCompleteRichResult" type="autocomplete-richlistbox" noautofocus="true" level="top">
@@ -44,8 +43,7 @@ var g_namorokaAutocomplete;
 			return this._fragment;
 		}
 
-		get panel()
-		{
+		get panel() {
 			let panel = document.getElementById("PopupAutoCompleteRichResult");
 			Object.defineProperty(this, "panel", {
 				value: panel,
@@ -54,37 +52,32 @@ var g_namorokaAutocomplete;
 			return panel;
 		}
 
-		get richlistbox()
-		{
+		get richlistbox() {
 			return this.panelFragment.querySelector("richlistbox");
 		}
 
-		get mPopupOpen()
-		{
+		get mPopupOpen() {
 			return this.panel.state === "open" || this.panel.state === "showing";
 		}
 
-		get selectedIndex()
-		{
+		get selectedIndex() {
 			return this.richlistbox.selectedIndex;
 		}
 
-		   set selectedIndex(val)
-		   {
-			   this.richlistbox.selectedIndex = val;
-			   let item = this.richlistbox.selectedItem || this.richlistbox.firstChild;
-			   if (item) {
-				   this.richlistbox.ensureElementIsVisible(item);
-			   }
-			   // If set by keyboard, clear mouse selection flag
-			   this._mouseSelected = false;
-			   return val;
-		   }
+		set selectedIndex(val) {
+			this.richlistbox.selectedIndex = val;
+			let item = this.richlistbox.selectedItem || this.richlistbox.firstChild;
+			if (item) {
+				this.richlistbox.ensureElementIsVisible(item);
+			}
+			// If set by keyboard, clear mouse selection flag
+			this._mouseSelected = false;
+			return val;
+		}
 
 		// =================== Init ===================
 
-		init()
-		{
+		constructor() {
 			this._urlbar = gURLBar;
 			this._inputField = this._urlbar.inputField;
 
@@ -98,9 +91,9 @@ var g_namorokaAutocomplete;
 			// but these public methods call it internally. No-opping them
 			// prevents the modern view from ever rendering or opening.
 			let view = this._urlbar.view;
-			view.onQueryResults = function() {};
-			view.onQueryFinished = function() {};
-			view.autoOpen = function() { return false; };
+			view.onQueryResults = function () { };
+			view.onQueryFinished = function () { };
+			view.autoOpen = function () { return false; };
 
 			// Intercept keyboard before the UrlbarController.
 			// The controller's handleKeyNavigation() calls preventDefault()
@@ -125,8 +118,7 @@ var g_namorokaAutocomplete;
 
 		// =================== Query Listeners ===================
 
-		onQueryResults(queryContext)
-		{
+		onQueryResults(queryContext) {
 			this._searchString = (queryContext.searchString || "").trim();
 			this._results = this._filterResults(queryContext.results || []);
 			this._matchCount = Math.min(this._results.length, this.maxResults);
@@ -140,8 +132,7 @@ var g_namorokaAutocomplete;
 			this._invalidate();
 		}
 
-		onQueryFinished(queryContext)
-		{
+		onQueryFinished(queryContext) {
 			// Final render pass — results are complete
 			this._searchString = (queryContext.searchString || "").trim();
 			this._results = this._filterResults(queryContext.results || []);
@@ -155,20 +146,17 @@ var g_namorokaAutocomplete;
 			this._invalidate();
 		}
 
-		onQueryCancelled(queryContext)
-		{
+		onQueryCancelled(queryContext) {
 			// Don't hide — keep showing whatever we have
 		}
 
-		onViewClose()
-		{
+		onViewClose() {
 			this.hidePopup();
 		}
 
 		// =================== Result Filtering ===================
 
-		_filterResults(results)
-		{
+		_filterResults(results) {
 			let filtered = [];
 
 			for (let result of results) {
@@ -202,7 +190,7 @@ var g_namorokaAutocomplete;
 				// Unescape the URL for display, like Firefox 3 did
 				try {
 					url = Services.textToSubURI.unEscapeURIForUI(url);
-				} catch (e) {}
+				} catch (e) { }
 
 				filtered.push({ url, title, icon, type: fx3Type, tags });
 			}
@@ -212,8 +200,7 @@ var g_namorokaAutocomplete;
 
 		// =================== Popup Management ===================
 
-		_openPopup()
-		{
+		_openPopup() {
 			if (this.mPopupOpen)
 				return;
 
@@ -225,8 +212,7 @@ var g_namorokaAutocomplete;
 			this.panel.openPopup(urlbarElem, "after_start", 0, 0, false, false);
 		}
 
-		hidePopup()
-		{
+		hidePopup() {
 			let disableAutohide = Services.prefs.getBoolPref("ui.popup.disable_autohide", false);
 			if (!disableAutohide) {
 				this.panel.hidePopup();
@@ -235,8 +221,7 @@ var g_namorokaAutocomplete;
 
 		// =================== Invalidate & Render ===================
 
-		_invalidate()
-		{
+		_invalidate() {
 			// Collapsed if no matches
 			this.richlistbox.collapsed = (this._matchCount === 0);
 
@@ -255,8 +240,7 @@ var g_namorokaAutocomplete;
 			this._appendCurrentResult();
 		}
 
-		_appendCurrentResult()
-		{
+		_appendCurrentResult() {
 			// Process maxRows items per batch for responsiveness
 			for (let i = 0; i < this.maxRows; i++) {
 				if (this._currentIndex >= this._matchCount) {
@@ -314,8 +298,7 @@ var g_namorokaAutocomplete;
 
 		// =================== RichListItem DOM (Firefox 3 Structure) ===================
 
-		_createRichListItem()
-		{
+		_createRichListItem() {
 			let item = document.createXULElement("richlistitem");
 			item.className = "autocomplete-richlistitem";
 
@@ -343,7 +326,7 @@ var g_namorokaAutocomplete;
 			let extraTagIcon = document.createXULElement("image");
 			extraTagIcon.className = "ac-result-type-tag";
 
-			let extraDesc = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "description");
+			let extraDesc = document.createXULElement("description");
 			extraDesc.className = "ac-normal-text ac-comment";
 			extraDesc.setAttribute("anonid", "extra");
 
@@ -372,7 +355,7 @@ var g_namorokaAutocomplete;
 			urlBox.className = "ac-url";
 			urlBox.setAttribute("flex", "1");
 
-			let urlDesc = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "description");
+			let urlDesc = document.createXULElement("description");
 			urlDesc.className = "ac-normal-text ac-url-text";
 			urlDesc.setAttribute("anonid", "url");
 
@@ -390,10 +373,10 @@ var g_namorokaAutocomplete;
 			item.appendChild(urlRow);
 
 			// Event listeners
-			   item.addEventListener("mouseover", () => {
-				   this.richlistbox.selectedItem = item;
-				   this._mouseSelected = true;
-			   });
+			item.addEventListener("mouseover", () => {
+				this.richlistbox.selectedItem = item;
+				this._mouseSelected = true;
+			});
 
 			item.addEventListener("mousedown", (e) => {
 				e.preventDefault(); // prevent focus loss / blur
@@ -413,8 +396,7 @@ var g_namorokaAutocomplete;
 
 		// =================== Adjust Item Content (Firefox 3 _adjustAcItem) ===================
 
-		_adjustAcItem(item)
-		{
+		_adjustAcItem(item) {
 			let url = item.getAttribute("url");
 			let title = item.getAttribute("title");
 			let type = item.getAttribute("type");
@@ -468,13 +450,11 @@ var g_namorokaAutocomplete;
 
 		// =================== Search Term Emphasis (Firefox 3 _setUpDescription) ===================
 
-		_getSearchTokens(search)
-		{
+		_getSearchTokens(search) {
 			return search.toLowerCase().split(/\s+/);
 		}
 
-		get boundaryCutoff()
-		{
+		get boundaryCutoff() {
 			if (!this._boundaryCutoff) {
 				try {
 					this._boundaryCutoff = Services.prefs.getIntPref("toolkit.autocomplete.richBoundaryCutoff");
@@ -485,8 +465,7 @@ var g_namorokaAutocomplete;
 			return this._boundaryCutoff;
 		}
 
-		_getBoundaryIndices(aText, aSearchTokens)
-		{
+		_getBoundaryIndices(aText, aSearchTokens) {
 			// Short circuit for empty search
 			if (aSearchTokens == "")
 				return [0, aText.length];
@@ -534,9 +513,8 @@ var g_namorokaAutocomplete;
 			return boundaries.slice(1);
 		}
 
-		_needsAlternateEmphasis(aText)
-		{
-			for (let i = aText.length; --i >= 0; ) {
+		_needsAlternateEmphasis(aText) {
+			for (let i = aText.length; --i >= 0;) {
 				let charCode = aText.charCodeAt(i);
 				if (0x0600 <= charCode && charCode <= 0x109F)
 					return true;
@@ -544,8 +522,7 @@ var g_namorokaAutocomplete;
 			return false;
 		}
 
-		_setUpDescription(aDescriptionElement, aText)
-		{
+		_setUpDescription(aDescriptionElement, aText) {
 			// Clear previous content
 			while (aDescriptionElement.hasChildNodes())
 				aDescriptionElement.removeChild(aDescriptionElement.firstChild);
@@ -579,8 +556,7 @@ var g_namorokaAutocomplete;
 
 		// =================== Height =====================
 
-		adjustHeight()
-		{
+		adjustHeight() {
 			let rows = this.richlistbox.childNodes;
 			let numRows = Math.min(this._matchCount, this.maxRows, rows.length);
 
@@ -614,8 +590,7 @@ var g_namorokaAutocomplete;
 
 		// =================== URL Column Measurement ===================
 
-		_measureUrlColumnWidth()
-		{
+		_measureUrlColumnWidth() {
 			let maxWidth = 0;
 			let rows = this.richlistbox.childNodes;
 			for (let i = 0; i < this._matchCount && i < rows.length; i++) {
@@ -632,35 +607,31 @@ var g_namorokaAutocomplete;
 
 		// =================== Navigation ===================
 
-		isValidURL(str)
-		{
+		isValidURL(str) {
 			try {
 				let uri = Services.io.newURI(str);
-				   // Accept any scheme, not just http/about/file
-				   return !!uri.scheme;
+				// Accept any scheme, not just http/about/file
+				return !!uri.scheme;
 			}
 			catch (e) {
 				return false;
 			}
 		}
 
-		fixURL(str)
-		{
-			   // Only prepend http:// if it looks like a bare hostname (no scheme)
-			   if (/^[a-zA-Z][a-zA-Z0-9+.-]*:/.test(str)) {
-				   // Already has a scheme
-				   return str;
-			   }
-			   if (str.includes(".")) {
-				   return "http://" + str;
-			   }
-			   return str;
+		fixURL(str) {
+			// Only prepend http:// if it looks like a bare hostname (no scheme)
+			if (/^[a-zA-Z][a-zA-Z0-9+.-]*:/.test(str)) {
+				// Already has a scheme
+				return str;
+			}
+			if (str.includes(".")) {
+				return "http://" + str;
+			}
+			return str;
 		}
 
-		async navigateToUrl(url)
-		{
-			if (this.isValidURL(url))
-			{
+		async navigateToUrl(url) {
+			if (this.isValidURL(url)) {
 				let fixedUrl = this.fixURL(url);
 
 				gBrowser.selectedBrowser.loadURI(
@@ -668,8 +639,7 @@ var g_namorokaAutocomplete;
 					{ triggeringPrincipal: Services.scriptSecurityManager.getSystemPrincipal() }
 				);
 			}
-			else
-			{
+			else {
 				let searchUrl = (await Services.search.defaultEngine.getSubmission(encodeURIComponent(url)))?.uri.spec;
 
 				gBrowser.selectedBrowser.loadURI(
@@ -683,8 +653,7 @@ var g_namorokaAutocomplete;
 
 		// =================== Keyboard Navigation (Firefox 3 selectBy) ===================
 
-		selectBy(aReverse, aPage)
-		{
+		selectBy(aReverse, aPage) {
 			let amount = aPage ? 5 : 1;
 			let newIdx = this._getNextIndex(aReverse, amount, this.selectedIndex, this._matchCount - 1);
 			this.selectedIndex = newIdx;
@@ -698,8 +667,7 @@ var g_namorokaAutocomplete;
 			}
 		}
 
-		_getNextIndex(aReverse, aAmount, aCurrent, aMaxRow)
-		{
+		_getNextIndex(aReverse, aAmount, aCurrent, aMaxRow) {
 			if (aCurrent === -1) {
 				return aReverse ? aMaxRow : 0;
 			}
@@ -712,80 +680,76 @@ var g_namorokaAutocomplete;
 
 		// =================== Event Handling ===================
 
-		handleEvent(event)
-		{
+		handleEvent(event) {
 			if (event.target.id !== "urlbar-input")
 				return;
 
-			if (event.type === "blur") {
+			if (event.type == "blur") {
 				this._blurTimeout = setTimeout(() => this.hidePopup(), 150);
 			}
 		}
 
-		   _onKeydown(e)
-		   {
-			   if (!this.mPopupOpen)
-				   return;
+		_onKeydown(e) {
+			if (!this.mPopupOpen)
+				return;
 
-			   switch (e.key) {
-				   case "Enter":
-					   // Only navigate if not just mouse-hovered
-					   if (this.richlistbox.selectedItem && !this._mouseSelected) {
-						   e.preventDefault();
-						   e.stopPropagation();
-						   let url = this.richlistbox.selectedItem.getAttribute("url");
-						   if (url) {
-							   this.navigateToUrl(url);
-							   this.hidePopup();
-						   }
-					   } else {
-						   // No selection or only mouse-hovered — close popup and let the urlbar handle Enter
-						   this.hidePopup();
-						   this._origHandleKeyNav(e, true);
-					   }
-					   break;
+			switch (e.key) {
+				case "Enter":
+					// Only navigate if not just mouse-hovered
+					if (this.richlistbox.selectedItem && !this._mouseSelected) {
+						e.preventDefault();
+						e.stopPropagation();
+						let url = this.richlistbox.selectedItem.getAttribute("url");
+						if (url) {
+							this.navigateToUrl(url);
+							this.hidePopup();
+						}
+					} else {
+						// No selection or only mouse-hovered — close popup and let the urlbar handle Enter
+						this.hidePopup();
+						this._origHandleKeyNav(e, true);
+					}
+					break;
 
-				   case "ArrowDown":
-					   e.preventDefault();
-					   e.stopPropagation();
-					   this._mouseSelected = false;
-					   this.selectBy(false, false);
-					   break;
+				case "ArrowDown":
+					e.preventDefault();
+					e.stopPropagation();
+					this._mouseSelected = false;
+					this.selectBy(false, false);
+					break;
 
-				   case "ArrowUp":
-					   e.preventDefault();
-					   e.stopPropagation();
-					   this._mouseSelected = false;
-					   this.selectBy(true, false);
-					   break;
+				case "ArrowUp":
+					e.preventDefault();
+					e.stopPropagation();
+					this._mouseSelected = false;
+					this.selectBy(true, false);
+					break;
 
-				   case "PageDown":
-					   e.preventDefault();
-					   e.stopPropagation();
-					   this._mouseSelected = false;
-					   this.selectBy(false, true);
-					   break;
+				case "PageDown":
+					e.preventDefault();
+					e.stopPropagation();
+					this._mouseSelected = false;
+					this.selectBy(false, true);
+					break;
 
-				   case "PageUp":
-					   e.preventDefault();
-					   e.stopPropagation();
-					   this._mouseSelected = false;
-					   this.selectBy(true, true);
-					   break;
+				case "PageUp":
+					e.preventDefault();
+					e.stopPropagation();
+					this._mouseSelected = false;
+					this.selectBy(true, true);
+					break;
 
-				   case "Escape":
-					   e.preventDefault();
-					   e.stopPropagation();
-					   this.hidePopup();
-					   this.selectedIndex = -1;
-					   break;
-			   }
-		   }
+				case "Escape":
+					e.preventDefault();
+					e.stopPropagation();
+					this.hidePopup();
+					this.selectedIndex = -1;
+					break;
+			}
+		}
 	}
 
-	g_namorokaAutocomplete = new PopupAutoCompleteRichResult;
-
 	waitForElement("#urlbar").then(e => {
-		g_namorokaAutocomplete.init();
+		g_namorokaAutocomplete = new PopupAutoCompleteRichResult;
 	});
 }

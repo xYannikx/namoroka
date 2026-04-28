@@ -67,7 +67,13 @@ checkbox {
 }
 
 #contentArea {
+    flex: 1;
+    min-height: 0;
 	padding: 8px;
+}
+
+#container {
+    height: 100%;
 }
 
 #tabs {
@@ -88,11 +94,13 @@ checkbox {
 }
 
 .tab {
+    appearance: none;
 	width: 74px;
     padding: 2px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 0;
 	margin-block-end: 3px;
 	color: WindowText;
 	border: 1px solid transparent;
@@ -111,16 +119,22 @@ checkbox {
 
     &:active,
     &.tab-selected {
-        & > * {
-            transform: translate(1px, 1px);
-        }
+        padding-top: 3px;
+        padding-left: 1px;
+        padding-bottom: 1px;
+        padding-right: 0px;
 
-        .tab-icon {
+        .button-icon {
             background-position-y: -32px;
         }
     }
 
-    .tab-icon {
+    .button-box {
+        border: 0;
+        padding: 0;
+    }
+
+    .button-icon {
         width: 32px;
         height: 32px;
         background-image: url("chrome://userchrome/content/windows/options/images/Options.png");
@@ -138,7 +152,8 @@ checkbox {
         }
     }
 
-    .tab-label {
+    .button-text {
+        text-wrap: wrap;
         margin: 0 !important;
         margin-block-start: 1px;
         line-height: 1;
@@ -148,23 +163,23 @@ checkbox {
 }
 
 
-#tab-general .tab-icon {
+#tab-general .button-icon {
     background-position-x: 0;
 }
 
-#tab-branding .tab-icon {
+#tab-branding .button-icon {
     background-position-x: -32px;
 }
 
-#tab-native-controls .tab-icon {
+#tab-native-controls .button-icon {
     background-position-x: -64px;
 }
 
-#tab-debug .tab-icon {
+#tab-debug .button-icon {
     background-position-x: -96px;
 }
 
-#tab-about .tab-icon {
+#tab-about .button-icon {
     background-position-x: -128px;
 }
 
@@ -182,6 +197,7 @@ checkbox {
 
 #main-section {
     flex-grow: 1;
+    min-height: 0;
 }
 
 #button-section {
@@ -204,10 +220,9 @@ checkbox {
 
     &.section-selected {
         display: flex;
-        flex-direction: column;
-        align-items: stretch;
         flex: 1;
-        height: 100%;
+        min-height: 0;
+        overflow: auto;
     }
 }
 
@@ -285,7 +300,8 @@ button[type="disclosure"]:active .button-icon,
     visibility: collapse;
 }
 
-.aboutBox {
+.aboutBox,
+.creditsBox {
     padding: 0;
 }
 
@@ -336,7 +352,6 @@ button[type="disclosure"]:active .button-icon,
 }
 
 .restart-required-label {
-    flex: 1;
     align-items: center;
     color: red;
 }
@@ -426,4 +441,34 @@ richlistbox {
             }
         }
     }
+}
+
+.creditsContainer {
+    margin: 25px;
+}
+
+.credit {
+    padding-block: 10px;
+    border-block-start: 1px dotted ThreeDShadow;
+
+    &:last-of-type {
+        border-block-end: 1px dotted ThreeDShadow;
+    }
+
+    .credit-header {
+        font-weight: bold;
+        font-size: 1.25em;
+    }
+}
+
+#aboutModes {
+    min-height: 0;
+}
+
+.thanksContributors {
+    text-align: center;
+    margin-block-start: 8px;
+    font-style: italic;
+    font-weight: bold;
+    color: GrayText;
 }
