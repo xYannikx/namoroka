@@ -242,28 +242,28 @@ export class setAttributes
 export class NamorokaInfo
 {
 	static versionTextInfo() {
-		let minorVersion = Services.prefs.getIntPref("Namoroka.About-Spoof.Minor-Version", "0");
+		let minorVersion = Services.prefs.getIntPref("Namoroka.About-Spoof.Minor-Version", 0);
 		let patchVersion = Services.prefs.getCharPref("Namoroka.About-Spoof.Patch-Version", "");
 
 		return [
 			{
 				"style": 0,
-				"version": `${Services.prefs.getIntPref("Namoroka.About-Spoof.Major-Version", "1")}.${minorVersion}${patchVersion ? "." + patchVersion : ""}`,
-				"copyright": Services.prefs.getIntPref("Namoroka.About-Spoof.Copyright", "2004"),
+				"version": `${Services.prefs.getIntPref("Namoroka.About-Spoof.Major-Version", 1)}.${minorVersion}${patchVersion ? "." + patchVersion : ""}`,
+				"copyright": Services.prefs.getIntPref("Namoroka.About-Spoof.Copyright", 2004),
 				"renderingVersion": "1.7.5",
 				"engineBuild": "20041107",
 			},
 			{
 				"style": 1,
-				"version": `${Services.prefs.getIntPref("Namoroka.About-Spoof.Major-Version", "2")}.${minorVersion}${patchVersion ? "." + patchVersion : ""}`,
-				"copyright": Services.prefs.getIntPref("Namoroka.About-Spoof.Copyright", "2006"),
+				"version": `${Services.prefs.getIntPref("Namoroka.About-Spoof.Major-Version", 2)}.${minorVersion}${patchVersion ? "." + patchVersion : ""}`,
+				"copyright": Services.prefs.getIntPref("Namoroka.About-Spoof.Copyright", 2006),
 				"renderingVersion": "1.8.1",
 				"engineBuild": "20061010",
 			},
 			{
 				"style": 2,
-				"version": `${Services.prefs.getIntPref("Namoroka.About-Spoof.Major-Version", "3")}.${minorVersion}${patchVersion ? "." + patchVersion : ""}`,
-				"copyright": Services.prefs.getIntPref("Namoroka.About-Spoof.Copyright", "2008"),
+				"version": `${Services.prefs.getIntPref("Namoroka.About-Spoof.Major-Version", 3)}.${minorVersion}${patchVersion ? "." + patchVersion : ""}`,
+				"copyright": Services.prefs.getIntPref("Namoroka.About-Spoof.Copyright", 2008),
 				"renderingVersion": "1.9",
 				"engineBuild": "2008052906",
 			},
@@ -317,7 +317,7 @@ export class NamorokaInfo
 		// Mozilla/5.0 (Windows; U; Windows NT 6.2; en-US; rv:1.8.1) Gecko/20061010 Firefox/2.0
 		var style = Services.prefs.getIntPref("Namoroka.Appearance.Style");
 
-		var spoof = Services.prefs.getCharPref("Namoroka.About-Spoof.User-Agent-Spoof", Cc["@mozilla.org/network/protocol;1?name=http"].getService(Ci.nsIHttpProtocolHandler).userAgent);
+		var spoof = Services.prefs.getCharPref("Namoroka.About-Spoof.UserAgent-Spoof", Cc["@mozilla.org/network/protocol;1?name=http"].getService(Ci.nsIHttpProtocolHandler).userAgent);
 
 		let info = this.versionTextInfo()[style];
 
