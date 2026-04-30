@@ -283,7 +283,7 @@
 
             let text;
             let type;
-            let types = ["overlink"];
+            let types = ["overLink"];
             
             if (XULBrowserWindow.busyUI) {
                 types.push("status");
@@ -365,4 +365,8 @@
 		menu.insertBefore(statusBarItem, document.querySelector("#viewSidebarMenuMenu"));
 		menu.addEventListener("popupshowing", NamorokaStatusPanel._onPopupShowing);
 	});
+
+    // Remove the delay between hovering/unhovering a link and the statusbar updating
+    Object.defineProperty(LinkTargetDisplay, "DELAY_SHOW", { value: 0 });
+    Object.defineProperty(LinkTargetDisplay, "DELAY_HIDE", { value: 0 });
 }
