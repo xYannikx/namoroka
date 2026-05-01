@@ -10,7 +10,7 @@
 
 @media not (-moz-windows-classic) {
 &[namoroka-appearance-aero] {
-#main-menubar {
+menubar {
     > menu {
         appearance: menuitem !important;
         color: MenuText !important;

@@ -71,6 +71,14 @@
     <script src="chrome://global/content/contentAreaUtils.js" />
     <script src="chrome://browser/content/places/places-tree.js" />
 
+    <script>
+        const { NamorokaThemeManager } = ChromeUtils.importESModule("chrome://modules/content/NamorokaThemeManager.sys.mjs");
+        let g_themeManager = new NamorokaThemeManager(
+            document.documentElement,
+            { style: true, prefs: [ "Namoroka.Appearance.Aero"] }
+        );
+    </script>
+
     <commandset id="organizerCommandSet">
         <command id="OrganizerCommand_find:all" />
         <command id="OrganizerCommand_export" />
@@ -257,7 +265,7 @@
 
     <toolbox id="placesToolbox">
         <menubar id="placesMenu">
-            <menu data-l10n-id="places-organize-button" id="organizeButton">
+            <menu label="File" accesskey="F" id="organizeButton">
                 <menupopup id="organizeButtonPopup">
                     <menuitem id="newbookmark" command="placesCmd_new:bookmark"
                         data-l10n-id="places-add-bookmark" />
@@ -265,8 +273,34 @@
                     <menuitem id="newseparator" command="placesCmd_new:separator"
                         data-l10n-id="places-add-separator" />
 
-                    <menuseparator id="orgUndoSeparator" />
+                    <menuseparator id="backupSeparator" />
 
+                    <menuitem id="backupBookmarks" command="OrganizerCommand_backup"
+                        data-l10n-id="places-cmd-backup" />
+                    <menu id="fileRestoreMenu" data-l10n-id="places-cmd-restore">
+                        <menupopup id="fileRestorePopup">
+                            <menuitem id="restoreFromFile" command="OrganizerCommand_restoreFromFile"
+                                data-l10n-id="places-cmd-restore-from-file" />
+                        </menupopup>
+                    </menu>
+                    <menuseparator />
+                    <menuitem id="fileImport" command="OrganizerCommand_import"
+                        data-l10n-id="places-import-bookmarks-from-html" />
+                    <menuitem id="fileExport" command="OrganizerCommand_export"
+                        data-l10n-id="places-export-bookmarks-to-html" />
+                    <menuseparator />
+                    <menuitem id="browserImport" command="OrganizerCommand_browserImport"
+                        data-l10n-id="places-import-other-browser" />
+
+                    <menuseparator id="orgCloseSeparator" />
+
+                    <menuitem id="orgClose" command="OrganizerCommand:CloseWindow" key="placesKey_close"
+                        data-l10n-id="places-file-close" />
+                </menupopup>
+            </menu>
+
+            <menu label="Edit" accesskey="E" id="editMenu">
+                <menupopup id="editMenuPopup">
                     <menuitem id="orgUndo" command="cmd_undo" data-l10n-id="text-action-undo" key="key_undo" />
                     <menuitem id="orgRedo" command="cmd_redo" data-l10n-id="text-action-redo" key="key_redo" />
 
@@ -285,14 +319,10 @@
 
                     <menuitem id="orgSelectAll" command="cmd_selectAll" data-l10n-id="text-action-select-all"
                         key="key_selectAll" />
-
-                    <menuseparator id="orgCloseSeparator" />
-
-                    <menuitem id="orgClose" command="OrganizerCommand:CloseWindow" key="placesKey_close"
-                        data-l10n-id="places-file-close" />
                 </menupopup>
             </menu>
-            <menu data-l10n-id="places-view-button" id="viewMenu">
+
+            <menu label="View" accesskey="V" id="viewMenu">
                 <menupopup id="viewMenuPopup">
 
                     <menu id="viewColumns" data-l10n-id="places-view-menu-columns">
@@ -310,26 +340,6 @@
                                 data-l10n-id="places-view-sort-descending" />
                         </menupopup>
                     </menu>
-                </menupopup>
-            </menu>
-            <menu data-l10n-id="places-maintenance-button" id="maintenanceButton">
-                <menupopup id="maintenanceButtonPopup">
-                    <menuitem id="backupBookmarks" command="OrganizerCommand_backup"
-                        data-l10n-id="places-cmd-backup" />
-                    <menu id="fileRestoreMenu" data-l10n-id="places-cmd-restore">
-                        <menupopup id="fileRestorePopup">
-                            <menuitem id="restoreFromFile" command="OrganizerCommand_restoreFromFile"
-                                data-l10n-id="places-cmd-restore-from-file" />
-                        </menupopup>
-                    </menu>
-                    <menuseparator />
-                    <menuitem id="fileImport" command="OrganizerCommand_import"
-                        data-l10n-id="places-import-bookmarks-from-html" />
-                    <menuitem id="fileExport" command="OrganizerCommand_export"
-                        data-l10n-id="places-export-bookmarks-to-html" />
-                    <menuseparator />
-                    <menuitem id="browserImport" command="OrganizerCommand_browserImport"
-                        data-l10n-id="places-import-other-browser" />
                 </menupopup>
             </menu>
         </menubar>
