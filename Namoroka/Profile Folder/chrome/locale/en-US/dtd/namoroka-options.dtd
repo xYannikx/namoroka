@@ -67,4 +67,20 @@
 <!ENTITY about.namorokaBrowserVer "Engine Version">
 <!ENTITY about.namorokaBrowserChannel "Update Channel">
 
+<!ENTITY about.credits.contributors "Thanks to our friends and contributors!">
+
+<!ENTITY about.credits.contributor1 "Travis (travy-patty)">
+<!ENTITY about.credits.contributor1.description "Creator of Namoroka">
+
+<!ENTITY about.credits.contributor2 "aubrey (aubymori)">
+<!ENTITY about.credits.contributor2.description "Developer, Original code from Echelon, adapted for Namoroka">
+
+<!ENTITY about.credits.contributor3 "Isabella Lulamoon (kawapure)">
+<!ENTITY about.credits.contributor3.description "Original code from Echelon, adapted for Namoroka">
+
+<!ENTITY about.credits.contributor4 "MrOtherGuy">
+<!ENTITY about.credits.contributor4.description "Creator of fx-autoconfig, loading custom JavaScript in a browser context">
+
+<!ENTITY about.credits.github "GitHub">
+
 <!ENTITY debug.wizard.firstRun "First run has been completed">
