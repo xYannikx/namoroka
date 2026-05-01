@@ -39,10 +39,6 @@ var g_NamorokaOptionsDialog;
             return document.getElementById("cancel-button");
         }
 
-        get _applyButton() {
-            return document.getElementById("apply-button");
-        }
-
         get _viewCreditsButton() {
             return document.getElementById("view-credits-button");
         }
@@ -82,7 +78,6 @@ var g_NamorokaOptionsDialog;
 
         constructor() {
             this._okButton.addEventListener("command", e => this.handleOkApply(e, true));
-            this._applyButton.addEventListener("command", e => this.handleOkApply(e, false));
             this._cancelButton.addEventListener("command", this.handleCancel.bind(this));
 
             for (const option of document.querySelectorAll(".option")) {
@@ -156,6 +151,10 @@ var g_NamorokaOptionsDialog;
 
             for (const control of document.querySelectorAll("[data-option='Namoroka.Appearance.Aero']")) {
                 control.setAttribute("disabled", namorokaStyleLessOrEqual);
+            }
+
+            if (!restartRequired) {
+                this.handleOkApply(this, false);
             }
 
             document.querySelector(".restart-required-label").style.display = restartRequired ? "flex" : "none";
