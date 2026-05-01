@@ -6,26 +6,20 @@
   ======================================================================= */
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 /* :::::::::: button :::::::::: */
+/* um que? */
 button {
   appearance: auto;
   -moz-default-appearance: button;
-  margin: 1px 5px 2px;
+  margin: 1px 5px 2px 5px;
   min-width: 6.3em;
   color: ButtonText;
   background-color: ButtonFace;
   text-shadow: none;
-  border: 1px solid ThreeDLightShadow;
-  /* TODO: In Windows 11 perhaps we want some border-radius */
 }
 
-@media (-moz-windows-classic) {
-  .button-box {
-    border: 3px solid transparent;
-    padding-top: 1px;
-    padding-bottom: 1px;
-    padding-inline-start: 3px;
-    padding-inline-end: 4px;
-  }
+.button-box {
+  border: 1px solid transparent;
+  padding: 1px 4px 2px 3px;
 }
 
 button:where(:hover) {
@@ -37,7 +31,7 @@ button:where(:hover:active) {
 }
 
 .button-text {
-  margin: 0;
+  margin: 0 !important;
   text-align: center;
 }
 
@@ -65,18 +59,20 @@ button:focus-visible {
     color: HighlightText;
   }
 }
+/* :::::::::: active/open/checked state :::::::::: */
+button:where(:hover:active, [open=true], [checked=true]) > .button-box {
+  padding: 2px 3px 1px 4px;
+}
+
 /* .......... disabled state .......... */
 button:where([disabled=true]) {
   color: GrayText;
   background-color: ButtonFace;
 }
-
-@media (-moz-windows-classic) {
-  button:where([disabled=true]) {
-    color: ThreeDShadow;
-    text-shadow: 1px 1px ThreeDHighlight;
-  }
+button:where([disabled=true]) > .button-box {
+  padding: 1px 4px 2px 3px !important;
 }
+
 /* ::::: menu buttons ::::: */
 .button-menu-dropmarker {
   appearance: none;
@@ -94,16 +90,18 @@ button.plain {
 }
 
 button[type=disclosure] {
-  margin: 0;
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
   appearance: none;
-  list-style-image: url("chrome://global/skin/icons/arrow-right-12.svg");
+  list-style-image: url("chrome://namoroka/content/firefox-1/twisty-clsd.png");
   -moz-context-properties: fill;
   fill: currentColor;
   min-width: 0;
 }
 
 button[type=disclosure][open=true] {
-  list-style-image: url("chrome://global/skin/icons/arrow-down-12.svg");
+  list-style-image: url("chrome://namoroka/content/firefox-1/twisty-open.png");
 }
 
 /*# sourceMappingURL=button.css.map */
