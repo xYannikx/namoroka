@@ -6,10 +6,10 @@
     }
 
     &[namoroka-appearance-aero] {
-        --toolbar-spritesheet: url("chrome://namoroka/content/firefox-3/vista/Toolbar.png");
+        --toolbar-spritesheet: url("chrome://namoroka/content/firefox-3/aero/Toolbar.png");
 
         &[namoroka-appearance-small-icons="true"] {
-            --toolbar-spritesheet: url("chrome://namoroka/content/firefox-3/vista/Toolbar-small.png");
+            --toolbar-spritesheet: url("chrome://namoroka/content/firefox-3/aero/Toolbar-small.png");
         }    
     }
 }
@@ -22,7 +22,7 @@
 
 &[namoroka-appearance-aero] {
     .close-icon:not(.findbar-closebutton) {
-        @include set-background("firefox-3/vista/icons/close.png");
+        @include set-background("firefox-3/aero/icons/close.png");
     }
 }
 

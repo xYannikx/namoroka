@@ -18,19 +18,19 @@
 
 &[namoroka-appearance-aero="true"] {
     .message-icon {
-        list-style-image: url("chrome://namoroka/content/firefox-3/vista/icons/information-32.png") !important;
+        list-style-image: url("chrome://namoroka/content/firefox-3/aero/icons/information-32.png") !important;
     }
 
     .alert-dialog #infoIcon,
     .alert-icon {
-        list-style-image: url("chrome://namoroka/content/firefox-3/vista/icons/Warning.png") !important;
+        list-style-image: url("chrome://namoroka/content/firefox-3/aero/icons/Warning.png") !important;
     }
 
     .error-icon {
-        list-style-image: url("chrome://namoroka/content/firefox-3/vista/icons/Error.png") !important;
+        list-style-image: url("chrome://namoroka/content/firefox-3/aero/icons/Error.png") !important;
     }
 
     .question-icon {
-        list-style-image: url("chrome://namoroka/content/firefox-3/vista/icons/Question.png") !important;
+        list-style-image: url("chrome://namoroka/content/firefox-3/aero/icons/Question.png") !important;
     }
 }

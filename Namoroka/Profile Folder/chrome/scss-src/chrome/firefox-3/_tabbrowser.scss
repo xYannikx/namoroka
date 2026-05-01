@@ -4,8 +4,8 @@
     --page-invalid-icon: url("chrome://namoroka/content/firefox-3/icons/page-invalid.png") !important;
     
     &[namoroka-appearance-aero] {
-        --page-icon: url("chrome://namoroka/content/firefox-3/vista/icons/page.png") !important;
-        --page-invalid-icon: url("chrome://namoroka/content/firefox-3/vista/icons/page-invalid.png") !important;
+        --page-icon: url("chrome://namoroka/content/firefox-3/aero/icons/page.png") !important;
+        --page-invalid-icon: url("chrome://namoroka/content/firefox-3/aero/icons/page-invalid.png") !important;
 
         @media not (-moz-windows-classic) {
             #TabsToolbar {

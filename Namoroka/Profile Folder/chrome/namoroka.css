@@ -2066,10 +2066,10 @@ findbar[namoroka-initialized=true] .find-status-icon[status=wrapped] {
   --toolbar-spritesheet: url("chrome://namoroka/content/firefox-3/Toolbar-small.png");
 }
 :root[namoroka-style-2][namoroka-appearance-aero] {
-  --toolbar-spritesheet: url("chrome://namoroka/content/firefox-3/vista/Toolbar.png");
+  --toolbar-spritesheet: url("chrome://namoroka/content/firefox-3/aero/Toolbar.png");
 }
 :root[namoroka-style-2][namoroka-appearance-aero][namoroka-appearance-small-icons=true] {
-  --toolbar-spritesheet: url("chrome://namoroka/content/firefox-3/vista/Toolbar-small.png");
+  --toolbar-spritesheet: url("chrome://namoroka/content/firefox-3/aero/Toolbar-small.png");
 }
 :root[namoroka-style-2] .close-icon:not(.findbar-closebutton) {
   width: 14px !important;
@@ -2090,7 +2090,7 @@ findbar[namoroka-initialized=true] .find-status-icon[status=wrapped] {
   background-position-x: -28px !important;
 }
 :root[namoroka-style-2][namoroka-appearance-aero] .close-icon:not(.findbar-closebutton) {
-  background-image: url("chrome://namoroka/content/firefox-3/vista/icons/close.png") !important;
+  background-image: url("chrome://namoroka/content/firefox-3/aero/icons/close.png") !important;
   list-style-image: none !important;
 }
 :root[namoroka-style-2] .toolbarbutton-1#unified-extensions-button .toolbarbutton-icon {
@@ -2219,8 +2219,8 @@ findbar[namoroka-initialized=true] .find-status-icon[status=wrapped] {
   --page-invalid-icon: url("chrome://namoroka/content/firefox-3/icons/page-invalid.png") !important;
 }
 :root[namoroka-style-2][namoroka-appearance-aero] {
-  --page-icon: url("chrome://namoroka/content/firefox-3/vista/icons/page.png") !important;
-  --page-invalid-icon: url("chrome://namoroka/content/firefox-3/vista/icons/page-invalid.png") !important;
+  --page-icon: url("chrome://namoroka/content/firefox-3/aero/icons/page.png") !important;
+  --page-invalid-icon: url("chrome://namoroka/content/firefox-3/aero/icons/page-invalid.png") !important;
 }
 @media not (-moz-windows-classic) {
   :root[namoroka-style-2][namoroka-appearance-aero] #TabsToolbar {
@@ -2352,8 +2352,8 @@ findbar[namoroka-initialized=true] .find-status-icon[status=wrapped] {
   --query: url("chrome://namoroka/content/firefox-3/icons/query.png") !important;
 }
 :root[namoroka-style-2][namoroka-appearance-aero] {
-  --folder-item: url("chrome://namoroka/content/firefox-3/vista/icons/folder-item.png") !important;
-  --query: url("chrome://namoroka/content/firefox-3/vista/icons/query.png") !important;
+  --folder-item: url("chrome://namoroka/content/firefox-3/aero/icons/folder-item.png") !important;
+  --query: url("chrome://namoroka/content/firefox-3/aero/icons/query.png") !important;
 }
 :root[namoroka-style-2] #PersonalToolbar #PlacesToolbarItems {
   margin-inline-start: 0 !important;
@@ -2402,8 +2402,8 @@ findbar[namoroka-initialized=true] .find-status-icon[status=wrapped] {
   opacity: 1 !important;
 }
 :root[namoroka-style-2][namoroka-appearance-aero] {
-  --navbar-textbox-buttons: url("chrome://namoroka/content/firefox-3/vista/urlbar/navbar-textbox-buttons.png") !important;
-  --search-glass: url("chrome://namoroka/content/firefox-3/vista/Search-glass.png") !important;
+  --navbar-textbox-buttons: url("chrome://namoroka/content/firefox-3/aero/urlbar/navbar-textbox-buttons.png") !important;
+  --search-glass: url("chrome://namoroka/content/firefox-3/aero/Search-glass.png") !important;
 }
 @media not (-moz-windows-classic) {
   :root[namoroka-style-2][namoroka-appearance-aero] .searchbar-textbox::placeholder {
@@ -2529,7 +2529,7 @@ findbar[namoroka-initialized=true] .find-status-icon[status=wrapped] {
   width: 24px !important;
   height: 20px !important;
   padding: 2px 4px !important;
-  background: url("chrome://namoroka/content/firefox-3/vista/urlbar/urlbar-favicon-glow.png") center center no-repeat !important;
+  background: url("chrome://namoroka/content/firefox-3/aero/urlbar/urlbar-favicon-glow.png") center center no-repeat !important;
 }
 :root[namoroka-style-2] #urlbar-container #urlbar #identity-box #page-proxy-favicon,
 :root[namoroka-style-2] #urlbar-container #urlbar #identity-box #urlbar-throbber {
@@ -2585,10 +2585,10 @@ findbar[namoroka-initialized=true] .find-status-icon[status=wrapped] {
 }
 :root[namoroka-style-2] #urlbar-container #urlbar #star-button {
   list-style-image: none !important;
-  background-image: url("chrome://namoroka/content/firefox-3/vista/places/bookmark.png") !important;
+  background-image: url("chrome://namoroka/content/firefox-3/aero/places/bookmark.png") !important;
 }
 :root[namoroka-style-2] #urlbar-container #urlbar #star-button[starred=true] {
-  background-image: url("chrome://namoroka/content/firefox-3/vista/places/editBookmark.png") !important;
+  background-image: url("chrome://namoroka/content/firefox-3/aero/places/editBookmark.png") !important;
 }
 :root[namoroka-style-2] #urlbar-container #urlbar #star-button:hover {
   background-position-x: -16px !important;
@@ -2602,7 +2602,7 @@ findbar[namoroka-initialized=true] .find-status-icon[status=wrapped] {
   border-radius: 0 !important;
   background-color: transparent !important;
   visibility: visible !important;
-  background-image: url("chrome://namoroka/content/firefox-3/vista/Go-arrow.png") !important;
+  background-image: url("chrome://namoroka/content/firefox-3/aero/Go-arrow.png") !important;
   margin: 2px !important;
   list-style-image: none !important;
 }
@@ -2700,7 +2700,7 @@ findbar[namoroka-initialized=true] .find-status-icon[status=wrapped] {
   list-style-image: var(--page-icon) !important;
 }
 :root[namoroka-style-2] #PopupAutoCompleteRichResult .ac-result-type-bookmark {
-  background-image: url("chrome://namoroka/content/firefox-3/vista/places/editBookmark.png") !important;
+  background-image: url("chrome://namoroka/content/firefox-3/aero/places/editBookmark.png") !important;
 }
 :root[namoroka-style-2] #PopupAutoCompleteRichResult span.ac-emphasize-text {
   font-weight: bold !important;
@@ -2740,17 +2740,17 @@ findbar[namoroka-initialized=true] .find-status-icon[status=wrapped] {
   list-style-image: url("chrome://namoroka/content/firefox-3/icons/Question.png") !important;
 }
 :root[namoroka-style-2][namoroka-appearance-aero=true] .message-icon {
-  list-style-image: url("chrome://namoroka/content/firefox-3/vista/icons/information-32.png") !important;
+  list-style-image: url("chrome://namoroka/content/firefox-3/aero/icons/information-32.png") !important;
 }
 :root[namoroka-style-2][namoroka-appearance-aero=true] .alert-dialog #infoIcon,
 :root[namoroka-style-2][namoroka-appearance-aero=true] .alert-icon {
-  list-style-image: url("chrome://namoroka/content/firefox-3/vista/icons/Warning.png") !important;
+  list-style-image: url("chrome://namoroka/content/firefox-3/aero/icons/Warning.png") !important;
 }
 :root[namoroka-style-2][namoroka-appearance-aero=true] .error-icon {
-  list-style-image: url("chrome://namoroka/content/firefox-3/vista/icons/Error.png") !important;
+  list-style-image: url("chrome://namoroka/content/firefox-3/aero/icons/Error.png") !important;
 }
 :root[namoroka-style-2][namoroka-appearance-aero=true] .question-icon {
-  list-style-image: url("chrome://namoroka/content/firefox-3/vista/icons/Question.png") !important;
+  list-style-image: url("chrome://namoroka/content/firefox-3/aero/icons/Question.png") !important;
 }
 :root[namoroka-style-2] findbar[namoroka-initialized=true] .findbar-closebutton > .toolbarbutton-icon {
   width: 14px !important;
@@ -2775,18 +2775,18 @@ findbar[namoroka-initialized=true] .find-status-icon[status=wrapped] {
   list-style-image: url("chrome://namoroka/content/firefox-3/findbar/wrap.png") !important;
 }
 :root[namoroka-style-2][namoroka-appearance-aero] findbar[namoroka-initialized=true] .findbar-closebutton > .toolbarbutton-icon {
-  background-image: url("chrome://namoroka/content/firefox-3/vista/icons/closeSidebar.png") !important;
+  background-image: url("chrome://namoroka/content/firefox-3/aero/icons/closeSidebar.png") !important;
 }
 :root[namoroka-style-2][namoroka-appearance-aero] findbar[namoroka-initialized=true] .findbar-find-previous .toolbarbutton-icon,
 :root[namoroka-style-2][namoroka-appearance-aero] findbar[namoroka-initialized=true] .findbar-find-next .toolbarbutton-icon,
 :root[namoroka-style-2][namoroka-appearance-aero] findbar[namoroka-initialized=true] .findbar-highlight .toolbarbutton-icon {
-  background-image: url("chrome://namoroka/content/firefox-3/vista/findbar/find.png") !important;
+  background-image: url("chrome://namoroka/content/firefox-3/aero/findbar/find.png") !important;
 }
 :root[namoroka-style-2][namoroka-appearance-aero] findbar[namoroka-initialized=true] .find-status-icon[status=notfound] {
-  list-style-image: url("chrome://namoroka/content/firefox-3/vista/findbar/notfound.png") !important;
+  list-style-image: url("chrome://namoroka/content/firefox-3/aero/findbar/notfound.png") !important;
 }
 :root[namoroka-style-2][namoroka-appearance-aero] findbar[namoroka-initialized=true] .find-status-icon[status=wrapped] {
-  list-style-image: url("chrome://namoroka/content/firefox-3/vista/findbar/wrap.png") !important;
+  list-style-image: url("chrome://namoroka/content/firefox-3/aero/findbar/wrap.png") !important;
 }
 :root[namoroka-style-2] .toolbarbutton-1 {
   padding: 5px !important;

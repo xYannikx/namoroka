@@ -266,7 +266,7 @@ toolbarbutton menupopup[placespopup] menuseparator::before {
   background-position-x: -56px !important;
 }
 :root[namoroka-style-2] .autoscroller[namoroka-appearance-aero] {
-  background: url("chrome://namoroka/content/firefox-3/vista/autoscroll.png") !important;
+  background: url("chrome://namoroka/content/firefox-3/aero/autoscroll.png") !important;
 }
 :root[namoroka-style-2] .autoscroller[scrolldir=NS] {
   background-position-y: -28px !important;
