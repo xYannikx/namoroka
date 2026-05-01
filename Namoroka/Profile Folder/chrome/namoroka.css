@@ -1000,6 +1000,9 @@ statusbarpanel#statusbar-display {
   appearance: auto !important;
   cursor: se-resize !important;
 }
+:root[sizemode=maximized] .statusbar-resizer {
+  display: none !important;
+}
 
 #security-button {
   min-width: 20px !important;
@@ -1015,8 +1018,7 @@ statusbarpanel#statusbar-display {
   height: 16px !important;
   background-image: var(--secure-icon) !important;
 }
-#security-button > label:not([value]),
-#security-button :root:not([namoroka-style-1]) {
+#security-button > label:not([value]), :root:not([namoroka-style-1]) #security-button {
   display: none !important;
 }
 

@@ -136,6 +136,10 @@
 		},
 
         init() {
+            this.fragment.querySelector("#security-button").addEventListener("dblclick", (e) => {
+                BrowserCommands.pageInfo(null, "securityTab");
+            })
+
             document.body.appendChild(this.fragment);
 
 			this.initStatusPanelVisibility();

@@ -53,6 +53,10 @@ statusbarpanel {
     -moz-default-appearance: resizer !important;
     appearance: auto !important;
     cursor: se-resize !important;
+
+    :root[sizemode="maximized"] & {
+        display: none !important;
+    }
 }
 
 #security-button {
@@ -72,7 +76,7 @@ statusbarpanel {
     }
 
     > label:not([value]),
-    :root:not([namoroka-style-1]) {
+    :root:not([namoroka-style-1]) & {
         display: none !important;
     }
 }
