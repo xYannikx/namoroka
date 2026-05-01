@@ -130,6 +130,7 @@ toolbarbutton menupopup[placespopup] menuseparator::before {
   :root:not([namoroka-style-1]) toolbarbutton menupopup[placespopup] menuitem[disabled=true],
   :root:not([namoroka-style-1]) toolbarbutton menupopup[placespopup] menuitem[_moz-menuactive=true][disabled=true] {
     color: GrayText !important;
+    text-shadow: none !important;
   }
   :root:not([namoroka-style-1]) menupopup:not(#ContentSelectDropdownPopup) .menu-text,
   :root:not([namoroka-style-1]) menupopup:not(#ContentSelectDropdownPopup) .menu-iconic-left,
