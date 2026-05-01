@@ -317,6 +317,7 @@ toolbarbutton menupopup[placespopup] menuseparator::before {
 }
 
 #main-window #main-menubar {
+  border: 0 !important;
   background-color: transparent !important;
   border-radius: 0 !important;
   text-shadow: none !important;

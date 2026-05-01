@@ -8,7 +8,11 @@ skin	userstyles	                                                classic/1.0	../C
 content userchrome                                                  ../ contentaccessible=yes
 content namoroka                                                    ../assets/images/ contentaccessible=yes
 
+override chrome://global/skin/tree.css                              ../assets/override/global/skin/tree.css
 override chrome://global/skin/button.css                            ../assets/override/global/skin/button.css
+override chrome://global/skin/toolbar.css                           ../assets/override/global/skin/toolbar.css
+
+override chrome://browser/skin/places/organizer.css                 ../assets/override/browser/skin/places/organizer.css
 
 override chrome://global/content/commonDialog.xhtml                 ../windows/commonDialog/commonDialog.xhtml
 

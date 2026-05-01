@@ -13,35 +13,10 @@
     let menusBundle = "chrome://namoroka/locale/properties/menus.properties";
     let statusPanelBundle = "chrome://namoroka/locale/properties/status.properties";
 
-    gIdentityHandler.getEffectiveHost = function _getEffectiveHost() {
-        if (!this._eTLDService) {
-            this._eTLDService = Cc["@mozilla.org/network/effective-tld-service;1"].getService(
-                Ci.nsIEffectiveTLDService
-            );
-        }
-
-        if (!this._IDNService) {
-            this._IDNService = Cc["@mozilla.org/network/idn-service;1"].getService(
-                Ci.nsIIDNService
-            );
-        }
-
-        try {
-            let baseDomain =
-                this._eTLDService.getBaseDomainFromHost(this._uri.host);
-            return this._IDNService.convertToDisplayIDN(baseDomain, {});
-        } catch (e) {
-            // If something goes wrong (e.g. host is an IP address) just fail back
-            // to the full domain.
-            return this._uri.host || "";
-        }
-    }
-
 	gIdentityHandler.refreshIdentityBlock = function refreshIdentityBlock() {
 		if (!this._identityBox) {
 			return;
 		}
-
 		
 		this._refreshIdentityIcons();
 
@@ -60,8 +35,8 @@
 			document.querySelector("#status-bar #security-button").removeAttribute("level");
 		}
 
-        if (this._isSecureContext && !this._isSecureInternalUI && this.getEffectiveHost()) {
-            document.querySelector("#status-bar #security-button .statusbarpanel-text").setAttribute("value", this.getEffectiveHost());
+        if (this._isSecureContext && !this._isSecureInternalUI && this.getHostForDisplay()) {
+            document.querySelector("#status-bar #security-button .statusbarpanel-text").setAttribute("value", this.getHostForDisplay());
 		}
 		else {
             document.querySelector("#status-bar #security-button .statusbarpanel-text").removeAttribute("value");
