@@ -8,8 +8,6 @@
     }
 }
 
-@media not (-moz-windows-classic) {
-&[namoroka-appearance-aero] {
 menubar {
     > menu {
         appearance: menuitem !important;
@@ -21,6 +19,9 @@ menubar {
 
         &[_moz-menuactive="true"] {
             padding: 0 !important;
+        }
+
+        &[_moz-menuactive="true"][open="true"] {
             border-width: 3px 1px 1px 3px !important;
         }
 
@@ -35,6 +36,4 @@ menubar {
             color: inherit !important;
         }
     }
-}
-}
 }
