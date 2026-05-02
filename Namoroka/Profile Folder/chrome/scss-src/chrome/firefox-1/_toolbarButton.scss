@@ -90,3 +90,11 @@ toolbarbutton.bookmark-item:not(.subviewbutton) {
         display: none !important;
     }
 }
+
+.unified-extensions-item-action-button {
+    list-style-image: var(--webextension-menupanel-image) !important;
+
+    :root[namoroka-appearance-small-icons="true"] & {
+        list-style-image: var(--webextension-toolbar-image) !important;
+    }
+}

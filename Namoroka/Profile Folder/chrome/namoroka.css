@@ -598,6 +598,13 @@ toolbarbutton.bookmark-item:not(.subviewbutton) .toolbarbutton-animatable-box {
   display: none !important;
 }
 
+.unified-extensions-item-action-button {
+  list-style-image: var(--webextension-menupanel-image) !important;
+}
+:root[namoroka-appearance-small-icons=true] .unified-extensions-item-action-button {
+  list-style-image: var(--webextension-toolbar-image) !important;
+}
+
 #nav-bar .toolbarbutton-menu-dropmarker {
   pointer-events: all !important;
 }
