@@ -188,20 +188,48 @@ treechildren::-moz-tree-twisty {
     padding-top: 1px;
     width: 9px; /* The image's width is 9 pixels */
     list-style-image: url("chrome://userchrome/content/assets/override/global/skin/tree/twisty-clsd.png");
+
+    :root[namoroka-style-2="true"][namoroka-appearance-aero] & {
+        padding-right: 1px;
+        width: 9px;
+        list-style-image: url("chrome://userchrome/content/assets/override/global/skin/tree/twisty-clsd-aero.png");
+    }
 }
 
 treechildren:-moz-locale-dir(rtl)::-moz-tree-twisty(closed) {
     width: 9px; /* The image's width is 9 pixels */
     list-style-image: url("chrome://userchrome/content/assets/override/global/skin/tree/twisty-clsd.png");
+
+    :root[namoroka-style-2="true"][namoroka-appearance-aero] & {
+        list-style-image: url("chrome://userchrome/content/assets/override/global/skin/tree/twisty-clsd-aero.png");
+    }
 }
 
 treechildren::-moz-tree-twisty(open) {
     width: 9px; /* The image's width is 9 pixels */
     list-style-image: url("chrome://userchrome/content/assets/override/global/skin/tree/twisty-open.png");
+
+    :root[namoroka-style-2="true"][namoroka-appearance-aero] & {
+        list-style-image: url("chrome://userchrome/content/assets/override/global/skin/tree/twisty-open-aero.png");
+    }
+}
+
+:root[namoroka-style-2="true"][namoroka-appearance-aero] {
+    treechildren::-moz-tree-twisty(hover) {
+        list-style-image: url("chrome://userchrome/content/assets/override/global/skin/tree/twisty-clsd-hover-aero.png");
+    }
+
+    treechildren::-moz-tree-twisty(hover, open) {
+        list-style-image: url("chrome://userchrome/content/assets/override/global/skin/tree/twisty-open-hover-aero.png");
+    }
 }
 
 treechildren::-moz-tree-indentation {
     width: 18px;
+
+    :root[namoroka-style-2="true"][namoroka-appearance-aero] & {
+        width: 12px;
+    }
 }
 
 /* ::::: editable tree ::::: */

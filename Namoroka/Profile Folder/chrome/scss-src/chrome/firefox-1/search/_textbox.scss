@@ -1,0 +1,37 @@
+:host([namoroka-style-2]) {
+    --search-glass: url("chrome://namoroka/content/firefox-3/Search-glass.png") !important;
+    --search-close: url("chrome://namoroka/content/firefox-3/Search-close.png") !important;
+
+    .textbox-search-icons {
+        display: grid !important;
+
+        .textbox-search-icon {
+            width: 16px !important;
+            height: 16px !important;
+            list-style-image: var(--search-glass) !important;
+            -moz-image-region: rect(0, 16px, 16px, 0) !important;
+        }
+
+        .textbox-search-clear {
+            width: 16px !important;
+            height: 16px !important;
+            list-style-image: var(--search-close) !important;
+            -moz-image-region: rect(0, 16px, 16px, 0) !important;
+        }
+    }
+}
+
+:host([namoroka-style-2][searchbutton]) .textbox-search-icons .textbox-search-icon:not([disabled]):hover,
+:host([namoroka-style-2]) .textbox-search-icons .textbox-search-clear:not([disabled]):hover {
+    -moz-image-region: rect(0, 32px, 16px, 16px) !important;
+}
+
+:host([namoroka-style-2][searchbutton]) .textbox-search-icons .textbox-search-icon:not([disabled]):hover:active,
+:host([namoroka-style-2]) .textbox-search-icons .textbox-search-clear:not([disabled]):hover:active {
+    -moz-image-region: rect(0, 48px, 16px, 32px) !important;
+}
+
+:host([namoroka-style-2][namoroka-appearance-aero="true"]) {
+    --search-glass: url("chrome://namoroka/content/firefox-3/aero/Search-glass.png") !important;
+    --search-close: url("chrome://namoroka/content/firefox-3/aero/Search-close.png") !important;
+}

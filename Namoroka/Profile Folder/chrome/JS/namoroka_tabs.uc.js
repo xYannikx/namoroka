@@ -41,32 +41,9 @@
             hideTabs();
         }
 
-        function refreshTheme() {
-            let style = PrefCalls.getPref("Namoroka.Appearance.Style");
-
-            for (let attr of e.getAttributeNames())
-            {
-                if (attr.indexOf("namoroka-style-") > -1)
-                {
-                    e.removeAttribute(attr);
-                }
-            }
-            
-            for (let i = 1; i <= style; i++)
-            {
-                e.setAttribute(`namoroka-style-${i}`, "true");
-            }
-
-            hideTabs();
-        }
-
         let observer = new MutationObserver(updateTabs);
         observer.observe(e, { childList: true });
 
-        let documentElementObserver = new MutationObserver(refreshTheme);
-        documentElementObserver.observe(document.documentElement, { attributes: true });
-
-        refreshTheme();
         updateTabs();
     });
 }

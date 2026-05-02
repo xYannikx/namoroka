@@ -19,6 +19,22 @@ let NAMOROKA_BOOT_CONFIG = {
 		wizard: true,
 		nativeControls: true,
 	},
+	"chrome://browser/content/places/bookmarksSidebar.xhtml": {
+		themes: {
+			style: true,
+			prefs: [
+				"Namoroka.Appearance.Aero"
+			],
+		},
+	},
+	"chrome://browser/content/places/historySidebar.xhtml": {
+		themes: {
+			style: true,
+			prefs: [
+				"Namoroka.Appearance.Aero"
+			],
+		},
+	},
 };
 
 {

@@ -1,0 +1,42 @@
+#sidebar-box {
+    #sidebar-header {
+        #sidebar-title {
+            padding: 0 !important;
+        }
+
+        #sidebar-close {
+            background-image: url("chrome://namoroka/content/firefox-3/icons/closeSidebar.png") !important;
+        }
+    }
+}
+
+&[namoroka-appearance-aero] {
+    #sidebar-box {
+        #sidebar-header {
+            #sidebar-close {
+                background-image: url("chrome://namoroka/content/firefox-3/aero/icons/closeSidebar.png") !important;
+            }
+        }
+    }
+}
+
+@-moz-document url("chrome://browser/content/places/bookmarksSidebar.xhtml"), url("chrome://browser/content/places/historySidebar.xhtml") {
+    #sidebar-search-container {
+        padding: 0 !important;
+        align-items: center !important;
+    }
+
+    #viewButton {
+        .button-menu-dropmarker {
+            width: 5px !important;
+            height: 5px !important;
+            margin: 1px !important;
+            content: none !important;
+            background-image: url("chrome://namoroka/content/firefox-3/arrow/arrow-dn.gif") !important;
+            
+            &[disabled="true"] {
+                background-image: url("chrome://namoroka/content/firefox-3/arrow/arrow-dn-dis.gif") !important;
+            }
+        }
+    }
+}
