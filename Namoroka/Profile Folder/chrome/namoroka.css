@@ -2088,7 +2088,7 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
 :root[namoroka-style-1] toolbox {
   border-block-start: 1px solid ThreeDShadow !important;
 }
-@media not (-moz-windows-classic) {
+@media (-moz-windows-classic) {
   :root[namoroka-style-1] toolbox {
     box-shadow: inset 0 1px 0 ThreeDHighlight !important;
     padding-block-start: 1px !important;
