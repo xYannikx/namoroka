@@ -82,15 +82,30 @@ var g_NamorokaToolbox;
 
 				// Check if URLBar isn't a XUL element
 				if (urlbar.nodeName != "hbox") {
-					let _resizeObserver = new ResizeObserver(([entry]) => {
-						gURLBar.textbox.style.setProperty(
-							"--urlbar-width",
-							(entry.borderBoxSize[0].inlineSize) + "px"
-						);
-					});
+                    const updateWidth = (el) => {
+                        const rect = el.getBoundingClientRect();
+                        const width = rect?.width;
 
+                        if (!width || width <= 0) return;
+
+                        textbox.style.setProperty(
+                            "--urlbar-width",
+                            `${width}px`
+                        );
+                    };
+
+                    let _resizeObserver = new ResizeObserver(([entry]) => {
+                        updateWidth(entry);
+                    });
+
+                    document.addEventListener("namoroka-appearance-change", () => {
+                        updateWidth(textbox);
+                    });
+                    
 					// Observer the sizing of the custom element.
-					_resizeObserver.observe(urlbar);
+                    requestAnimationFrame(() => {
+                        _resizeObserver.observe(urlbar);
+                    });
 				}
 			}
 		}
