@@ -20,39 +20,36 @@
     {
         for (const control of document.querySelectorAll(`:is(${controls.join(", ")})`))
         {
-            let textbox = control;
+            let element = control;
 
             let style = PrefCalls.getPref("Namoroka.Appearance.Style");
             let aero = PrefCalls.getPref("Namoroka.Appearance.Aero");
 
-            for (let attr of textbox.getAttributeNames())
+            for (let attr of element.getAttributeNames())
             {
                 if (attr.indexOf("namoroka-style-") > -1 || attr.includes("namoroka-appearance-aero"))
                 {
-                    textbox.removeAttribute(attr);
+                    element.removeAttribute(attr);
                 }
             }
 
             for (let i = 1; i <= style; i++)
             {
-                textbox.setAttribute(`namoroka-style-${i}`, "true");
+                element.setAttribute(`namoroka-style-${i}`, "true");
             }
 
             if (aero) {
-                textbox.setAttribute("namoroka-appearance-aero", "true");
+                element.setAttribute("namoroka-appearance-aero", "true");
             }
-        }
 
-        for (const control of document.querySelectorAll("search-textbox"))
-        {
-            if (control.shadowRoot.querySelector("link[href='chrome://userchrome/content/namoroka.uc.css']"))
+            if (element.shadowRoot.querySelector("link[href='chrome://userchrome/content/namoroka.uc.css']"))
                 continue;
 
             let link  = document.createElement("link");
             link.rel  = "stylesheet";
             link.href = "chrome://userchrome/content/namoroka.uc.css";
 
-            control.shadowRoot.append(link);
+            element.shadowRoot.append(link);
         }
     }
 
