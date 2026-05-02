@@ -44,3 +44,5 @@ defaultPref("general.smoothScroll.stopDecelerationWeighting", ".4");
 
 // Enable CSS
 defaultPref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+
+defaultPref("userChromeJS.persistent_domcontent_callback", true);

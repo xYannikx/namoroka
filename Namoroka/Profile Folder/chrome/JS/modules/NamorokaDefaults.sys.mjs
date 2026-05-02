@@ -24,6 +24,7 @@ const COMMON_DEFAULTS = {
     "widget.non-native-theme.enabled": false,
 
     "userChromeJS.firstRunShown": true, // DIE DIE DIE DIE
+    "userChromeJS.persistent_domcontent_callback": true, // DIE DIE DIE DIE
 };
 
 // Fork-specific overrides — keys match Services.appinfo.name
@@ -61,6 +62,4 @@ export function applyDefaults() {
             PrefCalls.defaultPref(pref, value);
         }
     }
-
-    PrefCalls.setPref("userChromeJS.persistent_domcontent_callback", true);
 }
