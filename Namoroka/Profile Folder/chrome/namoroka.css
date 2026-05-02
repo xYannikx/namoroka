@@ -1224,121 +1224,205 @@ findbar[namoroka-initialized=true] .find-status-icon[status=wrapped] {
   list-style-image: url("chrome://namoroka/content/firefox-1/findbar/wrap.png") !important;
 }
 
-#places toolbarbutton {
-  -moz-default-appearance: toolbarbutton !important;
-  appearance: auto !important;
-  justify-content: center !important;
-  align-items: center !important;
+.sidebar-splitter {
+  min-width: 6px !important;
+  width: unset !important;
   margin: 0 !important;
-  border: 1px solid transparent !important;
-  padding: 5px !important;
-  background-color: transparent !important;
-  min-width: 57px !important;
-  color: -moz-DialogText !important;
-  flex-direction: column !important;
-}
-#places toolbarbutton .toolbarbutton-icon {
-  width: 24px !important;
-  height: 24px !important;
-  background-image: url("chrome://namoroka/content/firefox-1/bookmarks/Bookmarks-toolbar.png") !important;
-  background-position-x: calc(-24px * var(--offset));
-  margin-inline-end: 0 !important;
-}
-#places toolbarbutton .toolbarbutton-text {
-  margin: 0 !important;
-  text-align: center !important;
-}
-#places toolbarbutton:not([disabled=true]):hover {
-  border-color: ThreeDHighlight ThreeDShadow ThreeDShadow ThreeDHighlight !important;
-}
-#places toolbarbutton:not([disabled=true]):hover .toolbarbutton-icon {
-  background-position-y: -24px !important;
-}
-#places toolbarbutton:not([disabled=true]):hover:active {
-  border-color: ThreeDShadow ThreeDHighlight ThreeDHighlight ThreeDShadow !important;
-}
-#places toolbarbutton:not([disabled=true]):hover:active .toolbarbutton-icon {
-  background-position-y: -24px !important;
-}
-#places toolbarbutton[disabled=true] {
-  border-color: transparent !important;
-  padding: 5px !important;
-  color: GrayText !important;
-}
-#places toolbarbutton[disabled=true] .toolbarbutton-icon {
-  background-position-y: -48px !important;
-}
-#places[namoroka-style-1=true] toolbarbutton .toolbarbutton-icon {
-  background-image: url("chrome://namoroka/content/firefox-2/bookmarks/Bookmarks-toolbar.png") !important;
-}
-#places[namoroka-style-1=true] toolbarbutton:not([disabled=true]):hover .toolbarbutton-icon {
-  background-position-y: -24px !important;
-}
-#places[namoroka-style-1=true] toolbarbutton:not([disabled=true]):hover:active .toolbarbutton-icon {
-  background-position-y: -48px !important;
-}
-#places[namoroka-style-1=true] toolbarbutton[disabled=true] .toolbarbutton-icon {
-  background-position-y: -72px !important;
-}
-#places #newfolder {
-  --offset: 1 !important;
-}
-#places #newseparator {
-  --offset: 2 !important;
-}
-#places #moveBookmark {
-  --offset: 3 !important;
-}
-#places #properties {
-  --offset: 4 !important;
-}
-#places #rename {
-  --offset: 5 !important;
-}
-#places #delete {
-  --offset: 6 !important;
-}
-#places #placesMenu {
-  margin: 0 !important;
-}
-#places #placesMenu > menu::after {
-  display: none !important;
-}
-#places toolbarseparator {
-  appearance: none !important;
-}
-#places #searchFilter {
-  -moz-default-appearance: textfield !important;
-  appearance: auto !important;
-  cursor: text !important;
-  margin: 2px 4px !important;
-  padding: 2px 2px 3px 4px !important;
-  background-color: -moz-Field !important;
-  color: -moz-FieldText !important;
-  min-height: unset !important;
-  max-width: unset !important;
-  border-radius: 0 !important;
-  outline: 0 !important;
-  box-shadow: none !important;
-}
-#places .textbox-search-sign,
-#places .textbox-search-icons {
-  display: none !important;
-}
-#places splitter:not(.tree-splitter) {
-  margin: 0 !important;
-  width: 6px !important;
-  border-inline-end: 0 !important;
-}
-#places tree {
-  background-color: -moz-Field !important;
-  color: -moz-FieldText !important;
-  -moz-default-appearance: listbox !important;
-  appearance: auto !important;
+  background-color: ThreeDFace !important;
+  padding-inline: 1px !important;
+  border-inline-start: 1px solid ThreeDShadow !important;
+  border-inline-end: 1px solid ThreeDDarkShadow !important;
+  box-shadow: inset 1px 0 0 ThreeDHighlight, inset -1px 0 0 ThreeDFace !important;
 }
 
-#searchFilter::part(search-sign) {
+#sidebar-box {
+  background-color: -moz-Dialog !important;
+  color: -moz-DialogText !important;
+}
+#sidebar-box #sidebar-header {
+  padding: 0 !important;
+  font-size: 1em !important;
+  height: 25px !important;
+  background-color: -moz-Dialog !important;
+  appearance: toolbox !important;
+  border-bottom: 1px solid ThreeDShadow !important;
+  border-top: 1px solid ThreeDHighlight;
+}
+#sidebar-box #sidebar-header #sidebar-title {
+  margin-block: 1px 2px !important;
+  margin-inline: 6px 5px !important;
+  padding: 0 !important;
+  padding-inline-start: 4px !important;
+  flex: unset !important;
+}
+#sidebar-box #sidebar-header #sidebar-close {
+  margin-inline: 4px !important;
+}
+
+@-moz-document url("chrome://browser/content/places/bookmarksSidebar.xhtml"), url("chrome://browser/content/places/historySidebar.xhtml") {
+  #sidebar-search-container {
+    padding: 0 !important;
+    align-items: center !important;
+  }
+  #search-box {
+    -moz-default-appearance: textfield !important;
+    appearance: auto !important;
+    padding: 2px 2px 3px 4px !important;
+    margin: 2px 4px !important;
+    background-color: -moz-Field !important;
+    color: -moz-FieldText !important;
+  }
+  #viewButton {
+    appearance: auto !important;
+    -moz-default-appearance: button !important;
+    margin: 1px 5px 2px 5px !important;
+    color: ButtonText !important;
+    background-color: ButtonFace !important;
+    text-shadow: none !important;
+    padding: 0 !important;
+  }
+  #viewButton .button-menu-dropmarker {
+    width: 11px !important;
+    height: 11px !important;
+    margin: 1px !important;
+    content: none !important;
+    background-image: url("chrome://namoroka/content/firefox-1/arrow/arrow-dn.gif") !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+  }
+  #viewButton .button-menu-dropmarker[disabled=true] {
+    background-image: url("chrome://namoroka/content/firefox-1/arrow/arrow-dn-dis.gif") !important;
+  }
+  .sidebar-placesTree {
+    background-color: Field !important;
+    color: FieldText !important;
+    appearance: auto !important;
+    -moz-default-appearance: listbox !important;
+  }
+}
+.textbox-search-sign {
   display: none !important;
+}
+
+@-moz-document url("chrome://browser/content/places/places.xhtml") {
+  toolbarbutton {
+    -moz-default-appearance: toolbarbutton !important;
+    appearance: auto !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 !important;
+    border: 1px solid transparent !important;
+    padding: 5px !important;
+    background-color: transparent !important;
+    min-width: 57px !important;
+    color: -moz-DialogText !important;
+    flex-direction: column !important;
+  }
+  toolbarbutton .toolbarbutton-icon {
+    width: 24px !important;
+    height: 24px !important;
+    background-image: url("chrome://namoroka/content/firefox-1/bookmarks/Bookmarks-toolbar.png") !important;
+    background-position-x: calc(-24px * var(--offset));
+    margin-inline-end: 0 !important;
+  }
+  :root[namoroka-style-1=true] toolbarbutton .toolbarbutton-icon {
+    background-image: url("chrome://namoroka/content/firefox-2/bookmarks/Bookmarks-toolbar.png") !important;
+  }
+  toolbarbutton .toolbarbutton-text {
+    margin: 0 !important;
+    text-align: center !important;
+  }
+  toolbarbutton:not([disabled=true]):hover {
+    border-color: ThreeDHighlight ThreeDShadow ThreeDShadow ThreeDHighlight !important;
+  }
+  toolbarbutton:not([disabled=true]):hover .toolbarbutton-icon {
+    background-position-y: -24px !important;
+  }
+  toolbarbutton:not([disabled=true]):hover:active {
+    border-color: ThreeDShadow ThreeDHighlight ThreeDHighlight ThreeDShadow !important;
+  }
+  toolbarbutton:not([disabled=true]):hover:active .toolbarbutton-icon {
+    background-position-y: -24px !important;
+  }
+  :root[namoroka-style-1=true] toolbarbutton:not([disabled=true]):hover:active .toolbarbutton-icon {
+    background-position-y: -48px !important;
+  }
+  toolbarbutton[disabled=true] {
+    border-color: transparent !important;
+    padding: 5px !important;
+    color: GrayText !important;
+  }
+  toolbarbutton[disabled=true] .toolbarbutton-icon {
+    background-position-y: -48px !important;
+  }
+  :root[namoroka-style-1=true] toolbarbutton[disabled=true] .toolbarbutton-icon {
+    background-position-y: -72px !important;
+  }
+  #newfolder {
+    --offset: 1 !important;
+  }
+  #newseparator {
+    --offset: 2 !important;
+  }
+  #moveBookmark {
+    --offset: 3 !important;
+  }
+  #properties {
+    --offset: 4 !important;
+  }
+  #rename {
+    --offset: 5 !important;
+  }
+  #delete {
+    --offset: 6 !important;
+  }
+  #placesMenu {
+    margin: 0 !important;
+  }
+  #placesMenu > menu::after {
+    display: none !important;
+  }
+  toolbarseparator {
+    appearance: none !important;
+  }
+  #searchFilter {
+    -moz-default-appearance: textfield !important;
+    appearance: auto !important;
+    cursor: text !important;
+    margin: 2px 4px !important;
+    padding: 2px 2px 3px 4px !important;
+    background-color: -moz-Field !important;
+    color: -moz-FieldText !important;
+    min-height: unset !important;
+    max-width: unset !important;
+    border-radius: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+  }
+  splitter:not(.tree-splitter) {
+    margin: 0 !important;
+    width: 6px !important;
+    border-inline-end: 0 !important;
+  }
+  tree {
+    background-color: -moz-Field !important;
+    color: -moz-FieldText !important;
+    -moz-default-appearance: listbox !important;
+    appearance: auto !important;
+  }
+  #downloadsListBox {
+    margin: 0 !important;
+  }
+}
+treechildren::-moz-tree-image(title) {
+  list-style-image: var(--folder-item) !important;
+  -moz-image-region: rect(0px, 16px, 16px, 0px) !important;
+}
+treechildren::-moz-tree-image(title, container), treechildren::-moz-tree-image(query, OrganizerQuery_downloads__v), treechildren::-moz-tree-image(title, query, dayContainer), treechildren::-moz-tree-image(title, query, hostContainer), treechildren::-moz-tree-image(query, OrganizerQuery_history____v) {
+  -moz-image-region: rect(0px, 32px, 16px, 16px) !important;
+}
+treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query, OrganizerQuery_downloads__v, open), treechildren::-moz-tree-image(title, query, dayContainer, open), treechildren::-moz-tree-image(title, query, hostContainer, open), treechildren::-moz-tree-image(query, OrganizerQuery_history____v, open) {
+  -moz-image-region: rect(16px, 32px, 32px, 16px) !important;
 }
 
 /* ::::: Firefox 2 ::::: */

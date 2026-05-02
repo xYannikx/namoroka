@@ -1,0 +1,88 @@
+.sidebar-splitter {
+    min-width: 6px !important;
+    width: unset !important;
+    margin: 0 !important;
+    background-color: ThreeDFace !important;    
+    padding-inline: 1px !important;
+    border-inline-start: 1px solid ThreeDShadow !important;
+    border-inline-end: 1px solid ThreeDDarkShadow !important;
+    box-shadow: inset 1px 0 0 ThreeDHighlight, inset -1px 0 0 ThreeDFace !important;
+}
+
+#sidebar-box {
+    background-color: -moz-Dialog !important;
+    color: -moz-DialogText !important;
+
+    #sidebar-header {
+        padding: 0 !important;
+        font-size: 1em !important;
+        height: 25px !important;
+        background-color: -moz-Dialog !important;
+        appearance: toolbox !important;
+        border-bottom: 1px solid ThreeDShadow !important;
+        border-top: 1px solid ThreeDHighlight;
+
+        #sidebar-title {
+            margin-block: 1px 2px !important;
+            margin-inline: 6px 5px !important;
+            padding: 0 !important;
+            padding-inline-start: 4px !important;
+            flex: unset !important;
+        }
+
+        #sidebar-close {
+            margin-inline: 4px !important;
+        }
+    }
+}
+
+@-moz-document url("chrome://browser/content/places/bookmarksSidebar.xhtml"), url("chrome://browser/content/places/historySidebar.xhtml") {
+    #sidebar-search-container {
+        padding: 0 !important;
+        align-items: center !important;
+    }
+
+    #search-box {
+        -moz-default-appearance: textfield !important;
+        appearance: auto !important;
+        padding: 2px 2px 3px 4px !important;
+        margin: 2px 4px !important;
+        background-color: -moz-Field !important;
+        color: -moz-FieldText !important;
+    }
+
+    #viewButton {
+        appearance: auto !important;
+        -moz-default-appearance: button !important;
+        margin: 1px 5px 2px 5px !important;
+        color: ButtonText !important;
+        background-color: ButtonFace !important;
+        text-shadow: none !important;
+        padding: 0 !important;
+
+        .button-menu-dropmarker {
+            width: 11px !important;
+            height: 11px !important;
+            margin: 1px !important;
+            content: none !important;
+            background-image: url("chrome://namoroka/content/firefox-1/arrow/arrow-dn.gif") !important;
+            background-repeat: no-repeat !important;
+            background-position: center center !important;
+
+            &[disabled="true"] {
+                background-image: url("chrome://namoroka/content/firefox-1/arrow/arrow-dn-dis.gif") !important;
+            }
+        }
+    }
+
+    .sidebar-placesTree {
+        background-color: Field !important;
+        color: FieldText !important;
+        appearance: auto !important;
+        -moz-default-appearance: listbox !important;
+    }
+}
+
+.textbox-search-sign {
+	display: none !important;
+}

@@ -61,4 +61,6 @@ export function applyDefaults() {
             PrefCalls.defaultPref(pref, value);
         }
     }
+
+    PrefCalls.setPref("userChromeJS.persistent_domcontent_callback", true);
 }

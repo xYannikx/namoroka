@@ -1,4 +1,4 @@
-#places {
+@-moz-document url("chrome://browser/content/places/places.xhtml") {
     toolbarbutton {
         -moz-default-appearance: toolbarbutton !important;
         appearance: auto !important;
@@ -16,6 +16,9 @@
             width: 24px !important;
             height: 24px !important;
             background-image: url("chrome://namoroka/content/firefox-1/bookmarks/Bookmarks-toolbar.png") !important;
+            :root[namoroka-style-1="true"] & {
+                background-image: url("chrome://namoroka/content/firefox-2/bookmarks/Bookmarks-toolbar.png") !important;
+            }
             background-position-x: calc(-24px * var(--offset));
             margin-inline-end: 0 !important;
         }
@@ -37,6 +40,10 @@
 
                 .toolbarbutton-icon {
                     background-position-y: -24px !important;
+
+                    :root[namoroka-style-1="true"] & {
+                        background-position-y: -48px !important;
+                    }
                 }
             }
         }
@@ -48,30 +55,8 @@
 
             .toolbarbutton-icon {
                 background-position-y: -48px !important;
-            }
-        }
-    }
 
-    &[namoroka-style-1="true"] {
-        toolbarbutton {
-            .toolbarbutton-icon {
-                background-image: url("chrome://namoroka/content/firefox-2/bookmarks/Bookmarks-toolbar.png") !important;
-            }
-
-            &:not([disabled="true"]):hover {
-                .toolbarbutton-icon {
-                    background-position-y: -24px !important;
-                }
-
-                &:active {
-                    .toolbarbutton-icon {
-                        background-position-y: -48px !important;
-                    }
-                }
-            }
-
-            &[disabled="true"] {
-                .toolbarbutton-icon {
+                :root[namoroka-style-1="true"] & {
                     background-position-y: -72px !important;
                 }
             }
@@ -131,13 +116,6 @@
         box-shadow: none !important;
     }
 
-
-
-    .textbox-search-sign,
-    .textbox-search-icons {
-        display: none !important;
-    }
-
     splitter:not(.tree-splitter) {
         margin: 0 !important;
         width: 6px !important;
@@ -150,8 +128,31 @@
         -moz-default-appearance: listbox !important;
         appearance: auto !important;
     }
+
+    #downloadsListBox {
+        margin: 0 !important;
+    }
 }
 
-#searchFilter::part(search-sign) {
-    display: none !important;
+treechildren {
+    &::-moz-tree-image(title) {
+       list-style-image: var(--folder-item) !important;
+       -moz-image-region: rect(0px, 16px, 16px, 0px) !important;
+    }
+
+    &::-moz-tree-image(title, container),
+    &::-moz-tree-image(query, OrganizerQuery_downloads__v),
+    &::-moz-tree-image(title, query, dayContainer),
+    &::-moz-tree-image(title, query, hostContainer),
+    &::-moz-tree-image(query, OrganizerQuery_history____v) {
+        -moz-image-region: rect(0px, 32px, 16px, 16px) !important;
+    }
+
+    &::-moz-tree-image(title, open),
+    &::-moz-tree-image(query, OrganizerQuery_downloads__v, open),
+    &::-moz-tree-image(title, query, dayContainer, open),
+    &::-moz-tree-image(title, query, hostContainer, open),
+    &::-moz-tree-image(query, OrganizerQuery_history____v, open) {
+        -moz-image-region: rect(16px, 32px, 32px, 16px) !important;
+    }
 }
