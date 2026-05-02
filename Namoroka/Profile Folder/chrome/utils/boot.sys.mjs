@@ -384,7 +384,7 @@ class UserChrome_js{
     this.GBROWSERHACK_ENABLED = 
       (Services.prefs.getBoolPref("userChromeJS.gBrowser_hack.required",false) ? 2 : 0)
     + (Services.prefs.getBoolPref("userChromeJS.gBrowser_hack.enabled",false) ? 1 : 0);
-    this.PERSISTENT_DOMCONTENT_CALLBACK = Services.prefs.getBoolPref("userChromeJS.persistent_domcontent_callback",false);
+    this.PERSISTENT_DOMCONTENT_CALLBACK = Services.prefs.getBoolPref("userChromeJS.persistent_domcontent_callback", true);
     const disabledScripts = getDisabledScripts();
     // load script data
     const scriptDir = FileSystem.getScriptDir();
