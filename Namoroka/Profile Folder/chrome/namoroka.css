@@ -836,6 +836,7 @@ image.default-favicon {
   height: 100% !important;
 }
 #urlbar-container #urlbar #urlbar-input {
+  mask-image: none !important;
   margin-inline: 3px !important;
 }
 :root:not([namoroka-style-2]) #urlbar-container #urlbar #identity-box .identity-box-button {
@@ -1152,6 +1153,7 @@ findbar[namoroka-initialized=true] .findbar-highlight {
   background-color: transparent !important;
   color: -moz-DialogText !important;
   list-style-image: none !important;
+  border-radius: 0 !important;
 }
 findbar[namoroka-initialized=true] .findbar-find-previous .toolbarbutton-icon,
 findbar[namoroka-initialized=true] .findbar-find-next .toolbarbutton-icon,

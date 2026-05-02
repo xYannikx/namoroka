@@ -14,6 +14,7 @@
         "nrabout": "chrome://userchrome/content/windows/aboutDialog/aboutDialog.xhtml",
         "nrwizard": "chrome://userchrome/content/windows/wizard/wizard.xhtml",
         "downloads": "chrome://userchrome/content/windows/downloads/downloads.xhtml",
+        "config": "chrome://userchrome/content/pages/config/config.xhtml"
     };
     const { AboutPageManager } = ChromeUtils.importESModule("chrome://modules/content/AboutPageManager.sys.mjs");
 

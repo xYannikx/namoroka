@@ -43,6 +43,10 @@
   -moz-image-region: rect(0, 16px, 16px, 0) !important;
 }
 
+:host .textbox-search-sign {
+  display: none !important;
+}
+
 :host([namoroka-style-2][searchbutton]) .textbox-search-icons .textbox-search-icon:not([disabled]):hover,
 :host([namoroka-style-2]) .textbox-search-icons .textbox-search-clear:not([disabled]):hover {
   -moz-image-region: rect(0, 32px, 16px, 16px) !important;
