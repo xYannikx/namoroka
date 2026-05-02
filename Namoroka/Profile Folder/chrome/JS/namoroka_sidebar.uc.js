@@ -8,8 +8,6 @@
 // @include         chrome://browser/content/places/historySidebar.xhtml
 // ==/UserScript==
 
-console.log("Namoroka :: Sidebar loaded");
-
 {
 	var { PrefCalls, LocaleUtils, waitForElement, renderElement } = ChromeUtils.importESModule("chrome://modules/content/NamorokaUtils.sys.mjs");
     waitForElement = waitForElement.bind(window);
