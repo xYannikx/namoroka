@@ -19,7 +19,11 @@ button {
 
 .button-box {
   border: 1px solid transparent;
-  padding: 1px 4px 2px 3px;
+}
+@media (-moz-windows-classic) {
+  .button-box {
+    padding: 1px 4px 2px 3px;
+  }
 }
 
 button:where(:hover) {
