@@ -64,8 +64,10 @@ button:focus-visible {
   }
 }
 /* :::::::::: active/open/checked state :::::::::: */
-button:where(:hover:active, [open=true], [checked=true]) > .button-box {
-  padding: 2px 3px 1px 4px;
+@media (-moz-windows-classic) {
+  button:where(:hover:active, [open=true], [checked=true]) > .button-box {
+    padding: 2px 3px 1px 4px;
+  }
 }
 
 /* .......... disabled state .......... */

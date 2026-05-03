@@ -60,8 +60,6 @@ var g_NamorokaToolbox;
                 e.remove();
             });
 
-            this.initURLBarWidth();
-
             this.renderMozWinGlassElem();
         }
 
@@ -72,43 +70,6 @@ var g_NamorokaToolbox;
 
             document.documentElement.append(glassElem);
         }
-
-        initURLBarWidth()
-		{
-			let toolbar = gURLBar.textbox.closest("toolbar");
-
-			if (toolbar) {
-				let urlbar = gURLBar.textbox;
-
-				// Check if URLBar isn't a XUL element
-				if (urlbar.nodeName != "hbox") {
-                    const updateWidth = (el) => {
-                        const rect = el.getBoundingClientRect();
-                        const width = rect?.width;
-
-                        if (!width || width <= 0) return;
-
-                        textbox.style.setProperty(
-                            "--urlbar-width",
-                            `${width}px`
-                        );
-                    };
-
-                    let _resizeObserver = new ResizeObserver(([entry]) => {
-                        updateWidth(entry);
-                    });
-
-                    document.addEventListener("namoroka-appearance-change", () => {
-                        updateWidth(textbox);
-                    });
-                    
-					// Observer the sizing of the custom element.
-                    requestAnimationFrame(() => {
-                        _resizeObserver.observe(urlbar);
-                    });
-				}
-			}
-		}
     }
 
     g_NamorokaToolbox = new NamorokaToolboxManager;
