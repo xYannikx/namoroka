@@ -14,15 +14,12 @@ toolbox {
 }
 
 toolbar {
+    appearance: auto;
+    -moz-default-appearance: toolbar;
     min-width: 1px;
     min-height: 20px;
     border-block-start: 1px solid ThreeDHighlight;
     border-block-end: 1px solid ThreeDShadow;
-
-    :root[namoroka-style-2="true"] & {
-        appearance: auto;
-        -moz-default-appearance: toolbar;
-    }
 }
 
 toolbar:first-child,

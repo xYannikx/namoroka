@@ -2452,6 +2452,7 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
 }
 :root[namoroka-style-2] .browser-toolbar {
   appearance: auto !important;
+  -moz-default-appearance: toolbar !important;
 }
 @media not (-moz-windows-classic) {
   :root[namoroka-style-2][namoroka-appearance-aero] .browser-toolbar {
@@ -2459,16 +2460,12 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
     border: 0 !important;
   }
 }
-@media not (-moz-windows-classic) {
-  :root[namoroka-style-2] toolbar[type=menubar],
-  :root[namoroka-style-2] menubar {
-    border: 0 !important;
-    appearance: none !important;
-  }
-}
-:root[namoroka-style-2] #notifications-toolbar {
-  border: 0 !important;
+:root[namoroka-style-2] toolbar:first-child,
+:root[namoroka-style-2] toolbar[type=menubar],
+:root[namoroka-style-2] menubar {
   appearance: none !important;
+  -moz-default-appearance: none !important;
+  border: none !important;
 }
 :root[namoroka-style-2] {
   --urlbar-root-height: 22px !important;

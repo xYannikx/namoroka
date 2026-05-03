@@ -1,5 +1,7 @@
+
 .browser-toolbar {
     appearance: auto !important;
+    -moz-default-appearance: toolbar !important;
 }
 
 @media not (-moz-windows-classic) {
@@ -11,15 +13,10 @@
 }
 }
 
-@media not (-moz-windows-classic) {
-    toolbar[type="menubar"],
-    menubar {
-        border: 0 !important;
-        appearance: none !important;
-    }
-}
-
-#notifications-toolbar {
-    border: 0 !important;
+toolbar:first-child,
+toolbar[type="menubar"], 
+menubar {
     appearance: none !important;
+    -moz-default-appearance: none !important;
+    border: none !important;
 }
