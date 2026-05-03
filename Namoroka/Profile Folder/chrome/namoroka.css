@@ -312,6 +312,7 @@
 #notifications-toolbar {
   border: 0 !important;
   appearance: none !important;
+  min-height: 0 !important;
 }
 
 toolbar[type=menubar],
