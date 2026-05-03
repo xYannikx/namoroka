@@ -2453,6 +2453,7 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
 :root[namoroka-style-2] .browser-toolbar {
   appearance: auto !important;
   -moz-default-appearance: toolbar !important;
+  min-height: 19px !important;
 }
 @media not (-moz-windows-classic) {
   :root[namoroka-style-2][namoroka-appearance-aero] .browser-toolbar {
@@ -2562,7 +2563,7 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
 @media not (-moz-windows-classic) {
   :root[namoroka-style-2] #urlbar-container #urlbar #identity-box #identity-icon-box {
     margin: -11px -10px -11px 0 !important;
-    padding: 10px 12px 10px 3px !important;
+    padding: 10px 12px 10px 4px !important;
     border-top: 1px solid ThreeDDarkShadow !important;
     border-bottom: 1px solid ThreeDDarkShadow !important;
     border-inline-start: 1px solid ThreeDDarkShadow !important;
@@ -2607,6 +2608,7 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
   background-image: none !important;
   visibility: visible !important;
   margin-inline-start: -1px !important;
+  list-style-image: none !important;
 }
 :root[namoroka-style-2] #urlbar-container #urlbar #identity-box #page-proxy-stack {
   display: flex !important;

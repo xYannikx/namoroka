@@ -97,7 +97,7 @@
 
                     @media not (-moz-windows-classic) {
                         margin: -11px -10px -11px 0 !important;
-                        padding: 10px 12px 10px 3px !important;
+                        padding: 10px 12px 10px 4px !important;
                         border-top: 1px solid ThreeDDarkShadow !important;
                         border-bottom: 1px solid ThreeDDarkShadow !important;
                         border-inline-start: 1px solid ThreeDDarkShadow !important;
@@ -149,6 +149,7 @@
                     background-image: none !important;
                     visibility: visible !important;
                     margin-inline-start: -1px !important;
+                    list-style-image: none !important;
                 }
 
                 #page-proxy-stack {

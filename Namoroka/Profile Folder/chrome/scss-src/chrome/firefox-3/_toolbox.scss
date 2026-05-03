@@ -2,6 +2,7 @@
 .browser-toolbar {
     appearance: auto !important;
     -moz-default-appearance: toolbar !important;
+    min-height: 19px !important;
 }
 
 @media not (-moz-windows-classic) {
