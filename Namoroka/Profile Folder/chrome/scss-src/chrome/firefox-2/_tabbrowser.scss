@@ -194,7 +194,7 @@
         background-color: -moz-Dialog !important;
         border-top-left-radius: var(--tab-background-radius) !important;
         border-top-right-radius: var(--tab-background-radius) !important;
-        list-style-image: #{asset("tabbrowser/newtab.png")} !important;
+        list-style-image: var(--new-tab-icon) !important;
 
         &:hover {
             background-image: #{asset("icons/tab-left-hover.png")}, #{asset("icons/tab-middle-hover.png")}, #{asset("icons/tab-right-hover.png")} !important;
@@ -248,7 +248,7 @@
         }
 
         & ~ #new-tab-button {
-            list-style-image: #{asset("tabbrowser/newtab.png")} !important;
+            list-style-image: var(--new-tab-icon) !important;
 
             .toolbarbutton-icon {
                 width: 18px !important;

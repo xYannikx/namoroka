@@ -94,7 +94,7 @@
         margin-top: 2px !important;
         margin-bottom: 1px !important;
         background-color: transparent !important;
-        list-style-image: #{asset("tabbrowser/newtab.png")} !important;
+        list-style-image: var(--new-tab-icon) !important;
         
         &:hover {
             background-image: #{asset("tabbrowser/tab-hover-bkgnd.png")} !important;
@@ -157,7 +157,7 @@
         }
 
         & ~ #new-tab-button {
-            list-style-image: #{asset("tabbrowser/newtab.png")} !important;
+            list-style-image: var(--new-tab-icon) !important;
 
             .toolbarbutton-icon {
                 width: 18px !important;

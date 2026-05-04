@@ -16,9 +16,6 @@
             width: 24px !important;
             height: 24px !important;
             background-image: #{asset("bookmarks/Bookmarks-toolbar.png")} !important;
-            :root[namoroka-style-1="true"] & {
-                background-image: #{asset("bookmarks/Bookmarks-toolbar.png")} !important;
-            }
             background-position-x: calc(-24px * var(--offset));
             margin-inline-end: 0 !important;
         }
@@ -40,10 +37,6 @@
 
                 .toolbarbutton-icon {
                     background-position-y: -24px !important;
-
-                    :root[namoroka-style-1="true"] & {
-                        background-position-y: -48px !important;
-                    }
                 }
             }
         }
@@ -55,10 +48,6 @@
 
             .toolbarbutton-icon {
                 background-position-y: -48px !important;
-
-                :root[namoroka-style-1="true"] & {
-                    background-position-y: -72px !important;
-                }
             }
         }
     }

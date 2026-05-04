@@ -126,3 +126,43 @@
 @function asset($path) {
     @return url("#{$asset-base}/#{$path}");
 }
+
+@mixin dialog-icons($message-icon: "icons/Question.png", $prefix: "") {
+    /* commonDialog icons */
+    .message-icon {
+        list-style-image: #{asset("#{$prefix}#{$message-icon}")} !important;
+    }
+
+    .alert-dialog #infoIcon,
+    .alert-icon {
+        list-style-image: #{asset("#{$prefix}icons/Warning.png")} !important;
+    }
+
+    .error-icon {
+        list-style-image: #{asset("#{$prefix}icons/Error.png")} !important;
+    }
+
+    .question-icon {
+        list-style-image: #{asset("#{$prefix}icons/Question.png")} !important;
+    }
+}
+
+@mixin findbar-icons($prefix: "") {
+    .findbar-find-previous,
+    .findbar-find-next,
+    .findbar-highlight {
+        .toolbarbutton-icon {
+            background-image: #{asset("#{$prefix}findbar/find.png")} !important;
+        }
+    }
+
+    .find-status-icon {
+        &[status="notfound"] {
+            list-style-image: #{asset("#{$prefix}findbar/notfound.png")} !important;
+        }
+
+        &[status="wrapped"] {
+            list-style-image: #{asset("#{$prefix}findbar/wrap.png")} !important;
+        }
+    }
+}

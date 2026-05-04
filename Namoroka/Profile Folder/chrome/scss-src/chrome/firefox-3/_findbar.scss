@@ -19,23 +19,7 @@ findbar[namoroka-initialized="true"] {
         }
     }
 
-    .findbar-find-previous,
-    .findbar-find-next,
-    .findbar-highlight {
-        .toolbarbutton-icon {
-            background-image: #{asset("findbar/find.png")} !important;
-        }
-    }
-    
-    .find-status-icon {
-        &[status="notfound"] {
-            list-style-image: #{asset("findbar/notfound.png")} !important;
-        }
-
-        &[status="wrapped"] {
-            list-style-image: #{asset("findbar/wrap.png")} !important;
-        }
-    }
+    @include findbar-icons;
 }   
 
 &[namoroka-appearance-aero] {
@@ -46,22 +30,6 @@ findbar[namoroka-initialized="true"] {
             }
         }
 
-        .findbar-find-previous,
-        .findbar-find-next,
-        .findbar-highlight {
-            .toolbarbutton-icon {
-                background-image: #{asset("aero/findbar/find.png")} !important;
-            }
-        }
-
-        .find-status-icon {
-            &[status="notfound"] {
-                list-style-image: #{asset("aero/findbar/notfound.png")} !important;
-            }
-
-            &[status="wrapped"] {
-                list-style-image: #{asset("aero/findbar/wrap.png")} !important;
-            }
-        }
+        @include findbar-icons("aero/");
     }
 }

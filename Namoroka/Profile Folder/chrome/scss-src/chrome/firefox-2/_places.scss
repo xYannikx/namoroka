@@ -1,0 +1,21 @@
+@-moz-document url("chrome://browser/content/places/places.xhtml") {
+    toolbarbutton {
+        .toolbarbutton-icon {
+            background-image: #{asset("bookmarks/Bookmarks-toolbar.png")} !important;
+        }
+        
+        &:not([disabled="true"]):hover {
+            &:active {
+                .toolbarbutton-icon {
+                    background-position-y: -48px !important;
+                }
+            }
+        }
+
+        &[disabled="true"] {
+            .toolbarbutton-icon {
+                background-position-y: -72px !important;
+            }
+        }
+    }
+}

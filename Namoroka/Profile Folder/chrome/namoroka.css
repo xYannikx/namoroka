@@ -742,13 +742,6 @@ toolbarbutton.bookmark-item[livemark=true] .toolbarbutton-icon {
   background-image: url("chrome://namoroka/content/firefox-1/livemark-folder.png") !important;
   background-position-x: -16px !important;
 }
-:root[namoroka-style-2] toolbarbutton.bookmark-item[livemark=true] .toolbarbutton-icon {
-  background-image: url("chrome://namoroka/content/firefox-3/livemark-folder.png") !important;
-  background-position-x: 0 !important;
-}
-:root[namoroka-style-2][namoroka-appearance-aero] toolbarbutton.bookmark-item[livemark=true] .toolbarbutton-icon {
-  background-image: url("chrome://namoroka/content/firefox-3/aero/livemark-folder.png") !important;
-}
 :root:not([namoroka-style-2]) toolbarbutton.bookmark-item[livemark=true][open=true] .toolbarbutton-icon {
   background-position-y: -16px !important;
 }
@@ -1350,9 +1343,6 @@ findbar[namoroka-initialized=true] .find-status-icon[status=wrapped] {
     background-position-x: calc(-24px * var(--offset));
     margin-inline-end: 0 !important;
   }
-  :root[namoroka-style-1=true] toolbarbutton .toolbarbutton-icon {
-    background-image: url("chrome://namoroka/content/firefox-2/bookmarks/Bookmarks-toolbar.png") !important;
-  }
   toolbarbutton .toolbarbutton-text {
     margin: 0 !important;
     text-align: center !important;
@@ -1369,9 +1359,6 @@ findbar[namoroka-initialized=true] .find-status-icon[status=wrapped] {
   toolbarbutton:not([disabled=true]):hover:active .toolbarbutton-icon {
     background-position-y: -24px !important;
   }
-  :root[namoroka-style-1=true] toolbarbutton:not([disabled=true]):hover:active .toolbarbutton-icon {
-    background-position-y: -48px !important;
-  }
   toolbarbutton[disabled=true] {
     border-color: transparent !important;
     padding: 5px !important;
@@ -1379,9 +1366,6 @@ findbar[namoroka-initialized=true] .find-status-icon[status=wrapped] {
   }
   toolbarbutton[disabled=true] .toolbarbutton-icon {
     background-position-y: -48px !important;
-  }
-  :root[namoroka-style-1=true] toolbarbutton[disabled=true] .toolbarbutton-icon {
-    background-position-y: -72px !important;
   }
   #newfolder {
     --offset: 1 !important;
@@ -1897,7 +1881,7 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
   background-color: -moz-Dialog !important;
   border-top-left-radius: var(--tab-background-radius) !important;
   border-top-right-radius: var(--tab-background-radius) !important;
-  list-style-image: url("chrome://namoroka/content/firefox-3/tabbrowser/newtab.png") !important;
+  list-style-image: var(--new-tab-icon) !important;
 }
 :root[namoroka-style-1] #TabsToolbar #tabs-newtab-button:hover {
   background-image: url("chrome://namoroka/content/firefox-2/icons/tab-left-hover.png"), url("chrome://namoroka/content/firefox-2/icons/tab-middle-hover.png"), url("chrome://namoroka/content/firefox-2/icons/tab-right-hover.png") !important;
@@ -1940,7 +1924,7 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
   background-image: url("chrome://namoroka/content/firefox-2/icons/alltabs-box-overflow-end-bkgnd-hover.png") !important;
 }
 :root[namoroka-style-1] #TabsToolbar #tabbrowser-tabs[overflow] ~ #new-tab-button {
-  list-style-image: url("chrome://namoroka/content/firefox-3/tabbrowser/newtab.png") !important;
+  list-style-image: var(--new-tab-icon) !important;
 }
 :root[namoroka-style-1] #TabsToolbar #tabbrowser-tabs[overflow] ~ #new-tab-button .toolbarbutton-icon {
   width: 18px !important;
@@ -2155,6 +2139,17 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
 }
 :root[namoroka-style-1] findbar[namoroka-initialized=true] .find-status-icon[status=wrapped] {
   list-style-image: url("chrome://namoroka/content/firefox-2/findbar/wrap.png") !important;
+}
+@-moz-document url("chrome://browser/content/places/places.xhtml") {
+  :root[namoroka-style-1] toolbarbutton .toolbarbutton-icon {
+    background-image: url("chrome://namoroka/content/firefox-2/bookmarks/Bookmarks-toolbar.png") !important;
+  }
+  :root[namoroka-style-1] toolbarbutton:not([disabled=true]):hover:active .toolbarbutton-icon {
+    background-position-y: -48px !important;
+  }
+  :root[namoroka-style-1] toolbarbutton[disabled=true] .toolbarbutton-icon {
+    background-position-y: -72px !important;
+  }
 }
 
 /* ::::: Firefox 3 ::::: */
@@ -2401,7 +2396,7 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
   margin-top: 2px !important;
   margin-bottom: 1px !important;
   background-color: transparent !important;
-  list-style-image: url("chrome://namoroka/content/firefox-3/tabbrowser/newtab.png") !important;
+  list-style-image: var(--new-tab-icon) !important;
 }
 :root[namoroka-style-2] #TabsToolbar #tabs-newtab-button:hover {
   background-image: url("chrome://namoroka/content/firefox-3/tabbrowser/tab-hover-bkgnd.png") !important;
@@ -2454,7 +2449,7 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
   background-image: url("chrome://namoroka/content/firefox-3/tabbrowser/tab-hover-bkgnd.png") !important;
 }
 :root[namoroka-style-2] #TabsToolbar #tabbrowser-tabs[overflow] ~ #new-tab-button {
-  list-style-image: url("chrome://namoroka/content/firefox-3/tabbrowser/newtab.png") !important;
+  list-style-image: var(--new-tab-icon) !important;
 }
 :root[namoroka-style-2] #TabsToolbar #tabbrowser-tabs[overflow] ~ #new-tab-button .toolbarbutton-icon {
   width: 18px !important;
@@ -2485,6 +2480,13 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
 :root[namoroka-style-2] .bookmark-item[container][query] .toolbarbutton-icon {
   background-image: var(--query) !important;
   background-position: 0 !important;
+}
+:root[namoroka-style-2] toolbarbutton.bookmark-item[livemark=true] .toolbarbutton-icon {
+  background-image: url("chrome://namoroka/content/firefox-3/livemark-folder.png") !important;
+  background-position-x: 0 !important;
+}
+:root[namoroka-style-2][namoroka-appearance-aero] toolbarbutton.bookmark-item[livemark=true] .toolbarbutton-icon {
+  background-image: url("chrome://namoroka/content/firefox-3/aero/livemark-folder.png") !important;
 }
 :root[namoroka-style-2] .browser-toolbar {
   appearance: auto !important;
@@ -2860,6 +2862,9 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
 }
 :root[namoroka-style-2] .question-icon {
   list-style-image: url("chrome://namoroka/content/firefox-3/icons/Question.png") !important;
+}
+:root[namoroka-style-2][namoroka-appearance-aero=true] {
+  /* commonDialog icons */
 }
 :root[namoroka-style-2][namoroka-appearance-aero=true] .message-icon {
   list-style-image: url("chrome://namoroka/content/firefox-3/aero/icons/information-32.png") !important;

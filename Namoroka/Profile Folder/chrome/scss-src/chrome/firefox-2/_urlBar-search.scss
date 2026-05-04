@@ -1,3 +1,16 @@
+@mixin navBar-button-background {
+    box-shadow: inset 0 0 0 1px -moz-Dialog !important;
+    background-image: linear-gradient(to bottom, transparent 0%, transparent 50%, rgb(0 0 0 / 4%) 50%, rgb(0 0 0 / 6%) 100%) !important;
+
+    &:hover {
+        background-image: linear-gradient(to bottom, rgb(255 255 255 / 10%) 0%, rgb(255 255 255 / 10%) 50%, rgb(0 0 0 / 8%) 50%, rgb(0 0 0 / 13%) 100%) !important;
+
+        &:active {
+            background-image: linear-gradient(to bottom, rgb(255 255 255 / 10%) 0%, rgb(255 255 255 / 10%) 50%, rgb(0 0 0 / 12%) 50%, rgb(0 0 0 / 21%) 100%) !important;
+        }
+    }
+}
+
 &:not([namoroka-style-2="true"]) {
     --urlbar-root-height: 22px !important;
     --urlbar-container-padding: 0 !important;
@@ -5,19 +18,6 @@
     --urlbar-padding-block: 0 !important;
     
     --secure-icon: #{asset("Secure.png")} !important;
-
-    @mixin navBar-button-background {
-        box-shadow: inset 0 0 0 1px -moz-Dialog !important;
-        background-image: linear-gradient(to bottom, transparent 0%, transparent 50%, rgb(0 0 0 / 4%) 50%, rgb(0 0 0 / 6%) 100%) !important;
-
-        &:hover {
-            background-image: linear-gradient(to bottom, rgb(255 255 255 / 10%) 0%, rgb(255 255 255 / 10%) 50%, rgb(0 0 0 / 8%) 50%, rgb(0 0 0 / 13%) 100%) !important;
-
-            &:active {
-                background-image: linear-gradient(to bottom, rgb(255 255 255 / 10%) 0%, rgb(255 255 255 / 10%) 50%, rgb(0 0 0 / 12%) 50%, rgb(0 0 0 / 21%) 100%) !important;
-            }
-        }
-    }
 
     .searchbar-textbox::placeholder {
         opacity: 1 !important;

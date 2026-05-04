@@ -79,15 +79,6 @@ toolbarbutton.bookmark-item[livemark="true"] {
     .toolbarbutton-icon {
         background-image: #{asset("livemark-folder.png")} !important;
         background-position-x: -16px !important;
-
-        :root[namoroka-style-2] & {
-            background-image: #{asset("livemark-folder.png")} !important;
-            background-position-x: 0 !important;
-        }
-
-        :root[namoroka-style-2][namoroka-appearance-aero] & {
-            background-image: #{asset("aero/livemark-folder.png")} !important;
-        }
     }
 
     :root:not([namoroka-style-2]) &[open="true"] {

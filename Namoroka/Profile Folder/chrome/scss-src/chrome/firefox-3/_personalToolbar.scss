@@ -22,3 +22,18 @@
         background-position: 0 !important;
     }
 }
+
+toolbarbutton.bookmark-item[livemark="true"] {
+    .toolbarbutton-icon {
+        background-image: #{asset("livemark-folder.png")} !important;
+        background-position-x: 0 !important;
+    }
+}
+
+&[namoroka-appearance-aero] {
+    toolbarbutton.bookmark-item[livemark="true"] {
+        .toolbarbutton-icon {
+            background-image: #{asset("aero/livemark-folder.png")} !important;
+        }
+    }
+}
