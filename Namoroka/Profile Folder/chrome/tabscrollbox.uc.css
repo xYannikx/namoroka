@@ -17,16 +17,16 @@
   height: 5px !important;
 }
 :host(:not([namoroka-style-1])) #scrollbutton-up .toolbarbutton-icon {
-  list-style-image: url("chrome://namoroka/content/firefox-1/arrow/arrow-lft.gif") !important;
+  list-style-image: var(--arrow-lft) !important;
 }
 :host(:not([namoroka-style-1])) #scrollbutton-up[disabled=true] .toolbarbutton-icon {
-  list-style-image: url("chrome://namoroka/content/firefox-1/arrow/arrow-lft-dis.gif") !important;
+  list-style-image: var(--arrow-lft-dis) !important;
 }
 :host(:not([namoroka-style-1])) #scrollbutton-down .toolbarbutton-icon {
-  list-style-image: url("chrome://namoroka/content/firefox-1/arrow/arrow-rit.gif") !important;
+  list-style-image: var(--arrow-rit) !important;
 }
 :host(:not([namoroka-style-1])) #scrollbutton-down[disabled=true] .toolbarbutton-icon {
-  list-style-image: url("chrome://namoroka/content/firefox-1/arrow/arrow-rit-dis.gif") !important;
+  list-style-image: var(--arrow-rit-dis) !important;
 }
 
 :host([namoroka-style-1]) #scrollbutton-up > .toolbarbutton-icon,

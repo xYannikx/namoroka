@@ -1,5 +1,9 @@
 :root {
     --browser-area-z-index-toolbox: 2 !important;
+
+    @media (-moz-windows-compositor) {
+        -moz-default-appearance: -moz-win-glass !important;
+    }
 }
 
 #navigator-toolbox {
@@ -7,9 +11,6 @@
     -moz-default-appearance: toolbox !important;
     border-bottom-width: 0 !important;
 
-    // Since TabsToolbar is moved outside of #navigator-toolbox, Firefox's
-    // internal tab drag code may fail to clear `movingtab`. Override the
-    // built-in pointer-events:none so the nav-bar stays interactable.
     &[movingtab] > #nav-bar {
         pointer-events: auto !important;
     }
@@ -40,17 +41,8 @@ toolbar[type="menubar"],
 menubar {
     border-block-start-width: 0 !important;
     appearance: none !important;
-}
-
-toolbarseparator {
-    margin: 2px 0.2em !important;
-    border-right: 1px solid ThreeDHighlight !important;
-    border-left: 1px solid ThreeDShadow !important;
-    width: 2px !important;
     padding: 0 !important;
 }
-
-
 
 #mozGlassHandler {
     width: 100% !important;
@@ -60,19 +52,15 @@ toolbarseparator {
     left: 0 !important;
     pointer-events: none !important;
     z-index: -1 !important;
+
+    @media (-moz-windows-compositor) {
+        -moz-default-appearance: -moz-win-glass !important;
+        appearance: -moz-win-glass !important;
+        background-color: -moz-Dialog !important;
+    }
 }
 
 @media (-moz-windows-compositor) {
-    :root {
-        -moz-default-appearance: -moz-win-glass !important;
-    }
-
-    #mozGlassHandler {
-        -moz-default-appearance: -moz-win-exclude-glass !important;
-        appearance: -moz-win-exclude-glass !important;
-        background-color: -moz-Dialog !important;
-    }
-
     #tabbrowser-tabbox {
         appearance: none !important;
     }

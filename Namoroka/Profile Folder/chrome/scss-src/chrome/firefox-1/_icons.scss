@@ -1,10 +1,35 @@
-@import "_mixins.scss";
+$arrow-path: "chrome://namoroka/content/firefox-1/arrow/";
+$arrow-files: (
+    "arrow-dn.gif",
+    "arrow-dn-dis.gif",
+    "arrow-dn-hov.gif",
+    "arrow-dn-sharp.gif",
+    "arrow-down.png",
+    "arrow-lft.gif",
+    "arrow-lft-dis.gif",
+    "arrow-lft-hov.gif",
+    "arrow-lft-sharp.gif",
+    "arrow-lft-sharp-end.gif",
+    "arrow-rit.gif",
+    "arrow-rit-dis.gif",
+    "arrow-rit-hov.gif",
+    "arrow-rit-sharp.gif",
+    "arrow-rit-sharp-end.gif",
+    "arrow-up.gif",
+    "arrow-up-dis.gif",
+    "arrow-up-hov.gif",
+    "arrow-up-sharp.gif"
+);
 
 :root {
-    --toolbar-spritesheet: url("chrome://namoroka/content/firefox-1/Toolbar.png");
+    --toolbar-spritesheet: #{asset("Toolbar.png")};
 
     &[namoroka-appearance-small-icons="true"] {
-        --toolbar-spritesheet: url("chrome://namoroka/content/firefox-1/Toolbar-small.png");
+        --toolbar-spritesheet: #{asset("Toolbar-small.png")};
+    }
+
+    @each $file in $arrow-files {
+        --#{strip-ext($file)}: url(#{$arrow-path}#{$file});
     }
 }
 

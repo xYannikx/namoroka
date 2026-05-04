@@ -1,16 +1,16 @@
 & {
     --tab-min-height: 24px !important;
     --inline-tab-padding: 8px !important; 
-    --page-icon: url("chrome://namoroka/content/firefox-2/icons/page.png") !important;
+    --page-icon: #{asset("icons/page.png")} !important;
     --page-invalid-icon: var(--page-icon) !important;
     --tab-background-radius: 4px !important;
-    --new-tab-icon: url("chrome://namoroka/content/firefox-2/tabbrowser/newtab.png") !important;
+    --new-tab-icon: #{asset("tabbrowser/newtab.png")} !important;
 }
 
 #TabsToolbar {
     border: 0 !important;
     box-shadow: none !important;
-    background: -moz-Dialog url("chrome://namoroka/content/firefox-2/icons/tabbrowser-tabs-bkgnd.png") !important;
+    background: -moz-Dialog #{asset("icons/tabbrowser-tabs-bkgnd.png")} !important;
     position: relative !important;
     padding: 0 !important;
     padding-block-start: 1px !important;
@@ -22,7 +22,7 @@
         width: 100%;
         height: 2px !important;
         margin: 0px !important;
-        background: -moz-dialog url("chrome://namoroka/content/firefox-2/icons/tabstrip-bottom.png") repeat !important;
+        background: -moz-dialog #{asset("icons/tabstrip-bottom.png")} repeat !important;
         border-top: 1px solid threedshadow !important; 
         border-bottom: 1px solid threedshadow !important;
         position: absolute !important;
@@ -93,16 +93,16 @@
 
             .tab-background-start {
                 border-top-left-radius: var(--tab-background-radius) !important;
-                background-image: url("chrome://namoroka/content/firefox-2/icons/tab-left-bkgnd.png") !important;
+                background-image: #{asset("icons/tab-left-bkgnd.png")} !important;
             }
 
             .tab-background-middle {
                 flex: 1 !important;
-                background-image: url("chrome://namoroka/content/firefox-2/icons/tab-middle-bkgnd.png") !important;
+                background-image: #{asset("icons/tab-middle-bkgnd.png")} !important;
             }
 
             .tab-background-end {
-                background-image: url("chrome://namoroka/content/firefox-2/icons/tab-right-bkgnd.png") !important;
+                background-image: #{asset("icons/tab-right-bkgnd.png")} !important;
                 border-top-right-radius: var(--tab-background-radius) !important;
             }
 
@@ -117,15 +117,15 @@
 
             &[selected] {
                 .tab-background-start {
-                    background-image: url("chrome://namoroka/content/firefox-2/icons/tab-left.png") !important;
+                    background-image: #{asset("icons/tab-left.png")} !important;
                 }
 
                 .tab-background-middle {
-                    background-image: url("chrome://namoroka/content/firefox-2/icons/tab-middle.png") !important;
+                    background-image: #{asset("icons/tab-middle.png")} !important;
                 }
 
                 .tab-background-end {
-                    background-image: url("chrome://namoroka/content/firefox-2/icons/tab-right.png") !important;
+                    background-image: #{asset("icons/tab-right.png")} !important;
                 }
             }
         }
@@ -134,15 +134,15 @@
             .tab-background {
                 &:not([selected]) {
                     .tab-background-start {
-                        background-image: url("chrome://namoroka/content/firefox-2/icons/tab-left-hover.png") !important;
+                        background-image: #{asset("icons/tab-left-hover.png")} !important;
                     }
 
                     .tab-background-middle {
-                        background-image: url("chrome://namoroka/content/firefox-2/icons/tab-middle-hover.png") !important;
+                        background-image: #{asset("icons/tab-middle-hover.png")} !important;
                     }
 
                     .tab-background-end {
-                        background-image: url("chrome://namoroka/content/firefox-2/icons/tab-right-hover.png") !important;
+                        background-image: #{asset("icons/tab-right-hover.png")} !important;
                     }
                 }
             }
@@ -185,7 +185,7 @@
     #tabs-newtab-button {
         appearance: none !important;
         width: 31px !important;
-        background-image: url("chrome://namoroka/content/firefox-2/icons/tab-left-bkgnd.png"), url("chrome://namoroka/content/firefox-2/icons/tab-middle-bkgnd.png"), url("chrome://namoroka/content/firefox-2/icons/tab-right-bkgnd.png") !important;
+        background-image: #{asset("icons/tab-left-bkgnd.png")}, #{asset("icons/tab-middle-bkgnd.png")}, #{asset("icons/tab-right-bkgnd.png")} !important;
         background-size: 8px 75px, calc(100% - 16px) 75px, 8px 75px !important;
         background-repeat: no-repeat !important;
         background-position: left top, 8px top, right top !important;
@@ -194,10 +194,10 @@
         background-color: -moz-Dialog !important;
         border-top-left-radius: var(--tab-background-radius) !important;
         border-top-right-radius: var(--tab-background-radius) !important;
-        list-style-image: url("chrome://namoroka/content/firefox-3/tabbrowser/newtab.png") !important;
+        list-style-image: #{asset("tabbrowser/newtab.png")} !important;
 
         &:hover {
-            background-image: url("chrome://namoroka/content/firefox-2/icons/tab-left-hover.png"), url("chrome://namoroka/content/firefox-2/icons/tab-middle-hover.png"), url("chrome://namoroka/content/firefox-2/icons/tab-right-hover.png") !important;
+            background-image: #{asset("icons/tab-left-hover.png")}, #{asset("icons/tab-middle-hover.png")}, #{asset("icons/tab-right-hover.png")} !important;
         }
 
         .toolbarbutton-icon {
@@ -214,13 +214,13 @@
         margin-block-end: 1px !important;
         padding-inline: 4px !important;
         background-color: -moz-Dialog !important;
-        background-image: url("chrome://namoroka/content/firefox-2/icons/alltabs-box-end-bkgnd.png") !important;
-        list-style-image: url("chrome://namoroka/content/firefox-1/arrow/arrow-dn.gif") !important;
+        background-image: #{asset("icons/alltabs-box-end-bkgnd.png")} !important;
+        list-style-image: var(--arrow-dn) !important;
         border-top-left-radius: var(--tab-background-radius) !important;
 
         &:hover,
         &[open="true"] {
-            background-image: url("chrome://namoroka/content/firefox-2/icons/alltabs-box-end-bkgnd-hover.png") !important;
+            background-image: #{asset("icons/alltabs-box-end-bkgnd-hover.png")} !important;
         }
 
         .toolbarbutton-icon {
@@ -239,16 +239,16 @@
             margin-block-end: 1px !important;
             padding-inline-start: 1px !important;
             background-color: -moz-Dialog !important;
-            background-image: url("chrome://namoroka/content/firefox-2/icons/alltabs-box-overflow-end-bkgnd.png") !important;
+            background-image: #{asset("icons/alltabs-box-overflow-end-bkgnd.png")} !important;
 
             &:hover,
             &[open="true"] {
-                background-image: url("chrome://namoroka/content/firefox-2/icons/alltabs-box-overflow-end-bkgnd-hover.png") !important;
+                background-image: #{asset("icons/alltabs-box-overflow-end-bkgnd-hover.png")} !important;
             }
         }
 
         & ~ #new-tab-button {
-            list-style-image: url("chrome://namoroka/content/firefox-3/tabbrowser/newtab.png") !important;
+            list-style-image: #{asset("tabbrowser/newtab.png")} !important;
 
             .toolbarbutton-icon {
                 width: 18px !important;
@@ -258,11 +258,11 @@
 
         & ~ #alltabs-button {
             border-top-left-radius: 0 !important;
-            background-image: url("chrome://namoroka/content/firefox-2/icons/alltabs-box-overflow-end-bkgnd.png") !important;
+            background-image: #{asset("icons/alltabs-box-overflow-end-bkgnd.png")} !important;
 
             &:hover,
             &[open="true"] {
-                background-image: url("chrome://namoroka/content/firefox-2/icons/alltabs-box-overflow-end-bkgnd-hover.png") !important;
+                background-image: #{asset("icons/alltabs-box-overflow-end-bkgnd-hover.png")} !important;
             }
         }
     }

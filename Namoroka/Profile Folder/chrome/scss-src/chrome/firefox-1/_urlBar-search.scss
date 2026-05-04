@@ -5,7 +5,7 @@
     --urlbar-padding-block: 2px !important;
     --urlbar-margin-inline: 3px !important;
 
-    --secure-icon: url("chrome://namoroka/content/firefox-1/Secure.png") !important;
+    --secure-icon: #{asset("Secure.png")} !important;
 
     @media (-moz-windows-classic) {
         & {
@@ -199,13 +199,14 @@ image.default-favicon {
 
 .searchbar-search-button {
     .searchbar-search-icon {
+        list-style-image: #{asset("Search-bar.png")} !important;
         margin-inline: 3px 8px !important;
     }
     
     .searchbar-search-icon-overlay {
         width: 9px !important;
         height: 6px !important;
-        list-style-image: url("chrome://namoroka/content/firefox-1/search-dropdown.png") !important;
+        list-style-image: #{asset("search-dropdown.png")} !important;
         align-self: flex-end !important;
         margin-inline: 0 !important;
         margin-left: -11px !important;

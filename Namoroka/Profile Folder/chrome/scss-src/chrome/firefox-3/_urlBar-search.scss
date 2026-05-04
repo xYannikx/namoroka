@@ -8,10 +8,10 @@
     --urlbar-container-padding: 0 !important;
     --urlbar-margin-inline: 7px !important;
     
-    --secure-icon: url("chrome://namoroka/content/firefox-2/Secure.png") !important;
-    --navbar-textbox-buttons: url("chrome://namoroka/content/firefox-3/urlbar/navbar-textbox-buttons.png") !important;
-    --search-glass: url("chrome://namoroka/content/firefox-3/Search-glass.png") !important;
-    --search-close: url("chrome://namoroka/content/firefox-3/Search-close.png") !important;
+    --secure-icon: #{asset("Secure.png")} !important;
+    --navbar-textbox-buttons: #{asset("urlbar/navbar-textbox-buttons.png")} !important;
+    --search-glass: #{asset("Search-glass.png")} !important;
+    --search-close: #{asset("Search-close.png")} !important;
 
     .searchbar-textbox::placeholder {
         opacity: 1 !important;
@@ -24,9 +24,9 @@
             }
         }
 
-        --navbar-textbox-buttons: url("chrome://namoroka/content/firefox-3/aero/urlbar/navbar-textbox-buttons.png") !important;
-        --search-glass: url("chrome://namoroka/content/firefox-3/aero/Search-glass.png") !important;
-        --search-close: url("chrome://namoroka/content/firefox-3/aero/Search-close.png") !important;
+        --navbar-textbox-buttons: #{asset("urlbar/navbar-textbox-buttons.png")} !important;
+        --search-glass: #{asset("Search-glass.png")} !important;
+        --search-close: #{asset("Search-close.png")} !important;
     }
 
     #urlbar-container {
@@ -157,7 +157,7 @@
                     width: 24px !important;
                     height: 20px !important;
                     padding: 2px 4px !important;
-                    background: url("chrome://namoroka/content/firefox-3/aero/urlbar/urlbar-favicon-glow.png") center center no-repeat !important;
+                    background: #{asset("aero/urlbar/urlbar-favicon-glow.png")} center center no-repeat !important;
                 }
 
                 #page-proxy-favicon,
@@ -222,7 +222,7 @@
                     display: flex;
                     width: 5px !important;
                     height: 3px !important;
-                    background-image: url("chrome://namoroka/content/firefox-3/arrow/arrow-dn.gif") !important;
+                    background-image: var(--arrow-dn) !important;
                 }
             }
 
@@ -234,10 +234,10 @@
 
             #star-button {
                 list-style-image: none !important;
-                background-image: url("chrome://namoroka/content/firefox-3/aero/places/bookmark.png") !important;
+                background-image: #{asset("aero/places/bookmark.png")} !important;
 
                 &[starred="true"] {
-                    background-image: url("chrome://namoroka/content/firefox-3/aero/places/editBookmark.png") !important;
+                    background-image: #{asset("aero/places/editBookmark.png")} !important;
                 }
 
                 &:hover {
@@ -255,7 +255,7 @@
                 border-radius: 0 !important;
                 background-color: transparent !important;
                 visibility: visible !important;
-                background-image: url("chrome://namoroka/content/firefox-3/aero/Go-arrow.png") !important;
+                background-image: #{asset("aero/Go-arrow.png")} !important;
                 margin: 2px !important;
                 list-style-image: none !important;
 
@@ -307,7 +307,7 @@
                 margin-inline-start: 3px !important;
                 width: 5px !important;
                 height: 3px !important;
-                list-style-image: url("chrome://namoroka/content/firefox-3/arrow/arrow-dn.gif") !important;
+                list-style-image: var(--arrow-dn) !important;
             }
         }
 
@@ -383,7 +383,7 @@
         }
 
         .ac-result-type-bookmark {
-            background-image: url("chrome://namoroka/content/firefox-3/aero/places/editBookmark.png") !important;
+            background-image: #{asset("aero/places/editBookmark.png")} !important;
         }
 
         span.ac-emphasize-text {

@@ -85,29 +85,29 @@
             }
 
             menuitem[checked="true"] {
-                list-style-image: url("chrome://namoroka/content/firefox-1/menu/menu-check.gif") !important;
+                list-style-image: #{asset("menu/menu-check.gif")} !important;
                 
                 .menu-iconic-icon {
                     display: flex !important;
                 }
 
                 &[disabled="true"] {
-                    list-style-image: url("chrome://namoroka/content/firefox-1/menu/menu-check-disabled.gif") !important;
+                    list-style-image: #{asset("menu/menu-check-disabled.gif")} !important;
                 }
                 
                 &[_moz-menuactive="true"] {
-                    list-style-image: url("chrome://namoroka/content/firefox-1/menu/menu-check-hover.gif") !important;
+                    list-style-image: #{asset("menu/menu-check-hover.gif")} !important;
                 }
 
                 &[type="radio"] {
-                    list-style-image: url("chrome://namoroka/content/firefox-1/menu/menu-radio.gif") !important;
+                    list-style-image: #{asset("menu/menu-radio.gif")} !important;
 
                     &[disabled="true"] {
-                        list-style-image: url("chrome://namoroka/content/firefox-1/menu/menu-radio-disabled.gif") !important;
+                        list-style-image: #{asset("menu/menu-radio-disabled.gif")} !important;
                     }
                     
                     &[_moz-menuactive="true"] {
-                        list-style-image: url("chrome://namoroka/content/firefox-1/menu/menu-radio-hover.gif") !important;
+                        list-style-image: #{asset("menu/menu-radio-hover.gif")} !important;
                     }
                 }
             }
@@ -120,14 +120,14 @@
                 margin-block-end: 1px !important;
                 margin-inline-start: 0px !important;
                 margin-inline-end: 6px !important;
-                list-style-image: url("chrome://namoroka/content/firefox-1/menu/Menu-arrow.png") !important;
+                list-style-image: #{asset("menu/Menu-arrow.png")} !important;
 
                 &[_moz-menuactive="true"] {
-                    list-style-image: url("chrome://namoroka/content/firefox-1/menu/Menu-arrow-hover.png") !important;
+                    list-style-image: #{asset("menu/Menu-arrow-hover.png")} !important;
                 }
 
                 &[disabled="true"] {
-                    list-style-image: url("chrome://namoroka/content/firefox-1/menu/Menu-arrow-disabled.png") !important;
+                    list-style-image: #{asset("menu/Menu-arrow-disabled.png")} !important;
                 }
             }
 

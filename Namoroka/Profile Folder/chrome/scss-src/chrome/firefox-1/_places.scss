@@ -15,9 +15,9 @@
         .toolbarbutton-icon {
             width: 24px !important;
             height: 24px !important;
-            background-image: url("chrome://namoroka/content/firefox-1/bookmarks/Bookmarks-toolbar.png") !important;
+            background-image: #{asset("bookmarks/Bookmarks-toolbar.png")} !important;
             :root[namoroka-style-1="true"] & {
-                background-image: url("chrome://namoroka/content/firefox-2/bookmarks/Bookmarks-toolbar.png") !important;
+                background-image: #{asset("bookmarks/Bookmarks-toolbar.png")} !important;
             }
             background-position-x: calc(-24px * var(--offset));
             margin-inline-end: 0 !important;

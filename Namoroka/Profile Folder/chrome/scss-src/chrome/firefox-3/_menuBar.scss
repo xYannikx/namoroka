@@ -1,9 +1,9 @@
 #navigator-throbber {
     padding: 1px 6px 2px 4px !important;
-    list-style-image: url("chrome://namoroka/content/firefox-3/icons/notloading_16.png") !important;
+    list-style-image: #{asset("icons/notloading_16.png")} !important;
 
     &[busy="true"] {
-        list-style-image: url("chrome://namoroka/content/firefox-3/icons/loading_16.png") !important;
+        list-style-image: #{asset("icons/loading_16.png")} !important;
         opacity: 1 !important;
     }
 }

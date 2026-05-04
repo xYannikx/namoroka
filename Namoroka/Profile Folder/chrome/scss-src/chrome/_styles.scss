@@ -1,12 +1,24 @@
+@import "mixins";
+
 /* ::::: Firefox 1 ::::: */
+$asset-base: "chrome://namoroka/content/firefox-1";
+
 @import "firefox-1/style";
 
 /* ::::: Firefox 2 ::::: */
 :root[namoroka-style-1] {
+$asset-base: "chrome://namoroka/content/firefox-2" !global;
+
 @import "firefox-2/style";
 }
 
 /* ::::: Firefox 3 ::::: */
 :root[namoroka-style-2] {
+$asset-base: "chrome://namoroka/content/firefox-3" !global;
+
 @import "firefox-3/style";
+
+&[namoroka-appearance-aero] {
+    $asset-base: "chrome://namoroka/content/firefox-3/aero" !global;
+}
 }

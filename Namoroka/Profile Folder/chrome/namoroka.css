@@ -1,8 +1,27 @@
-/* ::::: Firefox 1 ::::: */
 @namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 @namespace html url("http://www.w3.org/1999/xhtml");
+/* ::::: Firefox 1 ::::: */
 :root {
   --toolbar-spritesheet: url("chrome://namoroka/content/firefox-1/Toolbar.png");
+  --arrow-dn: url(chrome://namoroka/content/firefox-1/arrow/arrow-dn.gif);
+  --arrow-dn-dis: url(chrome://namoroka/content/firefox-1/arrow/arrow-dn-dis.gif);
+  --arrow-dn-hov: url(chrome://namoroka/content/firefox-1/arrow/arrow-dn-hov.gif);
+  --arrow-dn-sharp: url(chrome://namoroka/content/firefox-1/arrow/arrow-dn-sharp.gif);
+  --arrow-down: url(chrome://namoroka/content/firefox-1/arrow/arrow-down.png);
+  --arrow-lft: url(chrome://namoroka/content/firefox-1/arrow/arrow-lft.gif);
+  --arrow-lft-dis: url(chrome://namoroka/content/firefox-1/arrow/arrow-lft-dis.gif);
+  --arrow-lft-hov: url(chrome://namoroka/content/firefox-1/arrow/arrow-lft-hov.gif);
+  --arrow-lft-sharp: url(chrome://namoroka/content/firefox-1/arrow/arrow-lft-sharp.gif);
+  --arrow-lft-sharp-end: url(chrome://namoroka/content/firefox-1/arrow/arrow-lft-sharp-end.gif);
+  --arrow-rit: url(chrome://namoroka/content/firefox-1/arrow/arrow-rit.gif);
+  --arrow-rit-dis: url(chrome://namoroka/content/firefox-1/arrow/arrow-rit-dis.gif);
+  --arrow-rit-hov: url(chrome://namoroka/content/firefox-1/arrow/arrow-rit-hov.gif);
+  --arrow-rit-sharp: url(chrome://namoroka/content/firefox-1/arrow/arrow-rit-sharp.gif);
+  --arrow-rit-sharp-end: url(chrome://namoroka/content/firefox-1/arrow/arrow-rit-sharp-end.gif);
+  --arrow-up: url(chrome://namoroka/content/firefox-1/arrow/arrow-up.gif);
+  --arrow-up-dis: url(chrome://namoroka/content/firefox-1/arrow/arrow-up-dis.gif);
+  --arrow-up-hov: url(chrome://namoroka/content/firefox-1/arrow/arrow-up-hov.gif);
+  --arrow-up-sharp: url(chrome://namoroka/content/firefox-1/arrow/arrow-up-sharp.gif);
 }
 :root[namoroka-appearance-small-icons=true] {
   --toolbar-spritesheet: url("chrome://namoroka/content/firefox-1/Toolbar-small.png");
@@ -285,6 +304,11 @@
 :root {
   --browser-area-z-index-toolbox: 2 !important;
 }
+@media (-moz-windows-compositor) {
+  :root {
+    -moz-default-appearance: -moz-win-glass !important;
+  }
+}
 
 #navigator-toolbox {
   appearance: auto !important;
@@ -319,13 +343,6 @@ toolbar[type=menubar],
 menubar {
   border-block-start-width: 0 !important;
   appearance: none !important;
-}
-
-toolbarseparator {
-  margin: 2px 0.2em !important;
-  border-right: 1px solid ThreeDHighlight !important;
-  border-left: 1px solid ThreeDShadow !important;
-  width: 2px !important;
   padding: 0 !important;
 }
 
@@ -338,16 +355,15 @@ toolbarseparator {
   pointer-events: none !important;
   z-index: -1 !important;
 }
-
 @media (-moz-windows-compositor) {
-  :root {
-    -moz-default-appearance: -moz-win-glass !important;
-  }
   #mozGlassHandler {
-    -moz-default-appearance: -moz-win-exclude-glass !important;
-    appearance: -moz-win-exclude-glass !important;
+    -moz-default-appearance: -moz-win-glass !important;
+    appearance: -moz-win-glass !important;
     background-color: -moz-Dialog !important;
   }
+}
+
+@media (-moz-windows-compositor) {
   #tabbrowser-tabbox {
     appearance: none !important;
   }
@@ -487,7 +503,7 @@ toolbarseparator {
 }
 :root:not([namoroka-style-1=true]) #TabsToolbar #alltabs-button {
   width: 18px !important;
-  list-style-image: url("chrome://namoroka/content/firefox-1/arrow/arrow-dn.gif") !important;
+  list-style-image: var(--arrow-dn) !important;
 }
 :root:not([namoroka-style-1=true]) #TabsToolbar #alltabs-button .toolbarbutton-icon {
   width: auto !important;
@@ -586,13 +602,13 @@ toolbarbutton.bookmark-item:not(.subviewbutton) .toolbarbutton-menu-dropmarker {
   height: 100% !important;
   padding: 3px !important;
   list-style-image: none !important;
-  background-image: url("chrome://namoroka/content/firefox-1/arrow/arrow-dn.gif") !important;
+  background-image: var(--arrow-dn) !important;
   background-repeat: no-repeat !important;
   background-position: center center;
 }
 .toolbarbutton-1 .toolbarbutton-menu-dropmarker[disabled=true],
 toolbarbutton.bookmark-item:not(.subviewbutton) .toolbarbutton-menu-dropmarker[disabled=true] {
-  background-image: url("chrome://namoroka/content/firefox-1/arrow/arrow-dn-dis.gif") !important;
+  background-image: var(--arrow-dn-dis) !important;
 }
 .toolbarbutton-1 .toolbarbutton-animatable-box,
 toolbarbutton.bookmark-item:not(.subviewbutton) .toolbarbutton-animatable-box {
@@ -884,6 +900,7 @@ image.default-favicon {
 }
 
 .searchbar-search-button .searchbar-search-icon {
+  list-style-image: url("chrome://namoroka/content/firefox-1/Search-bar.png") !important;
   margin-inline: 3px 8px !important;
 }
 .searchbar-search-button .searchbar-search-icon-overlay {
@@ -1031,8 +1048,6 @@ statusbarpanel#statusbar-display {
   display: none !important;
 }
 
-@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
-@namespace html url("http://www.w3.org/1999/xhtml");
 xul|dialog[inbrowserwindow] {
   padding-block: 8px 10px !important;
   padding-inline: 8px 10px !important;
@@ -1296,7 +1311,7 @@ findbar[namoroka-initialized=true] .find-status-icon[status=wrapped] {
     height: 11px !important;
     margin: 1px !important;
     content: none !important;
-    background-image: url("chrome://namoroka/content/firefox-1/arrow/arrow-dn.gif") !important;
+    background-image: var(--arrow-dn) !important;
     background-repeat: no-repeat !important;
     background-position: center center !important;
   }
@@ -1900,7 +1915,7 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
   padding-inline: 4px !important;
   background-color: -moz-Dialog !important;
   background-image: url("chrome://namoroka/content/firefox-2/icons/alltabs-box-end-bkgnd.png") !important;
-  list-style-image: url("chrome://namoroka/content/firefox-1/arrow/arrow-dn.gif") !important;
+  list-style-image: var(--arrow-dn) !important;
   border-top-left-radius: var(--tab-background-radius) !important;
 }
 :root[namoroka-style-1] #TabsToolbar #alltabs-button:hover, :root[namoroka-style-1] #TabsToolbar #alltabs-button[open=true] {
@@ -2044,6 +2059,7 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(0, 0, 0, 0.08) 50%, rgba(0, 0, 0, 0.13) 100%) !important;
 }
 :root[namoroka-style-1]:not([namoroka-style-2=true]) #searchbar .searchbar-search-button .searchbar-search-icon {
+  list-style-image: url("chrome://namoroka/content/firefox-2/Search-bar.png") !important;
   margin: 0 !important;
   margin-inline-start: 3px !important;
 }
@@ -2053,7 +2069,7 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
   align-self: center !important;
   margin: 0 !important;
   margin-inline: 3px !important;
-  list-style-image: url("chrome://namoroka/content/firefox-1/arrow/arrow-dn.gif") !important;
+  list-style-image: var(--arrow-dn) !important;
 }
 :root[namoroka-style-1]:not([namoroka-style-2=true]) #searchbar .searchbar-textbox {
   border-inline: 1px solid #96969D !important;
@@ -2147,6 +2163,25 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
 }
 :root[namoroka-style-2] {
   --toolbar-spritesheet: url("chrome://namoroka/content/firefox-3/Toolbar.png");
+  --arrow-dn: url(chrome://namoroka/content/firefox-3/arrow/arrow-dn.gif) !important;
+  --arrow-dn-dis: url(chrome://namoroka/content/firefox-3/arrow/arrow-dn-dis.gif) !important;
+  --arrow-dn-hov: url(chrome://namoroka/content/firefox-3/arrow/arrow-dn-hov.gif) !important;
+  --arrow-dn-sharp: url(chrome://namoroka/content/firefox-3/arrow/arrow-dn-sharp.gif) !important;
+  --arrow-down: url(chrome://namoroka/content/firefox-3/arrow/arrow-down.png) !important;
+  --arrow-lft: url(chrome://namoroka/content/firefox-3/arrow/arrow-lft.gif) !important;
+  --arrow-lft-dis: url(chrome://namoroka/content/firefox-3/arrow/arrow-lft-dis.gif) !important;
+  --arrow-lft-hov: url(chrome://namoroka/content/firefox-3/arrow/arrow-lft-hov.gif) !important;
+  --arrow-lft-sharp: url(chrome://namoroka/content/firefox-3/arrow/arrow-lft-sharp.gif) !important;
+  --arrow-lft-sharp-end: url(chrome://namoroka/content/firefox-3/arrow/arrow-lft-sharp-end.gif) !important;
+  --arrow-rit: url(chrome://namoroka/content/firefox-3/arrow/arrow-rit.gif) !important;
+  --arrow-rit-dis: url(chrome://namoroka/content/firefox-3/arrow/arrow-rit-dis.gif) !important;
+  --arrow-rit-hov: url(chrome://namoroka/content/firefox-3/arrow/arrow-rit-hov.gif) !important;
+  --arrow-rit-sharp: url(chrome://namoroka/content/firefox-3/arrow/arrow-rit-sharp.gif) !important;
+  --arrow-rit-sharp-end: url(chrome://namoroka/content/firefox-3/arrow/arrow-rit-sharp-end.gif) !important;
+  --arrow-up: url(chrome://namoroka/content/firefox-3/arrow/arrow-up.gif) !important;
+  --arrow-up-dis: url(chrome://namoroka/content/firefox-3/arrow/arrow-up-dis.gif) !important;
+  --arrow-up-hov: url(chrome://namoroka/content/firefox-3/arrow/arrow-up-hov.gif) !important;
+  --arrow-up-sharp: url(chrome://namoroka/content/firefox-3/arrow/arrow-up-sharp.gif) !important;
 }
 :root[namoroka-style-2][namoroka-appearance-small-icons=true] {
   --toolbar-spritesheet: url("chrome://namoroka/content/firefox-3/Toolbar-small.png");
@@ -2473,7 +2508,7 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
   --urlbar-root-height: 22px !important;
   --urlbar-container-padding: 0 !important;
   --urlbar-margin-inline: 7px !important;
-  --secure-icon: url("chrome://namoroka/content/firefox-2/Secure.png") !important;
+  --secure-icon: url("chrome://namoroka/content/firefox-3/Secure.png") !important;
   --navbar-textbox-buttons: url("chrome://namoroka/content/firefox-3/urlbar/navbar-textbox-buttons.png") !important;
   --search-glass: url("chrome://namoroka/content/firefox-3/Search-glass.png") !important;
   --search-close: url("chrome://namoroka/content/firefox-3/Search-close.png") !important;
@@ -2487,9 +2522,9 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
   opacity: 1 !important;
 }
 :root[namoroka-style-2][namoroka-appearance-aero] {
-  --navbar-textbox-buttons: url("chrome://namoroka/content/firefox-3/aero/urlbar/navbar-textbox-buttons.png") !important;
-  --search-glass: url("chrome://namoroka/content/firefox-3/aero/Search-glass.png") !important;
-  --search-close: url("chrome://namoroka/content/firefox-3/aero/Search-close.png") !important;
+  --navbar-textbox-buttons: url("chrome://namoroka/content/firefox-3/urlbar/navbar-textbox-buttons.png") !important;
+  --search-glass: url("chrome://namoroka/content/firefox-3/Search-glass.png") !important;
+  --search-close: url("chrome://namoroka/content/firefox-3/Search-close.png") !important;
 }
 @media not (-moz-windows-classic) {
   :root[namoroka-style-2][namoroka-appearance-aero] .searchbar-textbox::placeholder {
@@ -2663,7 +2698,7 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
   display: flex;
   width: 5px !important;
   height: 3px !important;
-  background-image: url("chrome://namoroka/content/firefox-3/arrow/arrow-dn.gif") !important;
+  background-image: var(--arrow-dn) !important;
 }
 :root[namoroka-style-2] #urlbar-container #urlbar #page-action-buttons {
   height: 18px !important;
@@ -2734,7 +2769,7 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
   margin-inline-start: 3px !important;
   width: 5px !important;
   height: 3px !important;
-  list-style-image: url("chrome://namoroka/content/firefox-3/arrow/arrow-dn.gif") !important;
+  list-style-image: var(--arrow-dn) !important;
 }
 :root[namoroka-style-2] #searchbar .search-go-container .search-go-button {
   display: flex !important;
@@ -2912,10 +2947,10 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
     height: 5px !important;
     margin: 1px !important;
     content: none !important;
-    background-image: url("chrome://namoroka/content/firefox-3/arrow/arrow-dn.gif") !important;
+    background-image: var(--arrow-dn) !important;
   }
   :root[namoroka-style-2] #viewButton .button-menu-dropmarker[disabled=true] {
-    background-image: url("chrome://namoroka/content/firefox-3/arrow/arrow-dn-dis.gif") !important;
+    background-image: var(--arrow-dn-dis) !important;
   }
 }
 :root[namoroka-style-2] treechildren::-moz-tree-image(query, OrganizerQuery_allbms_____v) {

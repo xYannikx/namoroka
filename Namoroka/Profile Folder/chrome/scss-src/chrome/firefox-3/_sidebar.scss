@@ -5,7 +5,7 @@
         }
 
         #sidebar-close {
-            background-image: url("chrome://namoroka/content/firefox-3/icons/closeSidebar.png") !important;
+            background-image: #{asset("icons/closeSidebar.png")} !important;
         }
     }
 }
@@ -14,7 +14,7 @@
     #sidebar-box {
         #sidebar-header {
             #sidebar-close {
-                background-image: url("chrome://namoroka/content/firefox-3/aero/icons/closeSidebar.png") !important;
+                background-image: #{asset("aero/icons/closeSidebar.png")} !important;
             }
         }
     }
@@ -32,10 +32,10 @@
             height: 5px !important;
             margin: 1px !important;
             content: none !important;
-            background-image: url("chrome://namoroka/content/firefox-3/arrow/arrow-dn.gif") !important;
+            background-image: var(--arrow-dn) !important;
             
             &[disabled="true"] {
-                background-image: url("chrome://namoroka/content/firefox-3/arrow/arrow-dn-dis.gif") !important;
+                background-image: var(--arrow-dn-dis) !important;
             }
         }
     }

@@ -65,12 +65,12 @@
             height: 11px !important;
             margin: 1px !important;
             content: none !important;
-            background-image: url("chrome://namoroka/content/firefox-1/arrow/arrow-dn.gif") !important;
+            background-image: var(--arrow-dn) !important;
             background-repeat: no-repeat !important;
             background-position: center center !important;
 
             &[disabled="true"] {
-                background-image: url("chrome://namoroka/content/firefox-1/arrow/arrow-dn-dis.gif") !important;
+                background-image: var(--arrow-dn-dis) !important;
             }
         }
     }

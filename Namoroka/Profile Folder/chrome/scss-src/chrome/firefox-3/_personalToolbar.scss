@@ -1,10 +1,10 @@
 & {
-    --folder-item: url("chrome://namoroka/content/firefox-3/icons/folder-item.png") !important;
-    --query: url("chrome://namoroka/content/firefox-3/icons/query.png") !important;
+    --folder-item: #{asset("icons/folder-item.png")} !important;
+    --query: #{asset("icons/query.png")} !important;
 
     &[namoroka-appearance-aero] {
-        --folder-item: url("chrome://namoroka/content/firefox-3/aero/icons/folder-item.png") !important;
-        --query: url("chrome://namoroka/content/firefox-3/aero/icons/query.png") !important;
+        --folder-item: #{asset("aero/icons/folder-item.png")} !important;
+        --query: #{asset("aero/icons/query.png")} !important;
     }
 }
 

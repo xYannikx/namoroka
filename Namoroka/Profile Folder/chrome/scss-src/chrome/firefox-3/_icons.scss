@@ -1,16 +1,22 @@
 & {
-    --toolbar-spritesheet: url("chrome://namoroka/content/firefox-3/Toolbar.png");
+    --toolbar-spritesheet: #{asset("Toolbar.png")};
 
     &[namoroka-appearance-small-icons="true"] {
-        --toolbar-spritesheet: url("chrome://namoroka/content/firefox-3/Toolbar-small.png");
+        --toolbar-spritesheet: #{asset("Toolbar-small.png")};
     }
 
     &[namoroka-appearance-aero] {
-        --toolbar-spritesheet: url("chrome://namoroka/content/firefox-3/aero/Toolbar.png");
+        --toolbar-spritesheet: #{asset("aero/Toolbar.png")};
 
         &[namoroka-appearance-small-icons="true"] {
-            --toolbar-spritesheet: url("chrome://namoroka/content/firefox-3/aero/Toolbar-small.png");
+            --toolbar-spritesheet: #{asset("aero/Toolbar-small.png")};
         }    
+    }
+
+    $arrow-path: "chrome://namoroka/content/firefox-3/arrow/";
+
+    @each $file in $arrow-files {
+        --#{strip-ext($file)}: url(#{$arrow-path}#{$file}) !important;
     }
 }
 

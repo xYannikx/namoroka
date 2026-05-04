@@ -347,10 +347,10 @@ toolbarbutton menupopup[placespopup] menuseparator::before {
   padding: 1px 5px 2px 4px !important;
   min-width: 0 !important;
   background-color: transparent !important;
-  list-style-image: url("chrome://namoroka/content/firefox-1/Throbber-small.png") !important;
+  list-style-image: asset("Throbber-small.png") !important;
 }
 #navigator-throbber[busy=true] {
-  list-style-image: url("chrome://namoroka/content/firefox-1/Throbber-small.gif") !important;
+  list-style-image: asset("Throbber-small.gif") !important;
   opacity: 0.5 !important;
 }
 

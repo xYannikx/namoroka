@@ -3,7 +3,7 @@ findbar[namoroka-initialized="true"] {
         > .toolbarbutton-icon {
             width: 14px !important;
             height: 14px !important;
-            background-image: url("chrome://namoroka/content/firefox-3/icons/closeSidebar.png") !important;
+            background-image: #{asset("icons/closeSidebar.png")} !important;
         }
 
         &:hover {
@@ -23,17 +23,17 @@ findbar[namoroka-initialized="true"] {
     .findbar-find-next,
     .findbar-highlight {
         .toolbarbutton-icon {
-            background-image: url("chrome://namoroka/content/firefox-3/findbar/find.png") !important;
+            background-image: #{asset("findbar/find.png")} !important;
         }
     }
     
     .find-status-icon {
         &[status="notfound"] {
-            list-style-image: url("chrome://namoroka/content/firefox-3/findbar/notfound.png") !important;
+            list-style-image: #{asset("findbar/notfound.png")} !important;
         }
 
         &[status="wrapped"] {
-            list-style-image: url("chrome://namoroka/content/firefox-3/findbar/wrap.png") !important;
+            list-style-image: #{asset("findbar/wrap.png")} !important;
         }
     }
 }   
@@ -42,7 +42,7 @@ findbar[namoroka-initialized="true"] {
     findbar[namoroka-initialized="true"] {
         .findbar-closebutton {
             > .toolbarbutton-icon {
-                background-image: url("chrome://namoroka/content/firefox-3/aero/icons/closeSidebar.png") !important;
+                background-image: #{asset("aero/icons/closeSidebar.png")} !important;
             }
         }
 
@@ -50,17 +50,17 @@ findbar[namoroka-initialized="true"] {
         .findbar-find-next,
         .findbar-highlight {
             .toolbarbutton-icon {
-                background-image: url("chrome://namoroka/content/firefox-3/aero/findbar/find.png") !important;
+                background-image: #{asset("aero/findbar/find.png")} !important;
             }
         }
 
         .find-status-icon {
             &[status="notfound"] {
-                list-style-image: url("chrome://namoroka/content/firefox-3/aero/findbar/notfound.png") !important;
+                list-style-image: #{asset("aero/findbar/notfound.png")} !important;
             }
 
             &[status="wrapped"] {
-                list-style-image: url("chrome://namoroka/content/firefox-3/aero/findbar/wrap.png") !important;
+                list-style-image: #{asset("aero/findbar/wrap.png")} !important;
             }
         }
     }

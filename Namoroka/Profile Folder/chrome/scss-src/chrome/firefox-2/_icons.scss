@@ -1,8 +1,8 @@
 & {
-    --toolbar-spritesheet: url("chrome://namoroka/content/firefox-2/Toolbar.png");
+    --toolbar-spritesheet: #{asset("Toolbar.png")};
 
     &[namoroka-appearance-small-icons="true"] {
-        --toolbar-spritesheet: url("chrome://namoroka/content/firefox-2/Toolbar-small.png");
+        --toolbar-spritesheet: #{asset("Toolbar-small.png")};
     }
 }
 

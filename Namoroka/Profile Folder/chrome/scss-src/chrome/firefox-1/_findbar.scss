@@ -24,7 +24,7 @@ findbar[namoroka-initialized="true"] {
         > .toolbarbutton-icon {
             width: 16px !important;
             height: 16px !important;
-            background-image: url("chrome://namoroka/content/firefox-1/icons/close.png") !important;
+            background-image: #{asset("icons/close.png")} !important;
             margin-inline: 2px !important;
         }
 
@@ -100,7 +100,7 @@ findbar[namoroka-initialized="true"] {
         .toolbarbutton-icon {
             width: 16px !important;
             height: 16px !important;
-            background-image: url("chrome://namoroka/content/firefox-1/findbar/find.png") !important;
+            background-image: #{asset("findbar/find.png")} !important;
             opacity: 1 !important;
             margin-inline-end: 5px !important;
         }
@@ -182,11 +182,11 @@ findbar[namoroka-initialized="true"] {
         height: 16p !important;
 
         &[status="notfound"] {
-            list-style-image: url("chrome://namoroka/content/firefox-1/findbar/notfound.png") !important;
+            list-style-image: #{asset("findbar/notfound.png")} !important;
         }
 
         &[status="wrapped"] {
-            list-style-image: url("chrome://namoroka/content/firefox-1/findbar/wrap.png") !important;
+            list-style-image: #{asset("findbar/wrap.png")} !important;
         }
     }
 }   

@@ -1,5 +1,5 @@
 :root {
-    --folder-item: url("chrome://namoroka/content/firefox-1/folder-item.png") !important;
+    --folder-item: #{asset("folder-item.png")} !important;
 }
 
 #PersonalToolbar {
@@ -41,7 +41,7 @@
 #nav-bar #nav-bar-overflow-button {
     align-items: center !important;
     padding: 3px !important;
-    list-style-image: url("chrome://namoroka/content/firefox-1/toolbar/chevron.gif") !important;
+    list-style-image: #{asset("toolbar/chevron.gif")} !important;
 
     &:hover:active,
     &[open="true"] {
@@ -77,16 +77,16 @@ toolbarbutton.bookmark-item[livemark="true"] {
 
 toolbarbutton.bookmark-item[livemark="true"] {
     .toolbarbutton-icon {
-        background-image: url("chrome://namoroka/content/firefox-1/livemark-folder.png") !important;
+        background-image: #{asset("livemark-folder.png")} !important;
         background-position-x: -16px !important;
 
         :root[namoroka-style-2] & {
-            background-image: url("chrome://namoroka/content/firefox-3/livemark-folder.png") !important;
+            background-image: #{asset("livemark-folder.png")} !important;
             background-position-x: 0 !important;
         }
 
         :root[namoroka-style-2][namoroka-appearance-aero] & {
-            background-image: url("chrome://namoroka/content/firefox-3/aero/livemark-folder.png") !important;
+            background-image: #{asset("aero/livemark-folder.png")} !important;
         }
     }
 

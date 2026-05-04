@@ -33,6 +33,7 @@ toolbarseparator {
   border-right: 1px solid ThreeDHighlight;
   border-left: 1px solid ThreeDShadow;
   width: 2px;
+  padding: 0;
 }
 
 toolbarspacer {

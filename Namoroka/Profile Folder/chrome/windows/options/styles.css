@@ -228,7 +228,7 @@ button[type=disclosure] {
   max-height: 14px;
   border: 0;
   padding: 0;
-  list-style-image: url("chrome://namoroka/content/firefox-1/twisty-clsd.png");
+  list-style-image: asset("twisty-clsd.png");
   background-color: transparent;
 }
 button[type=disclosure]:focus-within {
@@ -242,7 +242,7 @@ button[type=disclosure]:active .button-icon,
 }
 
 .expanded button[type=disclosure] {
-  list-style-image: url("chrome://namoroka/content/firefox-1/twisty-open.png");
+  list-style-image: asset("twisty-open.png");
 }
 
 .expander {

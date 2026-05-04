@@ -118,3 +118,11 @@
 @mixin default-favicon($url, $maxStyle: 5) {
     @include replace-favicon($url, "images/defaultFavicon.png");
 }
+
+@function strip-ext($file) {
+    @return str-slice($file, 1, str-index($file, ".") - 1);
+}
+
+@function asset($path) {
+    @return url("#{$asset-base}/#{$path}");
+}
