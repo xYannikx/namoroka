@@ -8,8 +8,9 @@
 var g_NamorokaSearchManager;
 
 {
-	var { LocaleUtils, waitForElement } = ChromeUtils.importESModule("chrome://modules/content/NamorokaUtils.sys.mjs");
+	var { LocaleUtils, waitForElement, renderElement } = ChromeUtils.importESModule("chrome://modules/content/NamorokaUtils.sys.mjs");
     waitForElement = waitForElement.bind(window);
+    renderElement = renderElement.bind(window);
 
     let menusBundle = "chrome://namoroka/locale/properties/menus.properties";
 
@@ -91,6 +92,41 @@ var g_NamorokaSearchManager;
 				
                 searchButton.addEventListener("mousedown", this.handleSearchButtonClick.bind(this));
 			}
+
+			let stackFragment = renderElement("xul:stack", {
+				class: "searchbar-engine-button-stack",
+			},
+			[
+				renderElement("xul:vbox", {flex: "1"}, [
+					renderElement("xul:image", {
+						class: "searchbar-engine-button-top searchbar-engine-button-bkgnd",
+					}),
+					renderElement("xul:image", {
+						flex: "1",
+						class: "searchbar-engine-button-mid-top searchbar-engine-button-bkgnd",
+					}),
+					renderElement("xul:image", {
+						flex: "1",
+						class: "searchbar-engine-button-mid-bottom searchbar-engine-button-bkgnd",
+					}),
+					renderElement("xul:image", {
+						class: "searchbar-engine-button-bottom searchbar-engine-button-bkgnd",
+					}),
+				]),
+				renderElement("xul:hbox", {
+					align: "center",
+					class: "searchbar-engine-image-container",
+				})
+			]);
+
+			searchButton.appendChild(stackFragment);
+
+			let searchIcon = await waitForElement(".searchbar-search-icon");
+			let searchIconOverlay = await waitForElement(".searchbar-search-icon-overlay");
+			let searchEngineImageContainer = await waitForElement(".searchbar-engine-image-container");
+
+			searchEngineImageContainer.appendChild(searchIcon);
+			searchEngineImageContainer.appendChild(searchIconOverlay);
 		}
 
         handleSearchButtonClick(event) {

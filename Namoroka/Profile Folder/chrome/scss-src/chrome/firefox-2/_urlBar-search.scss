@@ -127,15 +127,10 @@
         margin-block-start: -1px !important;
 
         .searchbar-search-button {
-            border: 1px solid #A4A4AB !important;
-            border-inline-end-width: 0 !important;
-            background-color: -moz-Dialog !important;
-            box-shadow: inset 0 0 0 1px -moz-Dialog !important;
-            background-image: linear-gradient(to bottom, transparent 0%, transparent 50%, rgb(0 0 0 / 4%) 50%, rgb(0 0 0 / 6%) 100%) !important;
-
-            &:hover {
-                background-image: linear-gradient(to bottom, rgb(255 255 255 / 10%) 0%, rgb(255 255 255 / 10%) 50%, rgb(0 0 0 / 8%) 50%, rgb(0 0 0 / 13%) 100%) !important;
-            }
+            width: 32px;
+            margin: 0px;
+            margin-inline-end: -1px;
+            padding: 0px;
 
             .searchbar-search-icon {
                 list-style-image: #{asset("Search-bar.png")} !important;
@@ -150,6 +145,81 @@
                 margin: 0 !important;
                 margin-inline: 3px !important;
                 list-style-image: var(--arrow-dn) !important;
+            }
+
+            .searchbar-engine-button-stack {
+                height: 100% !important;
+
+                .searchbar-engine-button-bkgnd {
+                    width: 32px;
+                }
+
+                .searchbar-engine-button-top {
+                    list-style-image: #{asset("Search-provider-bkgnd.png")} !important;
+                    -moz-image-region: rect(0px, 32px, 10px, 0px);
+                    height: 10px;
+                }
+
+                .searchbar-engine-button-mid-top {
+                    background-image: #{asset("Search-provider-mid-top.png")} !important;
+                }
+
+                .searchbar-engine-button-mid-bottom {
+                    background-image: #{asset("Search-provider-mid-bottom.png")} !important;
+                }
+
+                .searchbar-engine-button-bottom {
+                    list-style-image: #{asset("Search-provider-bkgnd.png")} !important;
+                    -moz-image-region: rect(12px, 32px, 22px, 0px);
+                    height: 10px;
+                }
+
+                &:hover {
+                    .searchbar-engine-button-top {
+                        -moz-image-region: rect(0px, 64px, 10px, 32px);
+                    }
+
+                    .searchbar-engine-button-mid-top,
+                    .searchbar-engine-button-mid-bottom {
+                        background-position: -32px 0px;
+                    }
+
+                    .searchbar-engine-button-bottom {
+                        -moz-image-region: rect(12px, 64px, 22px, 32px);
+                    }
+                }
+            }
+
+            &[addengines="true"] {
+                .searchbar-engine-button-stack {
+                    .searchbar-engine-button-top {
+                    -moz-image-region: rect(0px, 128px, 10px, 96px);
+                    }
+
+                    .searchbar-engine-button-mid-top,
+                    .searchbar-engine-button-mid-bottom {
+                        background-position: -96px 0px;
+                    }
+
+                    .searchbar-engine-button-bottom {
+                        -moz-image-region: rect(12px, 128px, 22px, 96px);
+                    }
+
+                    .searchbar-engine-button-top {
+                        -moz-image-region: rect(0px, 64px, 10px, 32px);
+                    }
+                }
+            
+                &:hover {
+                    .searchbar-engine-button-mid-top,
+                    .searchbar-engine-button-mid-bottom {
+                        background-position: -32px 0px;
+                    }
+
+                    .searchbar-engine-button-bottom {
+                        -moz-image-region: rect(12px, 64px, 22px, 32px);
+                    }
+                }
             }
         }
 

@@ -1,3 +1,5 @@
+@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+@namespace html url("http://www.w3.org/1999/xhtml");
 /* ::::: Firefox 1 ::::: */
 #PopupSearchAutoComplete::part(content) {
   width: calc(var(--panel-width) - 35px) !important;
@@ -24,8 +26,8 @@
 }
 
 :host([namoroka-style-2]) {
-  --search-glass: asset("Search-glass.png") !important;
-  --search-close: asset("Search-close.png") !important;
+  --search-glass: url("chrome://namoroka/content/firefox-1/Search-glass.png") !important;
+  --search-close: url("chrome://namoroka/content/firefox-1/Search-close.png") !important;
 }
 :host([namoroka-style-2]) .textbox-search-icons {
   display: grid !important;
@@ -62,8 +64,8 @@
 }
 
 :host([namoroka-style-2][namoroka-appearance-aero=true]) {
-  --search-glass: asset("aero/Search-glass.png") !important;
-  --search-close: asset("aero/Search-close.png") !important;
+  --search-glass: url("chrome://namoroka/content/firefox-1/aero/Search-glass.png") !important;
+  --search-close: url("chrome://namoroka/content/firefox-1/aero/Search-close.png") !important;
 }
 
 toolbarbutton menupopup[placespopup] {
@@ -221,7 +223,7 @@ toolbarbutton menupopup[placespopup] menuseparator::before {
   }
   :root:not([namoroka-style-1]) menupopup:not(#ContentSelectDropdownPopup) menuitem[checked=true],
   :root:not([namoroka-style-1]) toolbarbutton menupopup[placespopup] menuitem[checked=true] {
-    list-style-image: asset("menu/menu-check.gif") !important;
+    list-style-image: url("chrome://namoroka/content/firefox-1/menu/menu-check.gif") !important;
   }
   :root:not([namoroka-style-1]) menupopup:not(#ContentSelectDropdownPopup) menuitem[checked=true] .menu-iconic-icon,
   :root:not([namoroka-style-1]) toolbarbutton menupopup[placespopup] menuitem[checked=true] .menu-iconic-icon {
@@ -229,23 +231,23 @@ toolbarbutton menupopup[placespopup] menuseparator::before {
   }
   :root:not([namoroka-style-1]) menupopup:not(#ContentSelectDropdownPopup) menuitem[checked=true][disabled=true],
   :root:not([namoroka-style-1]) toolbarbutton menupopup[placespopup] menuitem[checked=true][disabled=true] {
-    list-style-image: asset("menu/menu-check-disabled.gif") !important;
+    list-style-image: url("chrome://namoroka/content/firefox-1/menu/menu-check-disabled.gif") !important;
   }
   :root:not([namoroka-style-1]) menupopup:not(#ContentSelectDropdownPopup) menuitem[checked=true][_moz-menuactive=true],
   :root:not([namoroka-style-1]) toolbarbutton menupopup[placespopup] menuitem[checked=true][_moz-menuactive=true] {
-    list-style-image: asset("menu/menu-check-hover.gif") !important;
+    list-style-image: url("chrome://namoroka/content/firefox-1/menu/menu-check-hover.gif") !important;
   }
   :root:not([namoroka-style-1]) menupopup:not(#ContentSelectDropdownPopup) menuitem[checked=true][type=radio],
   :root:not([namoroka-style-1]) toolbarbutton menupopup[placespopup] menuitem[checked=true][type=radio] {
-    list-style-image: asset("menu/menu-radio.gif") !important;
+    list-style-image: url("chrome://namoroka/content/firefox-1/menu/menu-radio.gif") !important;
   }
   :root:not([namoroka-style-1]) menupopup:not(#ContentSelectDropdownPopup) menuitem[checked=true][type=radio][disabled=true],
   :root:not([namoroka-style-1]) toolbarbutton menupopup[placespopup] menuitem[checked=true][type=radio][disabled=true] {
-    list-style-image: asset("menu/menu-radio-disabled.gif") !important;
+    list-style-image: url("chrome://namoroka/content/firefox-1/menu/menu-radio-disabled.gif") !important;
   }
   :root:not([namoroka-style-1]) menupopup:not(#ContentSelectDropdownPopup) menuitem[checked=true][type=radio][_moz-menuactive=true],
   :root:not([namoroka-style-1]) toolbarbutton menupopup[placespopup] menuitem[checked=true][type=radio][_moz-menuactive=true] {
-    list-style-image: asset("menu/menu-radio-hover.gif") !important;
+    list-style-image: url("chrome://namoroka/content/firefox-1/menu/menu-radio-hover.gif") !important;
   }
   :root:not([namoroka-style-1]) menupopup:not(#ContentSelectDropdownPopup) .menu-right,
   :root:not([namoroka-style-1]) toolbarbutton menupopup[placespopup] .menu-right {
@@ -253,15 +255,15 @@ toolbarbutton menupopup[placespopup] menuseparator::before {
     padding: 0 !important;
     appearance: none !important;
     margin: 0px 0px 0px 6px !important;
-    list-style-image: asset("menu/Menu-arrow.png") !important;
+    list-style-image: url("chrome://namoroka/content/firefox-1/menu/Menu-arrow.png") !important;
   }
   :root:not([namoroka-style-1]) menupopup:not(#ContentSelectDropdownPopup) .menu-right[_moz-menuactive=true],
   :root:not([namoroka-style-1]) toolbarbutton menupopup[placespopup] .menu-right[_moz-menuactive=true] {
-    list-style-image: asset("menu/Menu-arrow-hover.png") !important;
+    list-style-image: url("chrome://namoroka/content/firefox-1/menu/Menu-arrow-hover.png") !important;
   }
   :root:not([namoroka-style-1]) menupopup:not(#ContentSelectDropdownPopup) .menu-right[disabled=true],
   :root:not([namoroka-style-1]) toolbarbutton menupopup[placespopup] .menu-right[disabled=true] {
-    list-style-image: asset("menu/Menu-arrow-disabled.png") !important;
+    list-style-image: url("chrome://namoroka/content/firefox-1/menu/Menu-arrow-disabled.png") !important;
   }
   :root:not([namoroka-style-1]) menupopup:not(#ContentSelectDropdownPopup)::part(content),
   :root:not([namoroka-style-1]) toolbarbutton menupopup[placespopup]::part(content) {
@@ -294,23 +296,23 @@ toolbarbutton menupopup[placespopup] menuseparator::before {
 .autoscroller {
   width: 28px !important;
   height: 28px !important;
-  background: asset("autoscroll_all.png") !important;
+  background: url("chrome://namoroka/content/firefox-1/autoscroll_all.png") !important;
 }
 .autoscroller[scrolldir=NS] {
-  background: asset("autoscroll_v.png") !important;
+  background: url("chrome://namoroka/content/firefox-1/autoscroll_v.png") !important;
 }
 .autoscroller[scrolldir=EW] {
-  background: asset("autoscroll_h.png") !important;
+  background: url("chrome://namoroka/content/firefox-1/autoscroll_h.png") !important;
 }
 .autoscroller::part(content) {
   display: none !important;
 }
 :root[namoroka-style-2] .autoscroller {
-  background: asset("autoscroll.png") !important;
+  background: url("chrome://namoroka/content/firefox-1/autoscroll.png") !important;
   background-position-x: -56px !important;
 }
 :root[namoroka-style-2] .autoscroller[namoroka-appearance-aero] {
-  background: asset("aero/autoscroll.png") !important;
+  background: url("chrome://namoroka/content/firefox-1/aero/autoscroll.png") !important;
 }
 :root[namoroka-style-2] .autoscroller[scrolldir=NS] {
   background-position-y: -28px !important;
@@ -347,10 +349,10 @@ toolbarbutton menupopup[placespopup] menuseparator::before {
   padding: 1px 5px 2px 4px !important;
   min-width: 0 !important;
   background-color: transparent !important;
-  list-style-image: asset("Throbber-small.png") !important;
+  list-style-image: url("chrome://namoroka/content/firefox-1/Throbber-small.png") !important;
 }
 #navigator-throbber[busy=true] {
-  list-style-image: asset("Throbber-small.gif") !important;
+  list-style-image: url("chrome://namoroka/content/firefox-1/Throbber-small.gif") !important;
   opacity: 0.5 !important;
 }
 
@@ -410,8 +412,8 @@ menuitem:is([default=true], .spell-suggestion), menucaption {
 
 /* ::::: Firefox 2 ::::: */
 :root[namoroka-style-1] :root[namoroka-style-1] {
-  --arrowscrollbox-left-image: asset("icons/tab-arrow-start.png");
-  --arrowscrollbox-right-image: asset("icons/tab-arrow-end.png");
+  --arrowscrollbox-left-image: url("chrome://namoroka/content/firefox-2/icons/tab-arrow-start.png");
+  --arrowscrollbox-right-image: url("chrome://namoroka/content/firefox-2/icons/tab-arrow-end.png");
 }
 :root[namoroka-style-1] #tabbrowser-arrowscrollbox::part(overflow-start-indicator),
 :root[namoroka-style-1] #tabbrowser-arrowscrollbox::part(overflow-end-indicator) {
@@ -430,23 +432,23 @@ menuitem:is([default=true], .spell-suggestion), menucaption {
 }
 :root[namoroka-style-1] #tabbrowser-arrowscrollbox[namoroka-style-1]::part(scrollbutton-up) {
   border-top-right-radius: 5px !important;
-  background-image: asset("icons/tab-arrow-start-bkgnd-enabled.png") !important;
+  background-image: url("chrome://namoroka/content/firefox-2/icons/tab-arrow-start-bkgnd-enabled.png") !important;
 }
 :root[namoroka-style-1] #tabbrowser-arrowscrollbox[namoroka-style-1]:not([scrolledtostart])::part(scrollbutton-up):hover {
-  background-image: asset("icons/tab-arrow-start-bkgnd-hover.png") !important;
+  background-image: url("chrome://namoroka/content/firefox-2/icons/tab-arrow-start-bkgnd-hover.png") !important;
 }
 :root[namoroka-style-1] #tabbrowser-arrowscrollbox[namoroka-style-1][scrolledtostart]::part(scrollbutton-up) {
-  background-image: asset("icons/tab-arrow-start-bkgnd-disabled.png") !important;
+  background-image: url("chrome://namoroka/content/firefox-2/icons/tab-arrow-start-bkgnd-disabled.png") !important;
 }
 :root[namoroka-style-1] #tabbrowser-arrowscrollbox[namoroka-style-1]::part(scrollbutton-down) {
   border-top-left-radius: 5px !important;
-  background-image: asset("icons/tab-arrow-end-bkgnd-enabled.png") !important;
+  background-image: url("chrome://namoroka/content/firefox-2/icons/tab-arrow-end-bkgnd-enabled.png") !important;
 }
 :root[namoroka-style-1] #tabbrowser-arrowscrollbox[namoroka-style-1]:not([scrolledtoend])::part(scrollbutton-down):hover {
-  background-image: asset("icons/tab-arrow-end-bkgnd-hover.png") !important;
+  background-image: url("chrome://namoroka/content/firefox-2/icons/tab-arrow-end-bkgnd-hover.png") !important;
 }
 :root[namoroka-style-1] #tabbrowser-arrowscrollbox[namoroka-style-1][scrolledtoend]::part(scrollbutton-down) {
-  background-image: asset("icons/tab-arrow-end-bkgnd-disabled.png") !important;
+  background-image: url("chrome://namoroka/content/firefox-2/icons/tab-arrow-end-bkgnd-disabled.png") !important;
 }
 :root[namoroka-style-1] #tabbrowser-arrowscrollbox:not([overflowing=true])::part(scrollbox) {
   padding-inline-start: 2px !important;
@@ -603,7 +605,7 @@ menuitem:is([default=true], .spell-suggestion), menucaption {
   }
   :root[namoroka-style-1]:not([namoroka-style-2]) menupopup:not(#ContentSelectDropdownPopup) menuitem[checked=true],
   :root[namoroka-style-1]:not([namoroka-style-2]) toolbarbutton menupopup[placespopup] menuitem[checked=true] {
-    list-style-image: asset("menu/menu-check.gif") !important;
+    list-style-image: url("chrome://namoroka/content/firefox-2/menu/menu-check.gif") !important;
   }
   :root[namoroka-style-1]:not([namoroka-style-2]) menupopup:not(#ContentSelectDropdownPopup) menuitem[checked=true] .menu-iconic-icon,
   :root[namoroka-style-1]:not([namoroka-style-2]) toolbarbutton menupopup[placespopup] menuitem[checked=true] .menu-iconic-icon {
@@ -611,23 +613,23 @@ menuitem:is([default=true], .spell-suggestion), menucaption {
   }
   :root[namoroka-style-1]:not([namoroka-style-2]) menupopup:not(#ContentSelectDropdownPopup) menuitem[checked=true][disabled=true],
   :root[namoroka-style-1]:not([namoroka-style-2]) toolbarbutton menupopup[placespopup] menuitem[checked=true][disabled=true] {
-    list-style-image: asset("menu/menu-check-disabled.gif") !important;
+    list-style-image: url("chrome://namoroka/content/firefox-2/menu/menu-check-disabled.gif") !important;
   }
   :root[namoroka-style-1]:not([namoroka-style-2]) menupopup:not(#ContentSelectDropdownPopup) menuitem[checked=true][_moz-menuactive=true],
   :root[namoroka-style-1]:not([namoroka-style-2]) toolbarbutton menupopup[placespopup] menuitem[checked=true][_moz-menuactive=true] {
-    list-style-image: asset("menu/menu-check-hover.gif") !important;
+    list-style-image: url("chrome://namoroka/content/firefox-2/menu/menu-check-hover.gif") !important;
   }
   :root[namoroka-style-1]:not([namoroka-style-2]) menupopup:not(#ContentSelectDropdownPopup) menuitem[checked=true][type=radio],
   :root[namoroka-style-1]:not([namoroka-style-2]) toolbarbutton menupopup[placespopup] menuitem[checked=true][type=radio] {
-    list-style-image: asset("menu/menu-radio.gif") !important;
+    list-style-image: url("chrome://namoroka/content/firefox-2/menu/menu-radio.gif") !important;
   }
   :root[namoroka-style-1]:not([namoroka-style-2]) menupopup:not(#ContentSelectDropdownPopup) menuitem[checked=true][type=radio][disabled=true],
   :root[namoroka-style-1]:not([namoroka-style-2]) toolbarbutton menupopup[placespopup] menuitem[checked=true][type=radio][disabled=true] {
-    list-style-image: asset("menu/menu-radio-disabled.gif") !important;
+    list-style-image: url("chrome://namoroka/content/firefox-2/menu/menu-radio-disabled.gif") !important;
   }
   :root[namoroka-style-1]:not([namoroka-style-2]) menupopup:not(#ContentSelectDropdownPopup) menuitem[checked=true][type=radio][_moz-menuactive=true],
   :root[namoroka-style-1]:not([namoroka-style-2]) toolbarbutton menupopup[placespopup] menuitem[checked=true][type=radio][_moz-menuactive=true] {
-    list-style-image: asset("menu/menu-radio-hover.gif") !important;
+    list-style-image: url("chrome://namoroka/content/firefox-2/menu/menu-radio-hover.gif") !important;
   }
   :root[namoroka-style-1]:not([namoroka-style-2]) menupopup:not(#ContentSelectDropdownPopup) .menu-right,
   :root[namoroka-style-1]:not([namoroka-style-2]) toolbarbutton menupopup[placespopup] .menu-right {
@@ -638,15 +640,15 @@ menuitem:is([default=true], .spell-suggestion), menucaption {
     margin-block-end: 1px !important;
     margin-inline-start: 0px !important;
     margin-inline-end: 6px !important;
-    list-style-image: asset("menu/Menu-arrow.png") !important;
+    list-style-image: url("chrome://namoroka/content/firefox-2/menu/Menu-arrow.png") !important;
   }
   :root[namoroka-style-1]:not([namoroka-style-2]) menupopup:not(#ContentSelectDropdownPopup) .menu-right[_moz-menuactive=true],
   :root[namoroka-style-1]:not([namoroka-style-2]) toolbarbutton menupopup[placespopup] .menu-right[_moz-menuactive=true] {
-    list-style-image: asset("menu/Menu-arrow-hover.png") !important;
+    list-style-image: url("chrome://namoroka/content/firefox-2/menu/Menu-arrow-hover.png") !important;
   }
   :root[namoroka-style-1]:not([namoroka-style-2]) menupopup:not(#ContentSelectDropdownPopup) .menu-right[disabled=true],
   :root[namoroka-style-1]:not([namoroka-style-2]) toolbarbutton menupopup[placespopup] .menu-right[disabled=true] {
-    list-style-image: asset("menu/Menu-arrow-disabled.png") !important;
+    list-style-image: url("chrome://namoroka/content/firefox-2/menu/Menu-arrow-disabled.png") !important;
   }
   :root[namoroka-style-1]:not([namoroka-style-2]) menupopup:not(#ContentSelectDropdownPopup)::part(content),
   :root[namoroka-style-1]:not([namoroka-style-2]) toolbarbutton menupopup[placespopup]::part(content) {
@@ -669,10 +671,10 @@ menuitem:is([default=true], .spell-suggestion), menucaption {
 /* ::::: Firefox 3 ::::: */
 :root[namoroka-style-2] #navigator-throbber {
   padding: 1px 6px 2px 4px !important;
-  list-style-image: asset("icons/notloading_16.png") !important;
+  list-style-image: url("chrome://namoroka/content/firefox-3/icons/notloading_16.png") !important;
 }
 :root[namoroka-style-2] #navigator-throbber[busy=true] {
-  list-style-image: asset("icons/loading_16.png") !important;
+  list-style-image: url("chrome://namoroka/content/firefox-3/icons/loading_16.png") !important;
   opacity: 1 !important;
 }
 :root[namoroka-style-2] menubar > menu {
