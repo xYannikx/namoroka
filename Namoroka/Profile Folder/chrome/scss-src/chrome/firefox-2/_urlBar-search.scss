@@ -38,34 +38,102 @@
             }
 
             .autocomplete-history-dropmarker {
+                box-sizing: content-box !important;
                 appearance: none !important;
-                background-color: -moz-Dialog !important;
-                border-inline-start: 1px solid #96969D !important;
                 position: relative;
-                @include navBar-button-background;
+                width: 16px !important;
+                height: 20px !important;
+                margin: 0px !important;
+                border-left: 1px solid #96969D !important;
+                padding: 0px !important;
+                background-color: -moz-dialog !important;
+                list-style-image: #{asset("icons/autocomplete-dropmark-arrow.png")} !important;
+                -moz-image-region: rect(0px, 16px, 20px, 0px) !important;
 
-                /* Firefox uses Shadow DOM for the arrow, which 
-                   is annoying as fuck to style so we just gonna
-                   use a psuedo element... LOL!
-                */
-                &::before {
-                    content: '';
-                    display: flex;
-                    width: 16px !important;
-                    height: 20px !important;
-                    background-image: #{asset("icons/autocomplete-dropmark-arrow.png")} !important;
+                &:hover {
+                    -moz-image-region: rect(0px, 32px, 20px, 16px) !important;
+                }
+
+                &:active {
+                    -moz-image-region: rect(0px, 64px, 20px, 48px) !important;
+                }
+
+                .autocomplete-dropmarker-bkgnd {
+                    background-image: none !important;
+                    list-style-image: none !important;
+                }
+
+                .autocomplete-dropmarker-bkgnd-top {
+                    list-style-image: #{asset("icons/autocomplete-dropmark-bkgnd.png")} !important;
+                    -moz-image-region: rect(0px, 16px, 9px, 0px) !important;
+                    height: 9px !important;
+                }
+
+                .autocomplete-dropmarker-bkgnd-mid-top {
+                    background-image: #{asset("icons/autocomplete-dropmark-bkgnd-mid-top.png")} !important;
+                    background-repeat: repeat !important;
+                    background-clip: padding-box !important;
+                }
+
+                .autocomplete-dropmarker-bkgnd-mid-bottom {
+                    background-image: #{asset("icons/autocomplete-dropmark-bkgnd-mid-bottom.png")} !important;
+                    background-repeat: repeat !important;
+                    background-clip: padding-box !important;
+                    list-style-image: none !important;
+                }
+
+                .autocomplete-dropmarker-bkgnd-bottom {
+                    list-style-image: #{asset("icons/autocomplete-dropmark-bkgnd.png")} !important;
+                    -moz-image-region: rect(11px, 16px, 20px, 0px) !important;
+                    height: 9px !important;
                 }
 
                 &:hover {
-                    &::before {
-                        background-position-x: -16px !important;
+                    .autocomplete-dropmarker-bkgnd-top {
+                        -moz-image-region: rect(0px, 32px, 9px, 16px) !important;
+                        height: 9px !important;
+                    }
+
+                    .autocomplete-dropmarker-bkgnd-mid-top {
+                        background-position: -16px 0px !important;
+                    }
+
+                    .autocomplete-dropmarker-bkgnd-mid-bottom {
+                        background-position: -16px 0px !important;
+                    }
+
+                    .autocomplete-dropmarker-bkgnd-bottom {
+                        -moz-image-region: rect(11px, 32px, 20px, 16px) !important;
+                        height: 9px !important;
                     }
 
                     &:active {
-                        &::before {
-                            background-position-x: -48px !important;
+                        .autocomplete-dropmarker-bkgnd-top {
+                            -moz-image-region: rect(0px, 64px, 9px, 48px) !important;
+                            height: 9px !important;
+                        }
+
+                        .autocomplete-dropmarker-bkgnd-mid-top {
+                            background-position: -48px 0px !important;
+                        }
+
+                        .autocomplete-dropmarker-bkgnd-mid-bottom {
+                            background-position: -48px 0px !important;
+                        }
+
+                        .autocomplete-dropmarker-bkgnd-bottom {
+                            -moz-image-region: rect(11px, 64px, 20px, 48px) !important;
+                            height: 9px !important;
                         }
                     }
+                }
+
+                .history-dropmarker-stack,
+                .autocomplete-dropmarker-bkgnd-box,
+                .dropmarker-image {
+                    width: 16px !important;
+                    height: 20px !important;
+                    margin: 0 !important;
                 }
             }
 
@@ -204,13 +272,13 @@
                     .searchbar-engine-button-bottom {
                         -moz-image-region: rect(12px, 128px, 22px, 96px);
                     }
+                }
 
+                &:hover {
                     .searchbar-engine-button-top {
                         -moz-image-region: rect(0px, 64px, 10px, 32px);
                     }
-                }
-            
-                &:hover {
+
                     .searchbar-engine-button-mid-top,
                     .searchbar-engine-button-mid-bottom {
                         background-position: -32px 0px;

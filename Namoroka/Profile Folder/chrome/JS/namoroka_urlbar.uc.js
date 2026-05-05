@@ -12,8 +12,23 @@
 
     waitForElement("#urlbar").then(e => {
         let dropmarker = window.MozXULElement.parseXULToFragment(`
-            <dropmarker id="historydropmarker" class="autocomplete-history-dropmarker urlbar-history-dropmarker"/>
+            <dropmarker id="historydropmarker" class="autocomplete-history-dropmarker urlbar-history-dropmarker">
+                    <stack class="history-dropmarker-stack">
+                    <vbox class="autocomplete-dropmarker-bkgnd-box">
+                        <image class="autocomplete-dropmarker-bkgnd-top autocomplete-dropmarker-bkgnd"/>
+                        <vbox flex="1" class="autocomplete-dropmarker-inner-box">
+                            <image flex="1" class="autocomplete-dropmarker-bkgnd-mid-top autocomplete-dropmarker-bkgnd"/>
+                            <image flex="1" class="autocomplete-dropmarker-bkgnd-mid-bottom autocomplete-dropmarker-bkgnd"/>
+                        </vbox>
+                        <image class="autocomplete-dropmarker-bkgnd-bottom autocomplete-dropmarker-bkgnd"/>
+                    </vbox>
+                    <hbox align="center" class="dropmarker-image-container">
+                        <image class="dropmarker-image"/>
+                    </hbox>
+                </stack>
+            </dropmarker>
         `);
+        
 
         let urlbarInputContainer = e.querySelector(".urlbar-input-container");
         if (!urlbarInputContainer) { // fallback for older versions of firefox
