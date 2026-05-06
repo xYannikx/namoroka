@@ -75,6 +75,11 @@ var g_NamorokaToolbox;
         }
 
         convertToOldURLBar(window) {
+
+            if (lazy.NOCTURNE_OLD_URLBAR) {
+                return;
+            }
+
             const document = window.document;
             const urlbar = document.getElementById("urlbar");
 
@@ -116,21 +121,24 @@ var g_NamorokaToolbox;
             document.documentElement.setAttribute("data-old-urlbar", "true");
 
             let goStack = window.MozXULElement.parseXULToFragment(`
-                <stack id="go-button-stack">
-                    <vbox>
-                        <image id="go-button-top" class="go-button-background"/>
-                        <image flex="1" id="go-button-mid-top" class="go-button-background"/>
-                        <image flex="1" id="go-button-mid-bottom" class="go-button-background"/>
-                        <image id="go-button-bottom" class="go-button-background"/>
-                    </vbox>
-                    <toolbarbutton id="go-button" flex="1"/>
-                </stack>
+                <hbox id="urlbar-button-box" flex="1">
+                    <stack id="go-button-stack">
+                        <vbox>
+                            <image id="go-button-top" class="go-button-background"/>
+                            <image flex="1" id="go-button-mid-top" class="go-button-background"/>
+                            <image flex="1" id="go-button-mid-bottom" class="go-button-background"/>
+                            <image id="go-button-bottom" class="go-button-background"/>
+                        </vbox>
+                        <toolbarbutton id="go-button" flex="1"/>
+                    </stack>
+                </hbox>
             `).firstChild;
 
             goStack.querySelector("#go-button").addEventListener("command", gURLBar.handleCommand.bind(gURLBar));
             goStack.querySelector("#go-button").setAttribute("label", LocaleUtils.str(urlbarBundle, "go_button.label"));
             goStack.querySelector("#go-button").setAttribute("tooltiptext", LocaleUtils.str(urlbarBundle, "go_button.tooltiptext"));
 
+            goStack.insertBefore(newUrlbar, goStack.querySelector("#go-button-stack"));
             urlbarContainer.appendChild(goStack);
         }
     }

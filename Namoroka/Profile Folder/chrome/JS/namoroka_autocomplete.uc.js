@@ -204,7 +204,9 @@ var g_namorokaAutocomplete;
 			if (this.mPopupOpen)
 				return;
 
-			let urlbarElem = this._urlbar.textbox;
+			let style = PrefCalls.getPref("Namoroka.Appearance.Style");
+
+			let urlbarElem = style >= "1" ? document.getElementById("urlbar-button-box") : document.getElementById("urlbar");
 			let rect = urlbarElem.getBoundingClientRect();
 			let width = rect.width;
 
