@@ -635,6 +635,7 @@ toolbarbutton.bookmark-item:not(.subviewbutton) .toolbarbutton-animatable-box {
   height: 100% !important;
 }
 #nav-bar #go-button {
+  margin-inline-start: var(--urlbar-margin-inline) !important;
   align-self: center !important;
   padding: 2px 5px 2px 3px !important;
 }
@@ -798,6 +799,11 @@ image.default-favicon {
 }
 :root:not([namoroka-style-2]) #urlbar-container #urlbar #page-proxy-stack {
   visibility: collapse !important;
+}
+#urlbar-container #urlbar[data-old-urlbar=true] {
+  position: static !important;
+  width: unset !important;
+  display: flex !important;
 }
 #urlbar-container #urlbar #page-proxy-deck {
   width: 16px !important;
@@ -965,6 +971,10 @@ panel[type=autocomplete-richlistbox],
 
 :root[namoroka-style-1]:not([namoroka-style-2]) #search-container {
   flex: 100 100 auto !important;
+}
+
+:root:not([namoroka-style-2]) #urlbar-search-splitter {
+  display: none !important;
 }
 
 statusbar {
@@ -1948,7 +1958,7 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
   opacity: 1 !important;
 }
 :root[namoroka-style-1]:not([namoroka-style-2=true]) #urlbar-container {
-  margin-inline-end: 0 !important;
+  margin-inline-end: 5px !important;
 }
 :root[namoroka-style-1]:not([namoroka-style-2=true]) #urlbar-container #urlbar {
   margin-block-start: -1px !important;
@@ -2048,14 +2058,14 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
   height: 22px !important;
   padding: 0 !important;
   border: 0 !important;
-  margin-inline-end: 5px !important;
+  margin-inline-start: 0 !important;
   margin-block-start: -1px !important;
 }
 :root[namoroka-style-1]:not([namoroka-style-2=true]) #nav-bar #go-button .toolbarbutton-icon {
   width: 25px !important;
   height: 22px !important;
   margin: 0 !important;
-  background-image: url("chrome://namoroka/content/firefox-2/Go.png") !important;
+  background-image: url("chrome://namoroka/content/firefox-2/Go-arrow.png") !important;
 }
 :root[namoroka-style-1]:not([namoroka-style-2=true]) #nav-bar #go-button:not([disabled=true]):hover .toolbarbutton-icon {
   background-position-x: -25px !important;
@@ -2068,6 +2078,51 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
 }
 :root[namoroka-style-1]:not([namoroka-style-2=true]) #nav-bar #go-button .toolbarbutton-text {
   visibility: collapse !important;
+}
+:root[namoroka-style-1]:not([namoroka-style-2=true]) #go-button-stack {
+  margin-block-start: -1px !important;
+  height: 22px !important;
+  width: 25px !important;
+}
+:root[namoroka-style-1]:not([namoroka-style-2=true]) #go-button-stack > vbox {
+  width: 25px !important;
+  height: 22px !important;
+}
+:root[namoroka-style-1]:not([namoroka-style-2=true]) #go-button-stack #go-button-top {
+  list-style-image: url("chrome://namoroka/content/firefox-2/Go-bkgnd.png") !important;
+  -moz-image-region: rect(0px, 25px, 10px, 0px) !important;
+  height: 10px !important;
+}
+:root[namoroka-style-1]:not([namoroka-style-2=true]) #go-button-stack #go-button-mid-top {
+  background-image: url("chrome://namoroka/content/firefox-2/Go-mid-top.png") !important;
+}
+:root[namoroka-style-1]:not([namoroka-style-2=true]) #go-button-stack #go-button-mid-bottom {
+  background-image: url("chrome://namoroka/content/firefox-2/Go-mid-bottom.png") !important;
+}
+:root[namoroka-style-1]:not([namoroka-style-2=true]) #go-button-stack #go-button-bottom {
+  list-style-image: url("chrome://namoroka/content/firefox-2/Go-bkgnd.png") !important;
+  -moz-image-region: rect(12px, 25px, 22px, 0px) !important;
+  height: 10px !important;
+}
+:root[namoroka-style-1]:not([namoroka-style-2=true]) #go-button-stack:hover #go-button-top {
+  -moz-image-region: rect(0px, 50px, 10px, 25px) !important;
+}
+:root[namoroka-style-1]:not([namoroka-style-2=true]) #go-button-stack:hover #go-button-mid-top,
+:root[namoroka-style-1]:not([namoroka-style-2=true]) #go-button-stack:hover #go-button-mid-bottom {
+  background-position: -25px 0px !important;
+}
+:root[namoroka-style-1]:not([namoroka-style-2=true]) #go-button-stack:hover #go-button-bottom {
+  -moz-image-region: rect(12px, 50px, 22px, 25px) !important;
+}
+:root[namoroka-style-1]:not([namoroka-style-2=true]) #go-button-stack:hover:active #go-button-top {
+  -moz-image-region: rect(0px, 100px, 10px, 75px) !important;
+}
+:root[namoroka-style-1]:not([namoroka-style-2=true]) #go-button-stack:hover:active #go-button-mid-top,
+:root[namoroka-style-1]:not([namoroka-style-2=true]) #go-button-stack:hover:active #go-button-mid-bottom {
+  background-position: -75px !important;
+}
+:root[namoroka-style-1]:not([namoroka-style-2=true]) #go-button-stack:hover:active #go-button-bottom {
+  -moz-image-region: rect(12px, 100px, 22px, 75px) !important;
 }
 :root[namoroka-style-1]:not([namoroka-style-2=true]) #search-container {
   margin-inline-start: 3px !important;
@@ -2892,6 +2947,9 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
 }
 :root[namoroka-style-2] #searchbar .search-go-container:hover:active .search-go-button {
   background-position-x: -32px !important;
+}
+:root[namoroka-style-2] #nav-bar #go-button {
+  display: none !important;
 }
 :root[namoroka-style-2] #PopupAutoCompleteRichResult richlistitem {
   flex-direction: column !important;

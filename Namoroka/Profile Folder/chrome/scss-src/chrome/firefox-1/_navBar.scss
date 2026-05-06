@@ -14,6 +14,7 @@
     }
 
     #go-button {
+        margin-inline-start: var(--urlbar-margin-inline) !important;
         align-self: center !important;
         padding: 2px 5px 2px 3px !important;
 

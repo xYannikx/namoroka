@@ -8,9 +8,11 @@
 var g_NamorokaToolbox;
 
 {
-    var { waitForElement } = ChromeUtils.importESModule("chrome://modules/content/NamorokaUtils.sys.mjs");
+    var { LocaleUtils, waitForElement } = ChromeUtils.importESModule("chrome://modules/content/NamorokaUtils.sys.mjs");
     waitForElement = waitForElement.bind(window);
-    
+
+    let urlbarBundle = "chrome://namoroka/locale/properties/urlbar.properties";
+
     class NamorokaToolboxManager {
         async init() {
             await new Promise(resolve => {
@@ -61,6 +63,7 @@ var g_NamorokaToolbox;
             });
 
             this.renderMozWinGlassElem();
+            this.convertToOldURLBar(window);
         }
 
         renderMozWinGlassElem()
@@ -69,6 +72,66 @@ var g_NamorokaToolbox;
             glassElem.id = "mozGlassHandler";
 
             document.documentElement.append(glassElem);
+        }
+
+        convertToOldURLBar(window) {
+            const document = window.document;
+            const urlbar = document.getElementById("urlbar");
+
+            if (!urlbar || urlbar.localName !== "div") {
+                return;
+            }
+
+            // Get the parent toolbaritem
+            const urlbarContainer = document.getElementById("urlbar-container");
+            if (!urlbarContainer) {
+                return;
+            }
+
+            // Create a new hbox element to replace the div
+            const newUrlbar = document.createXULElement("hbox");
+            newUrlbar.id = "urlbar";
+            newUrlbar.setAttribute("flex", "1");
+            newUrlbar.setAttribute("context", "");
+            newUrlbar.setAttribute("focused", "true");
+            newUrlbar.setAttribute("pageproxystate", "invalid");
+
+            // Copy all attributes from the old urlbar to the new one
+            for (const attr of urlbar.attributes) {
+                if (attr.name !== "popover" && attr.name !== "id" && !newUrlbar.hasAttribute(attr.name)) {
+                    newUrlbar.setAttribute(attr.name, attr.value);
+                }
+            }
+
+            // Move all children from the old urlbar to the new one
+            while (urlbar.firstChild) {
+                newUrlbar.appendChild(urlbar.firstChild);
+            }
+
+            // Replace the old urlbar with the new one
+            urlbarContainer.replaceChild(newUrlbar, urlbar);
+
+            // Add attribute to indicate old URLBar is being used (for CSS targeting)
+            newUrlbar.setAttribute("data-old-urlbar", "true");
+            document.documentElement.setAttribute("data-old-urlbar", "true");
+
+            let goStack = window.MozXULElement.parseXULToFragment(`
+                <stack id="go-button-stack">
+                    <vbox>
+                        <image id="go-button-top" class="go-button-background"/>
+                        <image flex="1" id="go-button-mid-top" class="go-button-background"/>
+                        <image flex="1" id="go-button-mid-bottom" class="go-button-background"/>
+                        <image id="go-button-bottom" class="go-button-background"/>
+                    </vbox>
+                    <toolbarbutton id="go-button" flex="1"/>
+                </stack>
+            `).firstChild;
+
+            goStack.querySelector("#go-button").addEventListener("command", gURLBar.handleCommand.bind(gURLBar));
+            goStack.querySelector("#go-button").setAttribute("label", LocaleUtils.str(urlbarBundle, "go_button.label"));
+            goStack.querySelector("#go-button").setAttribute("tooltiptext", LocaleUtils.str(urlbarBundle, "go_button.tooltiptext"));
+
+            urlbarContainer.appendChild(goStack);
         }
     }
 

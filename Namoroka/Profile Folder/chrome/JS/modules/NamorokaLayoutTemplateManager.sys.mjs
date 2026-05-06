@@ -39,15 +39,6 @@ export class NamorokaLayoutTemplateManager {
                 type: "toolbaritem",
             },
             {
-                id: "go-button",
-                type: "toolbarbutton",
-                styleProperties: {
-                    2: { // Firefox 3 style
-                        behavior: "remove"
-                    }
-                }  
-            },
-            {
                 id: "search-container",
                 type: "toolbaritem",
             },

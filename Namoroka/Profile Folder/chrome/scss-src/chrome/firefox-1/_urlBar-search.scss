@@ -49,9 +49,15 @@ image.default-favicon {
 
     #urlbar {
         --urlbar-height: var(--urlbar-root-height) !important;
-        
+
         :root:not([namoroka-style-2]) & #page-proxy-stack {
             visibility: collapse !important;
+        }
+
+        &[data-old-urlbar="true"] {
+            position: static !important;
+            width: unset !important;
+            display: flex !important;
         }
 
         #page-proxy-deck {
@@ -202,7 +208,7 @@ image.default-favicon {
         list-style-image: #{asset("Search-bar.png")} !important;
         margin-inline: 3px 8px !important;
     }
-    
+
     .searchbar-search-icon-overlay {
         width: 9px !important;
         height: 6px !important;
@@ -291,4 +297,8 @@ panel[type="autocomplete-richlistbox"],
 
 :root[namoroka-style-1]:not([namoroka-style-2]) #search-container {
     flex: 100 100 auto !important;
+}
+
+:root:not([namoroka-style-2]) #urlbar-search-splitter {
+    display: none !important;
 }

@@ -30,11 +30,7 @@
         `);
         
 
-        let urlbarInputContainer = e.querySelector(".urlbar-input-container");
-        if (!urlbarInputContainer) { // fallback for older versions of firefox
-            urlbarInputContainer = e.querySelector("#urlbar-input-container");
-        }
-
+        let urlbarInputContainer = gURLBar._inputContainer;
         urlbarInputContainer.appendChild(dropmarker);
 
         e.querySelector(".urlbar-history-dropmarker").addEventListener("mousedown", openURLView);
@@ -75,7 +71,7 @@
             let identityBox = gIdentityHandler._identityBox;
             let style = PrefCalls.getPref("Namoroka.Appearance.Style");
 
-            if (style >= "2") { 
+            if (style >= "2") {
                 urlbarInputContainer.insertBefore(identityBox, urlbarInputContainer.firstChild);
             }
             else {

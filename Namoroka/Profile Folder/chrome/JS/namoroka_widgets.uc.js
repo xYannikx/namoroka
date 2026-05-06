@@ -52,24 +52,6 @@ class NamorokaWidgetManager
             },
         });
 
-        this.createWidget({
-            id: "go-button",
-            type: "button",
-            removable: true,
-
-            label: LocaleUtils.str(urlbarBundle, "go_button.label"),
-            tooltiptext: LocaleUtils.str(urlbarBundle, "go_button.tooltiptext"),
-            defaultArea: CustomizableUI.AREA_NAVBAR,
-
-            onClick: function(event) {
-                gURLBar.handleCommand(event);
-            },
-
-            onCreated: function(button) {
-                return button;
-            }
-        })
-
         this.alreadyRan = true;
     }
 

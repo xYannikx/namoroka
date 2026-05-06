@@ -24,7 +24,7 @@
     }
 
     #urlbar-container {
-        margin-inline-end: 0 !important;
+        margin-inline-end: 5px !important;
 
         #urlbar {
             margin-block-start: -1px !important;
@@ -149,14 +149,14 @@
         height: 22px !important;
         padding: 0 !important;
         border: 0 !important;
-        margin-inline-end: 5px !important;
+        margin-inline-start: 0 !important;
         margin-block-start: -1px !important;
 
         .toolbarbutton-icon {
             width: 25px !important;
             height: 22px !important;
             margin: 0 !important;
-            background-image: #{asset("Go.png")} !important;
+            background-image: #{asset("Go-arrow.png")} !important;
         }
 
         &:not([disabled="true"]):hover {
@@ -179,6 +179,67 @@
 
         .toolbarbutton-text {
             visibility: collapse !important;
+        }
+    }
+
+    #go-button-stack {
+        margin-block-start: -1px !important;
+        height: 22px !important;
+        width: 25px !important;
+
+        > vbox {
+            width: 25px !important;
+            height: 22px !important;
+        }
+
+        #go-button-top {
+            list-style-image: #{asset("Go-bkgnd.png")} !important;
+            -moz-image-region: rect(0px, 25px, 10px, 0px) !important;
+            height: 10px !important;
+        }
+
+        #go-button-mid-top {
+            background-image: #{asset("Go-mid-top.png")} !important;
+        }
+
+        #go-button-mid-bottom {
+            background-image: #{asset("Go-mid-bottom.png")} !important;
+        }
+
+        #go-button-bottom {
+            list-style-image: #{asset("Go-bkgnd.png")} !important;
+            -moz-image-region: rect(12px, 25px, 22px, 0px) !important;
+            height: 10px !important;
+        }
+
+        &:hover {
+            #go-button-top {
+                -moz-image-region: rect(0px, 50px, 10px, 25px) !important;
+            }
+        
+            #go-button-mid-top,
+            #go-button-mid-bottom {
+                background-position: -25px 0px !important;
+            }
+        
+            #go-button-bottom {
+                -moz-image-region: rect(12px, 50px, 22px, 25px) !important;
+            }
+
+            &:active {
+                #go-button-top {
+                    -moz-image-region: rect(0px, 100px, 10px, 75px) !important;
+                }
+
+                #go-button-mid-top,
+                #go-button-mid-bottom {
+                    background-position: -75px !important;
+                }
+            
+                #go-button-bottom {
+                    -moz-image-region: rect(12px, 100px, 22px, 75px) !important;
+                }
+            }
         }
     }
 
