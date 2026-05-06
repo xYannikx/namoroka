@@ -24,9 +24,9 @@
             }
         }
 
-        --navbar-textbox-buttons: #{asset("urlbar/navbar-textbox-buttons.png")} !important;
-        --search-glass: #{asset("Search-glass.png")} !important;
-        --search-close: #{asset("Search-close.png")} !important;
+        --navbar-textbox-buttons: #{asset("aero/urlbar/navbar-textbox-buttons.png")} !important;
+        --search-glass: #{asset("aero/Search-glass.png")} !important;
+        --search-close: #{asset("aero/Search-close.png")} !important;
     }
 
     #urlbar-container {

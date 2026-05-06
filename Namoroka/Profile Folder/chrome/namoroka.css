@@ -2675,9 +2675,9 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
   opacity: 1 !important;
 }
 :root[namoroka-style-2][namoroka-appearance-aero] {
-  --navbar-textbox-buttons: url("chrome://namoroka/content/firefox-3/urlbar/navbar-textbox-buttons.png") !important;
-  --search-glass: url("chrome://namoroka/content/firefox-3/Search-glass.png") !important;
-  --search-close: url("chrome://namoroka/content/firefox-3/Search-close.png") !important;
+  --navbar-textbox-buttons: url("chrome://namoroka/content/firefox-3/aero/urlbar/navbar-textbox-buttons.png") !important;
+  --search-glass: url("chrome://namoroka/content/firefox-3/aero/Search-glass.png") !important;
+  --search-close: url("chrome://namoroka/content/firefox-3/aero/Search-close.png") !important;
 }
 @media not (-moz-windows-classic) {
   :root[namoroka-style-2][namoroka-appearance-aero] .searchbar-textbox::placeholder {
