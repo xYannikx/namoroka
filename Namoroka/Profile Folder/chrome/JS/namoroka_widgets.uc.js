@@ -31,31 +31,24 @@ class NamorokaWidgetManager
         });
 
         const NavigatorThrobber = {
-            get busy() {
-                return gBrowser.selectedTab.hasAttribute("busy");
-            },
+            init(button) {
+                const update = () => {
+                    if (!button.isConnected)
+                        return;
 
-            init() {
-                document.addEventListener("TabAttrModified", this._update, false);
-                document.addEventListener("TabSelect", this._update, false);
-                document.addEventListener("TabOpen", this._update, false);
-                document.addEventListener("TabClose", this._update, false);
-                document.addEventListener("load", this._update, false);
+                    let busy = gBrowser.selectedTab.hasAttribute("busy");
 
-                return document;
-            },
-
-            _update() {
-                let busy = gBrowser.selectedTab.hasAttribute("busy");
-                let throbber = document.querySelector("#navigator-throbber");
-
-                if (busy)
-                {
-                    throbber.setAttribute("busy", "true");
-                }
-                else {
-                    throbber.removeAttribute("busy");
-                }
+                    if (busy) {
+                        button.setAttribute("busy", "true");
+                    } else {
+                        button.removeAttribute("busy");
+                    }
+                };
+                document.addEventListener("TabAttrModified", update, false);
+                document.addEventListener("TabSelect", update, false);
+                document.addEventListener("TabOpen", update, false);
+                document.addEventListener("TabClose", update, false);
+                document.addEventListener("load", update, false);
             },
         };
 
@@ -71,10 +64,10 @@ class NamorokaWidgetManager
             onCommand: function(e) {
                 openTrustedLinkIn(getHelpLinkURL("firefox-help"), "tab");
             },
-            
+
             onCreated: function(button) {
                 button.classList.remove("toolbarbutton-1"); 
-                NavigatorThrobber.init();
+                NavigatorThrobber.init(button);
                 return button;
             },
         });
