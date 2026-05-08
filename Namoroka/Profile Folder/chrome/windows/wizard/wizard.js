@@ -4,7 +4,7 @@ const NAMOROKA_FIRST_RUN_PREF = "Namoroka.Parameter.FirstRun";
 const NAMOROKA_APPEARANCE_STYLE_PREF = "Namoroka.Appearance.Style";
 
 {
-    var { LocaleUtils, PrefCalls } = ChromeUtils.importESModule("chrome://modules/content/NamorokaUtils.sys.mjs");
+    var { LocaleUtils, PrefCalls, WindowIconUtils } = ChromeUtils.importESModule("chrome://modules/content/NamorokaUtils.sys.mjs");
 
     ChromeUtils.defineESModuleGetters(window, {
         CustomizableUI: "resource:///modules/CustomizableUI.sys.mjs",
@@ -96,6 +96,8 @@ const NAMOROKA_APPEARANCE_STYLE_PREF = "Namoroka.Appearance.Style";
             PrefCalls.setPref(NAMOROKA_APPEARANCE_STYLE_PREF, 0);
 
             this._resetLayout.addEventListener("CheckboxStateChange", this.handleResetLayout.bind(this));
+
+            this.setDialogIcon();
         }
 
         handleResetLayout(event) {
@@ -241,6 +243,14 @@ const NAMOROKA_APPEARANCE_STYLE_PREF = "Namoroka.Appearance.Style";
                 return true
             }
             return false
+        }
+
+        async setDialogIcon() {
+            await WindowIconUtils.setDialogIcon(
+                window,
+                "chrome://userchrome/content/branding/namoroka/content/icon16.png",
+                "chrome://userchrome/content/branding/namoroka/content/icon32.png"
+            );
         }
     }
     
