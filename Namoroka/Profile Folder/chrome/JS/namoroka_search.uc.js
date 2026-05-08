@@ -92,44 +92,45 @@ var g_NamorokaSearchManager;
                 })
 
 				searchButton.appendChild(menupopup);
-				
+
                 searchButton.addEventListener("mousedown", this.handleSearchButtonClick.bind(this));
 			}
+			if (!searchButton.querySelector(".searchbar-engine-button-stack")) {
+				let stackFragment = renderElement("xul:stack", {
+					class: "searchbar-engine-button-stack",
+				},
+				[
+					renderElement("xul:vbox", {flex: "1"}, [
+						renderElement("xul:image", {
+							class: "searchbar-engine-button-top searchbar-engine-button-bkgnd",
+						}),
+						renderElement("xul:image", {
+							flex: "1",
+							class: "searchbar-engine-button-mid-top searchbar-engine-button-bkgnd",
+						}),
+						renderElement("xul:image", {
+							flex: "1",
+							class: "searchbar-engine-button-mid-bottom searchbar-engine-button-bkgnd",
+						}),
+						renderElement("xul:image", {
+							class: "searchbar-engine-button-bottom searchbar-engine-button-bkgnd",
+						}),
+					]),
+					renderElement("xul:hbox", {
+						align: "center",
+						class: "searchbar-engine-image-container",
+					})
+				]);
 
-			let stackFragment = renderElement("xul:stack", {
-				class: "searchbar-engine-button-stack",
-			},
-			[
-				renderElement("xul:vbox", {flex: "1"}, [
-					renderElement("xul:image", {
-						class: "searchbar-engine-button-top searchbar-engine-button-bkgnd",
-					}),
-					renderElement("xul:image", {
-						flex: "1",
-						class: "searchbar-engine-button-mid-top searchbar-engine-button-bkgnd",
-					}),
-					renderElement("xul:image", {
-						flex: "1",
-						class: "searchbar-engine-button-mid-bottom searchbar-engine-button-bkgnd",
-					}),
-					renderElement("xul:image", {
-						class: "searchbar-engine-button-bottom searchbar-engine-button-bkgnd",
-					}),
-				]),
-				renderElement("xul:hbox", {
-					align: "center",
-					class: "searchbar-engine-image-container",
-				})
-			]);
+				searchButton.appendChild(stackFragment);
 
-			searchButton.appendChild(stackFragment);
+				let searchIcon = await waitForElement(".searchbar-search-icon");
+				let searchIconOverlay = await waitForElement(".searchbar-search-icon-overlay");
+				let searchEngineImageContainer = await waitForElement(".searchbar-engine-image-container");
 
-			let searchIcon = await waitForElement(".searchbar-search-icon");
-			let searchIconOverlay = await waitForElement(".searchbar-search-icon-overlay");
-			let searchEngineImageContainer = await waitForElement(".searchbar-engine-image-container");
-
-			searchEngineImageContainer.appendChild(searchIcon);
-			searchEngineImageContainer.appendChild(searchIconOverlay);
+				searchEngineImageContainer.appendChild(searchIcon);
+				searchEngineImageContainer.appendChild(searchIconOverlay);
+			}
 		}
 
         handleSearchButtonClick(event) {
