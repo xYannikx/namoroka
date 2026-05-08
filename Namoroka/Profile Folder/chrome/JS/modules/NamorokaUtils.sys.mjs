@@ -379,3 +379,49 @@ export class NamorokaInfo
 		return userAgentString;
 	}
 }
+
+const _ImgTools = Cc["@mozilla.org/image/tools;1"].getService(Ci.imgITools);
+const _WindowsUIUtils = Cc["@mozilla.org/windows-ui-utils;1"].getService(Ci.nsIWindowsUIUtils);
+
+export class WindowIconUtils
+{
+	static async #loadIcon(url)
+	{
+		let uri = Services.io.newURI(url);
+		let { NetUtil } = ChromeUtils.importESModule("resource://gre/modules/NetUtil.sys.mjs");
+		let channel = NetUtil.newChannel({
+			uri,
+			loadUsingSystemPrincipal: true,
+		});
+		return new Promise((resolve, reject) => {
+			_ImgTools.decodeImageFromChannelAsync(
+				uri,
+				channel,
+				(container, status) => {
+					if (Components.isSuccessCode(status)) {
+						resolve(container);
+					} else {
+						reject(Components.Exception("Failed to load icon", status));
+					}
+				},
+				null
+			);
+		});
+	}
+
+	static async setDialogIcon(win, smallIconUrl, largeIconUrl)
+	{
+		if (!smallIconUrl && !largeIconUrl)
+		{
+			_WindowsUIUtils.setWindowIconNoData(win);
+			return;
+		}
+
+		let [smallIcon, largeIcon] = await Promise.all([
+			smallIconUrl ? this.#loadIcon(smallIconUrl) : null,
+			largeIconUrl ? this.#loadIcon(largeIconUrl) : null,
+		]);
+
+		_WindowsUIUtils.setWindowIcon(win, smallIcon, largeIcon);
+	}
+}

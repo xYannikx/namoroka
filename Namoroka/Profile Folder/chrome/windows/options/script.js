@@ -1,10 +1,12 @@
 var g_NamorokaOptionsDialog;
 {
-    const { LocaleUtils, 
-        PrefCalls, 
-        BrandUtils } = ChromeUtils.importESModule("chrome://modules/content/NamorokaUtils.sys.mjs");
-        
+    const { LocaleUtils,
+        PrefCalls,
+        BrandUtils,
+        WindowIconUtils } = ChromeUtils.importESModule("chrome://modules/content/NamorokaUtils.sys.mjs");
+
     ChromeUtils.defineESModuleGetters(window, {
+        XPCOMUtils: "resource://gre/modules/XPCOMUtils.sys.mjs",
         CustomizableUI: "resource:///modules/CustomizableUI.sys.mjs",
         NamorokaThemeManager: "chrome://modules/content/NamorokaThemeManager.sys.mjs",
         NamorokaUpdateChecker: "chrome://modules/content/NamorokaUpdateChecker.sys.mjs",
@@ -135,6 +137,8 @@ var g_NamorokaOptionsDialog;
             this._viewCreditsButton.addEventListener("command", this.handleCreditsButton.bind(this));
 
             document.addEventListener("keypress", this.handleKeyPress);
+
+            this.setDialogIcon();
         }
 
         handleKeyPress(event) {
@@ -399,6 +403,14 @@ var g_NamorokaOptionsDialog;
             viewCreditsButton.label = this._selectedAboutDeck == 0 ? LocaleUtils.str(this.stringbundle, "view_credits_button") : LocaleUtils.str(this.stringbundle, "view_about_button");
             
             this._aboutModesDeck.selectedIndex = this._selectedAboutDeck;
+        }
+
+        async setDialogIcon() {
+            await WindowIconUtils.setDialogIcon(
+                window,
+                "chrome://userchrome/content/branding/namoroka/content/icon16.png",
+                "chrome://userchrome/content/branding/namoroka/content/icon32.png"
+            );
         }
     }
 

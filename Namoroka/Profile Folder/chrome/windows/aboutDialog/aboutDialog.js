@@ -2,7 +2,7 @@ var g_namorokaAboutDialog;
 var gSelectedPage = 0;
 
 {
-    var { waitForElement, BrandUtils, LocaleUtils, PrefCalls, NamorokaInfo } = ChromeUtils.importESModule("chrome://modules/content/NamorokaUtils.sys.mjs");
+    var { waitForElement, BrandUtils, LocaleUtils, PrefCalls, NamorokaInfo, WindowIconUtils } = ChromeUtils.importESModule("chrome://modules/content/NamorokaUtils.sys.mjs");
     waitForElement = waitForElement.bind(window);
     
     ChromeUtils.defineESModuleGetters(window, {
@@ -28,6 +28,8 @@ var gSelectedPage = 0;
             if (!style || style == 0) {
                 style = 0;
             }
+
+            WindowIconUtils.setDialogIcon(window);
 
             this.setInfoText(style);
             this.populateUserAgentString();
