@@ -23,11 +23,17 @@ try
     let defaultBranch = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefService).getDefaultBranch("");
     defaultBranch.setStringPref("Namoroka.Option.Branding", "firefox");
     let branding = prefs.getStringPref("Namoroka.Option.Branding", "firefox");
+    let style = prefs.getIntPref("Namoroka.Appearance.Style", 1);
     if (branding != "")
     {
         let brandingManifest = Cc["@mozilla.org/file/directory_service;1"].getService(Ci.nsIProperties).get("UChrm", Ci.nsIFile);
         brandingManifest.append("branding");
         brandingManifest.append(branding);
+
+        if (style >= 3 && branding == "firefox") {
+            brandingManifest.append("new");
+        }
+
         brandingManifest.append("chrome.manifest");
         if (brandingManifest.exists())
         {
@@ -44,5 +50,3 @@ defaultPref("general.smoothScroll.stopDecelerationWeighting", ".4");
 
 // Enable CSS
 defaultPref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
-
-defaultPref("userChromeJS.persistent_domcontent_callback", true);
