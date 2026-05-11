@@ -25,6 +25,8 @@
             let style = PrefCalls.getPref("Namoroka.Appearance.Style");
             let aero = PrefCalls.getPref("Namoroka.Appearance.Aero");
 
+            element.setAttribute("node-name", element.nodeName);
+
             for (let attr of element.getAttributeNames())
             {
                 if (attr.indexOf("namoroka-style-") > -1 || attr.includes("namoroka-appearance-aero"))

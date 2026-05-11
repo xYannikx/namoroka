@@ -397,6 +397,59 @@ menuitem:is([default=true], .spell-suggestion), menucaption {
   display: none !important;
 }
 
+:host([id=tabbrowser-arrowscrollbox]) > #scrollbutton-up > .toolbarbutton-icon {
+  transform: scaleY(1);
+}
+
+:host([id=tabbrowser-arrowscrollbox][orient=horizontal]) > #scrollbutton-down:-moz-locale-dir(ltr) > .toolbarbutton-icon,
+:host([id=tabbrowser-arrowscrollbox][orient=horizontal]) > #scrollbutton-up:-moz-locale-dir(rtl) > .toolbarbutton-icon {
+  transform: scaleX(1);
+}
+
+:host([id=tabbrowser-arrowscrollbox]:not([namoroka-style-1])) #scrollbutton-up .toolbarbutton-icon,
+:host([id=tabbrowser-arrowscrollbox]:not([namoroka-style-1])) #scrollbutton-down .toolbarbutton-icon {
+  width: 3px !important;
+  height: 5px !important;
+}
+:host([id=tabbrowser-arrowscrollbox]:not([namoroka-style-1])) #scrollbutton-up .toolbarbutton-icon {
+  list-style-image: var(--arrow-lft) !important;
+}
+:host([id=tabbrowser-arrowscrollbox]:not([namoroka-style-1])) #scrollbutton-up[disabled=true] .toolbarbutton-icon {
+  list-style-image: var(--arrow-lft-dis) !important;
+}
+:host([id=tabbrowser-arrowscrollbox]:not([namoroka-style-1])) #scrollbutton-down .toolbarbutton-icon {
+  list-style-image: var(--arrow-rit) !important;
+}
+:host([id=tabbrowser-arrowscrollbox]:not([namoroka-style-1])) #scrollbutton-down[disabled=true] .toolbarbutton-icon {
+  list-style-image: var(--arrow-rit-dis) !important;
+}
+
+:host([id=tabbrowser-arrowscrollbox][namoroka-style-1]) #scrollbutton-up > .toolbarbutton-icon,
+:host([id=tabbrowser-arrowscrollbox][namoroka-style-1]) #scrollbutton-down > .toolbarbutton-icon {
+  width: 11px !important;
+  height: 11px !important;
+  list-style-image: none !important;
+  margin-block-start: 1px !important;
+}
+:host([id=tabbrowser-arrowscrollbox][namoroka-style-1]) #scrollbutton-up > .toolbarbutton-icon {
+  background-image: var(--arrowscrollbox-left-image) !important;
+}
+:host([id=tabbrowser-arrowscrollbox][namoroka-style-1]) #scrollbutton-down > .toolbarbutton-icon {
+  background-image: var(--arrowscrollbox-right-image) !important;
+}
+:host([id=tabbrowser-arrowscrollbox][namoroka-style-1]) #scrollbutton-up:not([disabled=true]):hover > .toolbarbutton-icon,
+:host([id=tabbrowser-arrowscrollbox][namoroka-style-1]) #scrollbutton-down:not([disabled=true]):hover > .toolbarbutton-icon {
+  background-position-x: -11px !important;
+}
+:host([id=tabbrowser-arrowscrollbox][namoroka-style-1]) #scrollbutton-up:not([disabled=true]):hover:active > .toolbarbutton-icon,
+:host([id=tabbrowser-arrowscrollbox][namoroka-style-1]) #scrollbutton-down:not([disabled=true]):hover:active > .toolbarbutton-icon {
+  background-position-x: -33px !important;
+}
+:host([id=tabbrowser-arrowscrollbox][namoroka-style-1]) #scrollbutton-up[disabled=true] > .toolbarbutton-icon,
+:host([id=tabbrowser-arrowscrollbox][namoroka-style-1]) #scrollbutton-down[disabled=true] > .toolbarbutton-icon {
+  background-position-x: -22px !important;
+}
+
 /* ::::: Firefox 2 ::::: */
 :root[namoroka-style-1] :root[namoroka-style-1] {
   --arrowscrollbox-left-image: url("chrome://namoroka/skin/firefox-2/icons/tab-arrow-start.png");

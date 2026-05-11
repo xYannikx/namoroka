@@ -12,11 +12,6 @@
 
     waitForElement("#tabbrowser-arrowscrollbox").then(e =>
     {
-        let link  = document.createElement("link");
-        link.rel  = "stylesheet";
-        link.href = "chrome://namoroka/content/tabscrollbox.uc.css";
-        e.shadowRoot.append(link);
-
         function isVisuallySelected(list) {
             for (let mut of list) {
                 setTab(mut.target);
