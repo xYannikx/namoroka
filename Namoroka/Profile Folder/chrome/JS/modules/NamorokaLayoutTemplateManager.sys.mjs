@@ -60,6 +60,12 @@ export class NamorokaLayoutTemplateManager {
                 id: "import-button",
                 behavior: "remove",
             }
+        ],
+        "TabsToolbar": [
+            {
+                id: "new-tab-button",
+                behavior: "remove",
+            }
         ]
     }
 
