@@ -42,11 +42,3 @@ try
     }
 } catch(ex) {};
 
-// Old smooth scroll
-defaultPref("general.smoothScroll.currentVelocityWeighting", ".25");
-defaultPref("general.smoothScroll.mouseWheel.durationMaxMS", 400);
-defaultPref("general.smoothScroll.mouseWheel.durationMinMS", 200);
-defaultPref("general.smoothScroll.stopDecelerationWeighting", ".4");
-
-// Enable CSS
-defaultPref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
