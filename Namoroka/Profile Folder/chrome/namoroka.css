@@ -847,6 +847,9 @@ image.default-favicon {
 #urlbar-container #urlbar #identity-box:not(.verifiedDomain) {
   visibility: collapse !important;
 }
+#urlbar-container #urlbar #identity-box #identity-icon-label {
+  visibility: collapse !important;
+}
 #urlbar-container #urlbar .autocomplete-history-dropmarker {
   width: 17px !important;
   height: 100% !important;
@@ -1752,7 +1755,7 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
   --page-icon: url("chrome://namoroka/content/firefox-2/icons/page.png") !important;
   --page-invalid-icon: var(--page-icon) !important;
   --tab-background-radius: 4px !important;
-  --new-tab-icon: url("chrome://namoroka/content/firefox-2/tabbrowser/newtab.png") !important;
+  --new-tab-icon: url("chrome://namoroka/content/firefox-3/tabbrowser/newtab.png") !important ;
 }
 :root[namoroka-style-1] #TabsToolbar {
   border: 0 !important;
@@ -2332,11 +2335,13 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
 :root[namoroka-style-2][namoroka-appearance-small-icons=true] {
   --toolbar-spritesheet: url("chrome://namoroka/content/firefox-3/Toolbar-small.png");
 }
-:root[namoroka-style-2][namoroka-appearance-aero] {
-  --toolbar-spritesheet: url("chrome://namoroka/content/firefox-3/aero/Toolbar.png");
-}
-:root[namoroka-style-2][namoroka-appearance-aero][namoroka-appearance-small-icons=true] {
-  --toolbar-spritesheet: url("chrome://namoroka/content/firefox-3/aero/Toolbar-small.png");
+@media not (-moz-platform: windows-winxp) {
+  :root[namoroka-style-2] {
+    --toolbar-spritesheet: url("chrome://namoroka/content/firefox-3/aero/Toolbar.png");
+  }
+  :root[namoroka-style-2][namoroka-appearance-small-icons=true] {
+    --toolbar-spritesheet: url("chrome://namoroka/content/firefox-3/aero/Toolbar-small.png");
+  }
 }
 :root[namoroka-style-2] .close-icon:not(.findbar-closebutton) {
   width: 14px !important;
@@ -2356,9 +2361,11 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
 :root[namoroka-style-2] .close-icon:not(.findbar-closebutton):hover:active, :root[namoroka-style-2] .close-icon:not(.findbar-closebutton)[open] {
   background-position-x: -28px !important;
 }
-:root[namoroka-style-2][namoroka-appearance-aero] .close-icon:not(.findbar-closebutton) {
-  background-image: url("chrome://namoroka/content/firefox-3/aero/icons/close.png") !important;
-  list-style-image: none !important;
+@media not (-moz-platform: windows-winxp) {
+  :root[namoroka-style-2] .close-icon:not(.findbar-closebutton) {
+    background-image: url("chrome://namoroka/content/firefox-3/aero/icons/close.png") !important;
+    list-style-image: none !important;
+  }
 }
 :root[namoroka-style-2] .toolbarbutton-1#unified-extensions-button .toolbarbutton-icon {
   background-position-x: -516px !important;
@@ -2485,17 +2492,19 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
   --page-icon: url("chrome://namoroka/content/firefox-3/icons/page.png") !important;
   --page-invalid-icon: url("chrome://namoroka/content/firefox-3/icons/page-invalid.png") !important;
 }
-:root[namoroka-style-2][namoroka-appearance-aero] {
-  --page-icon: url("chrome://namoroka/content/firefox-3/aero/icons/page.png") !important;
-  --page-invalid-icon: url("chrome://namoroka/content/firefox-3/aero/icons/page-invalid.png") !important;
-}
-@media not (-moz-windows-classic) {
-  :root[namoroka-style-2][namoroka-appearance-aero] #TabsToolbar {
-    appearance: -moz-win-browsertabbar-toolbox !important;
+@media not (-moz-platform: windows-winxp) {
+  :root[namoroka-style-2] {
+    --page-icon: url("chrome://namoroka/content/firefox-3/aero/icons/page.png") !important;
+    --page-invalid-icon: url("chrome://namoroka/content/firefox-3/aero/icons/page-invalid.png") !important;
   }
 }
 :root[namoroka-style-2] #TabsToolbar {
   isolation: unset !important;
+}
+@media not (-moz-platform: windows-winxp), (-moz-windows-classic) {
+  :root[namoroka-style-2] #TabsToolbar {
+    appearance: -moz-win-browsertabbar-toolbox !important;
+  }
 }
 :root[namoroka-style-2] #TabsToolbar .tabbrowser-tab .tab-background {
   background-image: url("chrome://namoroka/content/firefox-3/tabbrowser/tab-bkgnd.png") !important;
@@ -2618,9 +2627,11 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
   --folder-item: url("chrome://namoroka/content/firefox-3/icons/folder-item.png") !important;
   --query: url("chrome://namoroka/content/firefox-3/icons/query.png") !important;
 }
-:root[namoroka-style-2][namoroka-appearance-aero] {
-  --folder-item: url("chrome://namoroka/content/firefox-3/aero/icons/folder-item.png") !important;
-  --query: url("chrome://namoroka/content/firefox-3/aero/icons/query.png") !important;
+@media not (-moz-platform: windows-winxp) {
+  :root[namoroka-style-2] {
+    --folder-item: url("chrome://namoroka/content/firefox-3/aero/icons/folder-item.png") !important;
+    --query: url("chrome://namoroka/content/firefox-3/aero/icons/query.png") !important;
+  }
 }
 :root[namoroka-style-2] #PersonalToolbar #PlacesToolbarItems {
   margin-inline-start: 0 !important;
@@ -2636,16 +2647,18 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
   background-image: url("chrome://namoroka/content/firefox-3/livemark-folder.png") !important;
   background-position-x: 0 !important;
 }
-:root[namoroka-style-2][namoroka-appearance-aero] toolbarbutton.bookmark-item[livemark=true] .toolbarbutton-icon {
-  background-image: url("chrome://namoroka/content/firefox-3/aero/livemark-folder.png") !important;
+@media not (-moz-platform: windows-winxp) {
+  :root[namoroka-style-2] toolbarbutton.bookmark-item[livemark=true] .toolbarbutton-icon {
+    background-image: url("chrome://namoroka/content/firefox-3/aero/livemark-folder.png") !important;
+  }
 }
 :root[namoroka-style-2] .browser-toolbar {
   appearance: auto !important;
   -moz-default-appearance: toolbar !important;
   min-height: 19px !important;
 }
-@media not (-moz-windows-classic) {
-  :root[namoroka-style-2][namoroka-appearance-aero] .browser-toolbar {
+@media not (-moz-platform: windows-winxp), (-moz-windows-classic) {
+  :root[namoroka-style-2] .browser-toolbar {
     appearance: none !important;
     border: 0 !important;
   }
@@ -2662,6 +2675,7 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
   --urlbar-container-padding: 0 !important;
   --urlbar-margin-inline: 7px !important;
   --secure-icon: url("chrome://namoroka/content/firefox-3/Secure.png") !important;
+  --secure-broken-icon: url("chrome://namoroka/content/firefox-3/Security-broken.png") !important;
   --navbar-textbox-buttons: url("chrome://namoroka/content/firefox-3/urlbar/navbar-textbox-buttons.png") !important;
   --search-glass: url("chrome://namoroka/content/firefox-3/Search-glass.png") !important;
   --search-close: url("chrome://namoroka/content/firefox-3/Search-close.png") !important;
@@ -2671,16 +2685,20 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
     --urlbar-root-height: 24px !important;
   }
 }
+@media not (-moz-platform: windows-winxp) {
+  :root[namoroka-style-2] {
+    --secure-icon: url("chrome://namoroka/content/firefox-3/aero/Secure.png") !important;
+    --secure-broken-icon: url("chrome://namoroka/content/firefox-3/aero/Security-broken.png") !important;
+    --navbar-textbox-buttons: url("chrome://namoroka/content/firefox-3/aero/urlbar/navbar-textbox-buttons.png") !important;
+    --search-glass: url("chrome://namoroka/content/firefox-3/aero/Search-glass.png") !important;
+    --search-close: url("chrome://namoroka/content/firefox-3/aero/Search-close.png") !important;
+  }
+}
 :root[namoroka-style-2] .searchbar-textbox::placeholder {
   opacity: 1 !important;
 }
-:root[namoroka-style-2][namoroka-appearance-aero] {
-  --navbar-textbox-buttons: url("chrome://namoroka/content/firefox-3/aero/urlbar/navbar-textbox-buttons.png") !important;
-  --search-glass: url("chrome://namoroka/content/firefox-3/aero/Search-glass.png") !important;
-  --search-close: url("chrome://namoroka/content/firefox-3/aero/Search-close.png") !important;
-}
-@media not (-moz-windows-classic) {
-  :root[namoroka-style-2][namoroka-appearance-aero] .searchbar-textbox::placeholder {
+@media not (-moz-platform: windows-winxp) {
+  :root[namoroka-style-2] .searchbar-textbox::placeholder {
     font-style: italic !important;
   }
 }
@@ -2776,11 +2794,11 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
 }
 :root[namoroka-style-2] #urlbar-container #urlbar #identity-box.verifiedDomain #identity-icon-box {
   background-position: 0 -120px !important;
+  color: white !important;
 }
 @media not (-moz-windows-classic) {
   :root[namoroka-style-2] #urlbar-container #urlbar #identity-box.verifiedDomain #identity-icon-box {
     background-position: 0 -110px !important;
-    color: white !important;
   }
 }
 :root[namoroka-style-2] #urlbar-container #urlbar #identity-box.verifiedDomain:hover #identity-icon-box {
@@ -2789,6 +2807,23 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
 @media not (-moz-windows-classic) {
   :root[namoroka-style-2] #urlbar-container #urlbar #identity-box.verifiedDomain:hover #identity-icon-box {
     background-position: 0 -170px !important;
+  }
+}
+:root[namoroka-style-2] #urlbar-container #urlbar #identity-box.verifiedIdentity #identity-icon-box {
+  background-position: 0 -240px !important;
+  color: white !important;
+}
+@media not (-moz-windows-classic) {
+  :root[namoroka-style-2] #urlbar-container #urlbar #identity-box.verifiedIdentity #identity-icon-box {
+    background-position: 0 -230px !important;
+  }
+}
+:root[namoroka-style-2] #urlbar-container #urlbar #identity-box.verifiedIdentity:hover #identity-icon-box {
+  background-position: 0 -300px !important;
+}
+@media not (-moz-windows-classic) {
+  :root[namoroka-style-2] #urlbar-container #urlbar #identity-box.verifiedIdentity:hover #identity-icon-box {
+    background-position: 0 -290px !important;
   }
 }
 :root[namoroka-style-2] #urlbar-container #urlbar #identity-box #identity-icon {
@@ -2860,10 +2895,20 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
 }
 :root[namoroka-style-2] #urlbar-container #urlbar #star-button {
   list-style-image: none !important;
-  background-image: url("chrome://namoroka/content/firefox-3/aero/places/bookmark.png") !important;
+  background-image: url("chrome://namoroka/content/firefox-3/places/bookmark.png") !important;
+}
+@media not (-moz-platform: windows-winxp) {
+  :root[namoroka-style-2] #urlbar-container #urlbar #star-button {
+    background-image: url("chrome://namoroka/content/firefox-3/aero/places/bookmark.png") !important;
+  }
 }
 :root[namoroka-style-2] #urlbar-container #urlbar #star-button[starred=true] {
-  background-image: url("chrome://namoroka/content/firefox-3/aero/places/editBookmark.png") !important;
+  background-image: url("chrome://namoroka/content/firefox-3/places/editBookmark.png") !important;
+}
+@media not (-moz-platform: windows-winxp) {
+  :root[namoroka-style-2] #urlbar-container #urlbar #star-button[starred=true] {
+    background-image: url("chrome://namoroka/content/firefox-3/aero/places/editBookmark.png") !important;
+  }
 }
 :root[namoroka-style-2] #urlbar-container #urlbar #star-button:hover {
   background-position-x: -16px !important;
@@ -2877,9 +2922,14 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
   border-radius: 0 !important;
   background-color: transparent !important;
   visibility: visible !important;
-  background-image: url("chrome://namoroka/content/firefox-3/aero/Go-arrow.png") !important;
+  background-image: url("chrome://namoroka/content/firefox-3/Go-arrow.png") !important;
   margin: 2px !important;
   list-style-image: none !important;
+}
+@media not (-moz-platform: windows-winxp) {
+  :root[namoroka-style-2] #urlbar-container #urlbar #urlbar-go-button {
+    background-image: url("chrome://namoroka/content/firefox-3/aero/Go-arrow.png") !important;
+  }
 }
 :root[namoroka-style-2] #urlbar-container #urlbar #urlbar-go-button:hover {
   background-position-x: -16px !important;
@@ -2984,7 +3034,12 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
   list-style-image: var(--page-icon) !important;
 }
 :root[namoroka-style-2] #PopupAutoCompleteRichResult .ac-result-type-bookmark {
-  background-image: url("chrome://namoroka/content/firefox-3/aero/places/editBookmark.png") !important;
+  background-image: url("chrome://namoroka/content/firefox-3/places/editBookmark.png") !important;
+}
+@media not (-moz-platform: windows-winxp) {
+  :root[namoroka-style-2] #PopupAutoCompleteRichResult .ac-result-type-bookmark {
+    background-image: url("chrome://namoroka/content/firefox-3/aero/places/editBookmark.png") !important;
+  }
 }
 :root[namoroka-style-2] #PopupAutoCompleteRichResult span.ac-emphasize-text {
   font-weight: bold !important;
@@ -3023,26 +3078,33 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
 :root[namoroka-style-2] .question-icon {
   list-style-image: url("chrome://namoroka/content/firefox-3/icons/Question.png") !important;
 }
-:root[namoroka-style-2][namoroka-appearance-aero=true] {
-  /* commonDialog icons */
-}
-:root[namoroka-style-2][namoroka-appearance-aero=true] .message-icon {
-  list-style-image: url("chrome://namoroka/content/firefox-3/aero/icons/information-32.png") !important;
-}
-:root[namoroka-style-2][namoroka-appearance-aero=true] .alert-dialog #infoIcon,
-:root[namoroka-style-2][namoroka-appearance-aero=true] .alert-icon {
-  list-style-image: url("chrome://namoroka/content/firefox-3/aero/icons/Warning.png") !important;
-}
-:root[namoroka-style-2][namoroka-appearance-aero=true] .error-icon {
-  list-style-image: url("chrome://namoroka/content/firefox-3/aero/icons/Error.png") !important;
-}
-:root[namoroka-style-2][namoroka-appearance-aero=true] .question-icon {
-  list-style-image: url("chrome://namoroka/content/firefox-3/aero/icons/Question.png") !important;
+@media not (-moz-platform: windows-winxp) {
+  :root[namoroka-style-2] {
+    /* commonDialog icons */
+  }
+  :root[namoroka-style-2] .message-icon {
+    list-style-image: url("chrome://namoroka/content/firefox-3/aero/icons/information-32.png") !important;
+  }
+  :root[namoroka-style-2] .alert-dialog #infoIcon,
+  :root[namoroka-style-2] .alert-icon {
+    list-style-image: url("chrome://namoroka/content/firefox-3/aero/icons/Warning.png") !important;
+  }
+  :root[namoroka-style-2] .error-icon {
+    list-style-image: url("chrome://namoroka/content/firefox-3/aero/icons/Error.png") !important;
+  }
+  :root[namoroka-style-2] .question-icon {
+    list-style-image: url("chrome://namoroka/content/firefox-3/aero/icons/Question.png") !important;
+  }
 }
 :root[namoroka-style-2] findbar[namoroka-initialized=true] .findbar-closebutton > .toolbarbutton-icon {
   width: 14px !important;
   height: 14px !important;
   background-image: url("chrome://namoroka/content/firefox-3/icons/closeSidebar.png") !important;
+}
+@media not (-moz-platform: windows-winxp) {
+  :root[namoroka-style-2] findbar[namoroka-initialized=true] .findbar-closebutton > .toolbarbutton-icon {
+    background-image: url("chrome://namoroka/content/firefox-3/aero/icons/closeSidebar.png") !important;
+  }
 }
 :root[namoroka-style-2] findbar[namoroka-initialized=true] .findbar-closebutton:hover > .toolbarbutton-icon {
   background-position-x: -14px !important;
@@ -3061,19 +3123,18 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
 :root[namoroka-style-2] findbar[namoroka-initialized=true] .find-status-icon[status=wrapped] {
   list-style-image: url("chrome://namoroka/content/firefox-3/findbar/wrap.png") !important;
 }
-:root[namoroka-style-2][namoroka-appearance-aero] findbar[namoroka-initialized=true] .findbar-closebutton > .toolbarbutton-icon {
-  background-image: url("chrome://namoroka/content/firefox-3/aero/icons/closeSidebar.png") !important;
-}
-:root[namoroka-style-2][namoroka-appearance-aero] findbar[namoroka-initialized=true] .findbar-find-previous .toolbarbutton-icon,
-:root[namoroka-style-2][namoroka-appearance-aero] findbar[namoroka-initialized=true] .findbar-find-next .toolbarbutton-icon,
-:root[namoroka-style-2][namoroka-appearance-aero] findbar[namoroka-initialized=true] .findbar-highlight .toolbarbutton-icon {
-  background-image: url("chrome://namoroka/content/firefox-3/aero/findbar/find.png") !important;
-}
-:root[namoroka-style-2][namoroka-appearance-aero] findbar[namoroka-initialized=true] .find-status-icon[status=notfound] {
-  list-style-image: url("chrome://namoroka/content/firefox-3/aero/findbar/notfound.png") !important;
-}
-:root[namoroka-style-2][namoroka-appearance-aero] findbar[namoroka-initialized=true] .find-status-icon[status=wrapped] {
-  list-style-image: url("chrome://namoroka/content/firefox-3/aero/findbar/wrap.png") !important;
+@media not (-moz-platform: windows-winxp) {
+  :root[namoroka-style-2] findbar[namoroka-initialized=true] .findbar-find-previous .toolbarbutton-icon,
+  :root[namoroka-style-2] findbar[namoroka-initialized=true] .findbar-find-next .toolbarbutton-icon,
+  :root[namoroka-style-2] findbar[namoroka-initialized=true] .findbar-highlight .toolbarbutton-icon {
+    background-image: url("chrome://namoroka/content/firefox-3/aero/findbar/find.png") !important;
+  }
+  :root[namoroka-style-2] findbar[namoroka-initialized=true] .find-status-icon[status=notfound] {
+    list-style-image: url("chrome://namoroka/content/firefox-3/aero/findbar/notfound.png") !important;
+  }
+  :root[namoroka-style-2] findbar[namoroka-initialized=true] .find-status-icon[status=wrapped] {
+    list-style-image: url("chrome://namoroka/content/firefox-3/aero/findbar/wrap.png") !important;
+  }
 }
 :root[namoroka-style-2] .toolbarbutton-1 {
   padding: 5px !important;
@@ -3099,8 +3160,10 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
 :root[namoroka-style-2] #sidebar-box #sidebar-header #sidebar-close {
   background-image: url("chrome://namoroka/content/firefox-3/icons/closeSidebar.png") !important;
 }
-:root[namoroka-style-2][namoroka-appearance-aero] #sidebar-box #sidebar-header #sidebar-close {
-  background-image: url("chrome://namoroka/content/firefox-3/aero/icons/closeSidebar.png") !important;
+@media not (-moz-platform: windows-winxp) {
+  :root[namoroka-style-2] #sidebar-box #sidebar-header #sidebar-close {
+    background-image: url("chrome://namoroka/content/firefox-3/aero/icons/closeSidebar.png") !important;
+  }
 }
 @-moz-document url("chrome://browser/content/places/bookmarksSidebar.xhtml"), url("chrome://browser/content/places/historySidebar.xhtml") {
   :root[namoroka-style-2] #sidebar-search-container {
@@ -3122,57 +3185,167 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
   list-style-image: url("chrome://namoroka/content/firefox-3/places/allBookmarks.png") !important;
   -moz-image-region: auto;
 }
+@media not (-moz-platform: windows-winxp) {
+  :root[namoroka-style-2] treechildren::-moz-tree-image(query, OrganizerQuery_allbms_____v) {
+    list-style-image: url("chrome://namoroka/content/firefox-3/aero/places/allBookmarks.png") !important;
+  }
+}
 :root[namoroka-style-2] treechildren::-moz-tree-image(container, queryFolder_toolbar_____) {
   list-style-image: url("chrome://namoroka/content/firefox-3/places/bookmarksToolbar.png") !important;
   -moz-image-region: auto;
+}
+@media not (-moz-platform: windows-winxp) {
+  :root[namoroka-style-2] treechildren::-moz-tree-image(container, queryFolder_toolbar_____) {
+    list-style-image: url("chrome://namoroka/content/firefox-3/aero/places/bookmarksToolbar.png") !important;
+  }
 }
 :root[namoroka-style-2] treechildren::-moz-tree-image(container, queryFolder_menu________) {
   list-style-image: url("chrome://namoroka/content/firefox-3/places/bookmarksMenu.png") !important;
   -moz-image-region: auto;
 }
+@media not (-moz-platform: windows-winxp) {
+  :root[namoroka-style-2] treechildren::-moz-tree-image(container, queryFolder_menu________) {
+    list-style-image: url("chrome://namoroka/content/firefox-3/aero/places/bookmarksMenu.png") !important;
+  }
+}
 :root[namoroka-style-2] treechildren::-moz-tree-image(container, queryFolder_unfiledBookmarks_____) {
   list-style-image: url("chrome://namoroka/content/firefox-3/places/unsortedBookmarks.png") !important;
   -moz-image-region: auto;
+}
+@media not (-moz-platform: windows-winxp) {
+  :root[namoroka-style-2] treechildren::-moz-tree-image(container, queryFolder_unfiledBookmarks_____) {
+    list-style-image: url("chrome://namoroka/content/firefox-3/aero/places/unsortedBookmarks.png") !important;
+  }
 }
 :root[namoroka-style-2] treechildren::-moz-tree-image(title, query, dayContainer) {
   list-style-image: url("chrome://namoroka/content/firefox-3/places/calendar.png") !important;
   -moz-image-region: auto !important;
 }
+@media not (-moz-platform: windows-winxp) {
+  :root[namoroka-style-2] treechildren::-moz-tree-image(title, query, dayContainer) {
+    list-style-image: url("chrome://namoroka/content/firefox-3/aero/places/calendar.png") !important;
+  }
+}
 :root[namoroka-style-2] treechildren::-moz-tree-image(title, query, tagContainer) {
   list-style-image: url("chrome://namoroka/content/firefox-3/places/tagContainerIcon.png") !important;
   -moz-image-region: auto !important;
+}
+@media not (-moz-platform: windows-winxp) {
+  :root[namoroka-style-2] treechildren::-moz-tree-image(title, query, tagContainer) {
+    list-style-image: url("chrome://namoroka/content/firefox-3/aero/places/tagContainerIcon.png") !important;
+  }
 }
 :root[namoroka-style-2] treechildren::-moz-tree-image(query, OrganizerQuery_tags_______v) {
   list-style-image: url("chrome://namoroka/content/firefox-3/places/tag.png") !important;
   -moz-image-region: auto !important;
 }
+@media not (-moz-platform: windows-winxp) {
+  :root[namoroka-style-2] treechildren::-moz-tree-image(query, OrganizerQuery_tags_______v) {
+    list-style-image: url("chrome://namoroka/content/firefox-3/aero/places/tag.png") !important;
+  }
+}
 :root[namoroka-style-2] treechildren::-moz-tree-image(query, OrganizerQuery_history____v) {
   list-style-image: url("chrome://namoroka/content/firefox-3/places/history.png") !important;
   -moz-image-region: auto !important;
 }
-:root[namoroka-style-2][namoroka-appearance-aero] treechildren::-moz-tree-image(query, OrganizerQuery_allbms_____v) {
-  list-style-image: url("chrome://namoroka/content/firefox-3/aero/places/allBookmarks.png") !important;
+@media not (-moz-platform: windows-winxp) {
+  :root[namoroka-style-2] treechildren::-moz-tree-image(query, OrganizerQuery_history____v) {
+    list-style-image: url("chrome://namoroka/content/firefox-3/aero/places/history.png") !important;
+  }
 }
-:root[namoroka-style-2][namoroka-appearance-aero] treechildren::-moz-tree-image(container, queryFolder_toolbar_____) {
-  list-style-image: url("chrome://namoroka/content/firefox-3/aero/places/bookmarksToolbar.png") !important;
+
+/* ::::: Firefox 3.5 ::::: */
+:root[namoroka-style-3] #TabsToolbar #alltabs-button {
+  list-style-image: url("chrome://namoroka/content/firefox-3.5/mainwindow-dropdown-arrow.png") !important;
+  -moz-image-region: rect(0, 13px, 11px, 0) !important;
 }
-:root[namoroka-style-2][namoroka-appearance-aero] treechildren::-moz-tree-image(container, queryFolder_menu________) {
-  list-style-image: url("chrome://namoroka/content/firefox-3/aero/places/bookmarksMenu.png") !important;
+:root[namoroka-style-3] #TabsToolbar #alltabs-button .toolbarbutton-icon {
+  width: 13px !important;
+  height: 11px !important;
+  margin: 5px 0 4px !important;
 }
-:root[namoroka-style-2][namoroka-appearance-aero] treechildren::-moz-tree-image(container, queryFolder_unfiledBookmarks_____) {
-  list-style-image: url("chrome://namoroka/content/firefox-3/aero/places/unsortedBookmarks.png") !important;
+:root[namoroka-style-3] {
+  --navbar-textbox-buttons: url("chrome://namoroka/content/firefox-3.5/urlbar/navbar-textbox-buttons.png") !important;
 }
-:root[namoroka-style-2][namoroka-appearance-aero] treechildren::-moz-tree-image(title, query, dayContainer) {
-  list-style-image: url("chrome://namoroka/content/firefox-3/aero/places/calendar.png") !important;
+@media not (-moz-platform: windows-winxp) {
+  :root[namoroka-style-3] {
+    --navbar-textbox-buttons: url("chrome://namoroka/content/firefox-3.5/aero/urlbar/navbar-textbox-buttons.png") !important;
+  }
 }
-:root[namoroka-style-2][namoroka-appearance-aero] treechildren::-moz-tree-image(title, query, tagContainer) {
-  list-style-image: url("chrome://namoroka/content/firefox-3/aero/places/tagContainerIcon.png") !important;
+:root[namoroka-style-3] #urlbar-container #urlbar #identity-box {
+  border-inline-end: 0 !important;
+  overflow: visible !important;
 }
-:root[namoroka-style-2][namoroka-appearance-aero] treechildren::-moz-tree-image(query, OrganizerQuery_tags_______v) {
-  list-style-image: url("chrome://namoroka/content/firefox-3/aero/places/tag.png") !important;
+:root[namoroka-style-3] #urlbar-container #urlbar #identity-box #identity-icon-box {
+  padding: 0 !important;
+  background: -moz-Dialog var(--navbar-textbox-buttons) repeat-x !important;
+  border: 1px none ThreeDShadow !important;
+  border-inline-end-style: solid !important;
+  box-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3) inset, 0 -1px 0 rgba(255, 255, 255, 0.2) inset !important;
 }
-:root[namoroka-style-2][namoroka-appearance-aero] treechildren::-moz-tree-image(query, OrganizerQuery_history____v) {
-  list-style-image: url("chrome://namoroka/content/firefox-3/aero/places/history.png") !important;
+@media not (-moz-windows-classic) {
+  :root[namoroka-style-3] #urlbar-container #urlbar #identity-box #identity-icon-box {
+    margin: -1px 0 !important;
+    padding-inline-start: 2px !important;
+    border-style: solid !important;
+    border-inline-end-color: rgba(0, 0, 0, 0.05) !important;
+    border-radius: 6px 0 2px 6px/15px 0 2px 15px !important;
+  }
+}
+:root[namoroka-style-3] #urlbar-container #urlbar #identity-box:hover #identity-icon-box {
+  background-position: 0 -60px !important;
+}
+:root[namoroka-style-3] #urlbar-container #urlbar #identity-box:hover:active #identity-icon-box, :root[namoroka-style-3] #urlbar-container #urlbar #identity-box[open=true] #identity-icon-box {
+  background-position: 0 -120px !important;
+  box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.2) inset !important;
+}
+:root[namoroka-style-3] #urlbar-container #urlbar #identity-box.verifiedDomain #identity-icon-box, :root[namoroka-style-3] #urlbar-container #urlbar #identity-box.verifiedIdentity #identity-icon-box {
+  border-color: rgba(0, 0, 0, 0.2) !important;
+  color: white !important;
+}
+:root[namoroka-style-3] #urlbar-container #urlbar #identity-box.verifiedDomain:hover:active #identity-icon-box, :root[namoroka-style-3] #urlbar-container #urlbar #identity-box.verifiedDomain[open=true] #identity-icon-box, :root[namoroka-style-3] #urlbar-container #urlbar #identity-box.verifiedIdentity:hover:active #identity-icon-box, :root[namoroka-style-3] #urlbar-container #urlbar #identity-box.verifiedIdentity[open=true] #identity-icon-box {
+  border-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.4) !important;
+}
+:root[namoroka-style-3] #urlbar-container #urlbar #identity-box.verifiedDomain #identity-icon-box {
+  background-position: 0 -180px !important;
+}
+:root[namoroka-style-3] #urlbar-container #urlbar #identity-box.verifiedDomain:hover #identity-icon-box {
+  background-position: 0 -240px !important;
+}
+:root[namoroka-style-3] #urlbar-container #urlbar #identity-box.verifiedDomain:hover:active #identity-icon-box, :root[namoroka-style-3] #urlbar-container #urlbar #identity-box.verifiedDomain[open=true] #identity-icon-box {
+  background-position: 0 -300px !important;
+}
+:root[namoroka-style-3] #urlbar-container #urlbar #identity-box.verifiedIdentity #identity-icon-box {
+  background-position: 0 -360px !important;
+}
+:root[namoroka-style-3] #urlbar-container #urlbar #identity-box.verifiedIdentity:hover #identity-icon-box {
+  background-position: 0 -420px !important;
+}
+:root[namoroka-style-3] #urlbar-container #urlbar #identity-box.verifiedIdentity:hover:active #identity-icon-box, :root[namoroka-style-3] #urlbar-container #urlbar #identity-box.verifiedIdentity[open=true] #identity-icon-box {
+  background-position: 0 -480px !important;
+}
+:root[namoroka-style-3] #urlbar-container #urlbar .autocomplete-history-dropmarker:hover, :root[namoroka-style-3] #urlbar-container #urlbar .autocomplete-history-dropmarker[open=true] {
+  border-color: ButtonShadow !important;
+}
+:root[namoroka-style-3] #urlbar-container #urlbar .autocomplete-history-dropmarker:hover:active, :root[namoroka-style-3] #urlbar-container #urlbar .autocomplete-history-dropmarker[open=true] {
+  background-position: 0 -120px !important;
+}
+:root[namoroka-style-3] #searchbar .searchbar-search-button {
+  background: -moz-Dialog var(--navbar-textbox-buttons) repeat-x !important;
+  margin-inline-end: 3px !important;
+  box-shadow: 1px 1px 0 rgba(255, 255, 255, 0.4) inset, 0 -1px 0 rgba(255, 255, 255, 0.4) inset;
+}
+@media not (-moz-windows-classic) {
+  :root[namoroka-style-3] #searchbar .searchbar-search-button {
+    border-inline-end-color: rgba(0, 0, 0, 0.05) !important;
+  }
+}
+:root[namoroka-style-3] #searchbar .searchbar-search-button:hover {
+  background-position: 0 -60px !important;
+}
+:root[namoroka-style-3] #searchbar .searchbar-search-button[open=true] {
+  background-position: 0 -120px !important;
+  box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.2) inset !important;
 }
 
 /*# sourceMappingURL=namoroka.css.map */

@@ -129,8 +129,10 @@ checkbox[disabled=true] {
 :root[namoroka-style-2=true] .tab .button-icon {
   background-image: url("chrome://userchrome/content/windows/options/images/Options-ff3.png");
 }
-:root[namoroka-style-2=true][namoroka-appearance-aero=true] .tab .button-icon {
-  background-image: url("chrome://userchrome/content/windows/options/images/Options-ff3-aero.png");
+@media not (-moz-platform: windows-winxp) {
+  :root[namoroka-style-2=true] .tab .button-icon {
+    background-image: url("chrome://userchrome/content/windows/options/images/Options-ff3-aero.png");
+  }
 }
 .tab .button-text {
   text-wrap: wrap;

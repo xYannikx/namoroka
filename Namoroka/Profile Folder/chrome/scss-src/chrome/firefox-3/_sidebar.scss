@@ -6,14 +6,8 @@
 
         #sidebar-close {
             background-image: #{asset("icons/closeSidebar.png")} !important;
-        }
-    }
-}
 
-&[namoroka-appearance-aero] {
-    #sidebar-box {
-        #sidebar-header {
-            #sidebar-close {
+            @media not (-moz-platform: windows-winxp) {
                 background-image: #{asset("aero/icons/closeSidebar.png")} !important;
             }
         }

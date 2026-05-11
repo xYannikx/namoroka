@@ -4,6 +4,10 @@ findbar[namoroka-initialized="true"] {
             width: 14px !important;
             height: 14px !important;
             background-image: #{asset("icons/closeSidebar.png")} !important;
+
+            @media not (-moz-platform: windows-winxp) {
+                background-image: #{asset("aero/icons/closeSidebar.png")} !important;
+            }
         }
 
         &:hover {
@@ -20,16 +24,7 @@ findbar[namoroka-initialized="true"] {
     }
 
     @include findbar-icons;
-}   
-
-&[namoroka-appearance-aero] {
-    findbar[namoroka-initialized="true"] {
-        .findbar-closebutton {
-            > .toolbarbutton-icon {
-                background-image: #{asset("aero/icons/closeSidebar.png")} !important;
-            }
-        }
-
+    @media not (-moz-platform: windows-winxp) {
         @include findbar-icons("aero/");
     }
 }

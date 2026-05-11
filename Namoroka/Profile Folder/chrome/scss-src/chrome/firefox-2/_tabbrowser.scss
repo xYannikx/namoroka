@@ -4,7 +4,7 @@
     --page-icon: #{asset("icons/page.png")} !important;
     --page-invalid-icon: var(--page-icon) !important;
     --tab-background-radius: 4px !important;
-    --new-tab-icon: #{asset("tabbrowser/newtab.png")} !important;
+    --new-tab-icon: url("chrome://namoroka/content/firefox-3/tabbrowser/newtab.png") !important
 }
 
 #TabsToolbar {

@@ -50,6 +50,13 @@ var g_NamorokaOptionsDialog;
         }
 
         get _isRestartRequired() {
+            const skinsList = document.getElementById("skinsList");
+            if (skinsList && skinsList.value != skinsList.originalValue &&
+                (skinsList.value == "3" || skinsList.originalValue == "3"))
+            {
+                return true;
+            }
+
             for (const option of document.querySelectorAll(".option"))
             {
                 if (option.closest("[section-change-requires-restart]") || option.getAttribute("change-requires-restart"))
@@ -151,11 +158,6 @@ var g_NamorokaOptionsDialog;
 
         refreshViewProperties(event) {
             let restartRequired = this._isRestartRequired;
-            let namorokaStyleLessOrEqual = this.isNamorokaStyleLessOrEqual(1);
-
-            for (const control of document.querySelectorAll("[data-option='Namoroka.Appearance.Aero']")) {
-                control.setAttribute("disabled", namorokaStyleLessOrEqual);
-            }
 
             if (!restartRequired) {
                 this.handleOkApply(this, false);
@@ -164,18 +166,6 @@ var g_NamorokaOptionsDialog;
             document.querySelector(".restart-required-label").style.display = restartRequired ? "flex" : "none";
         }
 
-        isNamorokaStyleLessOrEqual(value) {
-            for (const option of document.querySelectorAll(".option"))
-            {
-                if (option.closest("[data-option='Namoroka.Appearance.Style']"))
-                {
-                    let currentValue = this.getOptionValue(option);
-
-                    return Number(currentValue) <= Number(value);
-                }
-            }
-        }
-        
         handleOkApply(event, closeWindow = false) {
             let restartRequired = this._isRestartRequired;
 

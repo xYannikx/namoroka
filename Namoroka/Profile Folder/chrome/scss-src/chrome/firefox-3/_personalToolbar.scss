@@ -2,7 +2,7 @@
     --folder-item: #{asset("icons/folder-item.png")} !important;
     --query: #{asset("icons/query.png")} !important;
 
-    &[namoroka-appearance-aero] {
+    @media not (-moz-platform: windows-winxp) {
         --folder-item: #{asset("aero/icons/folder-item.png")} !important;
         --query: #{asset("aero/icons/query.png")} !important;
     }
@@ -27,12 +27,8 @@ toolbarbutton.bookmark-item[livemark="true"] {
     .toolbarbutton-icon {
         background-image: #{asset("livemark-folder.png")} !important;
         background-position-x: 0 !important;
-    }
-}
 
-&[namoroka-appearance-aero] {
-    toolbarbutton.bookmark-item[livemark="true"] {
-        .toolbarbutton-icon {
+        @media not (-moz-platform: windows-winxp) {
             background-image: #{asset("aero/livemark-folder.png")} !important;
         }
     }

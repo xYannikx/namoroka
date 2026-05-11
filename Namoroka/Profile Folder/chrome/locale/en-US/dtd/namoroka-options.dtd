@@ -22,15 +22,19 @@
 <!ENTITY general.appearance.style.ff1  "Firefox 1">
 <!ENTITY general.appearance.style.ff2  "Firefox 2">
 <!ENTITY general.appearance.style.ff3  "Firefox 3">
+<!ENTITY general.appearance.style.ff3.5  "Firefox 3.5">
 
 <!ENTITY general.appearance.description.ff1 "The default theme for Firefox 1">
 <!ENTITY general.appearance.description.ff2 "The default theme for Firefox 2">
 <!ENTITY general.appearance.description.ff3 "The default theme for Firefox 3">
+<!ENTITY general.appearance.description.ff3.5 "The default theme for Firefox 3.5">
 
-<!ENTITY general.appearance.aero "Use Aero Style">
+<!ENTITY general.appearance.osOverride "System Appearance">
+<!ENTITY general.appearance.osOverride.default "Windows Vista or newer (default)">
+<!ENTITY general.appearance.osOverride.xp "Windows XP">
+
 <!ENTITY general.appearance.hideTabBar "Hide the tab bar when only one web site is open">
 <!ENTITY general.appearance.smallIcons "Use Small Icons">
-
 
 <!ENTITY branding.description "This tab allows you to change the branding of the browser.">
 <!ENTITY branding.style "Namoroka Branding:">

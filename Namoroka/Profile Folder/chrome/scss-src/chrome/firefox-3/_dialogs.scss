@@ -1,5 +1,5 @@
 @include dialog-icons("icons/information-32.png");
 
-&[namoroka-appearance-aero="true"] {
+@media not (-moz-platform: windows-winxp) {
     @include dialog-icons("icons/information-32.png", "aero/");
 }

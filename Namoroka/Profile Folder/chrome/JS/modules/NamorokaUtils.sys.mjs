@@ -267,6 +267,13 @@ export class NamorokaInfo
 				"renderingVersion": "1.9",
 				"engineBuild": "2008052906",
 			},
+			{
+				"style": 3,
+				"version": `${Services.prefs.getIntPref("Namoroka.About-Spoof.Major-Version", 3)}.${Services.prefs.getIntPref("Namoroka.About-Spoof.Minor-Version", 5)}${patchVersion ? "." + patchVersion : ""}`,
+				"copyright": Services.prefs.getIntPref("Namoroka.About-Spoof.Copyright", 2009),
+				"renderingVersion": "1.9.1",
+				"engineBuild": "20090624",
+			},
 		]
 	}
 
@@ -422,6 +429,24 @@ export class WindowIconUtils
 			largeIconUrl ? this.#loadIcon(largeIconUrl) : null,
 		]);
 
-		_WindowsUIUtils.setWindowIcon(win, smallIcon, largeIcon);
+		try
+		{
+			_WindowsUIUtils.setWindowIcon(win, smallIcon, largeIcon);
+		}
+		catch (e)
+		{
+			if (e.result === Cr.NS_ERROR_NOT_AVAILABLE)
+			{
+				win.addEventListener(
+					"load",
+					() => _WindowsUIUtils.setWindowIcon(win, smallIcon, largeIcon),
+					{ once: true }
+				);
+			}
+			else
+			{
+				throw e;
+			}
+		}
 	}
 }

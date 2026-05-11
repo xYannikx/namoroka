@@ -118,6 +118,10 @@ image.default-favicon {
             &:not(.verifiedDomain) {
                 visibility: collapse !important;
             }
+
+            #identity-icon-label {
+                visibility: collapse !important;
+            }
         }
 
         .autocomplete-history-dropmarker {

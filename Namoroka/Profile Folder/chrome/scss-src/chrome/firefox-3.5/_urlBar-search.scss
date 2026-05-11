@@ -1,0 +1,133 @@
+& {
+    --navbar-textbox-buttons: #{asset("urlbar/navbar-textbox-buttons.png")} !important;
+
+    @media not (-moz-platform: windows-winxp) {
+        --navbar-textbox-buttons: #{asset("aero/urlbar/navbar-textbox-buttons.png")} !important;
+    }
+
+    #urlbar-container {
+        #urlbar {
+            #identity-box {
+                border-inline-end: 0 !important;
+                overflow: visible !important;
+
+                #identity-icon-box {
+                    padding: 0 !important;
+                    background: -moz-Dialog var(--navbar-textbox-buttons) repeat-x !important;
+                    border: 1px none ThreeDShadow !important;
+                    border-inline-end-style: solid !important;
+                    box-shadow: 1px 1px 0 rgba(255,255,255,.3) inset, 0 -1px 0 rgba(255,255,255,.2) inset !important;
+
+                    @media not (-moz-windows-classic) {
+                        margin: -1px 0 !important;
+                        padding-inline-start: 2px !important;
+                        border-style: solid !important;
+                        border-inline-end-color: rgba(0,0,0,.05) !important;
+                        border-radius: 6px 0 2px 6px / 15px 0 2px 15px !important;
+                    }
+                }
+
+                &:hover {
+                    #identity-icon-box {
+                        background-position: 0 -60px !important;
+                    }
+                }
+
+                &:hover:active,
+                &[open="true"] {
+                    #identity-icon-box {
+                        background-position: 0 -120px !important;
+                        box-shadow: 0 -1px 0 rgba(255,255,255,.2) inset !important;
+                    }
+                }
+
+                &.verifiedDomain,
+                &.verifiedIdentity {
+                    #identity-icon-box {
+                        border-color: rgba(0,0,0,.2) !important;
+                        color: white !important;
+                    }
+
+                    &:hover:active,
+                    &[open="true"] {
+                        #identity-icon-box {
+                            border-color: rgba(0,0,0,.2) rgba(0,0,0,.4) !important;
+                        }
+                    }
+                }
+
+                &.verifiedDomain {
+                    #identity-icon-box {
+                        background-position: 0 -180px !important;
+                    }
+
+                    &:hover {
+                        #identity-icon-box {
+                            background-position: 0 -240px !important;
+                        }
+                    }
+
+                    &:hover:active,
+                    &[open="true"] {
+                        #identity-icon-box {
+                            background-position: 0 -300px !important;
+                        }
+                    }
+                }
+
+                &.verifiedIdentity {
+                    #identity-icon-box {
+                        background-position: 0 -360px !important;
+                    }
+
+                    &:hover {
+                        #identity-icon-box {
+                            background-position: 0 -420px !important;
+                        }
+                    }
+
+                    &:hover:active,
+                    &[open="true"] {
+                        #identity-icon-box {
+                            background-position: 0 -480px !important;
+                        }
+                    }
+                }
+            }
+
+            .autocomplete-history-dropmarker {
+                &:hover,
+                &[open="true"] {
+                    border-color: ButtonShadow !important;
+                }
+
+                &:hover:active,
+                &[open="true"] {
+                    background-position: 0 -120px !important;
+                }
+            }
+        }
+    }
+
+    #searchbar {
+        .searchbar-search-button {
+            background: -moz-Dialog var(--navbar-textbox-buttons) repeat-x !important;
+            margin-inline-end: 3px !important;
+            box-shadow: 1px 1px 0 rgba(255,255,255,.4) inset,
+                        0 -1px 0 rgba(255,255,255,.4) inset;
+
+            @media not (-moz-windows-classic) {
+                border-inline-end-color: rgba(0,0,0,.05) !important;
+            }
+
+            &:hover {
+                background-position: 0 -60px !important;
+            }
+
+            &[open="true"] {
+                background-position: 0 -120px !important;
+                box-shadow: 0 -1px 0 rgba(255,255,255,.2) inset !important;
+            }
+        }
+    }
+}

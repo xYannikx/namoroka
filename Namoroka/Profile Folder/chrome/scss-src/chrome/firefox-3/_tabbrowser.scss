@@ -2,21 +2,19 @@
     --tab-min-height: 24px !important;
     --page-icon: #{asset("icons/page.png")} !important;
     --page-invalid-icon: #{asset("icons/page-invalid.png")} !important;
-    
-    &[namoroka-appearance-aero] {
+
+    @media not (-moz-platform: windows-winxp) {
         --page-icon: #{asset("aero/icons/page.png")} !important;
         --page-invalid-icon: #{asset("aero/icons/page-invalid.png")} !important;
-
-        @media not (-moz-windows-classic) {
-            #TabsToolbar {
-                appearance: -moz-win-browsertabbar-toolbox !important;
-            }
-        }
     }
 }
 
 #TabsToolbar {
     isolation: unset !important; // ????
+
+    @media not (-moz-platform: windows-winxp), (-moz-windows-classic) {
+        appearance: -moz-win-browsertabbar-toolbox !important;
+    }
 
     .tabbrowser-tab {
         .tab-background {

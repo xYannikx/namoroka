@@ -17,8 +17,11 @@ $asset-base: "chrome://namoroka/content/firefox-2" !global;
 $asset-base: "chrome://namoroka/content/firefox-3" !global;
 
 @import "firefox-3/style";
-
-&[namoroka-appearance-aero] {
-    $asset-base: "chrome://namoroka/content/firefox-3/aero" !global;
 }
+
+/* ::::: Firefox 3.5 ::::: */
+:root[namoroka-style-3] {
+$asset-base: "chrome://namoroka/content/firefox-3.5" !global;
+
+@import "firefox-3.5/style";
 }

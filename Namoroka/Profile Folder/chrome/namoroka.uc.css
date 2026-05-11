@@ -678,26 +678,35 @@ menuitem:is([default=true], .spell-suggestion), menucaption {
   opacity: 1 !important;
 }
 :root[namoroka-style-2] menubar > menu {
-  appearance: menuitem !important;
+  appearance: none !important;
   color: MenuText !important;
   font: menu !important;
   border: 2px solid transparent !important;
   margin: 0 !important;
   padding: 0 !important;
 }
-:root[namoroka-style-2] menubar > menu[_moz-menuactive=true] {
-  padding: 0 !important;
-}
-:root[namoroka-style-2] menubar > menu[_moz-menuactive=true][open=true] {
-  border-width: 3px 1px 1px 3px !important;
-}
-:root[namoroka-style-2] menubar > menu[_moz-menuactive=true], :root[namoroka-style-2] menubar > menu[_moz-menuactive=true][open=true] {
-  color: -moz-menubarhovertext !important;
-}
 :root[namoroka-style-2] menubar > menu .menubar-text {
   padding: 0 !important;
   margin: 1px 6px 2px 6px !important;
   color: inherit !important;
+}
+:root[namoroka-style-2] menubar > menu[_moz-menuactive=true] {
+  background-color: Highlight !important;
+  color: HighlightText !important;
+}
+@media not (-moz-platform: windows-winxp) {
+  :root[namoroka-style-2] menubar > menu {
+    appearance: menuitem !important;
+  }
+  :root[namoroka-style-2] menubar > menu[_moz-menuactive=true] {
+    padding: 0 !important;
+  }
+  :root[namoroka-style-2] menubar > menu[_moz-menuactive=true][open=true] {
+    border-width: 3px 1px 1px 3px !important;
+  }
+  :root[namoroka-style-2] menubar > menu[_moz-menuactive=true], :root[namoroka-style-2] menubar > menu[_moz-menuactive=true][open=true] {
+    color: -moz-menubarhovertext !important;
+  }
 }
 @media not (-moz-windows-non-native-menus) {
   :root[namoroka-style-2] menupopup:not(#ContentSelectDropdownPopup),
@@ -870,5 +879,7 @@ menuitem:is([default=true], .spell-suggestion), menucaption {
     margin: 0 !important;
   }
 }
+
+/* ::::: Firefox 3.5 ::::: */
 
 /*# sourceMappingURL=namoroka.uc.css.map */

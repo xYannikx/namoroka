@@ -7,26 +7,27 @@
 
     --urlbar-container-padding: 0 !important;
     --urlbar-margin-inline: 7px !important;
-    
+
     --secure-icon: #{asset("Secure.png")} !important;
+    --secure-broken-icon: #{asset("Security-broken.png")} !important;
     --navbar-textbox-buttons: #{asset("urlbar/navbar-textbox-buttons.png")} !important;
     --search-glass: #{asset("Search-glass.png")} !important;
     --search-close: #{asset("Search-close.png")} !important;
 
-    .searchbar-textbox::placeholder {
-        opacity: 1 !important;
-    }
-
-    &[namoroka-appearance-aero] {
-        @media not (-moz-windows-classic) {
-            .searchbar-textbox::placeholder {
-                font-style: italic !important;
-            }
-        }
-
+    @media not (-moz-platform: windows-winxp) {
+        --secure-icon: #{asset("aero/Secure.png")} !important;
+        --secure-broken-icon: #{asset("aero/Security-broken.png")} !important;
         --navbar-textbox-buttons: #{asset("aero/urlbar/navbar-textbox-buttons.png")} !important;
         --search-glass: #{asset("aero/Search-glass.png")} !important;
         --search-close: #{asset("aero/Search-close.png")} !important;
+    }
+
+    .searchbar-textbox::placeholder {
+        opacity: 1 !important;
+
+        @media not (-moz-platform: windows-winxp) {
+            font-style: italic !important;
+        }
     }
 
     #urlbar-container {
@@ -125,10 +126,10 @@
                 &.verifiedDomain {
                     #identity-icon-box {
                         background-position: 0 -120px !important;
+                        color: white !important;
 
                         @media not (-moz-windows-classic) {
                             background-position: 0 -110px !important;
-                            color: white !important;
                         }
                     }
 
@@ -138,6 +139,27 @@
 
                             @media not (-moz-windows-classic) {
                                 background-position: 0 -170px !important;
+                            }
+                        }
+                    }
+                }
+
+                &.verifiedIdentity {
+                    #identity-icon-box {
+                        background-position: 0 -240px !important;
+                        color: white !important;
+
+                        @media not (-moz-windows-classic) {
+                            background-position: 0 -230px !important;
+                        }
+                    }
+
+                    &:hover {
+                        #identity-icon-box {
+                            background-position: 0 -300px !important;
+
+                            @media not (-moz-windows-classic) {
+                                background-position: 0 -290px !important;
                             }
                         }
                     }
@@ -234,10 +256,16 @@
 
             #star-button {
                 list-style-image: none !important;
-                background-image: #{asset("aero/places/bookmark.png")} !important;
+                background-image: #{asset("places/bookmark.png")} !important;
+                @media not (-moz-platform: windows-winxp) {
+                    background-image: #{asset("aero/places/bookmark.png")} !important;
+                }
 
                 &[starred="true"] {
-                    background-image: #{asset("aero/places/editBookmark.png")} !important;
+                    background-image: #{asset("places/editBookmark.png")} !important;
+                    @media not (-moz-platform: windows-winxp) {
+                        background-image: #{asset("aero/places/editBookmark.png")} !important;
+                    }
                 }
 
                 &:hover {
@@ -255,7 +283,10 @@
                 border-radius: 0 !important;
                 background-color: transparent !important;
                 visibility: visible !important;
-                background-image: #{asset("aero/Go-arrow.png")} !important;
+                background-image: #{asset("Go-arrow.png")} !important;
+                @media not (-moz-platform: windows-winxp) {
+                    background-image: #{asset("aero/Go-arrow.png")} !important;
+                }
                 margin: 2px !important;
                 list-style-image: none !important;
 
@@ -397,7 +428,10 @@
         }
 
         .ac-result-type-bookmark {
-            background-image: #{asset("aero/places/editBookmark.png")} !important;
+            background-image: #{asset("places/editBookmark.png")} !important;
+            @media not (-moz-platform: windows-winxp) {
+                background-image: #{asset("aero/places/editBookmark.png")} !important;
+            }
         }
 
         span.ac-emphasize-text {

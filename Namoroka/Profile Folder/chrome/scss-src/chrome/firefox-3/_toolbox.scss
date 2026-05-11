@@ -3,15 +3,11 @@
     appearance: auto !important;
     -moz-default-appearance: toolbar !important;
     min-height: 19px !important;
-}
 
-@media not (-moz-windows-classic) {
-&[namoroka-appearance-aero] {
-    .browser-toolbar {
+    @media not (-moz-platform: windows-winxp), (-moz-windows-classic) {
         appearance: none !important;
         border: 0 !important;
     }
-}
 }
 
 toolbar:first-child,

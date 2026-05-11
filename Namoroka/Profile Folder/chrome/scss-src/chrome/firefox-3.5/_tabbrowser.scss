@@ -1,0 +1,12 @@
+#TabsToolbar {
+    #alltabs-button {
+        list-style-image: #{asset("mainwindow-dropdown-arrow.png")} !important;
+        -moz-image-region: rect(0, 13px, 11px, 0) !important;
+
+        .toolbarbutton-icon {
+            width: 13px !important;
+            height: 11px !important;
+            margin: 5px 0 4px !important;
+        }
+    }
+}

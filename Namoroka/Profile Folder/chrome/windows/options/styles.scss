@@ -145,10 +145,10 @@ checkbox {
 
         :root[namoroka-style-2="true"] & {
             background-image: url("chrome://userchrome/content/windows/options/images/Options-ff3.png");
-        }
-        
-        :root[namoroka-style-2="true"][namoroka-appearance-aero="true"] & {
-            background-image: url("chrome://userchrome/content/windows/options/images/Options-ff3-aero.png");
+
+            @media not (-moz-platform: windows-winxp) {
+                background-image: url("chrome://userchrome/content/windows/options/images/Options-ff3-aero.png");
+            }
         }
     }
 

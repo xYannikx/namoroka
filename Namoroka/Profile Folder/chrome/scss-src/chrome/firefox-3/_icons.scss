@@ -5,12 +5,12 @@
         --toolbar-spritesheet: #{asset("Toolbar-small.png")};
     }
 
-    &[namoroka-appearance-aero] {
+    @media not (-moz-platform: windows-winxp) {
         --toolbar-spritesheet: #{asset("aero/Toolbar.png")};
 
         &[namoroka-appearance-small-icons="true"] {
             --toolbar-spritesheet: #{asset("aero/Toolbar-small.png")};
-        }    
+        }
     }
 
     $arrow-path: "chrome://namoroka/content/firefox-3/arrow/";
@@ -24,10 +24,8 @@
     @include set-size(14px, 14px);
     @include set-background("firefox-3/icons/close.png");
     @include set-horizontal-states(0, 14px, 28px);
-}
 
-&[namoroka-appearance-aero] {
-    .close-icon:not(.findbar-closebutton) {
+    @media not (-moz-platform: windows-winxp) {
         @include set-background("firefox-3/aero/icons/close.png");
     }
 }
