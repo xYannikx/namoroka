@@ -14,7 +14,7 @@
     {
         let link  = document.createElement("link");
         link.rel  = "stylesheet";
-        link.href = "chrome://userchrome/content/tabscrollbox.uc.css";
+        link.href = "chrome://namoroka/content/tabscrollbox.uc.css";
         e.shadowRoot.append(link);
 
         function isVisuallySelected(list) {

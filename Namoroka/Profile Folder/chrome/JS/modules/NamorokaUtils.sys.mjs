@@ -205,7 +205,7 @@ export class LocaleUtils
         catch (e)
         {
 			try {
-				let stringBundle = Services.strings.createBundle(`chrome://userchrome/content/locale/en-US/properties/${bundle.split("/").pop()}`);
+				let stringBundle = Services.strings.createBundle(`chrome://namoroka/content/locale/en-US/properties/${bundle.split("/").pop()}`);
 
 				if (arguments.length > 2)
 				{

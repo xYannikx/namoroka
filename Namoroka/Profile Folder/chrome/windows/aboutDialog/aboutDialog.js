@@ -81,7 +81,7 @@ var gSelectedPage = 0;
             let creditsBrowser = document.querySelector("#creditsPage");
             if (gSelectedPage == 0) 
             {
-                creditsBrowser.setAttribute("src", "chrome://userchrome/content/windows/aboutDialog/credits.xhtml");
+                creditsBrowser.setAttribute("src", "chrome://namoroka/content/windows/aboutDialog/credits.xhtml");
                 creditsButtonElem.setAttribute("label", LocaleUtils.str(aboutDialogBundle, "about_label", BrandUtils.getBrandingKey("brandFullName")));
                 gSelectedPage = 1;
             }

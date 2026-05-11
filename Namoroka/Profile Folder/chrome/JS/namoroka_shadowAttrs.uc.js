@@ -42,12 +42,12 @@
                 element.setAttribute("namoroka-appearance-aero", "true");
             }
 
-            if (element.shadowRoot.querySelector("link[href='chrome://userchrome/content/namoroka.uc.css']"))
+            if (element.shadowRoot.querySelector("link[href='chrome://namoroka/content/namoroka.uc.css']"))
                 continue;
 
             let link  = document.createElement("link");
             link.rel  = "stylesheet";
-            link.href = "chrome://userchrome/content/namoroka.uc.css";
+            link.href = "chrome://namoroka/content/namoroka.uc.css";
 
             element.shadowRoot.append(link);
         }

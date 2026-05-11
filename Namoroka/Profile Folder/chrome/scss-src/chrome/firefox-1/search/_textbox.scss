@@ -1,6 +1,6 @@
 :host([namoroka-style-2]) {
-    --search-glass: url("chrome://namoroka/content/firefox-3/Search-glass.png") !important;
-    --search-close: url("chrome://namoroka/content/firefox-3/Search-close.png") !important;
+    --search-glass: url("chrome://namoroka/skin/firefox-3/Search-glass.png") !important;
+    --search-close: url("chrome://namoroka/skin/firefox-3/Search-close.png") !important;
 
     .textbox-search-icons {
         display: grid !important;
@@ -42,6 +42,6 @@
 }
 
 :host([namoroka-style-2][namoroka-appearance-aero="true"]) {
-    --search-glass: url("chrome://namoroka/content/firefox-3/aero/Search-glass.png") !important;
-    --search-close: url("chrome://namoroka/content/firefox-3/aero/Search-close.png") !important;
+    --search-glass: url("chrome://namoroka/skin/firefox-3/aero/Search-glass.png") !important;
+    --search-close: url("chrome://namoroka/skin/firefox-3/aero/Search-close.png") !important;
 }

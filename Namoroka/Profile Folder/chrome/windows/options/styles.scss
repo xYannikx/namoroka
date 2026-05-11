@@ -137,17 +137,17 @@ checkbox {
     .button-icon {
         width: 32px;
         height: 32px;
-        background-image: url("chrome://userchrome/content/windows/options/images/Options.png");
+        background-image: url("chrome://namoroka/content/windows/options/images/Options.png");
 
         :root[namoroka-style-1="true"] & {
-            background-image: url("chrome://userchrome/content/windows/options/images/Options-ff2.png");
+            background-image: url("chrome://namoroka/content/windows/options/images/Options-ff2.png");
         }
 
         :root[namoroka-style-2="true"] & {
-            background-image: url("chrome://userchrome/content/windows/options/images/Options-ff3.png");
+            background-image: url("chrome://namoroka/content/windows/options/images/Options-ff3.png");
 
             @media not (-moz-platform: windows-winxp) {
-                background-image: url("chrome://userchrome/content/windows/options/images/Options-ff3-aero.png");
+                background-image: url("chrome://namoroka/content/windows/options/images/Options-ff3-aero.png");
             }
         }
     }
@@ -308,8 +308,8 @@ button[type="disclosure"]:active .button-icon,
 .aboutBoxHeader {
     width: 100%;
     height: 133px;
-    background-image: url("chrome://userchrome/content/windows/options/images/about-header-logo.png"),
-                      url("chrome://userchrome/content/windows/options/images/about-header-bg.png");
+    background-image: url("chrome://namoroka/content/windows/options/images/about-header-logo.png"),
+                      url("chrome://namoroka/content/windows/options/images/about-header-bg.png");
     background-repeat: no-repeat, no-repeat;
     background-position: center 3px, center top;
     background-size: auto auto, 100% 93px;
@@ -318,7 +318,7 @@ button[type="disclosure"]:active .button-icon,
 .aboutHeaderLogo {
     width: 100%;
     height: 27px;
-    background-image: url("chrome://userchrome/content/windows/options/images/about-header-wordmark.png");
+    background-image: url("chrome://namoroka/content/windows/options/images/about-header-wordmark.png");
     background-repeat: no-repeat;
     background-position: center center;
 }
@@ -393,7 +393,7 @@ richlistbox {
         }
 
         &[selected="true"] {
-            background-image: url("chrome://userchrome/content/windows/wizard/images/itemEnabledFader.png");
+            background-image: url("chrome://namoroka/content/windows/wizard/images/itemEnabledFader.png");
             background-color: Highlight;
             color: HighlightText;
         }

@@ -506,7 +506,7 @@ function reloadStyleSheet(name, type) {
   if(type){
     let sss = Cc['@mozilla.org/content/style-sheet-service;1'].getService(Ci.nsIStyleSheetService);
     try{
-      let uri = Services.io.newURI(`chrome://userchrome/content/${name}`);
+      let uri = Services.io.newURI(`chrome://namoroka/content/${name}`);
       switch(type){
         case "agent":
           sss.unregisterSheet(uri,sss.AGENT_SHEET);
@@ -840,7 +840,7 @@ export function createWidget(desc){
     }
     itemStyle += /^chrome:\/\/|resource:\/\//.test(desc.image)
       ? `url(${desc.image});`
-      : `url(chrome://userChrome/content/${desc.image});`;
+      : `url(chrome://namoroka/content/${desc.image});`;
     itemStyle += desc.style || "";
   }
   const callback = desc.callback;

@@ -174,8 +174,8 @@ var g_NamorokaOptionsDialog;
 
             const useNew = Number(skinsList.value) >= 3;
             const base = useNew
-                ? "chrome://userchrome/content/branding/firefox/new/content/"
-                : "chrome://userchrome/content/branding/firefox/content/";
+                ? "chrome://namoroka/content/branding/firefox/new/content/"
+                : "chrome://namoroka/content/branding/firefox/content/";
 
             const firefoxItem = brandingList.querySelector(`richlistitem[value="firefox"]`);
             if (!firefoxItem) return;
@@ -209,7 +209,7 @@ var g_NamorokaOptionsDialog;
             if (restartRequired)
             {
                 windowRoot.ownerGlobal.openDialog(
-                    "chrome://userchrome/content/windows/common/dialog.xhtml",
+                    "chrome://namoroka/content/windows/common/dialog.xhtml",
                     LocaleUtils.str(this.stringbundle, "restart_prompt_title"),
                     "chrome,centerscreen,resizeable=no,dependent,modal",
                     restartStruct
@@ -427,8 +427,8 @@ var g_NamorokaOptionsDialog;
         async setDialogIcon() {
             await WindowIconUtils.setDialogIcon(
                 window,
-                "chrome://userchrome/content/branding/namoroka/content/icon16.png",
-                "chrome://userchrome/content/branding/namoroka/content/icon32.png"
+                "chrome://namoroka/content/branding/namoroka/content/icon16.png",
+                "chrome://namoroka/content/branding/namoroka/content/icon32.png"
             );
         }
     }

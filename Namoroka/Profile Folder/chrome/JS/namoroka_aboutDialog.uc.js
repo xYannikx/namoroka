@@ -9,7 +9,7 @@
 window.openAboutDialog = function openAboutDialog()
 {
     window.openDialog(
-        "chrome://userchrome/content/windows/aboutDialog/aboutDialog.xhtml",
+        "chrome://namoroka/content/windows/aboutDialog/aboutDialog.xhtml",
         "",
         "chrome,centerscreen,resizeable=no,dependent"
     ); 

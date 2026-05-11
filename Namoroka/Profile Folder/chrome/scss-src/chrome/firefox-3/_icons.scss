@@ -13,7 +13,7 @@
         }
     }
 
-    $arrow-path: "chrome://namoroka/content/firefox-3/arrow/";
+    $arrow-path: "chrome://namoroka/skin/firefox-3/arrow/";
 
     @each $file in $arrow-files {
         --#{strip-ext($file)}: url(#{$arrow-path}#{$file}) !important;

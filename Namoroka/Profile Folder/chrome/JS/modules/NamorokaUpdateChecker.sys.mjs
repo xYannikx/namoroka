@@ -9,7 +9,7 @@ export class NamorokaUpdateChecker
     static GITHUB_REPOSITORY = "echelon-theme/namoroka";
     static GITHUB_REPOSITORY_BRANCH = "main";
     static BUILD_FILE_PATH_REMOTE = "Namoroka/Profile Folder/chrome/version.json";
-    static BUILD_FILE_PATH_LOCAL = "chrome://userchrome/content/version.json";
+    static BUILD_FILE_PATH_LOCAL = "chrome://namoroka/content/version.json";
     
     static #window = null;
 

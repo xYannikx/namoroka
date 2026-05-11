@@ -10,7 +10,7 @@
 }
 
 .downloadViewInner {
-    background-image: url("chrome://userchrome/content/windows/downloads/viewFader.png");
+    background-image: url("chrome://namoroka/content/windows/downloads/viewFader.png");
     padding: 0px;
 }
 
@@ -21,7 +21,7 @@
 
 #cleanUpButton {
     margin: 0px;
-    list-style-image: url("chrome://userchrome/content/windows/downloads/downloadCleanup.png");
+    list-style-image: url("chrome://namoroka/content/windows/downloads/downloadCleanup.png");
 }
 
 #cleanUpButton .button-icon {
@@ -32,7 +32,7 @@
 }
 
 #cleanUpButton[disabled="true"] {
-    list-style-image: url("chrome://userchrome/content/windows/downloads/downloadCleanupDisabled.png");
+    list-style-image: url("chrome://namoroka/content/windows/downloads/downloadCleanupDisabled.png");
 }
 
 #commandBarSeparator {
@@ -77,7 +77,7 @@
     color: -moz-FieldText !important;
     background-color: -moz-Field !important;
     border: 0 !important;
-    background-image: url("chrome://userchrome/content/windows/downloads/viewFader.png") !important;
+    background-image: url("chrome://namoroka/content/windows/downloads/viewFader.png") !important;
 
     richlistitem {
         border-radius: 0 !important;
@@ -92,7 +92,7 @@
         color: inherit !important;
 
         &[selected="true"] {
-            background-image: url("chrome://userchrome/content/windows/downloads/downloadSelected.png") !important;
+            background-image: url("chrome://namoroka/content/windows/downloads/downloadSelected.png") !important;
             border-bottom: 1px dotted #7F9DB9 !important;
         }
 

@@ -7,14 +7,14 @@
 
 {
     const ABOUT_PAGES = {
-        "": "chrome://userchrome/content/pages/about/about.xhtml",
-        "newtab": "chrome://userchrome/content/pages/home/home.xhtml",
-        "home": "chrome://userchrome/content/pages/home/home.xhtml",
-        "namoroka": "chrome://userchrome/content/windows/options/options.xhtml",
-        "nrabout": "chrome://userchrome/content/windows/aboutDialog/aboutDialog.xhtml",
-        "nrwizard": "chrome://userchrome/content/windows/wizard/wizard.xhtml",
-        "downloads": "chrome://userchrome/content/windows/downloads/downloads.xhtml",
-        "config": "chrome://userchrome/content/pages/config/config.xhtml"
+        "": "chrome://namoroka/content/pages/about/about.xhtml",
+        "newtab": "chrome://namoroka/content/pages/home/home.xhtml",
+        "home": "chrome://namoroka/content/pages/home/home.xhtml",
+        "namoroka": "chrome://namoroka/content/windows/options/options.xhtml",
+        "nrabout": "chrome://namoroka/content/windows/aboutDialog/aboutDialog.xhtml",
+        "nrwizard": "chrome://namoroka/content/windows/wizard/wizard.xhtml",
+        "downloads": "chrome://namoroka/content/windows/downloads/downloads.xhtml",
+        "config": "chrome://namoroka/content/pages/config/config.xhtml"
     };
     const { AboutPageManager } = ChromeUtils.importESModule("chrome://modules/content/AboutPageManager.sys.mjs");
 

@@ -137,7 +137,7 @@ class ScriptData {
   get chromeURI(){
     if(!this.#chromeURI){
       this.#chromeURI = this.type === "style"
-        ? Services.io.newURI(`chrome://userstyles/skin/${this.filename}`)
+        ? Services.io.newURI(`chrome://namoroka/skin/${this.filename}`)
         : this.type === "loader"
           ? Services.io.newURI(`chrome://userchromejs/content/${this.filename}`)
           : Services.io.newURI(`chrome://userscripts/content/${this.filename}`)

@@ -29,7 +29,7 @@ export class FileSystem{
   static #RESOURCE_URI;
   static{
     this.#RESOURCE_URI = FileSystem.getFileURIForFile(
-      FileSystem.convertChromeURIToFileURI('chrome://userchrome/content/')
+      FileSystem.convertChromeURIToFileURI('chrome://namoroka/content/')
       .QueryInterface(Ci.nsIFileURL).file.parent,
       FileSystem.RESULT_DIRECTORY
     );
@@ -39,7 +39,7 @@ export class FileSystem{
       FileSystem.RESULT_DIRECTORY
     );
     this.#STYLE_URI = FileSystem.getFileURIForFile(
-      FileSystem.convertChromeURIToFileURI('chrome://userstyles/skin/')
+      FileSystem.convertChromeURIToFileURI('chrome://namoroka/skin/')
       .QueryInterface(Ci.nsIFileURL).file.parent,
       FileSystem.RESULT_DIRECTORY
     );
@@ -165,11 +165,11 @@ export class FileSystem{
     return null
   }
   static readIni(path){
-    let fileURI = FileSystem.convertChromeURIToFileURI(Services.io.newURI(`chrome://userchrome/content/${path}`));
+    let fileURI = FileSystem.convertChromeURIToFileURI(Services.io.newURI(`chrome://namoroka/content/${path}`));
     return IniFile.parse(fileURI.QueryInterface(Ci.nsIFileURL).file)
   }
   static readConfig(path){
-    let fileURI = FileSystem.convertChromeURIToFileURI(Services.io.newURI(`chrome://userchrome/content/${path}`));
+    let fileURI = FileSystem.convertChromeURIToFileURI(Services.io.newURI(`chrome://namoroka/content/${path}`));
     return IniConfig.fromURI(fileURI)
   }
   static #appendToBaseURI(aPath,aFileURI){
@@ -215,7 +215,7 @@ export class FileSystem{
     if(!fileName){
       return FileSystem.#RESOURCE_URI
     }
-    return FileSystem.convertChromeURIToFileURI(`chrome://userchrome/content/${fileName}`).spec
+    return FileSystem.convertChromeURIToFileURI(`chrome://namoroka/content/${fileName}`).spec
   }
   static chromeDir(){
     return FileSystemResult.fromDirectory(Services.dirsvc.get('UChrm',Ci.nsIFile))

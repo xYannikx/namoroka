@@ -1,4 +1,4 @@
-var { PrefCalls } = ChromeUtils.importESModule("chrome://modules/content/NamorokaUtils.sys.mjs");
+import { PrefCalls } from "chrome://modules/content/NamorokaUtils.sys.mjs";
 
 export class NamorokaLayoutTemplateManager {
     static CustomizableUI = ChromeUtils.importESModule("resource:///modules/CustomizableUI.sys.mjs").CustomizableUI;

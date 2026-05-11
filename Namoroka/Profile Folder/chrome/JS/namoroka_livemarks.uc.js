@@ -123,7 +123,7 @@
 							};
 
 							browserWindow.openDialog(
-								"chrome://userchrome/content/windows/livemarkProperties/livemarkProperties.xhtml",
+								"chrome://namoroka/content/windows/livemarkProperties/livemarkProperties.xhtml",
 								"livemarkProperties",
 								"chrome,dialog,centerscreen,modal",
 								args
@@ -160,7 +160,7 @@
 			};
 
 			window.openDialog(
-				"chrome://userchrome/content/windows/livemarkProperties/livemarkProperties.xhtml",
+				"chrome://namoroka/content/windows/livemarkProperties/livemarkProperties.xhtml",
 				"livemarkProperties",
 				"chrome,dialog,centerscreen,modal",
 				args
@@ -286,7 +286,7 @@
 					let siteURI = NamorokaLivemarkService.getSiteURI(guid);
 
 					window.openDialog(
-						"chrome://userchrome/content/windows/livemarkProperties/livemarkProperties.xhtml",
+						"chrome://namoroka/content/windows/livemarkProperties/livemarkProperties.xhtml",
 						"livemarkProperties",
 						"chrome,dialog,centerscreen,modal",
 						{

@@ -33,7 +33,7 @@
     function launchNamorokaOptions()
     {
         window.openDialog(
-            "chrome://userchrome/content/windows/options/options.xhtml",
+            "chrome://namoroka/content/windows/options/options.xhtml",
             LocaleUtils.str(menusBundle, "namoroka_options_label"),
             "chrome,centerscreen,resizeable=no,dependent"
         ); 

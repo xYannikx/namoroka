@@ -17,12 +17,12 @@ var g_NamorokaSearchManager;
 	class NamorokaSearchManager
 	{
 		REPLACEMENTS = {
-			"google": "chrome://namoroka/content/searchplugins/google.ico",
-			"ebay": "chrome://namoroka/content/searchplugins/ebay.ico",
-			"wikipedia": "chrome://namoroka/content/searchplugins/wikipedia.ico",
-			"amazon": "chrome://namoroka/content/searchplugins/amazon.ico",
-			"yahoo": "chrome://namoroka/content/searchplugins/yahoo.ico",
-			"bing": "chrome://namoroka/content/searchplugins/bing.ico",
+			"google": "chrome://namoroka/skin/searchplugins/google.ico",
+			"ebay": "chrome://namoroka/skin/searchplugins/ebay.ico",
+			"wikipedia": "chrome://namoroka/skin/searchplugins/wikipedia.ico",
+			"amazon": "chrome://namoroka/skin/searchplugins/amazon.ico",
+			"yahoo": "chrome://namoroka/skin/searchplugins/yahoo.ico",
+			"bing": "chrome://namoroka/skin/searchplugins/bing.ico",
 		};
 
         async updateSearchBox()

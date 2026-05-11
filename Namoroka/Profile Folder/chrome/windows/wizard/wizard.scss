@@ -19,7 +19,7 @@
     height: 54px;
     justify-content: space-between;
     align-items: center;
-    background-image: url("chrome://userchrome/content/windows/wizard/images/page-header-bg.png");
+    background-image: url("chrome://namoroka/content/windows/wizard/images/page-header-bg.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     padding-inline: 12px;
@@ -34,19 +34,19 @@
     .page-header-icon {
         width: 32px;
         height: 32px;
-        list-style-image: url("chrome://userchrome/content/windows/wizard/images/page-header-logo.png");
+        list-style-image: url("chrome://namoroka/content/windows/wizard/images/page-header-logo.png");
     }
 }
 
 .page-banner {
     width: 180px;
     background-color: #F0F1F1;
-    background-image: url("chrome://userchrome/content/windows/wizard/images/page-banner-gradient.png");
+    background-image: url("chrome://namoroka/content/windows/wizard/images/page-banner-gradient.png");
     background-position: center right;
     background-repeat: no-repeat;
     background-size: 5px 100%;
     justify-content: flex-end;
-    list-style-image: url("chrome://userchrome/content/windows/wizard/images/page-banner-logo.png");
+    list-style-image: url("chrome://namoroka/content/windows/wizard/images/page-banner-logo.png");
 }
 
 .page-content {
@@ -87,7 +87,7 @@
         }
 
         &[selected="true"] {
-            background-image: url("chrome://userchrome/content/windows/wizard/images/itemEnabledFader.png");
+            background-image: url("chrome://namoroka/content/windows/wizard/images/itemEnabledFader.png");
             background-color: Highlight;
             color: HighlightText;
         }

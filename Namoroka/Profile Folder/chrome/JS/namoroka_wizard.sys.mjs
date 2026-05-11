@@ -27,7 +27,7 @@ function launchNamorokaWizard() {
     PrefCalls.setPref(NAMOROKA_FIRST_RUN_PREF, false);
 
     this.window.openDialog(
-        "chrome://userchrome/content/windows/wizard/wizard.xhtml",
+        "chrome://namoroka/content/windows/wizard/wizard.xhtml",
         "Set Up Namoroka",
         "chrome,centerscreen,resizable=no,dependent"
     );

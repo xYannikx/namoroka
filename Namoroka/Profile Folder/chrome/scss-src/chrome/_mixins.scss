@@ -6,9 +6,9 @@
 
 @function icon($name, $hash: false) {
     @if ($hash) {
-        @return url("chrome://userchrome/content/icons/#{$name}.svg##{$hash}");
+        @return url("chrome://namoroka/content/icons/#{$name}.svg##{$hash}");
     }
-    @return url("chrome://namoroka/content/#{$name}");
+    @return url("chrome://namoroka/skin/#{$name}");
 }
 
 @mixin set-icon($icon-id, $icon-hash: false) {

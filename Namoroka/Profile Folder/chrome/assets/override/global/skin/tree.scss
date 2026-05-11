@@ -162,7 +162,7 @@ treechildren::-moz-tree-column(insertafter) {
 /* ::::: column picker :::::  */
 
 .tree-columnpicker-button {
-    list-style-image: url("chrome://userchrome/content/assets/override/global/skin/tree/columnpicker.gif");
+    list-style-image: url("chrome://namoroka/content/assets/override/global/skin/tree/columnpicker.gif");
     -moz-context-properties: fill;
     fill: currentColor;
     min-width: 0;
@@ -191,40 +191,40 @@ treechildren::-moz-tree-twisty {
     padding-right: 4px;
     padding-top: 1px;
     width: 9px; /* The image's width is 9 pixels */
-    list-style-image: url("chrome://userchrome/content/assets/override/global/skin/tree/twisty-clsd.png");
+    list-style-image: url("chrome://namoroka/content/assets/override/global/skin/tree/twisty-clsd.png");
 
     :root[namoroka-style-2="true"][namoroka-appearance-aero] & {
         padding-right: 1px;
         width: 9px;
-        list-style-image: url("chrome://userchrome/content/assets/override/global/skin/tree/twisty-clsd-aero.png");
+        list-style-image: url("chrome://namoroka/content/assets/override/global/skin/tree/twisty-clsd-aero.png");
     }
 }
 
 treechildren:-moz-locale-dir(rtl)::-moz-tree-twisty(closed) {
     width: 9px; /* The image's width is 9 pixels */
-    list-style-image: url("chrome://userchrome/content/assets/override/global/skin/tree/twisty-clsd.png");
+    list-style-image: url("chrome://namoroka/content/assets/override/global/skin/tree/twisty-clsd.png");
 
     :root[namoroka-style-2="true"][namoroka-appearance-aero] & {
-        list-style-image: url("chrome://userchrome/content/assets/override/global/skin/tree/twisty-clsd-aero.png");
+        list-style-image: url("chrome://namoroka/content/assets/override/global/skin/tree/twisty-clsd-aero.png");
     }
 }
 
 treechildren::-moz-tree-twisty(open) {
     width: 9px; /* The image's width is 9 pixels */
-    list-style-image: url("chrome://userchrome/content/assets/override/global/skin/tree/twisty-open.png");
+    list-style-image: url("chrome://namoroka/content/assets/override/global/skin/tree/twisty-open.png");
 
     :root[namoroka-style-2="true"][namoroka-appearance-aero] & {
-        list-style-image: url("chrome://userchrome/content/assets/override/global/skin/tree/twisty-open-aero.png");
+        list-style-image: url("chrome://namoroka/content/assets/override/global/skin/tree/twisty-open-aero.png");
     }
 }
 
 :root[namoroka-style-2="true"][namoroka-appearance-aero] {
     treechildren::-moz-tree-twisty(hover) {
-        list-style-image: url("chrome://userchrome/content/assets/override/global/skin/tree/twisty-clsd-hover-aero.png");
+        list-style-image: url("chrome://namoroka/content/assets/override/global/skin/tree/twisty-clsd-hover-aero.png");
     }
 
     treechildren::-moz-tree-twisty(hover, open) {
-        list-style-image: url("chrome://userchrome/content/assets/override/global/skin/tree/twisty-open-hover-aero.png");
+        list-style-image: url("chrome://namoroka/content/assets/override/global/skin/tree/twisty-open-hover-aero.png");
     }
 }
 
@@ -274,11 +274,11 @@ html|input.tree-input {
 }
 
 treecol[sortDirection="ascending"]:not([hideheader="true"]) > .treecol-sortdirection {
-    list-style-image: url("chrome://userchrome/content/assets/override/global/skin/tree/sort-asc.gif");
+    list-style-image: url("chrome://namoroka/content/assets/override/global/skin/tree/sort-asc.gif");
 }
 
 treecol[sortDirection="descending"]:not([hideheader="true"]) > .treecol-sortdirection {
-    list-style-image: url("chrome://userchrome/content/assets/override/global/skin/tree/sort-dsc.gif");
+    list-style-image: url("chrome://namoroka/content/assets/override/global/skin/tree/sort-dsc.gif");
 }
 
 /* ::::: gridline style ::::: */

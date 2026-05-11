@@ -248,8 +248,8 @@ const NAMOROKA_APPEARANCE_STYLE_PREF = "Namoroka.Appearance.Style";
         async setDialogIcon() {
             await WindowIconUtils.setDialogIcon(
                 window,
-                "chrome://userchrome/content/branding/namoroka/content/icon16.png",
-                "chrome://userchrome/content/branding/namoroka/content/icon32.png"
+                "chrome://namoroka/content/branding/namoroka/content/icon16.png",
+                "chrome://namoroka/content/branding/namoroka/content/icon32.png"
             );
         }
     }
