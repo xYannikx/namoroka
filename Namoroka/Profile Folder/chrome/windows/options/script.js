@@ -135,6 +135,7 @@ var g_NamorokaOptionsDialog;
             }
 
             this.refreshViewProperties();
+            this.updateFirefoxBrandingImages();
             this.loadVersion();
 
             this._viewCreditsButton.hidden = true;
@@ -164,6 +165,34 @@ var g_NamorokaOptionsDialog;
             }
 
             document.querySelector(".restart-required-label").style.display = restartRequired ? "flex" : "none";
+        }
+
+        updateFirefoxBrandingImages() {
+            const skinsList = document.getElementById("skinsList");
+            const brandingList = document.getElementById("brandingList");
+            if (!skinsList || !brandingList) return;
+
+            const useNew = Number(skinsList.value) >= 3;
+            const base = useNew
+                ? "chrome://userchrome/content/branding/firefox/new/content/"
+                : "chrome://userchrome/content/branding/firefox/content/";
+
+            const firefoxItem = brandingList.querySelector(`richlistitem[value="firefox"]`);
+            if (!firefoxItem) return;
+
+            const newIcon = base + "icon32.png";
+            const newPreview = base + "about.png";
+
+            firefoxItem.setAttribute("iconURL", newIcon);
+            firefoxItem.setAttribute("previewImage", newPreview);
+
+            const icon = firefoxItem.querySelector(".styleIcon");
+            if (icon) icon.src = newIcon;
+
+            if (firefoxItem === brandingList.selectedItem) {
+                const previewImg = brandingList.nextElementSibling?.querySelector("image");
+                if (previewImg) previewImg.src = newPreview;
+            }
         }
 
         handleOkApply(event, closeWindow = false) {
