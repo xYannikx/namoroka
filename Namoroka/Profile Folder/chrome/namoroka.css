@@ -357,8 +357,8 @@ menubar {
 }
 @media (-moz-windows-compositor) {
   #mozGlassHandler {
-    -moz-default-appearance: -moz-win-glass !important;
-    appearance: -moz-win-glass !important;
+    -moz-default-appearance: -moz-win-exclude-glass !important;
+    appearance: -moz-win-exclude-glass !important;
     background-color: -moz-Dialog !important;
   }
 }

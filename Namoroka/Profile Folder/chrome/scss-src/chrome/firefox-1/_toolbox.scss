@@ -54,8 +54,8 @@ menubar {
     z-index: -1 !important;
 
     @media (-moz-windows-compositor) {
-        -moz-default-appearance: -moz-win-glass !important;
-        appearance: -moz-win-glass !important;
+        -moz-default-appearance: -moz-win-exclude-glass !important;
+        appearance: -moz-win-exclude-glass !important;
         background-color: -moz-Dialog !important;
     }
 }
