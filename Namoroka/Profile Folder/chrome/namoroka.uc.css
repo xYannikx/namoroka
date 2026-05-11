@@ -293,34 +293,6 @@ toolbarbutton menupopup[placespopup] menuseparator::before {
   display: block !important;
 }
 
-.autoscroller {
-  width: 28px !important;
-  height: 28px !important;
-  background: url("chrome://namoroka/skin/firefox-1/autoscroll_all.png") !important;
-}
-.autoscroller[scrolldir=NS] {
-  background: url("chrome://namoroka/skin/firefox-1/autoscroll_v.png") !important;
-}
-.autoscroller[scrolldir=EW] {
-  background: url("chrome://namoroka/skin/firefox-1/autoscroll_h.png") !important;
-}
-.autoscroller::part(content) {
-  display: none !important;
-}
-:root[namoroka-style-2] .autoscroller {
-  background: url("chrome://namoroka/skin/firefox-1/autoscroll.png") !important;
-  background-position-x: -56px !important;
-}
-:root[namoroka-style-2] .autoscroller[namoroka-appearance-aero] {
-  background: url("chrome://namoroka/skin/firefox-1/aero/autoscroll.png") !important;
-}
-:root[namoroka-style-2] .autoscroller[scrolldir=NS] {
-  background-position-y: -28px !important;
-}
-:root[namoroka-style-2] .autoscroller[scrolldir=EW] {
-  background-position-y: -56px !important;
-}
-
 #tabbrowser-arrowscrollbox:not([namoroka-style-1])::part(scrollbutton-up), #tabbrowser-arrowscrollbox:not([namoroka-style-1])::part(scrollbutton-down) {
   width: 18px !important;
   border: 1px solid transparent !important;
@@ -408,6 +380,21 @@ menubar > menu .menubar-text {
 
 menuitem:is([default=true], .spell-suggestion), menucaption {
   font-weight: bold !important;
+}
+
+.autoscroller {
+  width: 28px !important;
+  height: 28px !important;
+  background: url("chrome://namoroka/skin/firefox-1/autoscroll_all.png") !important;
+}
+.autoscroller[scrolldir=NS] {
+  background: url("chrome://namoroka/skin/firefox-1/autoscroll_v.png") !important;
+}
+.autoscroller[scrolldir=EW] {
+  background: url("chrome://namoroka/skin/firefox-1/autoscroll_h.png") !important;
+}
+.autoscroller::part(content) {
+  display: none !important;
 }
 
 /* ::::: Firefox 2 ::::: */
@@ -878,6 +865,22 @@ menuitem:is([default=true], .spell-suggestion), menucaption {
     padding: 0 !important;
     margin: 0 !important;
   }
+}
+:root[namoroka-style-2] .autoscroller {
+  background: url("chrome://namoroka/skin/firefox-3/autoscroll.png") !important;
+  background-position-x: -56px !important;
+}
+@media not (-moz-platform: windows-winxp) {
+  :root[namoroka-style-2] .autoscroller {
+    background: url("chrome://namoroka/skin/firefox-3/aero/autoscroll.png") !important;
+    background-position-x: -56px !important;
+  }
+}
+:root[namoroka-style-2] .autoscroller[scrolldir=NS] {
+  background-position-y: -28px !important;
+}
+:root[namoroka-style-2] .autoscroller[scrolldir=EW] {
+  background-position-y: -56px !important;
 }
 
 /* ::::: Firefox 3.5 ::::: */

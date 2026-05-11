@@ -1,0 +1,17 @@
+.autoscroller {
+	width: 28px !important;
+	height: 28px !important;
+	background: #{asset("autoscroll_all.png")} !important;
+
+	&[scrolldir="NS"] {
+		background: #{asset("autoscroll_v.png")} !important;
+	}
+
+	&[scrolldir="EW"] {
+		background: #{asset("autoscroll_h.png")} !important;
+	}
+
+	&::part(content) {
+		display: none !important;
+	}
+}

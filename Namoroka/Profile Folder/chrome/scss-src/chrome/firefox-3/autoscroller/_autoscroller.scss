@@ -1,0 +1,17 @@
+.autoscroller {
+	background: #{asset("autoscroll.png")} !important;
+	background-position-x: -56px !important;
+
+	@media not (-moz-platform: windows-winxp) {
+		background: #{asset("aero/autoscroll.png")} !important;
+		background-position-x: -56px !important;
+	}
+
+	&[scrolldir="NS"] {
+		background-position-y: -28px !important;
+	}
+
+	&[scrolldir="EW"] {
+		background-position-y: -56px !important;
+	}
+}
