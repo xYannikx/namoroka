@@ -1,0 +1,17 @@
+content userchrome                                                  ./
+
+content userscripts                                                 namoroka/JS/
+content modules                                                     namoroka/JS/modules/
+
+skin	namoroka	                                                namoroka/1.0	namoroka/assets/images/
+content namoroka                                                    namoroka/ contentaccessible=yes
+
+locale  namoroka                                                    en-US namoroka/locale/en-US/
+
+override chrome://global/skin/tree.css                              namoroka/assets/override/global/skin/tree.css
+override chrome://global/skin/button.css                            namoroka/assets/override/global/skin/button.css
+override chrome://global/skin/toolbar.css                           namoroka/assets/override/global/skin/toolbar.css
+override chrome://browser/skin/places/organizer.css                 namoroka/assets/override/browser/skin/places/organizer.css
+
+override chrome://global/content/commonDialog.xhtml                 namoroka/windows/commonDialog/commonDialog.xhtml
+override chrome://browser/content/places/places.xhtml               namoroka/windows/places/places.xhtml

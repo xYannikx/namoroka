@@ -5,6 +5,8 @@ var g_NamorokaOptionsDialog;
         BrandUtils,
         WindowIconUtils } = ChromeUtils.importESModule("chrome://modules/content/NamorokaUtils.sys.mjs");
 
+    let { getThemeInstall } = ChromeUtils.importESModule("chrome://uchrmjs/content/modules/uchrmUtils.sys.mjs");
+
     ChromeUtils.defineESModuleGetters(window, {
         XPCOMUtils: "resource://gre/modules/XPCOMUtils.sys.mjs",
         CustomizableUI: "resource:///modules/CustomizableUI.sys.mjs",
@@ -347,33 +349,27 @@ var g_NamorokaOptionsDialog;
         }
 
         async loadVersion() {
-            let localNamorokaJSON = await NamorokaUpdateChecker.getBuildData("local");
-
             document.querySelectorAll("#version").forEach(async identifier => {
                 if (identifier.getAttribute("numberonly")) {
-                    identifier.value = localNamorokaJSON.version;
+                    identifier.value = getThemeInstall("version");
                 }
                 else {
-                    identifier.value = LocaleUtils.str(this.stringbundle, "version_format", localNamorokaJSON.version);
+                    identifier.value = LocaleUtils.str(this.stringbundle, "version_format", getThemeInstall("version"));
                 }
             });
 
             document.querySelectorAll("#build").forEach(async identifier => {
                 if (identifier.getAttribute("numberonly")) {
                     if (identifier.getAttribute("includehash")) {
-                        identifier.value = `${localNamorokaJSON.build} (${localNamorokaJSON.hash})`
+                        identifier.value = `${getThemeInstall("build")} (${getThemeInstall("hash")})`
                     }
                     else {
-                        identifier.value = localNamorokaJSON.build;
+                        identifier.value = getThemeInstall("build");
                     }
                 }
                 else {
-                    identifier.value = LocaleUtils.str(this.stringbundle, "build_format", localNamorokaJSON.build);
+                    identifier.value = LocaleUtils.str(this.stringbundle, "build_format", getThemeInstall("build"));
                 }
-            });
-
-            document.querySelectorAll("#channel").forEach(async identifier => {
-                identifier.value = localNamorokaJSON.branch;
             });
 
             for (const aboutSection of document.querySelectorAll(".service-info")) {

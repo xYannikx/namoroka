@@ -57,8 +57,10 @@ button:where([disabled=true]) {
   color: GrayText;
   background-color: ButtonFace;
 }
-button:where([disabled=true]) > .button-box {
-  padding: 1px 4px 2px 3px !important;
+@media (-moz-windows-classic) {
+  button:where([disabled=true]) > .button-box {
+    padding: 1px 4px 2px 3px !important;
+  }
 }
 
 /* ::::: menu buttons ::::: */

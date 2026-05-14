@@ -13,16 +13,12 @@ build_number=$(git rev-list --count HEAD)
 hash=$(git rev-parse --short HEAD)
 branch=$(git rev-parse --abbrev-ref HEAD)
 
-cat <<EOL > "Namoroka/Profile Folder/chrome/version.json"
-{
-	"version": "1.0b1",
-	"build": "$build_number",
-	"hash": "$hash",
-	"branch": "$branch"
-}
-EOL
+RDF="Namoroka/install.rdf"
 
-git add "Namoroka/Profile Folder/chrome/version.json"
+sed -i "s|<em:build>[^<]*</em:build>|<em:build>$build_number</em:build>|" "$RDF"
+sed -i "s|<em:hash>[^<]*</em:hash>|<em:hash>$hash</em:hash>|" "$RDF"
+
+git add "$RDF"
 
 # Ignore next run
 git config custom.ignorePostCommitHook "true"
