@@ -19,10 +19,10 @@ $ErrorActionPreference = 'Stop'
 # Paths
 # ---------------------------------------------------------------------------
 
-$repoRoot   = $PSScriptRoot
-$installRdf = Join-Path $repoRoot 'Namoroka\install.rdf'
-$themeSource = "$(Split-Path $repoRoot -Parent)\userchrome-manager\Profile Folder\chrome\themes\namoroka"
-$distDir    = Join-Path $repoRoot 'dist'
+$repoRoot    = $PSScriptRoot
+$installRdf  = Join-Path $repoRoot 'Namoroka\install.rdf'
+$themeSource = Join-Path $repoRoot 'Namoroka'
+$distDir     = Join-Path $repoRoot 'dist'
 
 # ---------------------------------------------------------------------------
 # Read version from install.rdf
