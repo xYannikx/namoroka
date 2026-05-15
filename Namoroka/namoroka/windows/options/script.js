@@ -5,7 +5,7 @@ var g_NamorokaOptionsDialog;
         BrandUtils,
         WindowIconUtils } = ChromeUtils.importESModule("chrome://modules/content/NamorokaUtils.sys.mjs");
 
-    let { getThemeInstall } = ChromeUtils.importESModule("chrome://uchrmjs/content/modules/uchrmUtils.sys.mjs");
+    let { ThemeInfo } = ChromeUtils.importESModule("chrome://uchrmjs/content/modules/ThemeInfo.sys.mjs");
 
     ChromeUtils.defineESModuleGetters(window, {
         XPCOMUtils: "resource://gre/modules/XPCOMUtils.sys.mjs",
@@ -351,24 +351,24 @@ var g_NamorokaOptionsDialog;
         async loadVersion() {
             document.querySelectorAll("#version").forEach(async identifier => {
                 if (identifier.getAttribute("numberonly")) {
-                    identifier.value = getThemeInstall("version");
+                    identifier.value = ThemeInfo.getThemeInstall("version");
                 }
                 else {
-                    identifier.value = LocaleUtils.str(this.stringbundle, "version_format", getThemeInstall("version"));
+                    identifier.value = LocaleUtils.str(this.stringbundle, "version_format", ThemeInfo.getThemeInstall("version"));
                 }
             });
 
             document.querySelectorAll("#build").forEach(async identifier => {
                 if (identifier.getAttribute("numberonly")) {
                     if (identifier.getAttribute("includehash")) {
-                        identifier.value = `${getThemeInstall("build")} (${getThemeInstall("hash")})`
+                        identifier.value = `${ThemeInfo.getThemeInstall("build")} (${ThemeInfo.getThemeInstall("hash")})`
                     }
                     else {
-                        identifier.value = getThemeInstall("build");
+                        identifier.value = ThemeInfo.getThemeInstall("build");
                     }
                 }
                 else {
-                    identifier.value = LocaleUtils.str(this.stringbundle, "build_format", getThemeInstall("build"));
+                    identifier.value = LocaleUtils.str(this.stringbundle, "build_format", ThemeInfo.getThemeInstall("build"));
                 }
             });
 
