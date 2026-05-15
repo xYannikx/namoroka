@@ -5,18 +5,19 @@
 
 
 <RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 
     <Description about="urn:mozilla:install-manifest">
         <em:id>{2a9dd520-4da7-11f1-b4ac-0800200c9a66}</em:id>
         <em:version>1.0</em:version>
-        <em:build>197</em:build>
-        <em:hash>b05e7db</em:hash>
+        <em:build>198</em:build>
+        <em:hash>7411a07</em:hash>
 
         <!-- Target Application this theme can install into,
         with minimum and maximum supported versions. -->
         <em:targetApplication>
             <Description>
+                <em:id>Nocturne</em:id>
                 <em:minVersion>140.0</em:minVersion>
                 <em:maxVersion>140.*</em:maxVersion>
             </Description>
