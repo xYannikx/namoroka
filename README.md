@@ -1,6 +1,13 @@
 <p align="center">
     <img src="images/logo.png" alt="Namoroka logo">
-    <h6 align="center"><i>Mozilla Firefox 1-3 theme for [userChrome Manager](https://github.com/travy-patty/userchrome-manager/) and [Nocturne](https://github.com/raytek-cafe/Nocturne)</i></h6>
+    <h6 align="center">
+        <i>
+            Mozilla Firefox 1-3 theme for 
+            <a href="https://github.com/travy-patty/userchrome-manager/">userChrome Manager</a> 
+            and 
+            <a href="https://github.com/raytek-cafe/Nocturne">Nocturne</a>
+        </i>
+    </h6>
 </p>
 
 ___
