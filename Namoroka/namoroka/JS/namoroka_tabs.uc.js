@@ -47,3 +47,50 @@
         updateTabs();
     });
 }
+
+{
+    let delayedStartupObserver = (aSubject, aTopic, aData) => {
+        if (aSubject == window) {
+            Services.obs.removeObserver(delayedStartupObserver, "browser-delayed-startup-finished");
+
+            let tabsElement = gBrowser.tabContainer;
+            let _animateTabMove_orig = tabsElement._animateTabMove;
+
+            let clearTransformsFrameId = null;
+
+            tabsElement._animateTabMove = function _animateTabMove(event) {
+                _animateTabMove_orig.call(this, event);
+
+                if (clearTransformsFrameId) {
+                    cancelAnimationFrame(clearTransformsFrameId);
+                }
+
+                let clearTransforms = () => {
+                    for (let tab of tabsElement.allTabs) {
+                        tab.style.transform = "";
+                    }
+                    clearTransformsFrameId = requestAnimationFrame(clearTransforms);
+                };
+                
+                clearTransformsFrameId = requestAnimationFrame(clearTransforms);
+            };
+
+            tabsElement.finishAnimateTabMove = function finishAnimateTabMove() {
+                if (clearTransformsFrameId) {
+                    cancelAnimationFrame(clearTransformsFrameId);
+                    clearTransformsFrameId = null;
+                }
+
+                for (let tab of tabsElement.allTabs) {
+                    tab.style.transform = "";
+                }
+
+                tabsElement.removeAttribute("movingtab");
+                tabsElement.removeAttribute("movingtab-createGroup");
+                tabsElement.removeAttribute("movingtab-ungroup");
+                tabsElement.removeAttribute("movingtab-addToGroup");
+            };
+        }
+    };
+    Services.obs.addObserver(delayedStartupObserver, "browser-delayed-startup-finished");
+}

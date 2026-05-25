@@ -15,3 +15,5 @@ override chrome://browser/skin/places/organizer.css                 namoroka/ass
 
 override chrome://global/content/commonDialog.xhtml                 namoroka/windows/commonDialog/commonDialog.xhtml
 override chrome://browser/content/places/places.xhtml               namoroka/windows/places/places.xhtml
+
+override chrome://global/content/aboutNetError.html                 namoroka/pages/neterror/neterror.xhtml

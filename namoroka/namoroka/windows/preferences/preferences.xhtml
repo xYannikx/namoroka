@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?xml-stylesheet href="chrome://global/skin/global.css"?>
+
+<!DOCTYPE prefwindow [
+  <!ENTITY % preferencesDTD
+    SYSTEM "chrome://namoroka/locale/dtd/preferences.dtd">
+  %preferencesDTD;
+]>
+
+<prefwindow type="prefwindow"
+            id="BrowserPreferences"
+            windowtype="Browser:Preferences"
+            title="&prefWindow.titleWin;"
+            class="prefwindow"
+            xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <script type="application/javascript" src="chrome://browser/content/utilityOverlay.js"></script>
+    <stringbundle id="bundleBrand" src="chrome://branding/locale/brand.properties"/>
+    <stringbundle id="bundlePreferences"
+                  src="chrome://namoroka/locale/properties/preferences.properties"/>
+
+    <prefpane id="paneMain" label="&paneMain.title;"
+              src="chrome://namoroka/content/windows/preferences/main.xhtml"/>
+    <prefpane id="paneTabs" label="&paneTabs.title;"
+              src="chrome://namoroka/content/windows/preferences/tabs.xhtml"/>
+
+</prefwindow>

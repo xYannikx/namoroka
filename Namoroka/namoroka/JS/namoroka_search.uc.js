@@ -8,7 +8,7 @@
 var g_NamorokaSearchManager;
 
 {
-	var { LocaleUtils, waitForElement, renderElement } = ChromeUtils.importESModule("chrome://modules/content/NamorokaUtils.sys.mjs");
+	var { LocaleUtils, waitForElement, renderElement, PrefCalls } = ChromeUtils.importESModule("chrome://modules/content/NamorokaUtils.sys.mjs");
     waitForElement = waitForElement.bind(window);
     renderElement = renderElement.bind(window);
 
@@ -25,6 +25,10 @@ var g_NamorokaSearchManager;
 			"bing": "chrome://namoroka/skin/searchplugins/bing.ico",
 		};
 
+		REPLACEMENTS_NEW = {
+			"google": "chrome://namoroka/skin/searchplugins/firefox-3.5/google.png",
+		}
+
         async updateSearchBox()
 		{
 			let engine = await Services.search.getDefault();
@@ -38,17 +42,21 @@ var g_NamorokaSearchManager;
 		}
 
         async getReplacementIcon(engineId) {
-			let replacements = this.REPLACEMENTS;
+            let style = PrefCalls.getPref("Namoroka.Appearance.Style");
 
-            if (engineId in replacements) {
-                return replacements[engineId];
-            }
+			if (style >= 3 && engineId in this.REPLACEMENTS_NEW) {
+				return this.REPLACEMENTS_NEW[engineId];
+			}
+
+			if (engineId in this.REPLACEMENTS) {
+				return this.REPLACEMENTS[engineId];
+			}
 
             let iconURL = (await Services.search.getEngineById(engineId))?.getIconURL();
 
             return iconURL;
         }
-        
+
 		updateDisplay_hook()
 		{
 			if (this.updateDisplay_orig && this.searchbar)
@@ -191,6 +199,8 @@ var g_NamorokaSearchManager;
 			
 			document.addEventListener("focusin", this.onFocusSearchbar.bind(this));
 			document.addEventListener("focusout", this.onUnfocusSearchbar.bind(this));
+
+			document.addEventListener("namoroka-appearance-change", this.updateDisplay_hook.bind(this));
 
 			this.searchBarSearchButton();
 

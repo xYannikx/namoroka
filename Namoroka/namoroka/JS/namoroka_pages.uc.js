@@ -14,7 +14,8 @@
         "nrabout": "chrome://namoroka/content/windows/aboutDialog/aboutDialog.xhtml",
         "nrwizard": "chrome://namoroka/content/windows/wizard/wizard.xhtml",
         "downloads": "chrome://namoroka/content/windows/downloads/downloads.xhtml",
-        "config": "chrome://namoroka/content/pages/config/config.xhtml"
+        "config": "chrome://namoroka/content/pages/config/config.xhtml",
+        "preferencesnew": "chrome://namoroka/content/windows/preferences/preferences.xhtml"
     };
     const { AboutPageManager } = ChromeUtils.importESModule("chrome://modules/content/AboutPageManager.sys.mjs");
 

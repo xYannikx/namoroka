@@ -90,6 +90,7 @@
                     box-shadow: inset -1px 0 rgba(255, 255, 255, 0.2), inset 1px 0 rgba(255, 255, 255, 0.2) !important;
                     border-radius: 0 !important;
                     outline: 0 !important;
+                    max-width: none !important;
                     padding: 0 1px !important;
 
                     @media (-moz-windows-classic) {
