@@ -63,6 +63,10 @@ var g_NamorokaErrorPage;
             // remove undisplayed errors to avoid bug 39098
             var errContainer = document.getElementById("errorContainer");
             errContainer.parentNode.removeChild(errContainer);
+
+            var tryAgainButton = document.getElementById("errorTryAgain");
+            if (tryAgainButton)
+                tryAgainButton.addEventListener("click", () => this.retryThis());
         }
     }
 

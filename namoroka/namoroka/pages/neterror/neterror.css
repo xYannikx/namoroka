@@ -6,6 +6,25 @@
  *  Updated by: Steven Garrity <steven@silverorange.com>
  *              Henrik Skupin  <mozilla@hskupin.info>
  */
+:root {
+  --warning-large: url("chrome://namoroka/skin/firefox-1/icons/warning-large.png");
+}
+@media (-moz-pref("Namoroka.Appearance.Style", 1)) {
+  :root {
+    --warning-large: url("chrome://namoroka/skin/firefox-2/icons/warning-large.png");
+  }
+}
+@media (-moz-pref("Namoroka.Appearance.Style", 2)) {
+  :root {
+    --warning-large: url("chrome://namoroka/skin/firefox-3/icons/warning-large.png");
+  }
+}
+@media (-moz-pref("Namoroka.Appearance.Style", 2)) and (not (-moz-platform: windows-winxp)) {
+  :root {
+    --warning-large: url("chrome://namoroka/skin/firefox-3/aero/icons/warning-large.png");
+  }
+}
+
 html {
   background: -moz-Dialog;
 }
@@ -48,7 +67,7 @@ ul {
   border-radius: 10px;
   padding: 3em;
   padding-inline-start: 30px;
-  background: url("chrome://global/skin/icons/warning-large.png") left 0 no-repeat -moz-Field;
+  background: var(--warning-large) left 0 no-repeat -moz-Field;
   background-origin: content-box;
 }
 
@@ -73,6 +92,7 @@ ul {
 }
 
 #errorTryAgain {
+  margin: 1px 5px 2px 5px;
   margin-top: 2em;
   margin-inline-start: 80px;
 }

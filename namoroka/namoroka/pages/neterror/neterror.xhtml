@@ -4,6 +4,10 @@
 <?xml-stylesheet href="chrome://namoroka/content/pages/neterror/neterror.css" type="text/css"?>
 
 <!DOCTYPE html [
+  <!ENTITY % htmlDTD
+    PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "DTD/xhtml1-strict.dtd">
+  %htmlDTD;
   <!ENTITY % netErrorDTD
     SYSTEM "chrome://namoroka/locale/dtd/netError.dtd">
   %netErrorDTD;
@@ -14,7 +18,7 @@
     <head>
         <title>&loadError.label;</title>
     </head>
-    
+
     <body>
         <!-- ERROR ITEM CONTAINER (removed during loading to avoid bug 39098) -->
         <div id="errorContainer">
@@ -76,10 +80,10 @@
         </div>
 
         <!-- Retry Button -->
-        <button id="errorTryAgain" label="&retry.label;" />
+        <button id="errorTryAgain">&retry.label;</button>
 
         </div>
     </body>
 
-    <script src="chrome://namoroka/content/pages/neterror/neterror.js" type="text/javascript"></script>
+    <script src="chrome://namoroka/content/pages/neterror/neterror.js"></script>
 </html>
