@@ -691,6 +691,10 @@ toolbarbutton.bookmark-item:not(.subviewbutton) .toolbarbutton-animatable-box {
 #PersonalToolbar #PlacesToolbarItems {
   margin-inline-start: 3px !important;
 }
+#PersonalToolbar #PlacesToolbarItems toolbarseparator {
+  padding-inline: 0 !important;
+  margin: 2px 0.2em !important;
+}
 #PersonalToolbar #PlacesToolbarItems toolbarseparator::before {
   content: none !important;
 }
@@ -724,27 +728,25 @@ toolbarbutton.bookmark-item:not(.subviewbutton) .toolbarbutton-animatable-box {
   margin-inline-end: 5px !important;
 }
 
-.bookmark-item[container] {
-  list-style-image: none !important;
+.bookmark-item:not(.menuitem-with-favicon) {
+  list-style-image: var(--folder-item) !important;
+  -moz-image-region: rect(0px, 16px, 16px, 0px) !important;
 }
-.bookmark-item[container] .toolbarbutton-icon {
-  background-image: var(--folder-item) !important;
-  background-position-x: -16px !important;
+.bookmark-item:not(.menuitem-with-favicon)[container=true] {
+  -moz-image-region: rect(0px, 32px, 16px, 16px) !important;
 }
-.bookmark-item[container]:hover:active .toolbarbutton-icon, .bookmark-item[container][open=true] .toolbarbutton-icon {
-  background-position-y: -16px !important;
+.bookmark-item:not(.menuitem-with-favicon)[open=true], .bookmark-item:not(.menuitem-with-favicon)[container=true][open=true] {
+  -moz-image-region: rect(16px, 32px, 32px, 16px) !important;
 }
-
-toolbarbutton.bookmark-item[livemark=true] {
-  list-style-image: none !important;
+.bookmark-item:not(.menuitem-with-favicon)[livemark=true] {
+  list-style-image: var(--folder-item) !important;
+  -moz-image-region: rect(0px, 32px, 16px, 16px) !important;
 }
-
-toolbarbutton.bookmark-item[livemark=true] .toolbarbutton-icon {
-  background-image: url("chrome://namoroka/skin/firefox-1/livemark-folder.png") !important;
-  background-position-x: -16px !important;
+.bookmark-item:not(.menuitem-with-favicon)[livemark=true][type=menu] {
+  list-style-image: url("chrome://namoroka/skin/firefox-1/livemark-folder.png") !important;
 }
-:root:not([namoroka-style-2]) toolbarbutton.bookmark-item[livemark=true][open=true] .toolbarbutton-icon {
-  background-position-y: -16px !important;
+.bookmark-item:not(.menuitem-with-favicon)[livemark=true][type=menu][open=true] {
+  -moz-image-region: rect(16px, 32px, 32px, 16px) !important;
 }
 
 :root {
@@ -901,9 +903,13 @@ image.default-favicon {
   display: none !important;
 }
 
+.searchbar-search-button {
+  align-items: unset !important;
+}
 .searchbar-search-button .searchbar-search-icon {
   list-style-image: url("chrome://namoroka/skin/firefox-1/Search-bar.png") !important;
   margin-inline: 3px 8px !important;
+  margin-inline-start: 2px !important;
 }
 .searchbar-search-button .searchbar-search-icon-overlay {
   width: 9px !important;
@@ -913,6 +919,10 @@ image.default-favicon {
   margin-inline: 0 !important;
   margin-left: -11px !important;
   margin-bottom: 1px !important;
+}
+
+.search-go-button {
+  display: none !important;
 }
 
 #PopupSearchAutoComplete .search-panel-current-engine,
@@ -969,7 +979,11 @@ panel[type=autocomplete-richlistbox],
   overflow: hidden !important;
 }
 :root:not([namoroka-style-2]) #search-container {
+  min-width: unset !important;
   width: 20em !important;
+  flex: 0 !important;
+  margin-inline-start: 1px !important;
+  margin-inline-end: 4px !important;
 }
 
 :root[namoroka-style-1]:not([namoroka-style-2]) #search-container {
@@ -2637,19 +2651,16 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
   margin-inline-start: 0 !important;
 }
 :root[namoroka-style-2] .bookmark-item[container][query] {
-  list-style-image: none !important;
+  list-style-image: var(--query) !important;
+  -moz-image-region: auto !important;
 }
-:root[namoroka-style-2] .bookmark-item[container][query] .toolbarbutton-icon {
-  background-image: var(--query) !important;
-  background-position: 0 !important;
-}
-:root[namoroka-style-2] toolbarbutton.bookmark-item[livemark=true] .toolbarbutton-icon {
-  background-image: url("chrome://namoroka/skin/firefox-3/livemark-folder.png") !important;
-  background-position-x: 0 !important;
+:root[namoroka-style-2] .bookmark-item[livemark=true][container=true] {
+  list-style-image: url("chrome://namoroka/skin/firefox-3/livemark-folder.png") !important;
+  -moz-image-region: auto !important;
 }
 @media not (-moz-platform: windows-winxp) {
-  :root[namoroka-style-2] toolbarbutton.bookmark-item[livemark=true] .toolbarbutton-icon {
-    background-image: url("chrome://namoroka/skin/firefox-3/aero/livemark-folder.png") !important;
+  :root[namoroka-style-2] .bookmark-item[livemark=true][container=true] {
+    list-style-image: url("chrome://namoroka/skin/firefox-3/aero/livemark-folder.png") !important;
   }
 }
 :root[namoroka-style-2] .browser-toolbar {

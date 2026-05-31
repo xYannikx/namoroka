@@ -153,6 +153,7 @@ toolbarbutton menupopup[placespopup] menuseparator::before {
     border: 0 !important;
     border-radius: 0 !important;
     padding: 2px !important;
+    -moz-image-region: auto !important;
   }
   :root:not([namoroka-style-1]) menupopup:not(#ContentSelectDropdownPopup) menu[default=true],
   :root:not([namoroka-style-1]) menupopup:not(#ContentSelectDropdownPopup) menuitem[default=true],
@@ -213,6 +214,11 @@ toolbarbutton menupopup[placespopup] menuseparator::before {
     width: unset !important;
     height: unset !important;
   }
+  :root:not([namoroka-style-1]) menupopup:not(#ContentSelectDropdownPopup) menu[container] .menu-iconic-left .menu-iconic-icon:not([src]),
+  :root:not([namoroka-style-1]) toolbarbutton menupopup[placespopup] menu[container] .menu-iconic-left .menu-iconic-icon:not([src]) {
+    width: 16px !important;
+    height: 16px !important;
+  }
   :root:not([namoroka-style-1]) menupopup:not(#ContentSelectDropdownPopup) menuseparator,
   :root:not([namoroka-style-1]) toolbarbutton menupopup[placespopup] menuseparator {
     appearance: none !important;
@@ -256,6 +262,7 @@ toolbarbutton menupopup[placespopup] menuseparator::before {
     appearance: none !important;
     margin: 0px 0px 0px 6px !important;
     list-style-image: url("chrome://namoroka/skin/firefox-1/menu/Menu-arrow.png") !important;
+    -moz-image-region: auto !important;
   }
   :root:not([namoroka-style-1]) menupopup:not(#ContentSelectDropdownPopup) .menu-right[_moz-menuactive=true],
   :root:not([namoroka-style-1]) toolbarbutton menupopup[placespopup] .menu-right[_moz-menuactive=true] {
@@ -354,7 +361,7 @@ menu[disabled=true], menu[_moz-menuactive=true][disabled=true] {
 menubar > menu {
   border: 1px solid transparent !important;
   background-color: transparent !important;
-  padding: 1px 5px 2px 7px !important;
+  padding: 2px 5px 2px 7px !important;
   margin: 1px 0px 1px 0px !important;
 }
 menubar > menu[_moz-menuactive=true] {
@@ -773,6 +780,7 @@ menuitem:is([default=true], .spell-suggestion), menucaption {
   :root[namoroka-style-2] toolbarbutton menupopup[placespopup] menu,
   :root[namoroka-style-2] toolbarbutton menupopup[placespopup] menuitem {
     -moz-default-appearance: menuitem !important;
+    -moz-image-region: auto !important;
     appearance: auto !important;
     color: MenuText !important;
     font: menu !important;

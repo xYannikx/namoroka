@@ -15,21 +15,15 @@
 }
 
 .bookmark-item[container][query] {
-    list-style-image: none !important;
-
-    .toolbarbutton-icon {
-        background-image: var(--query) !important;
-        background-position: 0 !important;
-    }
+    list-style-image: var(--query) !important;
+    -moz-image-region: auto !important;
 }
 
-toolbarbutton.bookmark-item[livemark="true"] {
-    .toolbarbutton-icon {
-        background-image: #{asset("livemark-folder.png")} !important;
-        background-position-x: 0 !important;
+.bookmark-item[livemark="true"][container="true"] {
+    list-style-image: #{asset("livemark-folder.png")} !important;
+    -moz-image-region: auto !important;
 
-        @media not (-moz-platform: windows-winxp) {
-            background-image: #{asset("aero/livemark-folder.png")} !important;
-        }
+    @media not (-moz-platform: windows-winxp) {
+        list-style-image: #{asset("aero/livemark-folder.png")} !important;
     }
 }

@@ -13,8 +13,11 @@
 
     #PlacesToolbarItems {
         margin-inline-start: 3px !important;
-        
+
         toolbarseparator {
+            padding-inline: 0 !important;
+            margin: 2px 0.2em !important;
+
             &::before {
                 content: none !important;
             }
@@ -55,35 +58,29 @@
     }
 }
 
-.bookmark-item[container] {
-    list-style-image: none !important;
+.bookmark-item:not(.menuitem-with-favicon) {
+    list-style-image: var(--folder-item) !important;
+    -moz-image-region: rect(0px, 16px, 16px, 0px) !important;
 
-    .toolbarbutton-icon {
-        background-image: var(--folder-item) !important;
-        background-position-x: -16px !important;
+    &[container="true"] {
+        -moz-image-region: rect(0px, 32px, 16px, 16px) !important;
     }
 
-    &:hover:active,
-    &[open="true"] {
-        .toolbarbutton-icon {
-            background-position-y: -16px !important;
-        }
-    }
-}
-
-toolbarbutton.bookmark-item[livemark="true"] {
-    list-style-image: none !important;
-}
-
-toolbarbutton.bookmark-item[livemark="true"] {
-    .toolbarbutton-icon {
-        background-image: #{asset("livemark-folder.png")} !important;
-        background-position-x: -16px !important;
+    &[open="true"],
+    &[container="true"][open="true"] {
+        -moz-image-region: rect(16px, 32px, 32px, 16px) !important;
     }
 
-    :root:not([namoroka-style-2]) &[open="true"] {
-        .toolbarbutton-icon {
-            background-position-y: -16px !important;
+    &[livemark="true"] {
+        list-style-image: var(--folder-item) !important;
+        -moz-image-region: rect(0px, 32px, 16px, 16px) !important;
+
+        &[type="menu"] {
+            list-style-image: #{asset("livemark-folder.png")} !important;
+
+            &[open="true"] {
+                -moz-image-region: rect(16px, 32px, 32px, 16px) !important;
+            }
         }
     }
 }

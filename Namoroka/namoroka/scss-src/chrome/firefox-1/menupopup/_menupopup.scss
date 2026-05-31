@@ -21,6 +21,7 @@
 				border: 0 !important;
 				border-radius: 0 !important;
 				padding: 2px !important;
+				-moz-image-region: auto !important;
 
 				&[default="true"] {
 					font-weight: bold !important;
@@ -71,6 +72,11 @@
                 }
 			}
 
+			menu[container] .menu-iconic-left .menu-iconic-icon:not([src]) {
+				width: 16px !important;
+				height: 16px !important;
+			}
+
             menuseparator {
                 appearance: none !important;
                 padding: 0 !important;
@@ -113,6 +119,7 @@
                 appearance: none !important;
 				margin: 0px 0px 0px 6px !important;
                 list-style-image: #{asset("menu/Menu-arrow.png")} !important;
+				-moz-image-region: auto !important;
 
                 &[_moz-menuactive="true"] {
                     list-style-image: #{asset("menu/Menu-arrow-hover.png")} !important;

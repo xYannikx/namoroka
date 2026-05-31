@@ -208,9 +208,12 @@ image.default-favicon {
 
 
 .searchbar-search-button {
+    align-items: unset !important;
+
     .searchbar-search-icon {
         list-style-image: #{asset("Search-bar.png")} !important;
         margin-inline: 3px 8px !important;
+        margin-inline-start: 2px !important;
     }
 
     .searchbar-search-icon-overlay {
@@ -222,6 +225,10 @@ image.default-favicon {
         margin-left: -11px !important;
         margin-bottom: 1px !important;
     }
+}
+
+.search-go-button {
+    display: none !important;
 }
 
 #PopupSearchAutoComplete {
@@ -295,7 +302,11 @@ panel[type="autocomplete-richlistbox"],
     }
 
     #search-container {
+        min-width: unset !important;
         width: 20em !important;
+        flex: 0 !important;
+        margin-inline-start: 1px !important;
+        margin-inline-end: 4px !important;
     }
 }
 
