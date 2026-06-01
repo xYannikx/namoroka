@@ -1802,7 +1802,6 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
   padding: 0 !important;
   background: transparent !important;
   margin-block-start: 1px !important;
-  -moz-user-focus: normal !important;
   overflow: visible !important;
   max-height: var(--tab-min-height) !important;
 }
