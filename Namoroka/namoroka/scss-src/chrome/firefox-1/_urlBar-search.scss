@@ -1,32 +1,19 @@
 :root {
-    --urlbar-root-height: 22px !important;
-    --urlbar-min-height: var(--urlbar-root-height) !important;
-    --urlbar-container-padding: 0 !important;
     --urlbar-padding-block: 2px !important;
     --urlbar-margin-inline: 3px !important;
 
     --secure-icon: #{asset("Secure.png")} !important;
-
-    @media (-moz-windows-classic) {
-        & {
-            --urlbar-root-height: 24px !important;
-            --urlbar-container-padding: 1px !important;
-        }
-    }
 }
 
 #urlbar, #searchbar {
+    -moz-default-appearance: textfield !important;
+    appearance: auto !important;
     font-size: 1em !important;
     color: -moz-DialogText !important;
-}
-
-#urlbar-background, 
-#searchbar {
-    height: var(--urlbar-height) !important;
-    -moz-default-appearance: textfield !important;
-    appearance: textfield !important;
+    height: auto !important;
     outline: none !important;
     box-shadow: none !important;
+    min-height: unset !important;
 }
 
 #urlbar-input::placeholder,
@@ -47,9 +34,11 @@ image.default-favicon {
     --urlbar-container-height: unset !important;
     padding-block: 0 !important;
 
-    #urlbar {
-        --urlbar-height: var(--urlbar-root-height) !important;
+    #urlbar-button-box {
+        align-items: center !important;
+    }
 
+    #urlbar {
         :root:not([namoroka-style-2]) & #page-proxy-stack {
             visibility: collapse !important;
         }
@@ -58,6 +47,10 @@ image.default-favicon {
             position: static !important;
             width: unset !important;
             display: flex !important;
+        }
+
+        #urlbar-background {
+            visibility: collapse !important;
         }
 
         #page-proxy-deck {
@@ -90,10 +83,13 @@ image.default-favicon {
 
         #urlbar-input-container,
         .urlbar-input-container {
-            height: var(--urlbar-height) !important;
-            padding: var(--urlbar-container-padding) !important;
+            border: 0 !important;
             border-radius: 0 !important;
-            background-clip: content-box !important;
+            padding: 0 !important;
+
+            @media not (-moz-windows-classic) {
+                margin: -1px !important;
+            }
 
             &[pageproxystate="valid"] {
                 background-color: #F5F6BE !important;
@@ -122,11 +118,6 @@ image.default-favicon {
             #identity-icon-label {
                 visibility: collapse !important;
             }
-        }
-
-        .autocomplete-history-dropmarker {
-            width: 17px !important;
-            height: 100% !important;
         }
 
         #urlbar-input {
@@ -193,9 +184,10 @@ image.default-favicon {
         }
 
         .urlbar-page-action {
+            width: auto !important;
+            height: auto !important;
             padding: 0 2px !important;
             outline: 0 !important;
-            height: 16px !important;
             border-radius: 0 !important;
             background-color: transparent !important;
         }
@@ -206,14 +198,13 @@ image.default-favicon {
     }
 }
 
-
 .searchbar-search-button {
     align-items: unset !important;
 
     .searchbar-search-icon {
         list-style-image: #{asset("Search-bar.png")} !important;
-        margin-inline: 3px 8px !important;
-        margin-inline-start: 2px !important;
+        margin-inline: 2px 8px !important;
+        margin-block: 1px !important;
     }
 
     .searchbar-search-icon-overlay {

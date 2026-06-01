@@ -519,6 +519,11 @@ menubar {
   visibility: collapse !important;
 }
 
+.private-browsing-indicator-with-label,
+.content-analysis-indicator {
+  display: none !important;
+}
+
 :root {
   --toolbarbutton-icon-size: 24px !important;
 }
@@ -750,32 +755,20 @@ toolbarbutton.bookmark-item:not(.subviewbutton) .toolbarbutton-animatable-box {
 }
 
 :root {
-  --urlbar-root-height: 22px !important;
-  --urlbar-min-height: var(--urlbar-root-height) !important;
-  --urlbar-container-padding: 0 !important;
   --urlbar-padding-block: 2px !important;
   --urlbar-margin-inline: 3px !important;
   --secure-icon: url("chrome://namoroka/skin/firefox-1/Secure.png") !important;
 }
-@media (-moz-windows-classic) {
-  :root {
-    --urlbar-root-height: 24px !important;
-    --urlbar-container-padding: 1px !important;
-  }
-}
 
 #urlbar, #searchbar {
+  -moz-default-appearance: textfield !important;
+  appearance: auto !important;
   font-size: 1em !important;
   color: -moz-DialogText !important;
-}
-
-#urlbar-background,
-#searchbar {
-  height: var(--urlbar-height) !important;
-  -moz-default-appearance: textfield !important;
-  appearance: textfield !important;
+  height: auto !important;
   outline: none !important;
   box-shadow: none !important;
+  min-height: unset !important;
 }
 
 #urlbar-input::placeholder,
@@ -796,8 +789,8 @@ image.default-favicon {
   --urlbar-container-height: unset !important;
   padding-block: 0 !important;
 }
-#urlbar-container #urlbar {
-  --urlbar-height: var(--urlbar-root-height) !important;
+#urlbar-container #urlbar-button-box {
+  align-items: center !important;
 }
 :root:not([namoroka-style-2]) #urlbar-container #urlbar #page-proxy-stack {
   visibility: collapse !important;
@@ -806,6 +799,9 @@ image.default-favicon {
   position: static !important;
   width: unset !important;
   display: flex !important;
+}
+#urlbar-container #urlbar #urlbar-background {
+  visibility: collapse !important;
 }
 #urlbar-container #urlbar #page-proxy-deck {
   width: 16px !important;
@@ -825,10 +821,15 @@ image.default-favicon {
 }
 #urlbar-container #urlbar #urlbar-input-container,
 #urlbar-container #urlbar .urlbar-input-container {
-  height: var(--urlbar-height) !important;
-  padding: var(--urlbar-container-padding) !important;
+  border: 0 !important;
   border-radius: 0 !important;
-  background-clip: content-box !important;
+  padding: 0 !important;
+}
+@media not (-moz-windows-classic) {
+  #urlbar-container #urlbar #urlbar-input-container,
+  #urlbar-container #urlbar .urlbar-input-container {
+    margin: -1px !important;
+  }
 }
 #urlbar-container #urlbar #urlbar-input-container[pageproxystate=valid],
 #urlbar-container #urlbar .urlbar-input-container[pageproxystate=valid] {
@@ -851,10 +852,6 @@ image.default-favicon {
 }
 #urlbar-container #urlbar #identity-box #identity-icon-label {
   visibility: collapse !important;
-}
-#urlbar-container #urlbar .autocomplete-history-dropmarker {
-  width: 17px !important;
-  height: 100% !important;
 }
 #urlbar-container #urlbar #urlbar-input {
   mask-image: none !important;
@@ -893,9 +890,10 @@ image.default-favicon {
   display: none !important;
 }
 #urlbar-container #urlbar .urlbar-page-action {
+  width: auto !important;
+  height: auto !important;
   padding: 0 2px !important;
   outline: 0 !important;
-  height: 16px !important;
   border-radius: 0 !important;
   background-color: transparent !important;
 }
@@ -908,8 +906,8 @@ image.default-favicon {
 }
 .searchbar-search-button .searchbar-search-icon {
   list-style-image: url("chrome://namoroka/skin/firefox-1/Search-bar.png") !important;
-  margin-inline: 3px 8px !important;
-  margin-inline-start: 2px !important;
+  margin-inline: 2px 8px !important;
+  margin-block: 1px !important;
 }
 .searchbar-search-button .searchbar-search-icon-overlay {
   width: 9px !important;
@@ -1965,7 +1963,6 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
   background-image: url("chrome://namoroka/skin/firefox-2/icons/alltabs-box-overflow-end-bkgnd-hover.png") !important;
 }
 :root[namoroka-style-1]:not([namoroka-style-2=true]) {
-  --urlbar-root-height: 22px !important;
   --urlbar-container-padding: 0 !important;
   --urlbar-margin-inline: 3px !important;
   --urlbar-padding-block: 0 !important;
@@ -1979,13 +1976,14 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
 }
 :root[namoroka-style-1]:not([namoroka-style-2=true]) #urlbar-container #urlbar {
   margin-block-start: -1px !important;
-  --urlbar-height: var(--urlbar-root-height) !important;
-}
-:root[namoroka-style-1]:not([namoroka-style-2=true]) #urlbar-container #urlbar #urlbar-background {
   appearance: none !important;
   border: 1px solid #96969D !important;
   border-radius: 0 !important;
   background-color: -moz-field !important;
+}
+:root[namoroka-style-1]:not([namoroka-style-2=true]) #urlbar-container #urlbar #urlbar-input-container,
+:root[namoroka-style-1]:not([namoroka-style-2=true]) #urlbar-container #urlbar .urlbar-input-container {
+  margin: 0 !important;
 }
 :root[namoroka-style-1]:not([namoroka-style-2=true]) #urlbar-container #urlbar .autocomplete-history-dropmarker {
   box-sizing: content-box !important;
@@ -2682,19 +2680,12 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
   border: none !important;
 }
 :root[namoroka-style-2] {
-  --urlbar-root-height: 22px !important;
-  --urlbar-container-padding: 0 !important;
   --urlbar-margin-inline: 7px !important;
   --secure-icon: url("chrome://namoroka/skin/firefox-3/Secure.png") !important;
   --secure-broken-icon: url("chrome://namoroka/skin/firefox-3/Security-broken.png") !important;
   --navbar-textbox-buttons: url("chrome://namoroka/skin/firefox-3/urlbar/navbar-textbox-buttons.png") !important;
   --search-glass: url("chrome://namoroka/skin/firefox-3/Search-glass.png") !important;
   --search-close: url("chrome://namoroka/skin/firefox-3/Search-close.png") !important;
-}
-@media (-moz-windows-classic) {
-  :root[namoroka-style-2] {
-    --urlbar-root-height: 24px !important;
-  }
 }
 @media not (-moz-platform: windows-winxp) {
   :root[namoroka-style-2] {
@@ -2721,14 +2712,14 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
   --urlbar-height: var(--urlbar-root-height) !important;
 }
 @media (-moz-windows-classic) {
-  :root[namoroka-style-2] #urlbar-container #urlbar #urlbar-background {
+  :root[namoroka-style-2] #urlbar-container #urlbar {
     -moz-default-appearance: textfield !important;
     appearance: textfield !important;
     border-radius: 0 !important;
   }
 }
 @media not (-moz-windows-classic) {
-  :root[namoroka-style-2] #urlbar-container #urlbar #urlbar-background {
+  :root[namoroka-style-2] #urlbar-container #urlbar {
     appearance: none !important;
     border: 1px solid ThreeDShadow !important;
     background-color: -moz-Field !important;
@@ -2899,6 +2890,7 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
   width: 5px !important;
   height: 3px !important;
   background-image: var(--arrow-dn) !important;
+  margin-inline: 5px !important;
 }
 :root[namoroka-style-2] #urlbar-container #urlbar #page-action-buttons {
   height: 18px !important;

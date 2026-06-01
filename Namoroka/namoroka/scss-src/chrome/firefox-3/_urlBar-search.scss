@@ -1,11 +1,4 @@
 & {
-    --urlbar-root-height: 22px !important;
-
-    @media (-moz-windows-classic) {
-        --urlbar-root-height: 24px !important;
-    }
-
-    --urlbar-container-padding: 0 !important;
     --urlbar-margin-inline: 7px !important;
 
     --secure-icon: #{asset("Secure.png")} !important;
@@ -37,19 +30,17 @@
         #urlbar {
             --urlbar-height: var(--urlbar-root-height) !important;
 
-            #urlbar-background {
-                @media (-moz-windows-classic) {
-                    -moz-default-appearance: textfield !important;
-                    appearance: textfield !important;
-                    border-radius: 0 !important;
-                }
+            @media (-moz-windows-classic) {
+                -moz-default-appearance: textfield !important;
+                appearance: textfield !important;
+                border-radius: 0 !important;
+            }
 
-                @media not (-moz-windows-classic) {
-                    appearance: none !important;
-                    border: 1px solid ThreeDShadow !important;
-                    background-color: -moz-Field !important;
-                    border-radius: 0 !important;
-                }
+            @media not (-moz-windows-classic) {
+                appearance: none !important;
+                border: 1px solid ThreeDShadow !important;
+                background-color: -moz-Field !important;
+                border-radius: 0 !important;
             }
 
             .autocomplete-history-dropmarker {
@@ -246,6 +237,7 @@
                     width: 5px !important;
                     height: 3px !important;
                     background-image: var(--arrow-dn) !important;
+                    margin-inline: 5px !important;
                 }
             }
 

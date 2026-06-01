@@ -12,7 +12,6 @@
 }
 
 &:not([namoroka-style-2="true"]) {
-    --urlbar-root-height: 22px !important;
     --urlbar-container-padding: 0 !important;
     --urlbar-margin-inline: 3px !important;
     --urlbar-padding-block: 0 !important;
@@ -28,13 +27,14 @@
 
         #urlbar {
             margin-block-start: -1px !important;
-            --urlbar-height: var(--urlbar-root-height) !important;
+            appearance: none !important;
+            border: 1px solid #96969D !important;
+            border-radius: 0 !important;
+            background-color: -moz-field !important;
 
-            #urlbar-background {
-                appearance: none !important;
-                border: 1px solid #96969D !important;
-                border-radius: 0 !important;
-                background-color: -moz-field !important;
+            #urlbar-input-container,
+            .urlbar-input-container {
+                margin: 0 !important;
             }
 
             .autocomplete-history-dropmarker {
@@ -384,7 +384,7 @@
                     background-position-x: -25px !important;
                 }
 
-                &:active {                
+                &:active {
                     .search-go-button {
                         background-position-x: -75px !important;
                     }

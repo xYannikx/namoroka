@@ -191,3 +191,8 @@
 .tab-audio-button {
     visibility: collapse !important;
 }
+
+.private-browsing-indicator-with-label,
+.content-analysis-indicator {
+    display: none !important;
+}

@@ -15,6 +15,7 @@
                 align-items: center !important;
                 border: 1px solid transparent !important;
                 border-radius: 0 !important;
+                -moz-image-region: auto !important;
 
                 &[default="true"] {
                     font-weight: bold !important;
@@ -71,7 +72,8 @@
                 }
             }
 
-            menuitem[style*="list-style-image"] .menu-iconic-left .menu-iconic-icon:not([src]) {
+            menuitem[style*="list-style-image"] .menu-iconic-left .menu-iconic-icon:not([src]),
+            menu[container] .menu-iconic-left .menu-iconic-icon:not([src]) {
                 width: 16px !important;
                 height: 16px !important;
             }
@@ -120,6 +122,7 @@
                 margin-block-end: 1px !important;
                 margin-inline-start: 0px !important;
                 margin-inline-end: 6px !important;
+                -moz-image-region: auto !important;
                 list-style-image: #{asset("menu/Menu-arrow.png")} !important;
 
                 &[_moz-menuactive="true"] {

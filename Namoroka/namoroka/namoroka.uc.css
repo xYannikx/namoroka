@@ -570,6 +570,7 @@ menuitem:is([default=true], .spell-suggestion), menucaption {
     align-items: center !important;
     border: 1px solid transparent !important;
     border-radius: 0 !important;
+    -moz-image-region: auto !important;
   }
   :root[namoroka-style-1]:not([namoroka-style-2]) menupopup:not(#ContentSelectDropdownPopup) menu[default=true],
   :root[namoroka-style-1]:not([namoroka-style-2]) menupopup:not(#ContentSelectDropdownPopup) menuitem[default=true],
@@ -638,7 +639,9 @@ menuitem:is([default=true], .spell-suggestion), menucaption {
     height: unset !important;
   }
   :root[namoroka-style-1]:not([namoroka-style-2]) menupopup:not(#ContentSelectDropdownPopup) menuitem[style*=list-style-image] .menu-iconic-left .menu-iconic-icon:not([src]),
-  :root[namoroka-style-1]:not([namoroka-style-2]) toolbarbutton menupopup[placespopup] menuitem[style*=list-style-image] .menu-iconic-left .menu-iconic-icon:not([src]) {
+  :root[namoroka-style-1]:not([namoroka-style-2]) menupopup:not(#ContentSelectDropdownPopup) menu[container] .menu-iconic-left .menu-iconic-icon:not([src]),
+  :root[namoroka-style-1]:not([namoroka-style-2]) toolbarbutton menupopup[placespopup] menuitem[style*=list-style-image] .menu-iconic-left .menu-iconic-icon:not([src]),
+  :root[namoroka-style-1]:not([namoroka-style-2]) toolbarbutton menupopup[placespopup] menu[container] .menu-iconic-left .menu-iconic-icon:not([src]) {
     width: 16px !important;
     height: 16px !important;
   }
@@ -687,6 +690,7 @@ menuitem:is([default=true], .spell-suggestion), menucaption {
     margin-block-end: 1px !important;
     margin-inline-start: 0px !important;
     margin-inline-end: 6px !important;
+    -moz-image-region: auto !important;
     list-style-image: url("chrome://namoroka/skin/firefox-2/menu/Menu-arrow.png") !important;
   }
   :root[namoroka-style-1]:not([namoroka-style-2]) menupopup:not(#ContentSelectDropdownPopup) .menu-right[_moz-menuactive=true],

@@ -94,11 +94,11 @@
             {
                 let pageProxyIcon = document.querySelectorAll("#page-proxy-favicon");
                 let favicon = gBrowser.selectedTab.iconImage.src;
-                    
+
                 pageProxyIcon.forEach(el => {
                     el.setAttribute("src", favicon);
 
-                    if (!favicon || favicon == null || favicon == "chrome://branding/content/icon32.png")
+                    if (!favicon || favicon == "chrome://branding/content/icon32.png" || favicon == "chrome://branding/content/favicon.ico")
                     {
                         el.removeAttribute("src");
                     }

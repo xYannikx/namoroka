@@ -41,7 +41,7 @@ var g_NamorokaErrorPage;
                 errTitle = document.getElementById("et_generic");
                 errDesc = document.getElementById("ed_generic");
             }
-
+            
             var title = document.getElementById("errorTitleText");
             if (title) {
                 title.parentNode.replaceChild(errTitle, title);
