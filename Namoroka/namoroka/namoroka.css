@@ -1886,6 +1886,9 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
 :root[namoroka-style-1] #TabsToolbar .tabbrowser-tab .tab-close-button {
   margin-inline-end: 0 !important;
 }
+:root[namoroka-style-1] #TabsToolbar .tabbrowser-tab:first-of-type:last-of-type .tab-close-button {
+  visibility: collapse !important;
+}
 :root[namoroka-style-1] #TabsToolbar .tabbrowser-tab:not([pinned], [fadein]) .tab-background {
   visibility: collapse !important;
 }
