@@ -7,22 +7,7 @@
 // ==/UserScript===
 
 {
-    function fsPathToFileUri(path, isDir = false)
-    {
-        let out = "file://";
-        if (Services.appinfo.OS == "WINNT")
-        {
-            // file:// URIs have a leading slash that Windows file path doesn't
-            // have normally
-            out += "/";
-        }
-        // Add and de-Windowsify the path
-        out += path.replaceAll("\\", "/");
-        // Add leading slash if it isn't there
-        if (isDir && out.slice(-1) != "/")
-            out += "/";
-        return out;
-    }
+    var { PrefCalls } = ChromeUtils.importESModule("chrome://modules/content/NamorokaUtils.sys.mjs");
 
     const FTL_FILES = [
         "branding/brand.ftl",
@@ -32,23 +17,19 @@
     let brand = Services.prefs.getStringPref("Namoroka.Option.Branding", "firefox");
     if (brand != "")
     {
-        let branding = Services.dirsvc.get("UChrm", Ci.nsIFile);
-        branding.append("branding");
-        branding.append(brand);
+        let chromeRegistry = Cc["@mozilla.org/chrome/chrome-registry;1"].getService(Ci.nsIChromeRegistry);
+        let baseChromeURI = `chrome://namoroka/content/branding/${brand}/ftls/`;
 
-        let ftls = branding.clone();
-        ftls.append("ftls");
-        let root = fsPathToFileUri(ftls.path, true);
+        let root = chromeRegistry.convertChromeURL(Services.io.newURI(baseChromeURI)).spec;
+        console.log(`Root: ${root}`);
+
         let paths = [];
-
         for (const filename of FTL_FILES)
         {
-            let file = ftls.clone();
-            for (const split of filename.split("/"))
-                file.append(split);
-
-            if (file.exists())
-                paths.push(fsPathToFileUri(file.path));
+            let file = baseChromeURI + filename;
+            let path = chromeRegistry.convertChromeURL(Services.io.newURI(file)).spec;
+            console.log(`Adding file: ${path}`);
+            paths.push(path);
         }
 
         if (paths.length > 0)
@@ -66,6 +47,7 @@
                 },
                 paths
             );
+            console.log(source);
             L10nRegistry.getInstance().registerSources([source]);
         }
     }
