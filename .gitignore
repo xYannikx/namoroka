@@ -8,10 +8,4 @@
 !userChrome.au.css
 !userContent.css
 
-Namoroka/namoroka/compile.bat
-Namoroka/namoroka/src/dart.exe
-Namoroka/namoroka/src/LICENSE
-Namoroka/namoroka/src/sass.snapshot
-Namoroka/namoroka/watch.bat
-
 dist/
