@@ -21,14 +21,12 @@
         let baseChromeURI = `chrome://namoroka/content/branding/${brand}/ftls/`;
 
         let root = chromeRegistry.convertChromeURL(Services.io.newURI(baseChromeURI)).spec;
-        console.log(`Root: ${root}`);
 
         let paths = [];
         for (const filename of FTL_FILES)
         {
             let file = baseChromeURI + filename;
             let path = chromeRegistry.convertChromeURL(Services.io.newURI(file)).spec;
-            console.log(`Adding file: ${path}`);
             paths.push(path);
         }
 
@@ -47,7 +45,6 @@
                 },
                 paths
             );
-            console.log(source);
             L10nRegistry.getInstance().registerSources([source]);
         }
     }
