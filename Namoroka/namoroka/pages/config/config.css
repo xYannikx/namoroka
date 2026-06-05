@@ -1,6 +1,27 @@
 @import url("chrome://global/skin/");
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
+:root {
+    --warning-large: url("chrome://namoroka/skin/firefox-1/icons/warning-large.png");
+}
+
+@media (-moz-pref("Namoroka.Appearance.Style", 1)) {
+    :root {
+        --warning-large: url("chrome://namoroka/skin/firefox-2/icons/warning-large.png");
+    }
+}
+
+@media (-moz-pref("Namoroka.Appearance.Style", 2)) {
+    :root {
+        --warning-large: url("chrome://namoroka/skin/firefox-3/icons/warning-large.png");
+    }
+
+    @media not (-moz-platform: windows-winxp) {
+        :root {
+            --warning-large: url("chrome://namoroka/skin/firefox-3/aero/icons/warning-large.png");
+        }
+    }
+}
 
 #warningScreen {
     background-color: -moz-Dialog;
@@ -41,30 +62,10 @@
 }
 
 #exclam {
-    width: 32px;
-    height: 32px;
-    list-style-image: url("chrome://namoroka/content/firefox-1/icons/warning.png");
+    width: 48px;
+    height: 48px;
+    list-style-image: var(--warning-large);
     margin-inline-end: 3em;
-}
-
-:root[namoroka-style-1="true"] {
-    #exclam {
-        width: 48px;
-        height: 48px;
-        list-style-image: url("chrome://namoroka/content/firefox-2/icons/warning-large.png");
-    }
-}
-
-:root[namoroka-style-2="true"] {
-    #exclam {
-        list-style-image: url("chrome://namoroka/content/firefox-3/icons/warning-large.png");
-    }
-}
-
-:root[namoroka-style-2="true"][namoroka-appearance-aero="true"] {
-    #exclam {
-        list-style-image: url("chrome://namoroka/content/firefox-3/aero/icons/warning-large.png");
-    }
 }
 
 

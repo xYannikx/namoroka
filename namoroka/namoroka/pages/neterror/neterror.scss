@@ -10,11 +10,11 @@
 :root {
     --warning-large: url("chrome://namoroka/skin/firefox-1/icons/warning-large.png");
 
-    @media (-moz-pref("Namoroka.Appearance.Style", 1)) {
+    &[namoroka-style-1="true"] {
         --warning-large: url("chrome://namoroka/skin/firefox-2/icons/warning-large.png");
     }
 
-    @media (-moz-pref("Namoroka.Appearance.Style", 2)) {
+    &[namoroka-style-2="true"] {
         --warning-large: url("chrome://namoroka/skin/firefox-3/icons/warning-large.png");
 
         @media not (-moz-platform: windows-winxp) {
@@ -93,6 +93,8 @@ ul {
     margin: 1px 5px 2px 5px;
     margin-top: 2em;
     margin-inline-start: 80px;
+    width: 6.7272727272727275em;
+    height: 2.1818181818181817em;
 }
 
 #brand {

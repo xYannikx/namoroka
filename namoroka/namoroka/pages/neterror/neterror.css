@@ -9,18 +9,14 @@
 :root {
   --warning-large: url("chrome://namoroka/skin/firefox-1/icons/warning-large.png");
 }
-@media (-moz-pref("Namoroka.Appearance.Style", 1)) {
-  :root {
-    --warning-large: url("chrome://namoroka/skin/firefox-2/icons/warning-large.png");
-  }
+:root[namoroka-style-1=true] {
+  --warning-large: url("chrome://namoroka/skin/firefox-2/icons/warning-large.png");
 }
-@media (-moz-pref("Namoroka.Appearance.Style", 2)) {
-  :root {
-    --warning-large: url("chrome://namoroka/skin/firefox-3/icons/warning-large.png");
-  }
+:root[namoroka-style-2=true] {
+  --warning-large: url("chrome://namoroka/skin/firefox-3/icons/warning-large.png");
 }
-@media (-moz-pref("Namoroka.Appearance.Style", 2)) and (not (-moz-platform: windows-winxp)) {
-  :root {
+@media not (-moz-platform: windows-winxp) {
+  :root[namoroka-style-2=true] {
     --warning-large: url("chrome://namoroka/skin/firefox-3/aero/icons/warning-large.png");
   }
 }
@@ -95,6 +91,8 @@ ul {
   margin: 1px 5px 2px 5px;
   margin-top: 2em;
   margin-inline-start: 80px;
+  width: 6.7272727273em;
+  height: 2.1818181818em;
 }
 
 #brand {
