@@ -35,6 +35,7 @@
 
 <!ENTITY general.appearance.hideTabBar "Hide the tab bar when only one web site is open">
 <!ENTITY general.appearance.smallIcons "Use Small Icons">
+<!ENTITY general.appearance.hideSeparators "Hide Toolbar Separators">
 
 <!ENTITY branding.description "This tab allows you to change the branding of the browser.">
 <!ENTITY branding.style "Namoroka Branding:">

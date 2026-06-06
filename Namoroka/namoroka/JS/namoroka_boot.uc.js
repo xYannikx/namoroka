@@ -13,7 +13,8 @@ let NAMOROKA_BOOT_CONFIG = {
 			style: true,
 			prefs: [
 				"Namoroka.Appearance.Small-Icons",
-				"Namoroka.Appearance.Aero"
+				"Namoroka.Appearance.Aero",
+				"Namoroka.Appearance.HideSeparators"
 			],
 		},
 		wizard: true,

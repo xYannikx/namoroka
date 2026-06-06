@@ -68,7 +68,7 @@
 							</hbox>
 							<hbox class="option-container">
 								<label value="&general.appearance.osOverride;"/>
-								<menulist native="" class="option" data-type="enum" data-option="widget.native-controls.override-win-version" change-requires-restart="true">
+								<menulist id="osAppearance" native="" class="option" data-type="enum" data-option="widget.native-controls.override-win-version" change-requires-restart="true">
 									<menupopup>
 										<menuitem label="&general.appearance.osOverride.default;" value="0"/>
 										<menuitem label="&general.appearance.osOverride.xp;" value="5"/>
@@ -77,6 +77,7 @@
 							</hbox>
 							<checkbox native="" label="&general.appearance.smallIcons;" class="option" data-type="bool" data-option="Namoroka.Appearance.Small-Icons"/>
 							<checkbox native="" label="&general.appearance.hideTabBar;" class="option" data-type="bool" data-option="Namoroka.Tabbrowser.HideOnOneTab"/>
+							<checkbox id="hideSeparators" native="" label="&general.appearance.hideSeparators;" class="option" data-type="bool" data-option="Namoroka.Appearance.HideSeparators"/>
 						</vbox>
 					</vbox>
 					<vbox id="section-branding" class="section" section-change-requires-restart="true">

@@ -73,6 +73,11 @@ var g_NamorokaOptionsDialog;
         }
 
         getOptionValue(optElm) {
+            if (typeof optElm === "string")
+            {
+                optElm = document.getElementById(optElm);
+            }
+
             switch (optElm.dataset.type)
             {
                 case "bool":
@@ -166,6 +171,17 @@ var g_NamorokaOptionsDialog;
                 this.handleOkApply(this, false);
             }
 
+            let style = this.getOptionValue("skinsList");
+            let osOverride = this.getOptionValue("osAppearance");
+            console.log(style, osOverride);
+            if (style == 2 && osOverride != 5)
+            {
+                document.getElementById("hideSeparators").removeAttribute("disabled");
+            }
+            else
+            {
+                document.getElementById("hideSeparators").setAttribute("disabled", "true");
+            }
             document.querySelector(".restart-required-label").style.display = restartRequired ? "flex" : "none";
         }
 

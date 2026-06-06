@@ -2668,18 +2668,18 @@ treechildren::-moz-tree-image(title, open), treechildren::-moz-tree-image(query,
   -moz-default-appearance: toolbar !important;
   min-height: 19px !important;
 }
-@media not (-moz-platform: windows-winxp), (-moz-windows-classic) {
-  :root[namoroka-style-2] .browser-toolbar {
+@media not ((-moz-platform: windows-winxp) or (-moz-windows-classic)) {
+  :root[namoroka-style-2][namoroka-appearance-hideseparators=true] .browser-toolbar {
     appearance: none !important;
     border: 0 !important;
   }
-}
-:root[namoroka-style-2] toolbar:first-child,
-:root[namoroka-style-2] toolbar[type=menubar],
-:root[namoroka-style-2] menubar {
-  appearance: none !important;
-  -moz-default-appearance: none !important;
-  border: none !important;
+  :root[namoroka-style-2][namoroka-appearance-hideseparators=true] toolbar:first-child,
+  :root[namoroka-style-2][namoroka-appearance-hideseparators=true] toolbar[type=menubar],
+  :root[namoroka-style-2][namoroka-appearance-hideseparators=true] menubar {
+    appearance: none !important;
+    -moz-default-appearance: none !important;
+    border: none !important;
+  }
 }
 :root[namoroka-style-2] {
   --urlbar-margin-inline: 7px !important;

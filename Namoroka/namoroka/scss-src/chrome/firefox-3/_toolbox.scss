@@ -3,17 +3,22 @@
     appearance: auto !important;
     -moz-default-appearance: toolbar !important;
     min-height: 19px !important;
+}
 
-    @media not (-moz-platform: windows-winxp), (-moz-windows-classic) {
-        appearance: none !important;
-        border: 0 !important;
+&[namoroka-appearance-hideseparators="true"] {
+    @media not ((-moz-platform: windows-winxp) or (-moz-windows-classic)) {
+        .browser-toolbar {
+            appearance: none !important;
+            border: 0 !important;
+        }
+        
+        toolbar:first-child,
+        toolbar[type="menubar"], 
+        menubar {
+            appearance: none !important;
+            -moz-default-appearance: none !important;
+            border: none !important;
+        }
     }
 }
 
-toolbar:first-child,
-toolbar[type="menubar"], 
-menubar {
-    appearance: none !important;
-    -moz-default-appearance: none !important;
-    border: none !important;
-}
